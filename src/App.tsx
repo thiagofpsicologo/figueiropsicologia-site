@@ -361,76 +361,71 @@ export default function App() {
         </section>
 
         {/* Services / Areas of Work Section */}
-        <section id="services" className="py-24 md:py-32 bg-white relative overflow-hidden">
+        <section id="services" className="py-24 md:py-32 bg-natural-bg relative overflow-hidden">
           <div className="max-w-6xl mx-auto px-6 md:px-8">
-            <div className="grid lg:grid-cols-12 gap-12 md:gap-20 items-start">
-              {/* Header Content */}
-              <div className="lg:col-span-4 space-y-6 lg:sticky lg:top-32">
-                <div className="space-y-4">
-                  <span className="text-[9px] md:text-[10px] uppercase tracking-[0.3em] text-olive font-bold">O que trabalhamos</span>
-                  <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif text-natural-ink italic leading-[1.1]">
-                    Como posso<br />te ajudar
-                  </h2>
-                </div>
-                <p className="text-lg text-natural-ink/70 font-light leading-relaxed">
-                  Ofereço uma escuta clínica dedicada a diversas temáticas da existência humana, 
-                  sempre com um olhar crítico, ético e empático.
-                </p>
-              </div>
+            <div className="text-center max-w-2xl mx-auto mb-16 md:mb-24 space-y-4">
+              <span className="text-[9px] md:text-[10px] uppercase tracking-[0.3em] text-olive font-bold">O que trabalhamos</span>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif text-natural-ink italic leading-tight">
+                Como posso te ajudar
+              </h2>
+              <div className="w-12 h-[1px] bg-olive/30 mx-auto mt-8" />
+            </div>
 
-              {/* Grid Items */}
-              <div className="lg:col-span-8 grid sm:grid-cols-2 gap-x-8 gap-y-12 md:gap-y-16">
-                {[
-                  {
-                    id: "001",
-                    title: "Sofrimento existencial e sentido de vida",
-                    description: "Vazio, angústia, falta de direção. Não como patologia, mas como convite ao encontro consigo mesmo."
-                  },
-                  {
-                    id: "002",
-                    title: "Ansiedade, depressão e adoecimento psíquico",
-                    description: "Compreendidos em seu contexto social e histórico, não apenas como disfunções individuais."
-                  },
-                  {
-                    id: "003",
-                    title: "Identidade, raça e pertencimento",
-                    description: "Quem sou eu? Onde me encaixo? Trabalho com as feridas e potências de existir em um Brasil que invisibiliza."
-                  },
-                  {
-                    id: "004",
-                    title: "Relações afetivas e vínculos",
-                    description: "Amor, perda, dependência e afastamento. A teia de relações que nos constitui como sujeitos."
-                  },
-                  {
-                    id: "005",
-                    title: "Corpo, sexualidade e desejo",
-                    description: "Uma escuta sem julgamentos sobre o que o corpo diz quando a fala não dá conta."
-                  },
-                  {
-                    id: "006",
-                    title: "Crise, ruptura e recomeço",
-                    description: "Perdas, transições, mudanças que desorientam — acompanhamento nos momentos que mais exigem presença."
-                  }
-                ].map((item, i) => (
-                  <motion.div
-                    key={item.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: i * 0.1, duration: 0.6 }}
-                    className="group"
-                  >
-                    <div className="text-[10px] font-bold tracking-[0.2em] text-olive/40 group-hover:text-olive transition-colors mb-4 block">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+              {[
+                {
+                  id: "001",
+                  title: "Sofrimento existencial e sentido de vida",
+                  description: "A angústia, o vazio e a falta de direção não são falhas individuais, mas experiências humanas profundas que podem abrir caminhos de reflexão e transformação."
+                },
+                {
+                  id: "002",
+                  title: "Ansiedade, depressão e sofrimento psíquico",
+                  description: "Compreendidos para além do sintoma, considerando as relações sociais, históricas e afetivas que atravessam cada sujeito."
+                },
+                {
+                  id: "003",
+                  title: "Identidade, raça e pertencimento",
+                  description: "Reflexões sobre quem se é em um contexto que muitas vezes invisibiliza, exclui ou silencia determinadas existências."
+                },
+                {
+                  id: "004",
+                  title: "Relações afetivas e vínculos",
+                  description: "Os encontros, desencontros, perdas e dependências que marcam nossa forma de existir com o outro."
+                },
+                {
+                  id: "005",
+                  title: "Corpo, sexualidade e desejo",
+                  description: "Uma escuta ética e sem julgamentos sobre as expressões do corpo, do desejo e das vivências que nem sempre encontram espaço de fala."
+                },
+                {
+                  id: "006",
+                  title: "Crise, ruptura e recomeço",
+                  description: "Momentos de mudança que desorganizam a vida, mas que também podem abrir possibilidades de novos caminhos."
+                }
+              ].map((item, i) => (
+                <motion.div
+                  key={item.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.1, duration: 0.8 }}
+                  whileHover={{ y: -8 }}
+                  className="bg-white p-8 md:p-10 rounded-2xl shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1)] border border-natural-ink/5 hover:border-olive/20 transition-all duration-500 flex flex-col group cursor-default"
+                >
+                  <div className="flex items-center justify-between mb-8">
+                    <span className="text-[10px] md:text-[11px] font-bold tracking-[0.2em] text-olive/40 py-1 px-2 bg-olive/5 rounded-md group-hover:text-olive transition-colors">
                       {item.id}
-                    </div>
-                    <h3 className="text-xl md:text-2xl font-serif text-natural-ink mb-4 group-hover:italic transition-all">
-                      {item.title}
-                    </h3>
-                    <p className="text-sm md:text-base text-natural-ink/60 leading-relaxed font-light">
-                      {item.description}
-                    </p>
-                  </motion.div>
-                ))}
-              </div>
+                    </span>
+                    <div className="w-1.5 h-1.5 rounded-full bg-olive opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </div>
+                  <h3 className="text-xl md:text-2xl font-serif text-natural-ink mb-5 leading-snug group-hover:italic group-hover:translate-x-1 transition-all">
+                    {item.title}
+                  </h3>
+                  <p className="text-sm md:text-base text-natural-ink/60 leading-relaxed font-light mt-auto">
+                    {item.description}
+                  </p>
+                </motion.div>
+              ))}
             </div>
           </div>
         </section>
