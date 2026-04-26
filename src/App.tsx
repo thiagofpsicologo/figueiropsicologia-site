@@ -342,7 +342,7 @@ export default function App() {
                   </div>
                   <div>
                     <h5 className="font-bold text-sm md:text-base text-natural-ink mb-1">Especializações</h5>
-                    <p className="text-xs md:text-sm text-natural-ink/60 leading-relaxed">Pós-graduação em Terapia Cognitivo-Comportamental (TCC) e especialização em manejo de Ansiedade e Depressão.</p>
+                    <p className="text-xs md:text-sm text-natural-ink/60 leading-relaxed">Graduação em Psicologia em Terapia Cognitivo-Comportamental (TCC) pela FUMEC desde 2017</p>
                   </div>
                 </div>
 
