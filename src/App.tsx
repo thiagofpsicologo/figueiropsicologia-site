@@ -141,7 +141,7 @@ const Scene: React.FC<SceneProps> = ({ scene, index }) => {
               <img 
                 src={scene.sideImage} 
                 alt="Thiago Figueiró Professional" 
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover object-top md:object-center"
                 referrerPolicy="no-referrer"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -332,7 +332,7 @@ export default function App() {
                   </div>
                   <div>
                     <h5 className="font-bold text-sm md:text-base text-natural-ink mb-1">Formação Acadêmica</h5>
-                    <p className="text-xs md:text-sm text-natural-ink/60 leading-relaxed">Graduação em Psicologia com foco em processos clínicos e saúde mental contemporânea.</p>
+                    <p className="text-xs md:text-sm text-natural-ink/60 leading-relaxed">Graduação em Psicologia Clínica</p>
                   </div>
                 </div>
 
