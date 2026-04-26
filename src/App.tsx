@@ -135,9 +135,9 @@ const Scene: React.FC<SceneProps> = ({ scene, index }) => {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative w-48 h-64 md:w-64 md:h-80 shrink-0"
+            className="relative w-56 h-72 md:w-80 md:h-[400px] lg:w-96 lg:h-[480px] shrink-0"
           >
-            <div className="w-full h-full rounded-[32px] overflow-hidden border-4 border-white/20 backdrop-blur-sm cinematic-shadow group transition-transform duration-500 hover:scale-105">
+            <div className="w-full h-full rounded-[40px] overflow-hidden border-4 border-white/20 backdrop-blur-sm cinematic-shadow group transition-transform duration-500 hover:scale-105">
               <img 
                 src={scene.sideImage} 
                 alt="Thiago Figueiró Professional" 
@@ -147,7 +147,7 @@ const Scene: React.FC<SceneProps> = ({ scene, index }) => {
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
             </div>
             {/* Decolative element */}
-            <div className="absolute -z-10 -bottom-4 -right-4 w-full h-full border border-white/10 rounded-[32px]" />
+            <div className="absolute -z-10 -bottom-4 -right-4 w-full h-full border border-white/10 rounded-[40px]" />
           </motion.div>
         )}
       </motion.div>
