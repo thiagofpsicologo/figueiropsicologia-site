@@ -98,7 +98,7 @@ const Scene: React.FC<SceneProps> = ({ scene, index }) => {
   const imageY = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
 
   return (
-    <div ref={ref} className={`relative h-screen h-[100dvh] w-full flex overflow-hidden ${index === 0 ? 'justify-start items-end pb-16 pl-8 md:pl-16 lg:pl-20 lg:pb-24' : 'justify-center items-center'}`}>
+    <div ref={ref} className={`relative h-screen h-[100dvh] w-full flex overflow-hidden ${index === 0 ? 'justify-start items-end pb-32 pl-8 md:pl-16 lg:pl-20 lg:pb-24' : 'justify-center items-center'}`}>
       <motion.div 
         style={{ opacity, scale, y: imageY }}
         className="absolute inset-0 z-0 h-[120%] top-[-10%]"
@@ -106,7 +106,7 @@ const Scene: React.FC<SceneProps> = ({ scene, index }) => {
         <img 
           src={scene.image} 
           alt={scene.title}
-          className="w-full h-full object-cover object-[50%_15%] sm:object-[45%_20%] grayscale-[20%] sepia-[10%] brightness-[0.75]"
+          className="w-full h-full object-cover object-[80%_20%] sm:object-[45%_20%] grayscale-[20%] sepia-[10%] brightness-[0.75]"
           referrerPolicy="no-referrer"
         />
         <div className="absolute inset-0 bg-linear-to-r from-[#1A1A1A]/95 via-[#1A1A1A]/40 to-transparent" />
