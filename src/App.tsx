@@ -46,7 +46,8 @@ const SCENES = [
     title: 'Psicólogo Thiago Figueiró',
     audioText: '',
     image: 'https://images.unsplash.com/photo-1556157382-97dee2dcb73c?auto=format&fit=crop&q=80&w=1080&h=1920',
-    accent: 'Profissionalismo'
+    accent: 'Profissionalismo',
+    sideImage: 'https://drive.google.com/thumbnail?id=10nGDSHCmTjRxdAQIpWBe-E5TdHPgWCBB&sz=w1000'
   },
   {
     id: 'transformacao',
@@ -79,7 +80,7 @@ const TESTIMONIALS = [
 ];
 
 interface SceneProps {
-  scene: typeof SCENES[0];
+  scene: typeof SCENES[0] & { sideImage?: string };
   index: number;
   total: number;
 }
@@ -113,19 +114,42 @@ const Scene: React.FC<SceneProps> = ({ scene, index }) => {
 
       <motion.div 
         style={{ opacity, y: index === 0 ? 0 : y }}
-        className={`relative z-10 max-w-xl px-6 md:px-0 ${index === 0 ? 'text-left' : 'text-center'}`}
+        className={`relative z-10 w-full max-w-6xl px-6 md:px-12 flex flex-col md:flex-row items-center gap-12 ${index === 0 ? 'text-left lg:pl-0' : 'justify-center'}`}
       >
-        <motion.span 
-          initial={index === 0 ? { opacity: 1, x: 0 } : { opacity: 0, y: 10 }}
-          animate={index === 0 ? { opacity: 1, x: 0 } : {}}
-          whileInView={index === 0 ? {} : { opacity: 0.9, y: 0 }}
-          className="block font-sans text-[10px] md:text-xs uppercase tracking-[0.4em] text-white mb-4 font-bold drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]"
-        >
-          {scene.accent}
-        </motion.span>
-        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl text-white font-serif leading-[1.1] italic drop-shadow-[0_4px_8px_rgba(0,0,0,0.5)]">
-          {scene.title}
-        </h2>
+        <div className={`max-w-xl ${index === 0 ? 'text-left' : (scene.sideImage ? 'text-left' : 'text-center')}`}>
+          <motion.span 
+            initial={index === 0 ? { opacity: 1, x: 0 } : { opacity: 0, y: 10 }}
+            animate={index === 0 ? { opacity: 1, x: 0 } : {}}
+            whileInView={index === 0 ? {} : { opacity: 0.9, y: 0 }}
+            className="block font-sans text-[10px] md:text-xs uppercase tracking-[0.4em] text-white mb-4 font-bold drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]"
+          >
+            {scene.accent}
+          </motion.span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl text-white font-serif leading-[1.1] italic drop-shadow-[0_4px_8px_rgba(0,0,0,0.5)]">
+            {scene.title}
+          </h2>
+        </div>
+
+        {scene.sideImage && (
+          <motion.div 
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="relative w-48 h-64 md:w-64 md:h-80 shrink-0"
+          >
+            <div className="w-full h-full rounded-[32px] overflow-hidden border-4 border-white/20 backdrop-blur-sm cinematic-shadow group transition-transform duration-500 hover:scale-105">
+              <img 
+                src={scene.sideImage} 
+                alt="Thiago Figueiró Professional" 
+                className="w-full h-full object-cover"
+                referrerPolicy="no-referrer"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+            </div>
+            {/* Decolative element */}
+            <div className="absolute -z-10 -bottom-4 -right-4 w-full h-full border border-white/10 rounded-[32px]" />
+          </motion.div>
+        )}
       </motion.div>
 
       {index === 0 && (
