@@ -342,7 +342,7 @@ export default function App() {
                   </div>
                   <div>
                     <h5 className="font-bold text-sm md:text-base text-natural-ink mb-1">Especializações</h5>
-                    <p className="text-xs md:text-sm text-natural-ink/60 leading-relaxed">Graduação em Psicologia em Terapia Cognitivo-Comportamental (TCC) pela FUMEC desde 2017</p>
+                    <p className="text-xs md:text-sm text-natural-ink/60 leading-relaxed">Graduação em Psicologia pela FUMEC desde 2017</p>
                   </div>
                 </div>
 
@@ -358,6 +358,81 @@ export default function App() {
               </div>
             </div>
           </motion.div>
+        </section>
+
+        {/* Services / Areas of Work Section */}
+        <section id="services" className="py-24 md:py-32 bg-white relative overflow-hidden">
+          <div className="max-w-6xl mx-auto px-6 md:px-8">
+            <div className="grid lg:grid-cols-12 gap-12 md:gap-20 items-start">
+              {/* Header Content */}
+              <div className="lg:col-span-4 space-y-6 lg:sticky lg:top-32">
+                <div className="space-y-4">
+                  <span className="text-[9px] md:text-[10px] uppercase tracking-[0.3em] text-olive font-bold">O que trabalhamos</span>
+                  <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif text-natural-ink italic leading-[1.1]">
+                    Como posso<br />te ajudar
+                  </h2>
+                </div>
+                <p className="text-lg text-natural-ink/70 font-light leading-relaxed">
+                  Ofereço uma escuta clínica dedicada a diversas temáticas da existência humana, 
+                  sempre com um olhar crítico, ético e empático.
+                </p>
+              </div>
+
+              {/* Grid Items */}
+              <div className="lg:col-span-8 grid sm:grid-cols-2 gap-x-8 gap-y-12 md:gap-y-16">
+                {[
+                  {
+                    id: "001",
+                    title: "Sofrimento existencial e sentido de vida",
+                    description: "Vazio, angústia, falta de direção. Não como patologia, mas como convite ao encontro consigo mesmo."
+                  },
+                  {
+                    id: "002",
+                    title: "Ansiedade, depressão e adoecimento psíquico",
+                    description: "Compreendidos em seu contexto social e histórico, não apenas como disfunções individuais."
+                  },
+                  {
+                    id: "003",
+                    title: "Identidade, raça e pertencimento",
+                    description: "Quem sou eu? Onde me encaixo? Trabalho com as feridas e potências de existir em um Brasil que invisibiliza."
+                  },
+                  {
+                    id: "004",
+                    title: "Relações afetivas e vínculos",
+                    description: "Amor, perda, dependência e afastamento. A teia de relações que nos constitui como sujeitos."
+                  },
+                  {
+                    id: "005",
+                    title: "Corpo, sexualidade e desejo",
+                    description: "Uma escuta sem julgamentos sobre o que o corpo diz quando a fala não dá conta."
+                  },
+                  {
+                    id: "006",
+                    title: "Crise, ruptura e recomeço",
+                    description: "Perdas, transições, mudanças que desorientam — acompanhamento nos momentos que mais exigem presença."
+                  }
+                ].map((item, i) => (
+                  <motion.div
+                    key={item.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: i * 0.1, duration: 0.6 }}
+                    className="group"
+                  >
+                    <div className="text-[10px] font-bold tracking-[0.2em] text-olive/40 group-hover:text-olive transition-colors mb-4 block">
+                      {item.id}
+                    </div>
+                    <h3 className="text-xl md:text-2xl font-serif text-natural-ink mb-4 group-hover:italic transition-all">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm md:text-base text-natural-ink/60 leading-relaxed font-light">
+                      {item.description}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </div>
         </section>
 
         {/* CTA Section */}
