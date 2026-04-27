@@ -5,7 +5,7 @@
 
 import React, { useRef, useState } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
-import { Calendar, MessageCircle, ChevronDown, Sparkles, Heart, Shield, Instagram, Linkedin, Menu, X, Mail, MapPin, Phone, GraduationCap, Award, Briefcase, Brain, Sprout, MessageSquare, Puzzle, Users, Smile, Search, Wind, Lock, Compass } from 'lucide-react';
+import { Calendar, MessageCircle, ChevronDown, Sparkles, Heart, Shield, Instagram, Linkedin, Menu, X, Mail, MapPin, Phone, GraduationCap, Award, Briefcase } from 'lucide-react';
 
 // SCENE DATA based on the prompt provided by the user
 const WHATSAPP_MESSAGE = encodeURIComponent(`Olá! Seja muito bem-vindo(a) 
@@ -337,7 +337,7 @@ export default function App() {
               </p>
             </div>
             
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 pt-4 text-left">
+            <div className="grid sm:grid-cols-2 gap-4 lg:gap-6 pt-4 text-left">
               <div className="bg-olive-glow olive-border p-6 md:p-8 rounded-3xl space-y-3 md:space-y-4">
                 <Heart className="text-olive w-5 h-5 md:w-6 md:h-6" strokeWidth={1.5} />
                 <h4 className="font-serif text-xl md:text-2xl">Empatia</h4>
@@ -347,66 +347,6 @@ export default function App() {
                 <Shield className="text-olive w-5 h-5 md:w-6 md:h-6" strokeWidth={1.5} />
                 <h4 className="font-serif text-xl md:text-2xl">Sigilo</h4>
                 <p className="text-xs md:text-sm text-natural-ink/60 leading-relaxed">Privacidade absoluta garantida em todas as sessões presenciais ou online.</p>
-              </div>
-              <div className="bg-olive-glow olive-border p-6 md:p-8 rounded-3xl space-y-3 md:space-y-4">
-                <Brain className="text-olive w-5 h-5 md:w-6 md:h-6" strokeWidth={1.5} />
-                <h4 className="font-serif text-xl md:text-2xl">Autoconhecimento</h4>
-                <p className="text-xs md:text-sm text-natural-ink/60 leading-relaxed">Compreenda seus pensamentos, emoções e padrões com mais clareza.</p>
-              </div>
-              <div className="bg-olive-glow olive-border p-6 md:p-8 rounded-3xl space-y-3 md:space-y-4">
-                <Sprout className="text-olive w-5 h-5 md:w-6 md:h-6" strokeWidth={1.5} />
-                <h4 className="font-serif text-xl md:text-2xl">Equilíbrio emocional</h4>
-                <p className="text-xs md:text-sm text-natural-ink/60 leading-relaxed">Desenvolva ferramentas para lidar melhor com ansiedade e estresse.</p>
-              </div>
-              <div className="bg-olive-glow olive-border p-6 md:p-8 rounded-3xl space-y-3 md:space-y-4">
-                <MessageSquare className="text-olive w-5 h-5 md:w-6 md:h-6" strokeWidth={1.5} />
-                <h4 className="font-serif text-xl md:text-2xl">Escuta qualificada</h4>
-                <p className="text-xs md:text-sm text-natural-ink/60 leading-relaxed">Um espaço seguro onde sua fala é respeitada e valorizada.</p>
-              </div>
-              <div className="bg-olive-glow olive-border p-6 md:p-8 rounded-3xl space-y-3 md:space-y-4">
-                <MapPin className="text-olive w-5 h-5 md:w-6 md:h-6" strokeWidth={1.5} />
-                <h4 className="font-serif text-xl md:text-2xl">Processo individual</h4>
-                <p className="text-xs md:text-sm text-natural-ink/60 leading-relaxed">Cada atendimento é único, respeitando seu tempo e sua história.</p>
-              </div>
-              <div className="bg-olive-glow olive-border p-6 md:p-8 rounded-3xl space-y-3 md:space-y-4">
-                <Puzzle className="text-olive w-5 h-5 md:w-6 md:h-6" strokeWidth={1.5} />
-                <h4 className="font-serif text-xl md:text-2xl">Clareza mental</h4>
-                <p className="text-xs md:text-sm text-natural-ink/60 leading-relaxed">Organize seus pensamentos e tome decisões com mais segurança.</p>
-              </div>
-              <div className="bg-olive-glow olive-border p-6 md:p-8 rounded-3xl space-y-3 md:space-y-4">
-                <Users className="text-olive w-5 h-5 md:w-6 md:h-6" strokeWidth={1.5} />
-                <h4 className="font-serif text-xl md:text-2xl">Relações saudáveis</h4>
-                <p className="text-xs md:text-sm text-natural-ink/60 leading-relaxed">Melhore a forma como você se relaciona consigo e com os outros.</p>
-              </div>
-              <div className="bg-olive-glow olive-border p-6 md:p-8 rounded-3xl space-y-3 md:space-y-4">
-                <Sparkles className="text-olive w-5 h-5 md:w-6 md:h-6" strokeWidth={1.5} />
-                <h4 className="font-serif text-xl md:text-2xl">Desenvolvimento pessoal</h4>
-                <p className="text-xs md:text-sm text-natural-ink/60 leading-relaxed">Crescimento contínuo com consciência e propósito.</p>
-              </div>
-              <div className="bg-olive-glow olive-border p-6 md:p-8 rounded-3xl space-y-3 md:space-y-4">
-                <Smile className="text-olive w-5 h-5 md:w-6 md:h-6" strokeWidth={1.5} />
-                <h4 className="font-serif text-xl md:text-2xl">Bem-estar</h4>
-                <p className="text-xs md:text-sm text-natural-ink/60 leading-relaxed">Cuidar da mente também é cuidar da qualidade de vida.</p>
-              </div>
-              <div className="bg-olive-glow olive-border p-6 md:p-8 rounded-3xl space-y-3 md:space-y-4">
-                <Search className="text-olive w-5 h-5 md:w-6 md:h-6" strokeWidth={1.5} />
-                <h4 className="font-serif text-xl md:text-2xl">Reflexão</h4>
-                <p className="text-xs md:text-sm text-natural-ink/60 leading-relaxed">Um convite para olhar para dentro com mais profundidade.</p>
-              </div>
-              <div className="bg-olive-glow olive-border p-6 md:p-8 rounded-3xl space-y-3 md:space-y-4">
-                <Wind className="text-olive w-5 h-5 md:w-6 md:h-6" strokeWidth={1.5} />
-                <h4 className="font-serif text-xl md:text-2xl">Leveza</h4>
-                <p className="text-xs md:text-sm text-natural-ink/60 leading-relaxed">Encontre caminhos para viver com mais tranquilidade e equilíbrio.</p>
-              </div>
-              <div className="bg-olive-glow olive-border p-6 md:p-8 rounded-3xl space-y-3 md:space-y-4">
-                <Lock className="text-olive w-5 h-5 md:w-6 md:h-6" strokeWidth={1.5} />
-                <h4 className="font-serif text-xl md:text-2xl">Segurança emocional</h4>
-                <p className="text-xs md:text-sm text-natural-ink/60 leading-relaxed">Um ambiente acolhedor para se expressar sem medo.</p>
-              </div>
-              <div className="bg-olive-glow olive-border p-6 md:p-8 rounded-3xl space-y-3 md:space-y-4">
-                <Compass className="text-olive w-5 h-5 md:w-6 md:h-6" strokeWidth={1.5} />
-                <h4 className="font-serif text-xl md:text-2xl">Direcionamento</h4>
-                <p className="text-xs md:text-sm text-natural-ink/60 leading-relaxed">Auxílio para entender momentos de dúvida e transição.</p>
               </div>
             </div>
 
