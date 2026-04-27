@@ -24,7 +24,7 @@ const SCENES = [
     id: 'dor',
     title: 'Thiago Figueiró',
     audioText: 'piano leve e emocional',
-    image: 'https://drive.google.com/thumbnail?id=1o0JTapO9ZtBT9LhP1KR3FpS1uF3UP74k&sz=w1000',
+    image: 'https://drive.google.com/thumbnail?id=1KM6evv9ep_1Mbs_kGHea7Rb2P8IAD7Al&sz=w2000',
     accent: 'Psicólogo Clínico'
   },
   {
@@ -104,7 +104,7 @@ const Scene: React.FC<SceneProps> = ({ scene, index }) => {
           <img 
             src={scene.image} 
             alt={scene.title}
-            className="w-full h-full object-cover object-[50%_15%] sm:object-[45%_20%] grayscale-[20%] sepia-[10%] brightness-[0.75]"
+            className="w-full h-full object-cover object-[70%_center] sm:object-[45%_20%]"
             referrerPolicy="no-referrer"
           />
           <div className="absolute inset-0 bg-linear-to-r from-[#1A1A1A]/95 via-[#1A1A1A]/40 to-transparent" />
