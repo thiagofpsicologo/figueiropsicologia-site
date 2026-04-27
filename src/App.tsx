@@ -544,14 +544,14 @@ export default function App() {
         }} 
         selectedPlan={selectedPlanModal}
       />
-      <nav className={`fixed top-0 left-0 w-full z-[100] px-4 md:px-12 py-3 md:py-6 flex flex-row justify-between items-center transition-all duration-500 ${isScrolled ? 'bg-white/95 backdrop-blur-md shadow-md border-b border-olive/5 py-2 md:py-4' : 'bg-transparent py-4'}`}>
+      <nav className={`fixed top-0 left-0 w-full z-[100] px-6 md:px-12 py-3 md:py-6 flex flex-row justify-between items-center transition-all duration-500 ${isScrolled ? 'bg-white/95 backdrop-blur-md shadow-md border-b border-olive/5 py-2 md:py-4' : 'bg-transparent py-4'}`}>
         
         {/* Branding (Left on both mobile and desktop) */}
         <a 
           href="#" 
-          className={`flex items-center gap-2 md:gap-3 px-3 py-2 md:px-5 md:py-2.5 rounded-full border transition-all group backdrop-blur-md shrink-0 max-w-[80%] hover:scale-102 active:scale-95 ${isScrolled ? 'bg-white border-olive/10 shadow-sm' : 'bg-white/40 border-white/30'}`}
+          className={`flex items-center gap-2 md:gap-3 px-3 py-1.5 md:px-5 md:py-2.5 rounded-full border transition-all group backdrop-blur-md shrink-0 max-w-[70%] hover:scale-102 active:scale-95 ${isScrolled ? 'bg-white border-olive/10 shadow-sm' : 'bg-white/40 border-white/30'}`}
         >
-          <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-white flex items-center justify-center overflow-hidden shrink-0 group-hover:scale-110 transition-transform shadow-inner border border-olive/5">
+          <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-white flex items-center justify-center overflow-hidden shrink-0 group-hover:scale-110 transition-transform shadow-inner border border-olive/5">
             <img 
               src="https://drive.google.com/thumbnail?id=10taANe2B2DrYxggYuYrP098CD_pZntCN&sz=w1000" 
               alt="Logo Thiago Figueiró" 
@@ -559,7 +559,7 @@ export default function App() {
               referrerPolicy="no-referrer"
             />
           </div>
-          <span className={`font-serif text-[13px] md:text-base font-medium tracking-tight transition-colors truncate ${isScrolled ? 'text-natural-ink' : 'text-white'}`}>Thiago Figueiró</span>
+          <span className={`font-serif text-[11px] md:text-base font-medium tracking-tight transition-colors truncate ${isScrolled ? 'text-natural-ink' : 'text-white'}`}>Thiago Figueiró</span>
         </a>
  
         {/* Desktop Menu */}
@@ -590,10 +590,10 @@ export default function App() {
         {/* Mobile menu button (Right) */}
         <button 
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className={`md:hidden shrink-0 w-11 h-11 rounded-full border flex items-center justify-center transition-all z-[120] backdrop-blur-md ${isMenuOpen ? 'bg-white/10 border-white/20 text-white' : (isScrolled ? 'bg-white border-olive/10 text-olive shadow-sm' : 'bg-white/40 border-white/30 text-white')}`}
+          className={`md:hidden shrink-0 w-10 h-10 rounded-full border flex items-center justify-center transition-all z-[120] backdrop-blur-md ${isMenuOpen ? 'bg-white/10 border-white/20 text-white' : (isScrolled ? 'bg-white border-olive/10 text-olive shadow-sm' : 'bg-white/40 border-white/30 text-white')}`}
           aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"}
         >
-          {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
+          {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
       </nav>
 
@@ -634,7 +634,7 @@ export default function App() {
 
             <nav className="flex flex-col items-center gap-10 relative z-10 w-full max-w-xs mx-auto">
               {[
-                { name: 'Início', href: '#' },
+                { name: 'HOME', href: '#' },
                 { name: 'Sobre Mim', href: '#about' },
                 { name: 'Relatos', href: '#testimonials' }
               ].map((link, idx) => (
@@ -651,34 +651,36 @@ export default function App() {
                 </motion.a>
               ))}
               
-              <motion.button 
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
-                onClick={() => {
-                  setIsMenuOpen(false);
-                  openScheduling();
-                }} 
-                className="mt-6 w-full bg-olive text-white px-8 py-5 rounded-full font-sans text-xs uppercase tracking-[0.25em] font-bold flex items-center justify-center gap-3 shadow-2xl active:scale-95 hover:bg-white hover:text-olive transition-all"
-              >
-                <Calendar size={18} />
-                Agendar Consulta
-              </motion.button>
-            </nav>
+              <div className="flex flex-col items-center gap-6 w-full mt-2">
+                <motion.button 
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 }}
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    openScheduling();
+                  }} 
+                  className="w-full bg-olive text-white px-8 py-5 rounded-full font-sans text-xs uppercase tracking-[0.25em] font-bold flex items-center justify-center gap-3 shadow-2xl active:scale-95 hover:bg-white hover:text-olive transition-all"
+                >
+                  <Calendar size={18} />
+                  Agendar Consulta
+                </motion.button>
 
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-              className="flex gap-10 mt-auto mb-8 justify-center relative z-10"
-            >
-              <a href="https://instagram.com/psicologo.thiagofigueiro" target="_blank" rel="noopener noreferrer" className="bg-white/10 p-6 rounded-full shadow-lg transition-all hover:scale-110 active:scale-90 border border-white/10 group">
-                <img src="https://cdn.simpleicons.org/instagram/white" className="w-8 h-8 group-hover:scale-110 transition-transform" alt="Instagram Logo" />
-              </a>
-              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="bg-white/10 p-6 rounded-full shadow-lg transition-all hover:scale-110 active:scale-90 border border-white/10 group">
-                <img src="https://cdn.simpleicons.org/whatsapp/white" className="w-8 h-8 group-hover:scale-110 transition-transform" alt="WhatsApp Logo" />
-              </a>
-            </motion.div>
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.6 }}
+                  className="flex gap-8 justify-center relative z-10"
+                >
+                  <a href="https://instagram.com/psicologo.thiagofigueiro" target="_blank" rel="noopener noreferrer" className="bg-white/10 p-5 rounded-full shadow-lg transition-all hover:scale-110 active:scale-90 border border-white/10 group">
+                    <img src="https://cdn.simpleicons.org/instagram/white" className="w-6 h-6 group-hover:scale-110 transition-transform" alt="Instagram Logo" />
+                  </a>
+                  <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="bg-white/10 p-5 rounded-full shadow-lg transition-all hover:scale-110 active:scale-90 border border-white/10 group">
+                    <img src="https://cdn.simpleicons.org/whatsapp/white" className="w-6 h-6 group-hover:scale-110 transition-transform" alt="WhatsApp Logo" />
+                  </a>
+                </motion.div>
+              </div>
+            </nav>
           </motion.div>
         )}
       </AnimatePresence>
@@ -1236,7 +1238,7 @@ export default function App() {
       </footer>
 
       {/* Floating Buttons Group */}
-      <div className="fixed bottom-6 right-4 md:right-8 lg:right-12 z-[100] flex flex-col gap-4 items-end pointer-events-none">
+      <div className="fixed bottom-6 right-8 md:right-8 lg:right-12 z-[100] flex flex-col gap-4 items-end pointer-events-none">
         {/* Floating Scheduling Button (WhatsApp secondary) */}
         <motion.button 
           onClick={() => openScheduling()}
