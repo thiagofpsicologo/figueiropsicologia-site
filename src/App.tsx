@@ -566,7 +566,7 @@ export default function App() {
         <div className={`hidden md:flex gap-6 lg:gap-8 items-center px-6 py-2.5 rounded-full border transition-all backdrop-blur-md ${isScrolled ? 'bg-white/80 border-olive/10 shadow-sm' : 'bg-white/30 border-white/20'}`}>
           <a href="#" className={`text-xs uppercase tracking-widest transition-colors font-sans font-bold ${isScrolled ? 'text-natural-ink/70 hover:text-olive' : 'text-white hover:text-white/80'}`}>Home</a>
           <a href="#about" className={`text-xs uppercase tracking-widest transition-colors font-sans font-bold ${isScrolled ? 'text-natural-ink/70 hover:text-olive' : 'text-white hover:text-white/80'}`}>Sobre Mim</a>
-          <a href="#testimonials" className={`text-xs uppercase tracking-widest transition-colors font-sans font-bold ${isScrolled ? 'text-natural-ink/70 hover:text-olive' : 'text-white hover:text-white/80'}`}>Relatos</a>
+          <a href="#testimonials" className={`text-xs uppercase tracking-widest transition-colors font-sans font-bold ${isScrolled ? 'text-natural-ink/70 hover:text-olive' : 'text-white hover:text-white/80'}`}>Depoimentos</a>
           <div className={`w-[1px] h-3 mx-1 transition-colors ${isScrolled ? 'bg-olive/20' : 'bg-white/20'}`} />
           <div className="flex gap-4 items-center">
             <a href="https://instagram.com/psicologo.thiagofigueiro" target="_blank" rel="noopener noreferrer" className="transition-transform hover:scale-110" title="Instagram">
@@ -634,9 +634,9 @@ export default function App() {
 
             <nav className="flex flex-col items-center gap-10 relative z-10 w-full max-w-xs mx-auto">
               {[
-                { name: 'HOME', href: '#' },
+                { name: 'Início', href: '#' },
                 { name: 'Sobre Mim', href: '#about' },
-                { name: 'Relatos', href: '#testimonials' }
+                { name: 'Depoimentos', href: '#testimonials' }
               ].map((link, idx) => (
                 <motion.a 
                   key={link.name}
@@ -1051,7 +1051,7 @@ export default function App() {
         {/* Testimonials Section */}
         <section id="testimonials" className="py-20 md:py-32 px-6 md:px-8 max-w-6xl mx-auto overflow-hidden">
           <div className="text-center mb-12 md:mb-20 space-y-4">
-            <span className="text-[9px] md:text-[10px] uppercase tracking-[0.3em] text-olive font-bold">Relatos</span>
+            <span className="text-[9px] md:text-[10px] uppercase tracking-[0.3em] text-olive font-bold">Depoimentos</span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif">O que dizem os pacientes</h2>
           </div>
           
@@ -1113,7 +1113,7 @@ export default function App() {
               className="group flex flex-col items-center gap-3 transition-all active:scale-95"
             >
               <div className="px-8 py-3 rounded-full border border-olive/20 text-olive font-sans text-xs uppercase tracking-[0.2em] font-bold hover:bg-olive hover:text-white transition-all cinematic-shadow bg-white/50 backdrop-blur-sm">
-                {showAllTestimonials ? 'Ver menos relatos' : 'Ver mais relatos'}
+                {showAllTestimonials ? 'Ver menos depoimentos' : 'Ver mais depoimentos'}
               </div>
               <motion.div
                 animate={{ y: showAllTestimonials ? -4 : 4 }}
@@ -1224,7 +1224,7 @@ export default function App() {
               <div className="flex flex-col gap-3 text-sm font-sans text-natural-ink/70">
                 <a href="#" className="hover:text-olive transition-colors">Home</a>
                 <a href="#about" className="hover:text-olive transition-colors">Sobre Mim</a>
-                <a href="#testimonials" className="hover:text-olive transition-colors">Relatos</a>
+                <a href="#testimonials" className="hover:text-olive transition-colors">Depoimentos</a>
               </div>
             </div>
           </div>
