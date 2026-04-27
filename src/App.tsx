@@ -546,16 +546,7 @@ export default function App() {
       />
       <nav className={`fixed top-0 left-0 w-full z-[100] px-4 md:px-12 py-3 md:py-6 flex flex-row justify-between items-center transition-all duration-500 ${isScrolled ? 'bg-white/95 backdrop-blur-md shadow-md border-b border-olive/5 py-2 md:py-4' : 'bg-transparent py-4'}`}>
         
-        {/* Mobile menu button (Left) */}
-        <button 
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className={`md:hidden shrink-0 w-11 h-11 rounded-full border flex items-center justify-center transition-all z-[120] backdrop-blur-md ${isMenuOpen ? 'bg-white/10 border-white/20 text-white' : (isScrolled ? 'bg-white border-olive/10 text-olive shadow-sm' : 'bg-white/40 border-white/30 text-white')}`}
-          aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"}
-        >
-          {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
-        </button>
-
-        {/* Branding (Right on mobile, Left on desktop) */}
+        {/* Branding (Left on both mobile and desktop) */}
         <a 
           href="#" 
           className={`flex items-center gap-2 md:gap-3 px-3 py-2 md:px-5 md:py-2.5 rounded-full border transition-all group backdrop-blur-md shrink-0 max-w-[80%] hover:scale-102 active:scale-95 ${isScrolled ? 'bg-white border-olive/10 shadow-sm' : 'bg-white/40 border-white/30'}`}
@@ -595,24 +586,55 @@ export default function App() {
           <Calendar size={14} />
           Agendar Consulta
         </button>
+
+        {/* Mobile menu button (Right) */}
+        <button 
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          className={`md:hidden shrink-0 w-11 h-11 rounded-full border flex items-center justify-center transition-all z-[120] backdrop-blur-md ${isMenuOpen ? 'bg-white/10 border-white/20 text-white' : (isScrolled ? 'bg-white border-olive/10 text-olive shadow-sm' : 'bg-white/40 border-white/30 text-white')}`}
+          aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"}
+        >
+          {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
+        </button>
       </nav>
 
-      {/* Mobile Menu Overlay - Moved outside nav for perfect fixed alignment */}
+      {/* Mobile Menu Overlay - Enhanced with dedicated close handle and sections */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div 
-            initial={{ opacity: 0, scale: 1.1 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 1.1 }}
-            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 bg-natural-ink/98 z-[115] md:hidden flex flex-col justify-center items-center p-8 overflow-hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 bg-natural-ink/98 z-[115] md:hidden flex flex-col p-8 overflow-hidden"
           >
             {/* Background Texture for Menu */}
             <div className="absolute inset-0 opacity-10 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/linen.png')] mix-blend-overlay" />
             
-            <nav className="flex flex-col items-center gap-10 relative z-10 w-full max-w-xs">
+            {/* Overlay Header */}
+            <div className="flex justify-between items-center w-full mb-12 relative z-10">
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center overflow-hidden border border-white/5">
+                  <img 
+                    src="https://drive.google.com/thumbnail?id=10taANe2B2DrYxggYuYrP098CD_pZntCN&sz=w1000" 
+                    alt="Logo" 
+                    className="w-full h-full object-cover"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+                <span className="font-serif text-white/50 italic text-sm">Thiago Figueiró</span>
+              </div>
+              {/* Close Label */}
+              <button 
+                onClick={() => setIsMenuOpen(false)}
+                className="text-white/40 text-[10px] uppercase tracking-widest font-bold hover:text-white flex items-center gap-2"
+              >
+                Fechar
+              </button>
+            </div>
+
+            <nav className="flex flex-col items-center gap-10 relative z-10 w-full max-w-xs mx-auto">
               {[
-                { name: 'Home', href: '#' },
+                { name: 'Início', href: '#' },
                 { name: 'Sobre Mim', href: '#about' },
                 { name: 'Relatos', href: '#testimonials' }
               ].map((link, idx) => (
@@ -648,7 +670,7 @@ export default function App() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
-              className="flex gap-10 mt-16 relative z-10"
+              className="flex gap-10 mt-auto mb-8 justify-center relative z-10"
             >
               <a href="https://instagram.com/psicologo.thiagofigueiro" target="_blank" rel="noopener noreferrer" className="bg-white/10 p-6 rounded-full shadow-lg transition-all hover:scale-110 active:scale-90 border border-white/10 group">
                 <img src="https://cdn.simpleicons.org/instagram/white" className="w-8 h-8 group-hover:scale-110 transition-transform" alt="Instagram Logo" />
@@ -657,11 +679,6 @@ export default function App() {
                 <img src="https://cdn.simpleicons.org/whatsapp/white" className="w-8 h-8 group-hover:scale-110 transition-transform" alt="WhatsApp Logo" />
               </a>
             </motion.div>
-
-            {/* Bottom Accent */}
-            <div className="absolute bottom-12 text-white/20 font-serif italic text-sm tracking-widest">
-              Thiago Figueiró
-            </div>
           </motion.div>
         )}
       </AnimatePresence>
