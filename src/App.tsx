@@ -624,8 +624,23 @@ export default function App() {
             <div className="absolute bottom-0 left-0 w-96 h-96 bg-olive/5 filter blur-[120px] rounded-full translate-y-1/3 -translate-x-1/3 pointer-events-none" />
             
             {/* Header */}
-            <div className="flex justify-between items-center w-full mb-16 relative z-10 shrink-0">
+            <div className="flex justify-between items-center w-full mb-12 relative z-10 shrink-0">
+              <button 
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsMenuOpen(false);
+                }}
+                className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white/70 hover:text-white transition-all shadow-lg active:scale-95 group"
+                aria-label="Fechar menu"
+              >
+                <X size={24} className="group-hover:rotate-90 transition-transform duration-300" />
+              </button>
+              
               <div className="flex items-center gap-3">
+                <div className="flex flex-col items-end text-right">
+                  <span className="font-serif text-white text-base tracking-tight leading-none mb-1">Thiago Figueiró</span>
+                  <span className="text-[8px] uppercase tracking-[0.3em] text-olive font-black">Psicólogo Clínico</span>
+                </div>
                 <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center p-0.5 border border-white/10 ring-4 ring-white/5">
                   <img 
                     src="https://drive.google.com/thumbnail?id=10taANe2B2DrYxggYuYrP098CD_pZntCN&sz=1000" 
@@ -634,17 +649,7 @@ export default function App() {
                     referrerPolicy="no-referrer"
                   />
                 </div>
-                <div className="flex flex-col">
-                  <span className="font-serif text-white text-sm tracking-tight">Thiago Figueiró</span>
-                  <span className="text-[9px] uppercase tracking-[0.2em] text-white/40 font-bold">Psicólogo Clínico</span>
-                </div>
               </div>
-              <button 
-                onClick={() => setIsMenuOpen(false)}
-                className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/60 hover:text-white transition-all shadow-inner active:scale-90"
-              >
-                <X size={20} />
-              </button>
             </div>
 
             {/* Navigation Body */}
@@ -726,7 +731,7 @@ export default function App() {
                   transition={{ delay: 0.7 }}
                   className="text-[9px] text-white/20 uppercase tracking-[0.2em] font-medium"
                 >
-                  &copy; {new Date().getFullYear()} Thiago Figueiró &bull; CRP 12/23249
+                  &copy; {new Date().getFullYear()} Thiago Figueiró &bull; CRP 04/48708
                 </motion.p>
               </div>
             </div>
@@ -1299,42 +1304,51 @@ export default function App() {
       </footer>
 
       {/* Floating Buttons Group */}
-      <div className="fixed bottom-6 right-8 md:right-8 lg:right-12 z-[100] flex flex-col gap-4 items-end pointer-events-none">
-        {/* Floating WhatsApp Button */}
-        <motion.a 
-          href={WHATSAPP_LINK}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="bg-[#25D366] text-white p-3.5 md:p-4 rounded-full shadow-2xl hover:scale-110 transition-transform flex items-center justify-center group pointer-events-auto ring-4 ring-white/30 backdrop-blur-md"
-          initial={{ scale: 0, opacity: 0, y: 50 }}
-          animate={{ scale: 1, opacity: 1, y: 0 }}
-          whileHover={{ y: -5 }}
-          title="Falar no WhatsApp"
-        >
-          <img src="https://cdn.simpleicons.org/whatsapp/white" className="w-6.5 h-6.5 md:w-8 md:h-8" alt="WhatsApp" />
-          <span className="max-w-0 overflow-hidden group-hover:max-w-xs group-hover:ml-2 transition-all duration-500 whitespace-nowrap text-sm font-bold">
-            Falar no WhatsApp
-          </span>
-        </motion.a>
-
-        {/* Floating Instagram Button */}
-        <motion.a 
-          href="https://instagram.com/psicologo.thiagofigueiro"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white p-3.5 md:p-4 rounded-full shadow-2xl hover:scale-110 transition-all flex items-center justify-center group pointer-events-auto ring-4 ring-white/30 backdrop-blur-md"
-          initial={{ scale: 0, opacity: 0, y: 50 }}
-          animate={{ scale: 1, opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          whileHover={{ y: -5 }}
-          title="Siga no Instagram"
-        >
-          <Instagram size={24} className="md:w-8 md:h-8" />
-          <span className="max-w-0 overflow-hidden group-hover:max-w-xs group-hover:ml-2 transition-all duration-500 whitespace-nowrap text-sm font-bold">
-            Ver Instagram
-          </span>
-        </motion.a>
-      </div>
+      <AnimatePresence>
+        {!isMenuOpen && (
+          <motion.div 
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 20 }}
+            className="fixed bottom-6 right-8 md:right-8 lg:right-12 z-[100] flex flex-col gap-4 items-end pointer-events-none"
+          >
+            {/* Floating WhatsApp Button */}
+            <motion.a 
+              href={WHATSAPP_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-[#25D366] text-white p-3.5 md:p-4 rounded-full shadow-2xl hover:scale-110 transition-transform flex items-center justify-center group pointer-events-auto ring-4 ring-white/30 backdrop-blur-md"
+              initial={{ scale: 0, opacity: 0, y: 50 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              whileHover={{ y: -5 }}
+              title="Falar no WhatsApp"
+            >
+              <img src="https://cdn.simpleicons.org/whatsapp/white" className="w-6.5 h-6.5 md:w-8 md:h-8" alt="WhatsApp" />
+              <span className="max-w-0 overflow-hidden group-hover:max-w-xs group-hover:ml-2 transition-all duration-500 whitespace-nowrap text-sm font-bold">
+                Falar no WhatsApp
+              </span>
+            </motion.a>
+    
+            {/* Floating Instagram Button */}
+            <motion.a 
+              href="https://instagram.com/psicologo.thiagofigueiro"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white p-3.5 md:p-4 rounded-full shadow-2xl hover:scale-110 transition-all flex items-center justify-center group pointer-events-auto ring-4 ring-white/30 backdrop-blur-md"
+              initial={{ scale: 0, opacity: 0, y: 50 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              whileHover={{ y: -5 }}
+              title="Siga no Instagram"
+            >
+              <Instagram size={24} className="md:w-8 md:h-8" />
+              <span className="max-w-0 overflow-hidden group-hover:max-w-xs group-hover:ml-2 transition-all duration-500 whitespace-nowrap text-sm font-bold">
+                Ver Instagram
+              </span>
+            </motion.a>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
