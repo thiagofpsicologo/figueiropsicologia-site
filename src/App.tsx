@@ -34,6 +34,8 @@ function SchedulingModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => 
   const [selectedDate, setSelectedDate] = useState<string>("");
   const [selectedTime, setSelectedTime] = useState<string>("");
   const [step, setStep] = useState<'date' | 'time' | 'confirm'>('date');
+  const [errorSlot, setErrorSlot] = useState<{date: string, time: string} | null>(null);
+  const [sessionUnavailable, setSessionUnavailable] = useState<Record<string, string[]>>({});
 
   // Reset modal state when closing
   React.useEffect(() => {
@@ -41,6 +43,7 @@ function SchedulingModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => 
       setSelectedDate("");
       setSelectedTime("");
       setStep('date');
+      setErrorSlot(null);
     }
   }, [isOpen]);
 
@@ -54,12 +57,14 @@ function SchedulingModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => 
   const handleDateSelect = (date: string) => {
     setSelectedDate(date);
     setStep('time');
+    setErrorSlot(null);
   };
 
-  const handleTimeSelect = (time: string, isUnavailable: boolean) => {
-    if (isUnavailable) return;
+  const handleTimeSelect = (time: string, isPast: boolean) => {
+    if (isPast) return;
     setSelectedTime(time);
     setStep('confirm');
+    setErrorSlot(null);
   };
 
   const isTimeInPast = (date: string, time: string) => {
@@ -71,6 +76,18 @@ function SchedulingModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => 
   };
 
   const confirmAgendamento = () => {
+    const isUnavailable = UNAVAILABLE_SLOTS[selectedDate]?.includes(selectedTime) || sessionUnavailable[selectedDate]?.includes(selectedTime);
+    const isPast = isTimeInPast(selectedDate, selectedTime);
+
+    if (isUnavailable || isPast) {
+      setErrorSlot({ date: selectedDate, time: selectedTime });
+      setSessionUnavailable(prev => ({
+        ...prev,
+        [selectedDate]: [...(prev[selectedDate] || []), selectedTime]
+      }));
+      return;
+    }
+
     const dateFormatted = new Date(selectedDate + 'T12:00:00').toLocaleDateString('pt-BR');
     const message = `Olá, Thiago! Gostaria de agendar uma consulta.\n\nData escolhida: ${dateFormatted}\nHorário escolhido: ${selectedTime}\n\nAguardo a confirmação. Obrigado!`;
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank');
@@ -78,6 +95,10 @@ function SchedulingModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => 
   };
 
   const addToGoogleCalendar = () => {
+    // We only call this from the confirm step, but we should make sure it's available first if we follow the same logic
+    const isUnavailable = UNAVAILABLE_SLOTS[selectedDate]?.includes(selectedTime) || sessionUnavailable[selectedDate]?.includes(selectedTime);
+    if (isUnavailable) return;
+
     const [hours, minutes] = selectedTime.split(':').map(Number);
     
     const start = new Date(selectedDate + 'T00:00:00');
@@ -164,15 +185,15 @@ function SchedulingModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => 
                   
                   <div className="grid grid-cols-3 gap-3">
                     {STANDARD_SLOTS.map(time => {
-                      const isUnavailableStr = UNAVAILABLE_SLOTS[selectedDate]?.includes(time);
+                      const isKnownUnavailable = sessionUnavailable[selectedDate]?.includes(time);
                       const isInPast = isTimeInPast(selectedDate, time);
-                      const isDisabled = isUnavailableStr || isInPast;
+                      const isDisabled = isInPast || isKnownUnavailable;
                       
                       return (
                         <button
                           key={time}
                           disabled={isDisabled}
-                          onClick={() => handleTimeSelect(time, isDisabled)}
+                          onClick={() => handleTimeSelect(time, isInPast)}
                           className={`
                             relative flex flex-col items-center justify-center p-4 rounded-2xl border transition-all active:scale-95
                             ${isDisabled 
@@ -183,7 +204,9 @@ function SchedulingModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => 
                         >
                           <span className={`text-sm font-medium ${isDisabled ? 'text-natural-ink/40' : 'text-natural-ink'}`}>{time}</span>
                           {isDisabled && (
-                            <span className="text-[8px] uppercase tracking-tighter text-red-500/60 font-bold mt-1">Indisponível</span>
+                            <span className="text-[8px] uppercase tracking-tighter text-red-500/60 font-bold mt-1">
+                              {isInPast ? 'Passado' : 'Indisponível'}
+                            </span>
                           )}
                         </button>
                       );
@@ -197,41 +220,63 @@ function SchedulingModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => 
                   <motion.div 
                     initial={{ scale: 0.5, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
-                    className="inline-flex items-center justify-center p-6 rounded-full bg-olive/10 text-olive mb-2"
+                    className={`inline-flex items-center justify-center p-6 rounded-full mb-2 ${errorSlot ? 'bg-red-50 text-red-500' : 'bg-olive/10 text-olive'}`}
                   >
-                    <Calendar size={48} strokeWidth={1} />
+                    {errorSlot ? <X size={48} strokeWidth={1} /> : <Calendar size={48} strokeWidth={1} />}
                   </motion.div>
                   
                   <div className="space-y-2">
-                    <h4 className="text-lg text-natural-ink/60 font-medium italic">Você escolheu:</h4>
-                    <p className="text-2xl md:text-3xl font-serif text-natural-ink font-bold">
-                      {new Date(selectedDate + 'T12:00:00').toLocaleDateString('pt-BR', { day: '2-digit', month: 'long' })} às {selectedTime}
-                    </p>
+                    {errorSlot ? (
+                      <div className="space-y-3">
+                        <p className="text-xl md:text-2xl font-serif text-red-600 font-bold leading-tight">
+                          Esse horário acabou de ficar indisponível.
+                        </p>
+                        <p className="text-sm text-natural-ink/60">Por favor, escolha outro horário para o seu atendimento.</p>
+                      </div>
+                    ) : (
+                      <>
+                        <h4 className="text-lg text-natural-ink/60 font-medium italic">Você escolheu:</h4>
+                        <p className="text-2xl md:text-3xl font-serif text-natural-ink font-bold">
+                          {new Date(selectedDate + 'T12:00:00').toLocaleDateString('pt-BR', { day: '2-digit', month: 'long' })} às {selectedTime}
+                        </p>
+                      </>
+                    )}
                   </div>
 
                   <div className="flex flex-col gap-3">
-                    <button
-                      onClick={confirmAgendamento}
-                      className="w-full bg-olive text-white py-4 rounded-2xl font-sans text-xs uppercase tracking-[0.2em] font-bold shadow-xl shadow-olive/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2"
-                    >
-                      <MessageCircle size={16} />
-                      Confirmar agendamento
-                    </button>
-                    
-                    <button
-                      onClick={addToGoogleCalendar}
-                      className="w-full bg-white border border-olive/20 text-olive py-4 rounded-2xl font-sans text-xs uppercase tracking-[0.2em] font-bold hover:bg-olive/5 transition-all flex items-center justify-center gap-2"
-                    >
-                      <Calendar size={16} />
-                      Adicionar ao Google Agenda
-                    </button>
+                    {errorSlot ? (
+                      <button
+                        onClick={() => setStep('time')}
+                        className="w-full bg-natural-ink text-white py-4 rounded-2xl font-sans text-xs uppercase tracking-[0.2em] font-bold shadow-xl shadow-natural-ink/20 hover:scale-[1.02] active:scale-[0.98] transition-all"
+                      >
+                        Escolher outro horário
+                      </button>
+                    ) : (
+                      <>
+                        <button
+                          onClick={confirmAgendamento}
+                          className="w-full bg-olive text-white py-4 rounded-2xl font-sans text-xs uppercase tracking-[0.2em] font-bold shadow-xl shadow-olive/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2"
+                        >
+                          <MessageCircle size={16} />
+                          Confirmar agendamento
+                        </button>
+                        
+                        <button
+                          onClick={addToGoogleCalendar}
+                          className="w-full bg-white border border-olive/20 text-olive py-4 rounded-2xl font-sans text-xs uppercase tracking-[0.2em] font-bold hover:bg-olive/5 transition-all flex items-center justify-center gap-2"
+                        >
+                          <Calendar size={16} />
+                          Adicionar ao Google Agenda
+                        </button>
 
-                    <button
-                      onClick={() => setStep('time')}
-                      className="text-xs uppercase tracking-widest font-bold text-natural-ink/40 hover:text-natural-ink/60 transition-colors mt-2"
-                    >
-                      Alterar horário
-                    </button>
+                        <button
+                          onClick={() => setStep('time')}
+                          className="text-xs uppercase tracking-widest font-bold text-natural-ink/40 hover:text-natural-ink/60 transition-colors mt-2"
+                        >
+                          Alterar horário
+                        </button>
+                      </>
+                    )}
                   </div>
                 </div>
               )}
