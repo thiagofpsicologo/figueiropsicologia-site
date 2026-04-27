@@ -427,10 +427,10 @@ const Scene: React.FC<SceneProps> = ({ scene, index }) => {
           <img 
             src={scene.image} 
             alt={scene.title}
-            className="w-full h-full object-cover object-[85%_center] sm:object-[45%_20%]"
+            className={`w-full h-full object-cover object-[85%_center] sm:object-[45%_20%] ${scene.id === 'identificacao' ? 'brightness-[0.8] contrast-[0.9]' : ''}`}
             referrerPolicy="no-referrer"
           />
-          <div className="absolute inset-0 bg-linear-to-r from-[#1A1A1A]/95 via-[#1A1A1A]/40 to-transparent" />
+          <div className={`absolute inset-0 ${index === 0 ? 'bg-linear-to-r from-[#1A1A1A]/95 via-[#1A1A1A]/40 to-transparent' : (scene.id === 'identificacao' ? 'bg-black/60 backdrop-blur-[2px]' : 'bg-black/40')}`} />
         </motion.div>
       )}
 
@@ -447,7 +447,7 @@ const Scene: React.FC<SceneProps> = ({ scene, index }) => {
             initial={index === 0 ? { opacity: 1, x: 0 } : { opacity: 0, y: 10 }}
             animate={index === 0 ? { opacity: 1, x: 0 } : {}}
             whileInView={index === 0 ? {} : { opacity: 0.9, y: 0 }}
-            className={`block font-sans text-[10px] md:text-xs uppercase tracking-[0.4em] mb-2 font-bold ${scene.image ? 'text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]' : 'text-olive'}`}
+            className={`block font-sans text-[10px] md:text-xs uppercase tracking-[0.4em] mb-2 font-bold ${scene.image ? 'text-white drop-shadow-[0_4px_6px_rgba(0,0,0,0.8)]' : 'text-olive'}`}
           >
             {scene.accent}
           </motion.span>
@@ -456,12 +456,12 @@ const Scene: React.FC<SceneProps> = ({ scene, index }) => {
               initial={index === 0 ? { opacity: 1, x: 0 } : { opacity: 0, y: 10 }}
               animate={index === 0 ? { opacity: 1, x: 0 } : {}}
               whileInView={index === 0 ? {} : { opacity: 0.9, y: 0 }}
-              className={`block font-sans text-[10px] md:text-xs uppercase tracking-[0.2em] mb-4 font-medium italic ${scene.image ? 'text-white/80 drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]' : 'text-olive/80'}`}
+              className={`block font-sans text-[10px] md:text-xs uppercase tracking-[0.2em] mb-4 font-medium italic ${scene.image ? 'text-white/80 drop-shadow-[0_4px_6px_rgba(0,0,0,0.8)]' : 'text-olive/80'}`}
             >
               {scene.subtitle}
             </motion.span>
           )}
-          <h2 className={`text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-serif leading-[1.1] italic ${scene.image ? 'text-white drop-shadow-[0_4px_8px_rgba(0,0,0,0.5)]' : 'text-natural-ink'}`}>
+          <h2 className={`text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-serif leading-[1.1] italic ${scene.image ? 'text-white drop-shadow-[0_10px_25px_rgba(0,0,0,0.9)] transition-all' : 'text-natural-ink'}`}>
             {scene.title}
           </h2>
         </div>
