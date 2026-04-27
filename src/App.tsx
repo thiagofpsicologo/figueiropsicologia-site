@@ -533,26 +533,9 @@ export default function App() {
           </a>
         </div>
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 items-center">
-          {/* Column 1: Social Media */}
-          <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-6">
-            <h4 className="text-[10px] uppercase tracking-[0.3em] font-bold text-olive">Siga-me</h4>
-            <div className="flex gap-6">
-               <a href="https://instagram.com/psicologo.thiagofigueiro" target="_blank" rel="noopener noreferrer" className="text-[#E4405F] hover:scale-110 transition-transform" title="Instagram">
-                <Instagram size={24} />
-              </a>
-              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-transform" title="WhatsApp">
-                <img src="https://cdn.simpleicons.org/whatsapp/25D366" className="w-6 h-6" alt="WhatsApp" />
-              </a>
-            </div>
-          </div>
-
-          {/* Column 2: Impact Phrase + Profile */}
-          <div className="flex flex-col items-center justify-center text-center px-4 space-y-10">
-            <p className="font-serif italic text-2xl md:text-3xl leading-snug text-natural-ink/80 max-w-sm">
-              "Transformar a dor em sentido é o caminho para uma vida mais autêntica e plena."
-            </p>
-            
-            <div className="flex flex-col items-center gap-4">
+          {/* Column 1: Identity & Social Media */}
+          <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-10">
+            <div className="flex flex-col items-center md:items-start gap-4">
               <div className="w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden border-2 border-olive/20 cinematic-shadow bg-white flex items-center justify-center">
                 <img 
                   src="https://drive.google.com/thumbnail?id=1WFI6vP05Btf4iz5HoHNcDDVKEGrVv7li&sz=w1000" 
@@ -566,6 +549,25 @@ export default function App() {
                 <p className="text-[10px] md:text-xs uppercase tracking-widest text-olive font-bold">CRP 04/48708</p>
               </div>
             </div>
+
+            <div className="space-y-6">
+              <h4 className="text-[10px] uppercase tracking-[0.3em] font-bold text-olive">Siga-me</h4>
+              <div className="flex gap-6">
+                 <a href="https://instagram.com/psicologo.thiagofigueiro" target="_blank" rel="noopener noreferrer" className="text-[#E4405F] hover:scale-110 transition-transform" title="Instagram">
+                  <Instagram size={24} />
+                </a>
+                <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-transform" title="WhatsApp">
+                  <img src="https://cdn.simpleicons.org/whatsapp/25D366" className="w-6 h-6" alt="WhatsApp" />
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Column 2: Impact Phrase */}
+          <div className="flex flex-col items-center justify-center text-center px-4">
+            <p className="font-serif italic text-2xl md:text-3xl leading-snug text-natural-ink/80 max-w-sm">
+              "Transformar a dor em sentido é o caminho para uma vida mais autêntica e plena."
+            </p>
           </div>
 
           {/* Column 3: Contacts & Links */}
