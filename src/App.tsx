@@ -549,9 +549,9 @@ export default function App() {
 
         {/* Desktop Menu */}
         <div className={`hidden md:flex gap-6 lg:gap-8 items-center px-6 py-2.5 rounded-full border transition-all backdrop-blur-md ${isScrolled ? 'bg-white/80 border-olive/10 shadow-sm' : 'bg-white/30 border-white/20'}`}>
-          <a href="#" className={`text-sm tracking-widest transition-colors font-sans font-bold ${isScrolled ? 'text-natural-ink/70 hover:text-olive' : 'text-white hover:text-white/80'}`}>Home</a>
-          <a href="#about" className={`text-sm tracking-widest transition-colors font-sans font-bold ${isScrolled ? 'text-natural-ink/70 hover:text-olive' : 'text-white hover:text-white/80'}`}>Sobre Mim</a>
-          <a href="#testimonials" className={`text-sm tracking-widest transition-colors font-sans font-bold ${isScrolled ? 'text-natural-ink/70 hover:text-olive' : 'text-white hover:text-white/80'}`}>Relatos</a>
+          <a href="#" className={`text-xs tracking-widest transition-colors font-sans font-bold ${isScrolled ? 'text-natural-ink/70 hover:text-olive' : 'text-white hover:text-white/80'}`}>Home</a>
+          <a href="#about" className={`text-xs tracking-widest transition-colors font-sans font-bold ${isScrolled ? 'text-natural-ink/70 hover:text-olive' : 'text-white hover:text-white/80'}`}>Sobre Mim</a>
+          <a href="#testimonials" className={`text-xs tracking-widest transition-colors font-sans font-bold ${isScrolled ? 'text-natural-ink/70 hover:text-olive' : 'text-white hover:text-white/80'}`}>Relatos</a>
           <div className={`w-[1px] h-3 mx-1 transition-colors ${isScrolled ? 'bg-olive/20' : 'bg-white/20'}`} />
           <div className="flex gap-4 items-center">
             <a href="https://instagram.com/psicologo.thiagofigueiro" target="_blank" rel="noopener noreferrer" className="transition-transform hover:scale-110" title="Instagram">
