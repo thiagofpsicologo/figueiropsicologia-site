@@ -653,18 +653,30 @@ export default function App() {
               </p>
             </div>
             
-            <div className="grid sm:grid-cols-2 gap-4 lg:gap-6 pt-4 text-left">
-              <div className="bg-olive-glow olive-border p-6 md:p-8 rounded-3xl space-y-3 md:space-y-4">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="grid sm:grid-cols-2 gap-4 lg:gap-6 pt-4 text-left"
+            >
+              <motion.div 
+                whileHover={{ y: -5 }}
+                className="bg-olive-glow olive-border p-6 md:p-8 rounded-3xl space-y-3 md:space-y-4"
+              >
                 <Heart className="text-olive w-5 h-5 md:w-6 md:h-6" strokeWidth={1.5} />
                 <h4 className="font-serif text-xl md:text-2xl">Empatia</h4>
                 <p className="text-xs md:text-sm text-natural-ink/60 leading-relaxed">Escuta ativa e um ambiente livre de quaisquer julgamentos.</p>
-              </div>
-              <div className="bg-olive-glow olive-border p-6 md:p-8 rounded-3xl space-y-3 md:space-y-4">
+              </motion.div>
+              <motion.div 
+                whileHover={{ y: -5 }}
+                className="bg-olive-glow olive-border p-6 md:p-8 rounded-3xl space-y-3 md:space-y-4"
+              >
                 <Shield className="text-olive w-5 h-5 md:w-6 md:h-6" strokeWidth={1.5} />
                 <h4 className="font-serif text-xl md:text-2xl">Sigilo</h4>
                 <p className="text-xs md:text-sm text-natural-ink/60 leading-relaxed">Privacidade absoluta garantida em todas as sessões presenciais ou online.</p>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
 
             {/* Qualifications Subsection */}
             <div className="pt-12 md:pt-16 space-y-8 text-left">
@@ -763,23 +775,42 @@ export default function App() {
             {TESTIMONIALS.map((t, i) => (
               <motion.div
                 key={t.name}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1 }}
-                className="bg-white p-6 md:p-10 rounded-[24px] md:rounded-[32px] cinematic-shadow olive-border flex flex-col justify-between"
+                whileHover={{ 
+                  y: -10, 
+                  boxShadow: "0 25px 50px -12px rgba(90, 102, 63, 0.15)",
+                  transition: { type: "spring", stiffness: 400, damping: 10 }
+                }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ 
+                  duration: 0.8,
+                  delay: i * 0.1,
+                  ease: "easeOut"
+                }}
+                className="bg-white p-6 md:p-10 rounded-[24px] md:rounded-[32px] cinematic-shadow olive-border flex flex-col justify-between group h-full"
               >
-                <p className="text-base md:text-lg font-serif italic text-natural-ink/80 leading-relaxed mb-6 md:mb-8">
-                  "{t.quote}"
-                </p>
-                <div className="flex items-center gap-3 md:gap-4">
-                  <img 
-                    src={t.image} 
-                    alt={t.name} 
-                    className="w-10 h-10 md:w-12 md:h-12 rounded-full object-cover grayscale-[30%]"
-                    referrerPolicy="no-referrer"
-                  />
+                <div className="space-y-4">
+                  <div className="flex gap-1 mb-2">
+                    {[...Array(5)].map((_, starIdx) => (
+                      <Sparkles key={starIdx} size={14} className="text-olive/20 fill-olive/10" />
+                    ))}
+                  </div>
+                  <p className="text-base md:text-lg font-serif italic text-natural-ink/80 leading-relaxed mb-6 md:mb-8 line-clamp-6">
+                    "{t.quote}"
+                  </p>
+                </div>
+                <div className="flex items-center gap-3 md:gap-4 pt-6 border-t border-natural-ink/5 mt-auto">
+                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden ring-2 ring-olive/10 group-hover:ring-olive/30 transition-all duration-500">
+                    <img 
+                      src={t.image} 
+                      alt={t.name} 
+                      className="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-700 transform group-hover:scale-110"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
                   <div>
-                    <h4 className="font-sans font-bold text-xs md:text-sm text-natural-ink">{t.name}</h4>
+                    <h4 className="font-sans font-bold text-xs md:text-sm text-natural-ink group-hover:text-olive transition-colors">{t.name}</h4>
                     <p className="text-[8px] md:text-[10px] uppercase tracking-widest text-olive font-medium">{t.role}</p>
                   </div>
                 </div>
