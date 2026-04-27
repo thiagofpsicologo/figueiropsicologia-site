@@ -183,13 +183,22 @@ const Scene: React.FC<SceneProps> = ({ scene, index }) => {
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <div className="natural-gradient selection:bg-olive selection:text-white min-h-screen transition-colors duration-500">
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 w-full z-[100] p-3 md:p-5 flex justify-between items-center transition-all">
-        <a href="#" className="flex items-center gap-2 md:gap-3 bg-white/30 backdrop-blur-md px-3 py-1.5 md:px-4 md:py-2 rounded-full border border-white/20 hover:bg-white/40 transition-all group">
-          <div className="w-8 h-8 md:w-9 md:h-9 rounded-full bg-white flex items-center justify-center overflow-hidden shrink-0 group-hover:scale-110 transition-transform">
+      <nav className={`fixed top-0 left-0 w-full z-[100] p-3 md:p-5 flex justify-between items-center transition-all duration-500 ${isScrolled ? 'py-3 md:py-4' : 'py-5'}`}>
+        <a href="#" className={`flex items-center gap-2 md:gap-3 px-3 py-1.5 md:px-4 md:py-2 rounded-full border transition-all group backdrop-blur-md ${isScrolled ? 'bg-white/80 border-olive/10 shadow-sm' : 'bg-white/30 border-white/20'}`}>
+          <div className="w-8 h-8 md:w-9 md:h-9 rounded-full bg-white flex items-center justify-center overflow-hidden shrink-0 group-hover:scale-110 transition-transform shadow-inner">
             <img 
               src="https://drive.google.com/thumbnail?id=10taANe2B2DrYxggYuYrP098CD_pZntCN&sz=w1000" 
               alt="Logo Thiago Figueiró" 
@@ -197,21 +206,21 @@ export default function App() {
               referrerPolicy="no-referrer"
             />
           </div>
-          <span className="font-serif text-sm md:text-base text-white font-medium tracking-tight">Thiago Figueiró</span>
+          <span className={`font-serif text-sm md:text-base font-medium tracking-tight transition-colors ${isScrolled ? 'text-natural-ink' : 'text-white'}`}>Thiago Figueiró</span>
         </a>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex gap-6 lg:gap-8 items-center bg-white/30 backdrop-blur-md px-6 py-2.5 rounded-full border border-white/20">
-          <a href="#" className="text-xs uppercase tracking-widest text-white hover:text-white/80 transition-colors font-sans font-bold">Home</a>
-          <a href="#about" className="text-xs uppercase tracking-widest text-white hover:text-white/80 transition-colors font-sans font-bold">Sobre Mim</a>
-          <a href="#testimonials" className="text-xs uppercase tracking-widest text-white hover:text-white/80 transition-colors font-sans font-bold">Relatos</a>
-          <div className="w-[1px] h-3 bg-white/20 mx-1" />
+        <div className={`hidden md:flex gap-6 lg:gap-8 items-center px-6 py-2.5 rounded-full border transition-all backdrop-blur-md ${isScrolled ? 'bg-white/80 border-olive/10 shadow-sm' : 'bg-white/30 border-white/20'}`}>
+          <a href="#" className={`text-xs uppercase tracking-widest transition-colors font-sans font-bold ${isScrolled ? 'text-natural-ink/70 hover:text-olive' : 'text-white hover:text-white/80'}`}>Home</a>
+          <a href="#about" className={`text-xs uppercase tracking-widest transition-colors font-sans font-bold ${isScrolled ? 'text-natural-ink/70 hover:text-olive' : 'text-white hover:text-white/80'}`}>Sobre Mim</a>
+          <a href="#testimonials" className={`text-xs uppercase tracking-widest transition-colors font-sans font-bold ${isScrolled ? 'text-natural-ink/70 hover:text-olive' : 'text-white hover:text-white/80'}`}>Relatos</a>
+          <div className={`w-[1px] h-3 mx-1 transition-colors ${isScrolled ? 'bg-olive/20' : 'bg-white/20'}`} />
           <div className="flex gap-4 items-center">
             <a href="https://instagram.com/psicologo.thiagofigueiro" target="_blank" rel="noopener noreferrer" className="transition-transform hover:scale-110" title="Instagram">
-              <img src="https://cdn.simpleicons.org/instagram/E4405F" className="w-4 h-4" alt="Instagram" />
+              <img src="https://cdn.simpleicons.org/instagram/E4405F" className={`w-4 h-4 transition-opacity ${isScrolled ? 'opacity-100' : 'opacity-90'}`} alt="Instagram" />
             </a>
             <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="transition-transform hover:scale-110" title="WhatsApp">
-              <img src="https://cdn.simpleicons.org/whatsapp/25D366" className="w-4 h-4" alt="WhatsApp" />
+              <img src="https://cdn.simpleicons.org/whatsapp/25D366" className={`w-4 h-4 transition-opacity ${isScrolled ? 'opacity-100' : 'opacity-90'}`} alt="WhatsApp" />
             </a>
           </div>
         </div>
@@ -223,7 +232,7 @@ export default function App() {
           rel="noopener noreferrer"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="hidden md:flex items-center gap-2 bg-olive text-white px-6 py-2.5 rounded-full shadow-xl hover:shadow-olive/20 transition-all font-sans text-xs uppercase tracking-widest font-bold"
+          className={`hidden md:flex items-center gap-2 px-6 py-2.5 rounded-full shadow-xl transition-all font-sans text-xs uppercase tracking-widest font-bold ${isScrolled ? 'bg-olive text-white shadow-olive/20' : 'bg-olive text-white shadow-olive/20'}`}
         >
           <Calendar size={14} />
           Agendar Consulta
@@ -232,7 +241,7 @@ export default function App() {
         {/* Mobile menu button */}
         <button 
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="md:hidden w-12 h-12 rounded-full bg-white/30 backdrop-blur-md border border-white/20 flex items-center justify-center text-white z-[110]"
+          className={`md:hidden w-12 h-12 rounded-full border flex items-center justify-center transition-all z-[110] backdrop-blur-md ${isScrolled ? 'bg-white/80 border-olive/10 text-natural-ink shadow-sm' : 'bg-white/30 border-white/20 text-white'}`}
         >
           {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
