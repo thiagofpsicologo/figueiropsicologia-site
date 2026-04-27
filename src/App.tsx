@@ -38,7 +38,7 @@ const SCENES = [
     id: 'transicao',
     title: '"Você não precisa lidar com isso sozinho."',
     audioText: '',
-    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1080&h=1920',
+    image: 'https://drive.google.com/thumbnail?id=1SVUT2gzyECAgJSzsfloKOFD7NUXIMQ4-&sz=w1000',
     accent: 'Acolhimento'
   },
   {
