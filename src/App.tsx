@@ -1252,20 +1252,22 @@ export default function App() {
 
       {/* Floating Buttons Group */}
       <div className="fixed bottom-6 right-8 md:right-8 lg:right-12 z-[100] flex flex-col gap-4 items-end pointer-events-none">
-        {/* Floating Scheduling Button (WhatsApp secondary) */}
-        <motion.button 
-          onClick={() => openScheduling()}
+        {/* Floating WhatsApp Button */}
+        <motion.a 
+          href={WHATSAPP_LINK}
+          target="_blank"
+          rel="noopener noreferrer"
           className="bg-[#25D366] text-white p-3.5 md:p-4 rounded-full shadow-2xl hover:scale-110 transition-transform flex items-center justify-center group pointer-events-auto ring-4 ring-white/30 backdrop-blur-md"
           initial={{ scale: 0, opacity: 0, y: 50 }}
           animate={{ scale: 1, opacity: 1, y: 0 }}
           whileHover={{ y: -5 }}
-          title="Ver horários"
+          title="Falar no WhatsApp"
         >
           <img src="https://cdn.simpleicons.org/whatsapp/white" className="w-6.5 h-6.5 md:w-8 md:h-8" alt="WhatsApp" />
           <span className="max-w-0 overflow-hidden group-hover:max-w-xs group-hover:ml-2 transition-all duration-500 whitespace-nowrap text-sm font-bold">
-            Agendar Consulta
+            Falar no WhatsApp
           </span>
-        </motion.button>
+        </motion.a>
 
         {/* Floating Instagram Button */}
         <motion.a 
