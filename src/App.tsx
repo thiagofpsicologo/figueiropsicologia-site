@@ -534,9 +534,9 @@ export default function App() {
         selectedPlan={selectedPlanModal}
       />
       {/* Navigation */}
-      <nav className={`fixed top-0 left-0 w-full z-[100] p-3 md:p-5 flex justify-between items-center transition-all duration-500 ${isScrolled ? 'py-3 md:py-4' : 'py-5'}`}>
-        <a href="#" className={`flex items-center gap-2 md:gap-3 px-3 py-1.5 md:px-4 md:py-2 rounded-full border transition-all group backdrop-blur-md ${isScrolled ? 'bg-white/80 border-olive/10 shadow-sm' : 'bg-white/30 border-white/20'}`}>
-          <div className="w-8 h-8 md:w-9 md:h-9 rounded-full bg-white flex items-center justify-center overflow-hidden shrink-0 group-hover:scale-110 transition-transform shadow-inner">
+      <nav className={`fixed top-0 left-0 w-full z-[100] px-4 py-3 md:px-8 md:py-5 flex justify-between items-center transition-all duration-500 ${isScrolled ? 'py-2 md:py-4 bg-white/10 backdrop-blur-md' : 'py-4 md:py-6'}`}>
+        <a href="#" className={`flex items-center gap-2 md:gap-3 px-3 py-1.5 md:px-5 md:py-2.5 rounded-full border transition-all group backdrop-blur-md ${isScrolled ? 'bg-white/90 border-olive/10 shadow-md' : 'bg-white/40 border-white/30 shadow-lg'}`}>
+          <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-white flex items-center justify-center overflow-hidden shrink-0 group-hover:scale-110 transition-transform shadow-inner ring-1 ring-olive/5">
             <img 
               src="https://drive.google.com/thumbnail?id=10taANe2B2DrYxggYuYrP098CD_pZntCN&sz=w1000" 
               alt="Logo Thiago Figueiró" 
@@ -544,13 +544,14 @@ export default function App() {
               referrerPolicy="no-referrer"
             />
           </div>
-          <span className={`font-serif text-sm md:text-base font-medium tracking-tight transition-colors ${isScrolled ? 'text-natural-ink' : 'text-white'}`}>Thiago Figueiró</span>
+          <span className={`font-serif text-sm md:text-lg font-medium tracking-tight transition-colors ${isScrolled ? 'text-natural-ink' : 'text-white'}`}>Thiago Figueiró</span>
         </a>
 
         {/* Desktop Menu */}
-        <div className={`hidden md:flex gap-6 lg:gap-8 items-center px-6 py-2.5 rounded-full border transition-all backdrop-blur-md ${isScrolled ? 'bg-white/80 border-olive/10 shadow-sm' : 'bg-white/30 border-white/20'}`}>
+        <div className={`hidden md:flex gap-6 lg:gap-8 items-center px-8 py-3 rounded-full border transition-all backdrop-blur-md ${isScrolled ? 'bg-white/90 border-olive/10 shadow-md' : 'bg-white/40 border-white/30 shadow-lg'}`}>
           <a href="#" className={`text-xs uppercase tracking-widest transition-colors font-sans font-bold ${isScrolled ? 'text-natural-ink/70 hover:text-olive' : 'text-white hover:text-white/80'}`}>Home</a>
           <a href="#about" className={`text-xs uppercase tracking-widest transition-colors font-sans font-bold ${isScrolled ? 'text-natural-ink/70 hover:text-olive' : 'text-white hover:text-white/80'}`}>Sobre Mim</a>
+          <a href="#services" className={`text-xs uppercase tracking-widest transition-colors font-sans font-bold ${isScrolled ? 'text-natural-ink/70 hover:text-olive' : 'text-white hover:text-white/80'}`}>Atendimento</a>
           <a href="#testimonials" className={`text-xs uppercase tracking-widest transition-colors font-sans font-bold ${isScrolled ? 'text-natural-ink/70 hover:text-olive' : 'text-white hover:text-white/80'}`}>Relatos</a>
           <div className={`w-[1px] h-3 mx-1 transition-colors ${isScrolled ? 'bg-olive/20' : 'bg-white/20'}`} />
           <div className="flex gap-4 items-center">
@@ -566,7 +567,7 @@ export default function App() {
         {/* Desktop Agendar Button */}
         <button
           onClick={() => openScheduling()}
-          className={`hidden md:flex items-center gap-2 px-6 py-2.5 rounded-full shadow-xl transition-all font-sans text-xs uppercase tracking-widest font-bold ${isScrolled ? 'bg-olive text-white shadow-olive/20' : 'bg-olive text-white shadow-olive/20'}`}
+          className={`hidden md:flex items-center gap-2 px-8 py-3 rounded-full shadow-2xl transition-all font-sans text-xs uppercase tracking-widest font-bold hover:scale-105 active:scale-95 ${isScrolled ? 'bg-olive text-white shadow-olive/30' : 'bg-olive text-white shadow-olive/30'}`}
         >
           <Calendar size={14} />
           Agendar Consulta
@@ -575,9 +576,9 @@ export default function App() {
         {/* Mobile menu button */}
         <button 
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className={`md:hidden w-12 h-12 rounded-full border flex items-center justify-center transition-all z-[110] backdrop-blur-md ${isScrolled ? 'bg-white/80 border-olive/10 text-natural-ink shadow-sm' : 'bg-white/30 border-white/20 text-white'}`}
+          className={`md:hidden w-12 h-12 rounded-full border flex items-center justify-center transition-all z-[110] backdrop-blur-md shadow-lg ${isScrolled ? 'bg-white/90 border-olive/10 text-natural-ink' : 'bg-white/40 border-white/30 text-white'}`}
         >
-          {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
+          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
 
         {/* Mobile Menu Overlay */}
