@@ -95,7 +95,7 @@ const Scene: React.FC<SceneProps> = ({ scene, index }) => {
   const imageY = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
 
   return (
-    <div ref={ref} className={`relative h-screen h-[100dvh] w-full flex overflow-hidden ${index === 0 ? 'justify-start items-end pb-16 pl-8 md:pl-16 lg:pl-20 lg:pb-24' : 'justify-center items-center'} ${!scene.image ? 'bg-natural-bg' : ''}`}>
+    <div ref={ref} className={`relative h-screen h-[100dvh] w-full flex overflow-hidden ${index === 0 ? 'justify-start items-end pb-28 pl-4 md:pl-16 lg:pl-20 lg:pb-24' : 'justify-center items-center'} ${!scene.image ? 'bg-natural-bg' : ''}`}>
       {scene.image && (
         <motion.div 
           style={{ opacity, scale, y: imageY }}
@@ -104,7 +104,7 @@ const Scene: React.FC<SceneProps> = ({ scene, index }) => {
           <img 
             src={scene.image} 
             alt={scene.title}
-            className="w-full h-full object-cover object-[70%_center] sm:object-[45%_20%]"
+            className="w-full h-full object-cover object-[85%_center] sm:object-[45%_20%]"
             referrerPolicy="no-referrer"
           />
           <div className="absolute inset-0 bg-linear-to-r from-[#1A1A1A]/95 via-[#1A1A1A]/40 to-transparent" />
@@ -117,9 +117,9 @@ const Scene: React.FC<SceneProps> = ({ scene, index }) => {
 
       <motion.div 
         style={{ opacity: scene.image ? opacity : 1, y: index === 0 ? 0 : y }}
-        className={`relative z-10 w-full max-w-6xl px-6 md:px-12 flex flex-col md:flex-row items-center gap-12 ${index === 0 ? 'text-left lg:pl-0' : 'justify-center'}`}
+        className={`relative z-10 w-full max-w-6xl px-4 md:px-12 flex flex-col md:flex-row items-center gap-12 ${index === 0 ? 'text-left lg:pl-0' : 'justify-center'}`}
       >
-        <div className={`max-w-xl ${index === 0 ? 'text-left' : (scene.sideImage ? 'text-left' : 'text-center')}`}>
+        <div className={`max-w-xs sm:max-w-xl ${index === 0 ? 'text-left' : (scene.sideImage ? 'text-left' : 'text-center')}`}>
           <motion.span 
             initial={index === 0 ? { opacity: 1, x: 0 } : { opacity: 0, y: 10 }}
             animate={index === 0 ? { opacity: 1, x: 0 } : {}}
