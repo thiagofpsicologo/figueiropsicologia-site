@@ -534,8 +534,8 @@ export default function App() {
         selectedPlan={selectedPlanModal}
       />
       {/* Navigation */}
-      <nav className={`fixed top-0 left-0 w-full z-[100] px-6 md:px-12 py-3 md:py-5 flex flex-row justify-between items-center transition-all duration-500 ${isScrolled ? 'py-2 md:py-3 shadow-md bg-white/90 backdrop-blur-xl' : 'py-3'}`}>
-        <a href="#" className={`flex items-center gap-1.5 md:gap-3 px-2.5 py-1.5 md:px-4 md:py-2 rounded-full border transition-all group backdrop-blur-md shrink-0 max-w-[70%] ${isScrolled ? 'bg-white border-olive/10 shadow-sm' : 'bg-white/40 border-white/30'}`}>
+      <nav className={`fixed top-0 left-0 w-full z-[100] px-4 md:px-8 py-3 md:py-5 flex flex-row justify-between items-center transition-all duration-500 ${isScrolled ? 'py-2 md:py-3 shadow-md bg-white/90 backdrop-blur-xl' : 'py-3'}`}>
+        <a href="#" className={`flex items-center gap-1.5 md:gap-3 px-2.5 py-1.5 md:px-4 md:py-2 rounded-full border transition-all group backdrop-blur-md shrink-0 max-w-[75%] ${isScrolled ? 'bg-white border-olive/10 shadow-sm' : 'bg-white/40 border-white/30'}`}>
           <div className="w-6.5 h-6.5 md:w-7 md:h-7 rounded-full bg-white flex items-center justify-center overflow-hidden shrink-0 group-hover:scale-110 transition-transform shadow-inner">
             <img 
               src="https://drive.google.com/thumbnail?id=10taANe2B2DrYxggYuYrP098CD_pZntCN&sz=w1000" 
@@ -549,9 +549,9 @@ export default function App() {
 
         {/* Desktop Menu */}
         <div className={`hidden md:flex gap-6 lg:gap-8 items-center px-6 py-2.5 rounded-full border transition-all backdrop-blur-md ${isScrolled ? 'bg-white/80 border-olive/10 shadow-sm' : 'bg-white/30 border-white/20'}`}>
-          <a href="#" className={`text-xs tracking-widest transition-colors font-sans font-bold ${isScrolled ? 'text-natural-ink/70 hover:text-olive' : 'text-white hover:text-white/80'}`}>Home</a>
-          <a href="#about" className={`text-xs tracking-widest transition-colors font-sans font-bold ${isScrolled ? 'text-natural-ink/70 hover:text-olive' : 'text-white hover:text-white/80'}`}>Sobre Mim</a>
-          <a href="#testimonials" className={`text-xs tracking-widest transition-colors font-sans font-bold ${isScrolled ? 'text-natural-ink/70 hover:text-olive' : 'text-white hover:text-white/80'}`}>Relatos</a>
+          <a href="#" className={`text-xs uppercase tracking-widest transition-colors font-sans font-bold ${isScrolled ? 'text-natural-ink/70 hover:text-olive' : 'text-white hover:text-white/80'}`}>Home</a>
+          <a href="#about" className={`text-xs uppercase tracking-widest transition-colors font-sans font-bold ${isScrolled ? 'text-natural-ink/70 hover:text-olive' : 'text-white hover:text-white/80'}`}>Sobre Mim</a>
+          <a href="#testimonials" className={`text-xs uppercase tracking-widest transition-colors font-sans font-bold ${isScrolled ? 'text-natural-ink/70 hover:text-olive' : 'text-white hover:text-white/80'}`}>Relatos</a>
           <div className={`w-[1px] h-3 mx-1 transition-colors ${isScrolled ? 'bg-olive/20' : 'bg-white/20'}`} />
           <div className="flex gap-4 items-center">
             <a href="https://instagram.com/psicologo.thiagofigueiro" target="_blank" rel="noopener noreferrer" className="transition-transform hover:scale-110" title="Instagram">
