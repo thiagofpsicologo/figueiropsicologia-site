@@ -898,6 +898,10 @@ export default function App() {
                     <Sparkles size={14} className="opacity-40" />
                     <span>🌐 Online</span>
                   </div>
+                  <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-olive font-bold">
+                    <MapPin size={14} className="opacity-40" />
+                    <span>📍 Presencial</span>
+                  </div>
                 </div>
               </div>
               <div className="mt-12 space-y-6">
@@ -951,6 +955,10 @@ export default function App() {
                     <Sparkles size={14} className="opacity-40" />
                     <span>🌐 Online</span>
                   </div>
+                  <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-white/90 font-bold">
+                    <MapPin size={14} className="opacity-40" />
+                    <span>📍 Presencial</span>
+                  </div>
                 </div>
               </div>
               <div className="mt-12 space-y-6">
@@ -998,6 +1006,10 @@ export default function App() {
                   <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-olive font-bold">
                     <Sparkles size={14} className="opacity-40" />
                     <span>🌐 Online</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-olive font-bold">
+                    <MapPin size={14} className="opacity-40" />
+                    <span>📍 Presencial</span>
                   </div>
                 </div>
               </div>
