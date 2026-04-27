@@ -534,8 +534,8 @@ export default function App() {
         selectedPlan={selectedPlanModal}
       />
       {/* Navigation */}
-      <nav className={`fixed top-0 left-0 w-full z-[100] px-4 md:px-8 py-3 md:py-5 flex flex-row justify-between items-center transition-all duration-500 ${isScrolled ? 'py-2 md:py-3 shadow-md bg-white/90 backdrop-blur-xl' : 'py-3'}`}>
-        <a href="#" className={`flex items-center gap-1.5 md:gap-3 px-2.5 py-1.5 md:px-4 md:py-2 rounded-full border transition-all group backdrop-blur-md shrink-0 max-w-[75%] ${isScrolled ? 'bg-white border-olive/10 shadow-sm' : 'bg-white/40 border-white/30'}`}>
+      <nav className={`fixed top-0 left-0 w-full z-[100] px-6 md:px-12 py-3 md:py-5 flex flex-row justify-between items-center transition-all duration-500 ${isScrolled ? 'py-2 md:py-3 shadow-md bg-white/90 backdrop-blur-xl' : 'py-3'}`}>
+        <a href="#" className={`flex items-center gap-1.5 md:gap-3 px-2.5 py-1.5 md:px-4 md:py-2 rounded-full border transition-all group backdrop-blur-md shrink-0 max-w-[70%] ${isScrolled ? 'bg-white border-olive/10 shadow-sm' : 'bg-white/40 border-white/30'}`}>
           <div className="w-6.5 h-6.5 md:w-7 md:h-7 rounded-full bg-white flex items-center justify-center overflow-hidden shrink-0 group-hover:scale-110 transition-transform shadow-inner">
             <img 
               src="https://drive.google.com/thumbnail?id=10taANe2B2DrYxggYuYrP098CD_pZntCN&sz=w1000" 
