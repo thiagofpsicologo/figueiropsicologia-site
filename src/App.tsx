@@ -310,7 +310,7 @@ const SCENES = [
     id: 'dor',
     title: 'Thiago Figueiró',
     audioText: 'piano leve e emocional',
-    image: 'https://drive.google.com/thumbnail?id=193DUwhA8CIBG5M5ZDeTM4031HJjtEURC&sz=w2000',
+    image: 'https://drive.google.com/thumbnail?id=1KM6evv9ep_1Mbs_kGHea7Rb2P8IAD7Al&sz=w2000',
     accent: 'Psicólogo Clínico',
     subtitle: 'Como posso te ajudar?'
   },
@@ -430,7 +430,7 @@ const Scene: React.FC<SceneProps> = ({ scene, index }) => {
             className={`w-full h-full object-cover object-[85%_center] sm:object-[45%_20%] ${scene.id === 'identificacao' ? 'brightness-[0.8] contrast-[0.9]' : ''}`}
             referrerPolicy="no-referrer"
           />
-          <div className={`absolute inset-0 ${index === 0 ? 'bg-linear-to-r from-[#1A1A1A]/70 via-[#1A1A1A]/30 to-transparent' : (scene.id === 'identificacao' ? 'bg-black/50 backdrop-blur-[1px]' : 'bg-black/30')}`} />
+          <div className={`absolute inset-0 ${index === 0 ? 'bg-linear-to-r from-[#1A1A1A]/95 via-[#1A1A1A]/40 to-transparent' : (scene.id === 'identificacao' ? 'bg-black/60 backdrop-blur-[2px]' : 'bg-black/40')}`} />
         </motion.div>
       )}
 
