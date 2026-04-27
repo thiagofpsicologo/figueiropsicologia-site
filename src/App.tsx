@@ -563,17 +563,28 @@ export default function App() {
         </a>
  
         {/* Desktop Menu */}
-        <div className={`hidden md:flex gap-6 lg:gap-8 items-center px-6 py-2.5 rounded-full border transition-all backdrop-blur-md ${isScrolled ? 'bg-white/80 border-olive/10 shadow-sm' : 'bg-white/30 border-white/20'}`}>
-          <a href="#" className={`text-xs transition-colors font-sans font-bold ${isScrolled ? 'text-natural-ink/70 hover:text-olive' : 'text-white hover:text-white/80'}`}>Início</a>
-          <a href="#about" className={`text-xs transition-colors font-sans font-bold ${isScrolled ? 'text-natural-ink/70 hover:text-olive' : 'text-white hover:text-white/80'}`}>Sobre Mim</a>
-          <a href="#testimonials" className={`text-xs transition-colors font-sans font-bold ${isScrolled ? 'text-natural-ink/70 hover:text-olive' : 'text-white hover:text-white/80'}`}>Depoimentos</a>
-          <a href="#contact" className={`text-xs transition-colors font-sans font-bold ${isScrolled ? 'text-natural-ink/70 hover:text-olive' : 'text-white hover:text-white/80'}`}>Contato</a>
-          <div className={`w-[1px] h-3 mx-1 transition-colors ${isScrolled ? 'bg-olive/20' : 'bg-white/20'}`} />
+        <div className={`hidden md:flex gap-6 lg:gap-8 items-center px-8 py-3 rounded-full border transition-all duration-500 backdrop-blur-md ${isScrolled ? 'bg-white/90 border-olive/10 shadow-lg' : 'bg-white/20 border-white/20'}`}>
+          {[
+            { name: 'Início', href: '#' },
+            { name: 'Sobre Mim', href: '#about' },
+            { name: 'Depoimentos', href: '#testimonials' },
+            { name: 'Contato', href: '#contact' }
+          ].map((item) => (
+            <a 
+              key={item.name}
+              href={item.href} 
+              className={`text-xs transition-all font-sans font-bold relative group/link ${isScrolled ? 'text-natural-ink/70 hover:text-olive' : 'text-white hover:text-white/80'}`}
+            >
+              {item.name}
+              <span className={`absolute -bottom-1 left-0 w-0 h-0.5 transition-all duration-300 group-hover/link:w-full ${isScrolled ? 'bg-olive/40' : 'bg-white/40'}`} />
+            </a>
+          ))}
+          <div className={`w-[1px] h-4 mx-1 transition-colors ${isScrolled ? 'bg-olive/20' : 'bg-white/20'}`} />
           <div className="flex gap-4 items-center">
-            <a href="https://instagram.com/psicologo.thiagofigueiro" target="_blank" rel="noopener noreferrer" className="transition-transform hover:scale-110" title="Instagram">
+            <a href="https://instagram.com/psicologo.thiagofigueiro" target="_blank" rel="noopener noreferrer" className="transition-transform hover:scale-125 duration-300" title="Instagram">
               <img src="https://cdn.simpleicons.org/instagram/E4405F" className={`w-4 h-4 transition-opacity ${isScrolled ? 'opacity-100' : 'opacity-90'}`} alt="Instagram" />
             </a>
-            <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="transition-transform hover:scale-110" title="WhatsApp">
+            <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="transition-transform hover:scale-125 duration-300" title="WhatsApp">
               <img src="https://cdn.simpleicons.org/whatsapp/25D366" className={`w-4 h-4 transition-opacity ${isScrolled ? 'opacity-100' : 'opacity-90'}`} alt="WhatsApp" />
             </a>
           </div>
@@ -1261,14 +1272,14 @@ export default function App() {
           href="https://instagram.com/psicologo.thiagofigueiro"
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform flex items-center justify-center group"
-          initial={{ scale: 0, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ delay: 0.1 }}
+          className="bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white p-3.5 md:p-4 rounded-full shadow-2xl hover:scale-110 transition-all flex items-center justify-center group pointer-events-auto ring-4 ring-white/30 backdrop-blur-md"
+          initial={{ scale: 0, opacity: 0, y: 50 }}
+          animate={{ scale: 1, opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
           whileHover={{ y: -5 }}
           title="Siga no Instagram"
         >
-          <Instagram size={28} className="md:w-8 md:h-8" />
+          <Instagram size={24} className="md:w-8 md:h-8" />
           <span className="max-w-0 overflow-hidden group-hover:max-w-xs group-hover:ml-2 transition-all duration-500 whitespace-nowrap text-sm font-bold">
             Ver Instagram
           </span>
