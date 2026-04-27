@@ -45,15 +45,12 @@ const SCENES = [
     id: 'apresentacao',
     title: 'Psicólogo Thiago Figueiró',
     audioText: '',
-    image: 'https://images.unsplash.com/photo-1556157382-97dee2dcb73c?auto=format&fit=crop&q=80&w=1080&h=1920',
-    accent: 'Profissionalismo',
-    sideImage: 'https://drive.google.com/thumbnail?id=10nGDSHCmTjRxdAQIpWBe-E5TdHPgWCBB&sz=w1000'
+    accent: 'Profissionalismo'
   },
   {
     id: 'transformacao',
     title: '"Entenda seus pensamentos. Cuide da sua mente. Viva com mais leveza."',
     audioText: '',
-    image: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80&w=1080&h=1920',
     accent: 'Leveza'
   }
 ];
@@ -80,7 +77,7 @@ const TESTIMONIALS = [
 ];
 
 interface SceneProps {
-  scene: typeof SCENES[0] & { sideImage?: string };
+  scene: typeof SCENES[0] & { sideImage?: string; image?: string };
   index: number;
   total: number;
 }
@@ -98,22 +95,28 @@ const Scene: React.FC<SceneProps> = ({ scene, index }) => {
   const imageY = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
 
   return (
-    <div ref={ref} className={`relative h-screen h-[100dvh] w-full flex overflow-hidden ${index === 0 ? 'justify-start items-end pb-16 pl-8 md:pl-16 lg:pl-20 lg:pb-24' : 'justify-center items-center'}`}>
-      <motion.div 
-        style={{ opacity, scale, y: imageY }}
-        className="absolute inset-0 z-0 h-[120%] top-[-10%]"
-      >
-        <img 
-          src={scene.image} 
-          alt={scene.title}
-          className="w-full h-full object-cover object-[50%_15%] sm:object-[45%_20%] grayscale-[20%] sepia-[10%] brightness-[0.75]"
-          referrerPolicy="no-referrer"
-        />
-        <div className="absolute inset-0 bg-linear-to-r from-[#1A1A1A]/95 via-[#1A1A1A]/40 to-transparent" />
-      </motion.div>
+    <div ref={ref} className={`relative h-screen h-[100dvh] w-full flex overflow-hidden ${index === 0 ? 'justify-start items-end pb-16 pl-8 md:pl-16 lg:pl-20 lg:pb-24' : 'justify-center items-center'} ${!scene.image ? 'bg-natural-bg' : ''}`}>
+      {scene.image && (
+        <motion.div 
+          style={{ opacity, scale, y: imageY }}
+          className="absolute inset-0 z-0 h-[120%] top-[-10%]"
+        >
+          <img 
+            src={scene.image} 
+            alt={scene.title}
+            className="w-full h-full object-cover object-[50%_15%] sm:object-[45%_20%] grayscale-[20%] sepia-[10%] brightness-[0.75]"
+            referrerPolicy="no-referrer"
+          />
+          <div className="absolute inset-0 bg-linear-to-r from-[#1A1A1A]/95 via-[#1A1A1A]/40 to-transparent" />
+        </motion.div>
+      )}
+
+      {!scene.image && (
+        <div className="absolute inset-0 bg-linear-to-b from-olive/20 to-natural-bg z-0" />
+      )}
 
       <motion.div 
-        style={{ opacity, y: index === 0 ? 0 : y }}
+        style={{ opacity: scene.image ? opacity : 1, y: index === 0 ? 0 : y }}
         className={`relative z-10 w-full max-w-6xl px-6 md:px-12 flex flex-col md:flex-row items-center gap-12 ${index === 0 ? 'text-left lg:pl-0' : 'justify-center'}`}
       >
         <div className={`max-w-xl ${index === 0 ? 'text-left' : (scene.sideImage ? 'text-left' : 'text-center')}`}>
@@ -121,11 +124,11 @@ const Scene: React.FC<SceneProps> = ({ scene, index }) => {
             initial={index === 0 ? { opacity: 1, x: 0 } : { opacity: 0, y: 10 }}
             animate={index === 0 ? { opacity: 1, x: 0 } : {}}
             whileInView={index === 0 ? {} : { opacity: 0.9, y: 0 }}
-            className="block font-sans text-[10px] md:text-xs uppercase tracking-[0.4em] text-white mb-4 font-bold drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]"
+            className={`block font-sans text-[10px] md:text-xs uppercase tracking-[0.4em] mb-4 font-bold ${scene.image ? 'text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]' : 'text-olive'}`}
           >
             {scene.accent}
           </motion.span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl text-white font-serif leading-[1.1] italic drop-shadow-[0_4px_8px_rgba(0,0,0,0.5)]">
+          <h2 className={`text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-serif leading-[1.1] italic ${scene.image ? 'text-white drop-shadow-[0_4px_8px_rgba(0,0,0,0.5)]' : 'text-natural-ink'}`}>
             {scene.title}
           </h2>
         </div>
@@ -300,11 +303,6 @@ export default function App() {
               </h2>
             </div>
             
-            <p className="text-lg md:text-xl leading-relaxed text-natural-ink/70 font-sans font-light max-w-lg mx-auto">
-              Thiago Figueiró ajuda você a navegar pela ansiedade e excesso de pensamentos com uma abordagem 
-              empática, moderna e profundamente acolhedora.
-            </p>
-
             <div className="grid sm:grid-cols-2 gap-4 lg:gap-6 pt-4 text-left">
               <div className="bg-olive-glow olive-border p-6 md:p-8 rounded-3xl space-y-3 md:space-y-4">
                 <Heart className="text-olive w-5 h-5 md:w-6 md:h-6" strokeWidth={1.5} />
