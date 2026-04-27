@@ -1236,7 +1236,7 @@ export default function App() {
       </footer>
 
       {/* Floating Buttons Group */}
-      <div className="fixed bottom-6 right-5 md:right-8 lg:right-12 z-[100] flex flex-col gap-4 items-end pointer-events-none">
+      <div className="fixed bottom-6 right-4 md:right-8 lg:right-12 z-[100] flex flex-col gap-4 items-end pointer-events-none">
         {/* Floating Scheduling Button (WhatsApp secondary) */}
         <motion.button 
           onClick={() => openScheduling()}
