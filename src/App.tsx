@@ -25,7 +25,8 @@ const SCENES = [
     title: 'Thiago Figueiró',
     audioText: 'piano leve e emocional',
     image: 'https://drive.google.com/thumbnail?id=1KM6evv9ep_1Mbs_kGHea7Rb2P8IAD7Al&sz=w2000',
-    accent: 'Psicólogo Clínico'
+    accent: 'Psicólogo Clínico',
+    subtitle: 'Como posso te ajudar?'
   },
   {
     id: 'identificacao',
@@ -77,7 +78,7 @@ const TESTIMONIALS = [
 ];
 
 interface SceneProps {
-  scene: typeof SCENES[0] & { sideImage?: string; image?: string };
+  scene: typeof SCENES[0] & { sideImage?: string; image?: string; subtitle?: string };
   index: number;
   total: number;
 }
@@ -124,10 +125,20 @@ const Scene: React.FC<SceneProps> = ({ scene, index }) => {
             initial={index === 0 ? { opacity: 1, x: 0 } : { opacity: 0, y: 10 }}
             animate={index === 0 ? { opacity: 1, x: 0 } : {}}
             whileInView={index === 0 ? {} : { opacity: 0.9, y: 0 }}
-            className={`block font-sans text-[10px] md:text-xs uppercase tracking-[0.4em] mb-4 font-bold ${scene.image ? 'text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]' : 'text-olive'}`}
+            className={`block font-sans text-[10px] md:text-xs uppercase tracking-[0.4em] mb-2 font-bold ${scene.image ? 'text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]' : 'text-olive'}`}
           >
             {scene.accent}
           </motion.span>
+          {scene.subtitle && (
+            <motion.span 
+              initial={index === 0 ? { opacity: 1, x: 0 } : { opacity: 0, y: 10 }}
+              animate={index === 0 ? { opacity: 1, x: 0 } : {}}
+              whileInView={index === 0 ? {} : { opacity: 0.9, y: 0 }}
+              className={`block font-sans text-[10px] md:text-xs uppercase tracking-[0.2em] mb-4 font-medium italic ${scene.image ? 'text-white/80 drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]' : 'text-olive/80'}`}
+            >
+              {scene.subtitle}
+            </motion.span>
+          )}
           <h2 className={`text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-serif leading-[1.1] italic ${scene.image ? 'text-white drop-shadow-[0_4px_8px_rgba(0,0,0,0.5)]' : 'text-natural-ink'}`}>
             {scene.title}
           </h2>
