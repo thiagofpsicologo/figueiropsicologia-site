@@ -5,7 +5,7 @@
 
 import React, { useRef, useState } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
-import { Calendar, MessageCircle, ChevronDown, Sparkles, Heart, Shield, Instagram, Linkedin, Menu, X, Mail, MapPin, Phone, GraduationCap, Award, Briefcase } from 'lucide-react';
+import { Calendar, MessageCircle, ChevronDown, ChevronRight, Sparkles, Heart, Shield, Instagram, Linkedin, Menu, X, Mail, MapPin, Phone, GraduationCap, Award, Briefcase } from 'lucide-react';
 
 // SCENE DATA based on the prompt provided by the user
 const WHATSAPP_MESSAGE = encodeURIComponent(`Olá! Seja muito bem-vindo(a) 
@@ -609,91 +609,127 @@ export default function App() {
         </button>
       </nav>
 
-      {/* Mobile Menu Overlay - Enhanced with dedicated close handle and sections */}
+      {/* Mobile Menu Overlay - Reimagined for a more professional & beautiful experience */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 bg-natural-ink/98 z-[115] md:hidden flex flex-col p-8 overflow-hidden"
+            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            className="fixed inset-0 bg-[#1A1A1A] z-[130] md:hidden flex flex-col p-6 overflow-y-auto"
           >
-            {/* Background Texture for Menu */}
-            <div className="absolute inset-0 opacity-10 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/linen.png')] mix-blend-overlay" />
+            {/* Design Elements */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-olive/10 filter blur-[100px] rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-96 h-96 bg-olive/5 filter blur-[120px] rounded-full translate-y-1/3 -translate-x-1/3 pointer-events-none" />
             
-            {/* Overlay Header */}
-            <div className="flex justify-between items-center w-full mb-12 relative z-10">
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center overflow-hidden border border-white/5">
+            {/* Header */}
+            <div className="flex justify-between items-center w-full mb-16 relative z-10 shrink-0">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center p-0.5 border border-white/10 ring-4 ring-white/5">
                   <img 
-                    src="https://drive.google.com/thumbnail?id=10taANe2B2DrYxggYuYrP098CD_pZntCN&sz=w1000" 
+                    src="https://drive.google.com/thumbnail?id=10taANe2B2DrYxggYuYrP098CD_pZntCN&sz=1000" 
                     alt="Logo" 
-                    className="w-full h-full object-cover"
+                    className="w-full h-full rounded-full object-cover"
                     referrerPolicy="no-referrer"
                   />
                 </div>
-                <span className="font-serif text-white/50 italic text-sm">Thiago Figueiró</span>
+                <div className="flex flex-col">
+                  <span className="font-serif text-white text-sm tracking-tight">Thiago Figueiró</span>
+                  <span className="text-[9px] uppercase tracking-[0.2em] text-white/40 font-bold">Psicólogo Clínico</span>
+                </div>
               </div>
-              {/* Close Label */}
               <button 
                 onClick={() => setIsMenuOpen(false)}
-                className="text-white/40 text-[10px] uppercase tracking-widest font-bold hover:text-white flex items-center gap-2"
+                className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/60 hover:text-white transition-all shadow-inner active:scale-90"
               >
-                Fechar
+                <X size={20} />
               </button>
             </div>
 
-            <nav className="flex flex-col items-center gap-10 relative z-10 w-full max-w-xs mx-auto">
-              {[
-                { name: 'Início', href: '#' },
-                { name: 'Sobre Mim', href: '#about' },
-                { name: 'Depoimentos', href: '#testimonials' },
-                { name: 'Contato', href: '#contact' }
-              ].map((link, idx) => (
-                <motion.a 
-                  key={link.name}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: idx * 0.1 + 0.2 }}
-                  onClick={() => setIsMenuOpen(false)} 
-                  href={link.href} 
-                  className="text-4xl text-white font-serif italic hover:text-olive transition-all tracking-tight"
-                >
-                  {link.name}
-                </motion.a>
-              ))}
-              
-              <div className="flex flex-col items-center gap-6 w-full mt-2">
-                <motion.button 
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 }}
-                  onClick={() => {
-                    setIsMenuOpen(false);
-                    openScheduling();
-                  }} 
-                  className="w-full bg-olive text-white px-8 py-5 rounded-full font-sans text-xs uppercase tracking-[0.25em] font-bold flex items-center justify-center gap-3 shadow-2xl active:scale-95 hover:bg-white hover:text-olive transition-all"
-                >
-                  <Calendar size={18} />
-                  Agendar Consulta
-                </motion.button>
+            {/* Navigation Body */}
+            <div className="flex-1 flex flex-col items-center justify-center relative z-10">
+              <div className="w-full max-w-[280px] space-y-10">
+                <div className="space-y-1">
+                  <span className="text-[10px] uppercase tracking-[0.3em] text-olive font-black ml-1 mb-6 block">Menu</span>
+                  <nav className="flex flex-col gap-6">
+                    {[
+                      { name: 'Início', href: '#', icon: <ChevronRight size={14} /> },
+                      { name: 'Sobre Mim', href: '#about', icon: <ChevronRight size={14} /> },
+                      { name: 'Depoimentos', href: '#testimonials', icon: <ChevronRight size={14} /> },
+                      { name: 'Contato', href: '#contact', icon: <ChevronRight size={14} /> }
+                    ].map((link, idx) => (
+                      <motion.a 
+                        key={link.name}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.15 + idx * 0.08, duration: 0.5, ease: "easeOut" }}
+                        onClick={() => setIsMenuOpen(false)} 
+                        href={link.href} 
+                        className="group flex items-center justify-between py-1"
+                      >
+                        <span className="text-4xl text-white font-serif italic transition-all group-hover:pl-4 group-hover:text-olive">
+                          {link.name}
+                        </span>
+                        <div className="opacity-0 group-hover:opacity-100 transition-all text-olive -translate-x-4 group-hover:translate-x-0">
+                          {link.icon}
+                        </div>
+                      </motion.a>
+                    ))}
+                  </nav>
+                </div>
 
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.6 }}
-                  className="flex gap-8 justify-center relative z-10"
+                  transition={{ delay: 0.5 }}
                 >
-                  <a href="https://instagram.com/psicologo.thiagofigueiro" target="_blank" rel="noopener noreferrer" className="bg-white/10 p-5 rounded-full shadow-lg transition-all hover:scale-110 active:scale-90 border border-white/10 group">
-                    <img src="https://cdn.simpleicons.org/instagram/white" className="w-6 h-6 group-hover:scale-110 transition-transform" alt="Instagram Logo" />
-                  </a>
-                  <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="bg-white/10 p-5 rounded-full shadow-lg transition-all hover:scale-110 active:scale-90 border border-white/10 group">
-                    <img src="https://cdn.simpleicons.org/whatsapp/white" className="w-6 h-6 group-hover:scale-110 transition-transform" alt="WhatsApp Logo" />
-                  </a>
+                  <button 
+                    onClick={() => {
+                      setIsMenuOpen(false);
+                      openScheduling();
+                    }} 
+                    className="w-full bg-olive text-white px-8 py-5 rounded-full font-sans text-[11px] uppercase tracking-[0.25em] font-black flex items-center justify-center gap-3 shadow-[0_20px_40px_rgba(115,124,98,0.25)] active:scale-95 hover:bg-white hover:text-olive transition-all duration-300 ring-2 ring-olive/20"
+                  >
+                    <Calendar size={18} className="animate-pulse" />
+                    Agendar Consulta
+                  </button>
                 </motion.div>
               </div>
-            </nav>
+            </div>
+
+            {/* Footer */}
+            <div className="mt-auto pt-10 border-t border-white/5 relative z-10">
+              <div className="flex flex-col items-center gap-6">
+                <motion.div 
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.6 }}
+                  className="flex gap-10"
+                >
+                  <a href="https://instagram.com/psicologo.thiagofigueiro" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-2 group">
+                    <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center transition-all group-hover:bg-olive group-hover:border-olive group-hover:-translate-y-1">
+                      <img src="https://cdn.simpleicons.org/instagram/white" className="w-5 h-5" alt="Instagram" />
+                    </div>
+                    <span className="text-[10px] uppercase tracking-widest text-white/30 font-bold group-hover:text-white/60 transition-colors">Instagram</span>
+                  </a>
+                  <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-2 group">
+                    <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center transition-all group-hover:bg-[#25D366] group-hover:border-[#25D366] group-hover:-translate-y-1">
+                      <img src="https://cdn.simpleicons.org/whatsapp/white" className="w-5 h-5" alt="WhatsApp" />
+                    </div>
+                    <span className="text-[10px] uppercase tracking-widest text-white/30 font-bold group-hover:text-white/60 transition-colors">WhatsApp</span>
+                  </a>
+                </motion.div>
+                <motion.p 
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.7 }}
+                  className="text-[9px] text-white/20 uppercase tracking-[0.2em] font-medium"
+                >
+                  &copy; {new Date().getFullYear()} Thiago Figueiró &bull; CRP 12/23249
+                </motion.p>
+              </div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
