@@ -5,7 +5,7 @@
 
 import React, { useRef, useState } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
-import { Calendar, MessageCircle, ChevronDown, Sparkles, Heart, Shield, Instagram, Linkedin, Menu, X, Mail, MapPin, Phone, GraduationCap, Award, Briefcase } from 'lucide-react';
+import { Calendar, MessageCircle, ChevronDown, Sparkles, Heart, Shield, Instagram, Linkedin, Menu, X, Mail, MapPin, Phone, GraduationCap, Award, Briefcase, Brain, Sprout, MessageSquare, Puzzle, Users, Smile, Search, Wind, Lock, Compass } from 'lucide-react';
 
 // SCENE DATA based on the prompt provided by the user
 const WHATSAPP_MESSAGE = encodeURIComponent(`Olá! Seja muito bem-vindo(a) 
@@ -17,7 +17,241 @@ Se quiser, pode me contar brevemente o que está buscando estou aqui para te ouv
 
 Assim que possível, te respondo com atenção. Muito obrigado!`);
 
-const WHATSAPP_LINK = `https://wa.me/5531994238535?text=${WHATSAPP_MESSAGE}`;
+const WHATSAPP_NUMBER = "5531994238535";
+const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`;
+
+const UNAVAILABLE_SLOTS: Record<string, string[]> = {
+  "2026-04-28": ["09:00", "14:00"],
+  "2026-04-29": ["10:00", "15:00", "17:00"],
+  "2026-04-30": ["08:00"]
+};
+
+const STANDARD_SLOTS = [
+  "08:00", "09:00", "10:00", "11:00", "14:00", "15:00", "16:00", "17:00", "18:00"
+];
+
+function SchedulingModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
+  const [selectedDate, setSelectedDate] = useState<string>("");
+  const [selectedTime, setSelectedTime] = useState<string>("");
+  const [step, setStep] = useState<'date' | 'time' | 'confirm'>('date');
+
+  // Reset modal state when closing
+  React.useEffect(() => {
+    if (!isOpen) {
+      setSelectedDate("");
+      setSelectedTime("");
+      setStep('date');
+    }
+  }, [isOpen]);
+
+  // Generate next 14 days
+  const availableDays = Array.from({ length: 14 }, (_, i) => {
+    const d = new Date();
+    d.setDate(d.getDate() + i);
+    return d.toISOString().split('T')[0];
+  });
+
+  const handleDateSelect = (date: string) => {
+    setSelectedDate(date);
+    setStep('time');
+  };
+
+  const handleTimeSelect = (time: string, isUnavailable: boolean) => {
+    if (isUnavailable) return;
+    setSelectedTime(time);
+    setStep('confirm');
+  };
+
+  const isTimeInPast = (date: string, time: string) => {
+    const now = new Date();
+    const [hours, minutes] = time.split(':').map(Number);
+    const slotDate = new Date(date + 'T00:00:00');
+    slotDate.setHours(hours, minutes, 0, 0);
+    return slotDate < now;
+  };
+
+  const confirmAgendamento = () => {
+    const dateFormatted = new Date(selectedDate + 'T12:00:00').toLocaleDateString('pt-BR');
+    const message = `Olá, Thiago! Gostaria de agendar uma consulta.\n\nData escolhida: ${dateFormatted}\nHorário escolhido: ${selectedTime}\n\nAguardo a confirmação. Obrigado!`;
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank');
+    onClose();
+  };
+
+  const addToGoogleCalendar = () => {
+    const [hours, minutes] = selectedTime.split(':').map(Number);
+    
+    const start = new Date(selectedDate + 'T00:00:00');
+    start.setHours(hours, minutes);
+    
+    const end = new Date(start.getTime() + 50 * 60000);
+    
+    const formatDate = (d: Date) => d.toISOString().replace(/-|:|\.\d\d\d/g, "");
+    
+    const url = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent('Consulta com Thiago Figueiró')}&dates=${formatDate(start)}/${formatDate(end)}&details=${encodeURIComponent('Consulta psicológica agendada com Thiago Figueiró')}&location=${encodeURIComponent('Atendimento online ou presencial, a confirmar pelo WhatsApp')}&sf=true&output=xml`;
+    
+    window.open(url, '_blank');
+  };
+
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <div className="fixed inset-0 z-[200] flex items-center justify-center p-4">
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={onClose}
+            className="absolute inset-0 bg-black/40 backdrop-blur-sm"
+          />
+          
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.9, y: 20 }}
+            className="relative bg-white w-full max-w-[520px] rounded-[32px] shadow-2xl overflow-hidden flex flex-col max-h-[90vh]"
+          >
+            {/* Header */}
+            <div className="p-6 md:p-8 bg-olive/5 border-b border-olive/10 flex justify-between items-start">
+              <div>
+                <h3 className="text-2xl md:text-3xl font-serif text-natural-ink">Agende sua consulta</h3>
+                <p className="text-sm text-natural-ink/60 mt-1">Escolha o melhor dia e horário para o seu atendimento.</p>
+              </div>
+              <button 
+                onClick={onClose}
+                className="p-2 hover:bg-olive/10 rounded-full transition-colors text-natural-ink/40"
+              >
+                <X size={24} />
+              </button>
+            </div>
+
+            <div className="flex-1 overflow-y-auto p-6 md:p-8 custom-scrollbar">
+              {step === 'date' && (
+                <div className="space-y-6">
+                  <span className="text-xs uppercase tracking-widest font-bold text-olive">Selecione uma data</span>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                    {availableDays.map(date => {
+                      const d = new Date(date + 'T12:00:00');
+                      const dayName = d.toLocaleDateString('pt-BR', { weekday: 'short' });
+                      const dayNum = d.toLocaleDateString('pt-BR', { day: '2-digit' });
+                      const month = d.toLocaleDateString('pt-BR', { month: 'short' });
+                      
+                      return (
+                        <button
+                          key={date}
+                          onClick={() => handleDateSelect(date)}
+                          className="flex flex-col items-center justify-center p-4 rounded-2xl border border-olive/10 hover:border-olive hover:bg-olive/5 transition-all group active:scale-95"
+                        >
+                          <span className="text-[10px] uppercase tracking-widest text-olive/60 font-bold mb-1">{dayName}</span>
+                          <span className="text-xl font-serif text-natural-ink group-hover:text-olive transition-colors">{dayNum}</span>
+                          <span className="text-[10px] uppercase tracking-widest text-natural-ink/40 font-medium">{month}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+
+              {step === 'time' && (
+                <div className="space-y-6">
+                  <div className="flex items-center gap-4">
+                    <button onClick={() => setStep('date')} className="bg-olive/10 p-2 rounded-full text-olive hover:bg-olive/20 transition-colors">
+                      <ChevronDown className="rotate-90" size={16} />
+                    </button>
+                    <span className="text-xs uppercase tracking-widest font-bold text-olive">
+                      {new Date(selectedDate + 'T12:00:00').toLocaleDateString('pt-BR', { weekday: 'long', day: '2-digit', month: 'long' })}
+                    </span>
+                  </div>
+                  
+                  <div className="grid grid-cols-3 gap-3">
+                    {STANDARD_SLOTS.map(time => {
+                      const isUnavailableStr = UNAVAILABLE_SLOTS[selectedDate]?.includes(time);
+                      const isInPast = isTimeInPast(selectedDate, time);
+                      const isDisabled = isUnavailableStr || isInPast;
+                      
+                      return (
+                        <button
+                          key={time}
+                          disabled={isDisabled}
+                          onClick={() => handleTimeSelect(time, isDisabled)}
+                          className={`
+                            relative flex flex-col items-center justify-center p-4 rounded-2xl border transition-all active:scale-95
+                            ${isDisabled 
+                              ? 'bg-natural-stone/20 border-natural-ink/5 opacity-40 cursor-not-allowed' 
+                              : 'bg-white border-olive/10 hover:border-olive hover:bg-olive/5'
+                            }
+                          `}
+                        >
+                          <span className={`text-sm font-medium ${isDisabled ? 'text-natural-ink/40' : 'text-natural-ink'}`}>{time}</span>
+                          {isDisabled && (
+                            <span className="text-[8px] uppercase tracking-tighter text-red-500/60 font-bold mt-1">Indisponível</span>
+                          )}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+
+              {step === 'confirm' && (
+                <div className="space-y-8 py-4 text-center">
+                  <motion.div 
+                    initial={{ scale: 0.5, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    className="inline-flex items-center justify-center p-6 rounded-full bg-olive/10 text-olive mb-2"
+                  >
+                    <Calendar size={48} strokeWidth={1} />
+                  </motion.div>
+                  
+                  <div className="space-y-2">
+                    <h4 className="text-lg text-natural-ink/60 font-medium italic">Você escolheu:</h4>
+                    <p className="text-2xl md:text-3xl font-serif text-natural-ink font-bold">
+                      {new Date(selectedDate + 'T12:00:00').toLocaleDateString('pt-BR', { day: '2-digit', month: 'long' })} às {selectedTime}
+                    </p>
+                  </div>
+
+                  <div className="flex flex-col gap-3">
+                    <button
+                      onClick={confirmAgendamento}
+                      className="w-full bg-olive text-white py-4 rounded-2xl font-sans text-xs uppercase tracking-[0.2em] font-bold shadow-xl shadow-olive/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2"
+                    >
+                      <MessageCircle size={16} />
+                      Confirmar agendamento
+                    </button>
+                    
+                    <button
+                      onClick={addToGoogleCalendar}
+                      className="w-full bg-white border border-olive/20 text-olive py-4 rounded-2xl font-sans text-xs uppercase tracking-[0.2em] font-bold hover:bg-olive/5 transition-all flex items-center justify-center gap-2"
+                    >
+                      <Calendar size={16} />
+                      Adicionar ao Google Agenda
+                    </button>
+
+                    <button
+                      onClick={() => setStep('time')}
+                      className="text-xs uppercase tracking-widest font-bold text-natural-ink/40 hover:text-natural-ink/60 transition-colors mt-2"
+                    >
+                      Alterar horário
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Footer */}
+            <div className="p-6 md:p-8 bg-natural-stone/10 border-t border-natural-ink/5 flex justify-center">
+              <button 
+                onClick={onClose}
+                className="text-xs uppercase tracking-widest font-bold text-natural-ink/40 hover:text-natural-ink/60 transition-colors"
+              >
+                Fechar
+              </button>
+            </div>
+          </motion.div>
+        </div>
+      )}
+    </AnimatePresence>
+  );
+}
 
 const SCENES = [
   {
@@ -184,6 +418,7 @@ const Scene: React.FC<SceneProps> = ({ scene, index }) => {
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isSchedulingOpen, setIsSchedulingOpen] = useState(false);
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -195,6 +430,10 @@ export default function App() {
 
   return (
     <div className="natural-gradient selection:bg-olive selection:text-white min-h-screen transition-colors duration-500">
+      <SchedulingModal 
+        isOpen={isSchedulingOpen} 
+        onClose={() => setIsSchedulingOpen(false)} 
+      />
       {/* Navigation */}
       <nav className={`fixed top-0 left-0 w-full z-[100] p-3 md:p-5 flex justify-between items-center transition-all duration-500 ${isScrolled ? 'py-3 md:py-4' : 'py-5'}`}>
         <a href="#" className={`flex items-center gap-2 md:gap-3 px-3 py-1.5 md:px-4 md:py-2 rounded-full border transition-all group backdrop-blur-md ${isScrolled ? 'bg-white/80 border-olive/10 shadow-sm' : 'bg-white/30 border-white/20'}`}>
@@ -226,17 +465,13 @@ export default function App() {
         </div>
 
         {/* Desktop Agendar Button */}
-        <motion.a
-          href={WHATSAPP_LINK}
-          target="_blank"
-          rel="noopener noreferrer"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
+        <button
+          onClick={() => setIsSchedulingOpen(true)}
           className={`hidden md:flex items-center gap-2 px-6 py-2.5 rounded-full shadow-xl transition-all font-sans text-xs uppercase tracking-widest font-bold ${isScrolled ? 'bg-olive text-white shadow-olive/20' : 'bg-olive text-white shadow-olive/20'}`}
         >
           <Calendar size={14} />
           Agendar Consulta
-        </motion.a>
+        </button>
 
         {/* Mobile menu button */}
         <button 
@@ -259,16 +494,16 @@ export default function App() {
                 <a onClick={() => setIsMenuOpen(false)} href="#" className="text-4xl text-white font-serif italic">Home</a>
                 <a onClick={() => setIsMenuOpen(false)} href="#about" className="text-4xl text-white font-serif italic">Sobre Mim</a>
                 <a onClick={() => setIsMenuOpen(false)} href="#testimonials" className="text-4xl text-white font-serif italic">Relatos</a>
-                <motion.a 
-                  onClick={() => setIsMenuOpen(false)} 
-                  href={WHATSAPP_LINK}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button 
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    setIsSchedulingOpen(true);
+                  }} 
                   className="mt-4 bg-olive text-white px-8 py-4 rounded-full font-sans text-xs uppercase tracking-[0.2em] font-bold flex items-center gap-3"
                 >
                   <Calendar size={16} />
                   Agendar Consulta
-                </motion.a>
+                </button>
               </nav>
               <div className="flex gap-8 mt-4">
                 <a href="https://instagram.com/psicologo.thiagofigueiro" target="_blank" rel="noopener noreferrer" className="bg-white p-6 rounded-full shadow-lg transition-transform hover:scale-110">
@@ -337,16 +572,36 @@ export default function App() {
               </p>
             </div>
             
-            <div className="grid sm:grid-cols-2 gap-4 lg:gap-6 pt-4 text-left">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 pt-4 text-left">
               <div className="bg-olive-glow olive-border p-6 md:p-8 rounded-3xl space-y-3 md:space-y-4">
-                <Heart className="text-olive w-5 h-5 md:w-6 md:h-6" strokeWidth={1.5} />
-                <h4 className="font-serif text-xl md:text-2xl">Empatia</h4>
-                <p className="text-xs md:text-sm text-natural-ink/60 leading-relaxed">Escuta ativa e um ambiente livre de quaisquer julgamentos.</p>
+                <Brain className="text-olive w-5 h-5 md:w-6 md:h-6" strokeWidth={1.5} />
+                <h4 className="font-serif text-xl md:text-2xl">Autoconhecimento</h4>
+                <p className="text-xs md:text-sm text-natural-ink/60 leading-relaxed">Compreenda seus pensamentos, emoções e padrões com mais clareza.</p>
               </div>
               <div className="bg-olive-glow olive-border p-6 md:p-8 rounded-3xl space-y-3 md:space-y-4">
-                <Shield className="text-olive w-5 h-5 md:w-6 md:h-6" strokeWidth={1.5} />
-                <h4 className="font-serif text-xl md:text-2xl">Sigilo</h4>
-                <p className="text-xs md:text-sm text-natural-ink/60 leading-relaxed">Privacidade absoluta garantida em todas as sessões presenciais ou online.</p>
+                <Sprout className="text-olive w-5 h-5 md:w-6 md:h-6" strokeWidth={1.5} />
+                <h4 className="font-serif text-xl md:text-2xl">Equilíbrio emocional</h4>
+                <p className="text-xs md:text-sm text-natural-ink/60 leading-relaxed">Desenvolva ferramentas para lidar melhor com ansiedade e estresse.</p>
+              </div>
+              <div className="bg-olive-glow olive-border p-6 md:p-8 rounded-3xl space-y-3 md:space-y-4">
+                <MessageSquare className="text-olive w-5 h-5 md:w-6 md:h-6" strokeWidth={1.5} />
+                <h4 className="font-serif text-xl md:text-2xl">Escuta qualificada</h4>
+                <p className="text-xs md:text-sm text-natural-ink/60 leading-relaxed">Um espaço acolhedor e seguro onde sua fala é respeitada e valorizada.</p>
+              </div>
+              <div className="bg-olive-glow olive-border p-6 md:p-8 rounded-3xl space-y-3 md:space-y-4">
+                <Users className="text-olive w-5 h-5 md:w-6 md:h-6" strokeWidth={1.5} />
+                <h4 className="font-serif text-xl md:text-2xl">Relações saudáveis</h4>
+                <p className="text-xs md:text-sm text-natural-ink/60 leading-relaxed">Melhore a forma como você se relaciona consigo mesmo e com os outros.</p>
+              </div>
+              <div className="bg-olive-glow olive-border p-6 md:p-8 rounded-3xl space-y-3 md:space-y-4">
+                <Lock className="text-olive w-5 h-5 md:w-6 md:h-6" strokeWidth={1.5} />
+                <h4 className="font-serif text-xl md:text-2xl">Sigilo & Segurança</h4>
+                <p className="text-xs md:text-sm text-natural-ink/60 leading-relaxed">Privacidade absoluta para você se expressar com total liberdade.</p>
+              </div>
+              <div className="bg-olive-glow olive-border p-6 md:p-8 rounded-3xl space-y-3 md:space-y-4">
+                <Wind className="text-olive w-5 h-5 md:w-6 md:h-6" strokeWidth={1.5} />
+                <h4 className="font-serif text-xl md:text-2xl">Leveza</h4>
+                <p className="text-xs md:text-sm text-natural-ink/60 leading-relaxed">Encontre caminhos para viver com mais tranquilidade e equilíbrio.</p>
               </div>
             </div>
 
@@ -424,17 +679,13 @@ export default function App() {
                   WhatsApp
                 </motion.a>
                 
-                <motion.a 
-                  href={WHATSAPP_LINK}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                <button 
+                  onClick={() => setIsSchedulingOpen(true)}
                   className="bg-white/10 backdrop-blur-md border border-white/20 text-white px-8 md:px-12 py-4 md:py-5 rounded-full font-sans text-[10px] md:text-xs uppercase tracking-[0.2em] hover:bg-white/20 transition-all flex items-center justify-center gap-3 cursor-pointer w-full sm:w-auto"
                 >
                   <Calendar size={18} />
                   Ver Horários
-                </motion.a>
+                </button>
               </div>
             </motion.div>
           </div>
@@ -574,22 +825,20 @@ export default function App() {
 
       {/* Floating Buttons Group */}
       <div className="fixed bottom-6 right-6 z-[100] flex flex-col gap-4 items-end">
-        {/* Floating WhatsApp Button */}
-        <motion.a 
-          href={WHATSAPP_LINK}
-          target="_blank"
-          rel="noopener noreferrer"
+        {/* Floating Scheduling Button (WhatsApp secondary) */}
+        <motion.button 
+          onClick={() => setIsSchedulingOpen(true)}
           className="bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform flex items-center justify-center group"
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           whileHover={{ y: -5 }}
-          title="Fale conosco no WhatsApp"
+          title="Ver horários"
         >
           <img src="https://cdn.simpleicons.org/whatsapp/white" className="w-7 h-7 md:w-8 md:h-8" alt="WhatsApp" />
           <span className="max-w-0 overflow-hidden group-hover:max-w-xs group-hover:ml-2 transition-all duration-500 whitespace-nowrap text-sm font-bold">
             Agendar Consulta
           </span>
-        </motion.a>
+        </motion.button>
 
         {/* Floating Instagram Button */}
         <motion.a 
