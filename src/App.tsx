@@ -534,9 +534,9 @@ export default function App() {
         selectedPlan={selectedPlanModal}
       />
       {/* Navigation */}
-      <nav className={`fixed top-0 left-0 w-full z-[100] px-2 py-3 md:px-4 md:py-5 flex justify-between items-center transition-all duration-500 ${isScrolled ? 'py-2 md:py-3' : 'py-3'}`}>
-        <a href="#" className={`flex items-center gap-2 md:gap-3 px-2 py-1 md:px-3 md:py-1.5 rounded-full border transition-all group backdrop-blur-md ${isScrolled ? 'bg-white/80 border-olive/10 shadow-sm' : 'bg-white/30 border-white/20'}`}>
-          <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-white flex items-center justify-center overflow-hidden shrink-0 group-hover:scale-110 transition-transform shadow-inner">
+      <nav className={`fixed top-0 left-0 w-full z-[100] px-4 py-3 md:px-8 md:py-5 flex flex-row-reverse md:flex-row justify-between items-center transition-all duration-500 ${isScrolled ? 'py-2 md:py-3' : 'py-3'}`}>
+        <a href="#" className={`flex items-center gap-1.5 md:gap-3 px-1.5 py-1 md:px-4 md:py-2 rounded-full border transition-all group backdrop-blur-md ${isScrolled ? 'bg-white border-olive/10 shadow-sm' : 'bg-white/40 border-white/30'}`}>
+          <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-white flex items-center justify-center overflow-hidden shrink-0 group-hover:scale-110 transition-transform shadow-inner">
             <img 
               src="https://drive.google.com/thumbnail?id=10taANe2B2DrYxggYuYrP098CD_pZntCN&sz=w1000" 
               alt="Logo Thiago Figueiró" 
@@ -544,7 +544,7 @@ export default function App() {
               referrerPolicy="no-referrer"
             />
           </div>
-          <span className={`font-serif text-xs md:text-sm font-medium tracking-tight transition-colors ${isScrolled ? 'text-natural-ink' : 'text-white'}`}>Thiago Figueiró</span>
+          <span className={`font-serif text-[10px] md:text-base font-medium tracking-tight transition-colors ${isScrolled ? 'text-natural-ink' : 'text-white'}`}>Thiago Figueiró</span>
         </a>
 
         {/* Desktop Menu */}
@@ -575,7 +575,7 @@ export default function App() {
         {/* Mobile menu button */}
         <button 
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className={`md:hidden w-12 h-12 rounded-full border flex items-center justify-center transition-all z-[110] backdrop-blur-md ${isScrolled ? 'bg-white/80 border-olive/10 text-natural-ink shadow-sm' : 'bg-white/30 border-white/20 text-white'}`}
+          className={`md:hidden w-11 h-11 rounded-full border flex items-center justify-center transition-all z-[110] backdrop-blur-md ${isScrolled ? 'bg-white border-olive/10 text-olive shadow-md' : 'bg-white/60 border-white/40 text-white'}`}
         >
           {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
