@@ -318,7 +318,7 @@ const SCENES = [
     id: 'identificacao',
     title: '"Ansiedade, excesso de pensamentos, dificuldade de se expressar…"',
     audioText: '',
-    image: 'https://images.unsplash.com/photo-1499209974431-9dac3adaf471?auto=format&fit=crop&q=80&w=1080&h=1920',
+    image: 'https://drive.google.com/thumbnail?id=1PflEWx00Ry_wL85NwsYn4kZ52_qN4uYR&sz=w2000',
     accent: 'Reflexão'
   },
   {
