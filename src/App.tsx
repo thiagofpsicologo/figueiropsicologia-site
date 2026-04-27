@@ -535,7 +535,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="natural-gradient selection:bg-olive selection:text-white min-h-screen transition-colors duration-500">
+    <div className="natural-gradient selection:bg-olive selection:text-white min-h-screen transition-colors duration-500 overflow-x-hidden w-full relative">
       <SchedulingModal 
         isOpen={isSchedulingOpen} 
         onClose={() => {
@@ -617,7 +617,7 @@ export default function App() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 bg-[#1A1A1A] z-[130] md:hidden flex flex-col p-6 overflow-y-auto"
+            className="fixed inset-0 bg-[#1A1A1A] z-[130] md:hidden flex flex-col p-6 overflow-y-auto overflow-x-hidden"
           >
             {/* Design Elements */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-olive/10 filter blur-[100px] rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
@@ -1307,9 +1307,9 @@ export default function App() {
       <AnimatePresence>
         {!isMenuOpen && (
           <motion.div 
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 20 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
             className="fixed bottom-6 right-8 md:right-8 lg:right-12 z-[100] flex flex-col gap-4 items-end pointer-events-none"
           >
             {/* Floating WhatsApp Button */}

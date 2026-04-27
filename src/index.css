@@ -13,6 +13,10 @@
 }
 
 @layer base {
+  html, body {
+    @apply overflow-x-hidden w-full relative;
+  }
+  
   body {
     @apply bg-natural-bg text-natural-ink font-sans antialiased selection:bg-olive selection:text-white;
   }
