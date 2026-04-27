@@ -506,6 +506,8 @@ const Scene: React.FC<SceneProps> = ({ scene, index }) => {
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const [isSchedulingOpen, setIsSchedulingOpen] = useState(false);
   const [selectedPlanModal, setSelectedPlanModal] = useState<string | undefined>(undefined);
   const [showAllTestimonials, setShowAllTestimonials] = useState(false);
@@ -517,11 +519,21 @@ export default function App() {
 
   React.useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      const currentScrollY = window.scrollY;
+      
+      // Update visibility: hide on scroll down, show on scroll up
+      if (currentScrollY > lastScrollY && currentScrollY > 150) {
+        setIsVisible(false);
+      } else {
+        setIsVisible(true);
+      }
+      
+      setIsScrolled(currentScrollY > 50);
+      setLastScrollY(currentScrollY);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [lastScrollY]);
 
   return (
     <div className="natural-gradient selection:bg-olive selection:text-white min-h-screen transition-colors duration-500">
@@ -534,7 +546,7 @@ export default function App() {
         selectedPlan={selectedPlanModal}
       />
       {/* Navigation */}
-      <nav className={`fixed top-0 left-0 w-full z-[100] px-4 py-3 md:px-6 md:py-4 flex justify-between items-center transition-all duration-500 ${isScrolled ? 'py-2 md:py-3 bg-white/10 backdrop-blur-md' : 'py-4 md:py-6'}`}>
+      <nav className={`fixed top-0 left-0 w-full z-[100] px-4 py-3 md:px-6 md:py-4 flex justify-between items-center transition-all duration-500 ${isVisible ? 'translate-y-0' : '-translate-y-full'} ${isScrolled ? 'py-2 md:py-3 bg-white/10 backdrop-blur-md' : 'py-4 md:py-6'}`}>
         <a href="#" className={`flex items-center gap-2 md:gap-3 px-3 py-1.5 md:px-4 md:py-2 rounded-full border transition-all group backdrop-blur-md ${isScrolled ? 'bg-white/90 border-olive/10 shadow-md' : 'bg-white/40 border-white/30 shadow-lg'}`}>
           <div className="w-8 h-8 md:w-9 md:h-9 rounded-full bg-white flex items-center justify-center overflow-hidden shrink-0 group-hover:scale-110 transition-transform shadow-inner ring-1 ring-olive/5">
             <img 
