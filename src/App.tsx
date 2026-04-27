@@ -534,9 +534,9 @@ export default function App() {
         selectedPlan={selectedPlanModal}
       />
       {/* Navigation */}
-      <nav className={`fixed top-0 left-0 w-full z-[100] p-3 md:p-5 flex justify-between items-center transition-all duration-500 ${isScrolled ? 'py-3 md:py-4' : 'py-5'}`}>
-        <a href="#" className={`flex items-center gap-2 md:gap-3 px-3 py-1.5 md:px-4 md:py-2 rounded-full border transition-all group backdrop-blur-md ${isScrolled ? 'bg-white/80 border-olive/10 shadow-sm' : 'bg-white/30 border-white/20'}`}>
-          <div className="w-8 h-8 md:w-9 md:h-9 rounded-full bg-white flex items-center justify-center overflow-hidden shrink-0 group-hover:scale-110 transition-transform shadow-inner">
+      <nav className={`fixed top-0 left-0 w-full z-[100] p-2 md:p-3 flex justify-between items-center transition-all duration-500 ${isScrolled ? 'py-2 md:py-3' : 'py-3'}`}>
+        <a href="#" className={`flex items-center gap-2 md:gap-3 px-2 py-1 md:px-3 md:py-1.5 rounded-full border transition-all group backdrop-blur-md ${isScrolled ? 'bg-white/80 border-olive/10 shadow-sm' : 'bg-white/30 border-white/20'}`}>
+          <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-white flex items-center justify-center overflow-hidden shrink-0 group-hover:scale-110 transition-transform shadow-inner">
             <img 
               src="https://drive.google.com/thumbnail?id=10taANe2B2DrYxggYuYrP098CD_pZntCN&sz=w1000" 
               alt="Logo Thiago Figueiró" 
@@ -544,11 +544,11 @@ export default function App() {
               referrerPolicy="no-referrer"
             />
           </div>
-          <span className={`font-serif text-sm md:text-base font-medium tracking-tight transition-colors ${isScrolled ? 'text-natural-ink' : 'text-white'}`}>Thiago Figueiró</span>
+          <span className={`font-serif text-xs md:text-sm font-medium tracking-tight transition-colors ${isScrolled ? 'text-natural-ink' : 'text-white'}`}>Thiago Figueiró</span>
         </a>
 
         {/* Desktop Menu */}
-        <div className={`hidden md:flex gap-6 lg:gap-8 items-center px-6 py-2.5 rounded-full border transition-all backdrop-blur-md ${isScrolled ? 'bg-white/80 border-olive/10 shadow-sm' : 'bg-white/30 border-white/20'}`}>
+        <div className={`hidden md:flex gap-4 lg:gap-6 items-center px-5 py-2 rounded-full border transition-all backdrop-blur-md ${isScrolled ? 'bg-white/80 border-olive/10 shadow-sm' : 'bg-white/30 border-white/20'}`}>
           <a href="#" className={`text-xs uppercase tracking-widest transition-colors font-sans font-bold ${isScrolled ? 'text-natural-ink/70 hover:text-olive' : 'text-white hover:text-white/80'}`}>Home</a>
           <a href="#about" className={`text-xs uppercase tracking-widest transition-colors font-sans font-bold ${isScrolled ? 'text-natural-ink/70 hover:text-olive' : 'text-white hover:text-white/80'}`}>Sobre Mim</a>
           <a href="#testimonials" className={`text-xs uppercase tracking-widest transition-colors font-sans font-bold ${isScrolled ? 'text-natural-ink/70 hover:text-olive' : 'text-white hover:text-white/80'}`}>Relatos</a>
@@ -566,7 +566,7 @@ export default function App() {
         {/* Desktop Agendar Button */}
         <button
           onClick={() => openScheduling()}
-          className={`hidden md:flex items-center gap-2 px-6 py-2.5 rounded-full shadow-xl transition-all font-sans text-xs uppercase tracking-widest font-bold ${isScrolled ? 'bg-olive text-white shadow-olive/20' : 'bg-olive text-white shadow-olive/20'}`}
+          className={`hidden md:flex items-center gap-2 px-5 py-2 rounded-full shadow-xl transition-all font-sans text-xs uppercase tracking-widest font-bold ${isScrolled ? 'bg-olive text-white shadow-olive/20' : 'bg-olive text-white shadow-olive/20'}`}
         >
           <Calendar size={14} />
           Agendar Consulta
@@ -575,9 +575,9 @@ export default function App() {
         {/* Mobile menu button */}
         <button 
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className={`md:hidden w-12 h-12 rounded-full border flex items-center justify-center transition-all z-[110] backdrop-blur-md ${isScrolled ? 'bg-white/80 border-olive/10 text-natural-ink shadow-sm' : 'bg-white/30 border-white/20 text-white'}`}
+          className={`md:hidden w-10 h-10 rounded-full border flex items-center justify-center transition-all z-[110] backdrop-blur-md ${isScrolled ? 'bg-white/80 border-olive/10 text-natural-ink shadow-sm' : 'bg-white/30 border-white/20 text-white'}`}
         >
-          {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
+          {isMenuOpen ? <X size={18} /> : <Menu size={18} />}
         </button>
 
         {/* Mobile Menu Overlay */}
