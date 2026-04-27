@@ -353,6 +353,42 @@ const TESTIMONIALS = [
     role: "Superação de Burnout",
     quote: "Um espaço de cura real. O Thiago é extremamente profissional e humano ao mesmo tempo.",
     image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=60&w=200&h=200"
+  },
+  {
+    name: "Lucas F.",
+    role: "Autoconhecimento",
+    quote: "Excelente profissional. Me ajudou a entender padrões que eu repetia há anos sem perceber, trazendo clareza para minha vida.",
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=60&w=200&h=200"
+  },
+  {
+    name: "Maria S.",
+    role: "Atendimento Online",
+    quote: "A terapia online com o Thiago é impecável. Sinto uma evolução constante e segurança total para me expressar.",
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=60&w=200&h=200"
+  },
+  {
+    name: "Roberto K.",
+    role: "Relacionamentos",
+    quote: "Tive uma melhora significativa no meu relacionamento familiar após iniciar o acompanhamento. Postura muito ética e técnica.",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=60&w=200&h=200"
+  },
+  {
+    name: "Patrícia L.",
+    role: "Equilíbrio e Bem-estar",
+    quote: "As sessões me deram ferramentas práticas para lidar com o estresse diário. Hoje vivo com muito mais leveza e presença.",
+    image: "https://images.unsplash.com/photo-1554151228-14d9def656e4?auto=format&fit=crop&q=60&w=200&h=200"
+  },
+  {
+    name: "Fernanda G.",
+    role: "Processo Individual",
+    quote: "Sinto que minhas questões são verdadeiramente ouvidas. O acolhimento do Thiago faz toda a diferença no meu processo.",
+    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=60&w=200&h=200"
+  },
+  {
+    name: "Bruno T.",
+    role: "Transição de Carreira",
+    quote: "Me auxiliou em um momento de dúvida profissional muito difícil. Um direcionamento humano e muito consciente.",
+    image: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=60&w=200&h=200"
   }
 ];
 
