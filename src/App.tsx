@@ -45,7 +45,7 @@ const SCENES = [
     id: 'apresentacao',
     title: 'Psicólogo Thiago Figueiró',
     audioText: '',
-    image: 'https://images.unsplash.com/photo-1556157382-97dee2dcb73c?auto=format&fit=crop&q=80&w=1080&h=1920',
+    image: 'https://drive.google.com/thumbnail?id=1tk2EfwEEl___GlgMXBDhGAG6WJAmCSU1&sz=w1000',
     accent: 'Profissionalismo',
     sideImage: 'https://drive.google.com/thumbnail?id=10nGDSHCmTjRxdAQIpWBe-E5TdHPgWCBB&sz=w1000'
   },
