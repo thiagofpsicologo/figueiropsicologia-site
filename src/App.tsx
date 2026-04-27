@@ -534,8 +534,8 @@ export default function App() {
         selectedPlan={selectedPlanModal}
       />
       {/* Navigation */}
-      <nav className={`fixed top-0 left-0 w-full z-[100] p-3 md:p-5 flex justify-between items-center transition-all duration-500 ${isScrolled ? 'py-3 md:py-4' : 'py-5'}`}>
-        <a href="#" className={`flex items-center gap-2 md:gap-3 px-3 py-1.5 md:px-4 md:py-2 rounded-full border transition-all group backdrop-blur-md ${isScrolled ? 'bg-white/80 border-olive/10 shadow-sm' : 'bg-white/30 border-white/20'}`}>
+      <nav className={`fixed top-0 left-0 w-full z-[100] p-3 md:p-5 flex justify-between items-start transition-all duration-500 ${isScrolled ? 'py-3 md:py-4' : 'py-5'}`}>
+        <a href="#" className={`flex flex-col items-center gap-1.5 px-3 py-2 md:px-4 md:py-3 rounded-2xl border transition-all group backdrop-blur-md ${isScrolled ? 'bg-white/80 border-olive/10 shadow-sm' : 'bg-white/30 border-white/20'}`}>
           <div className="w-8 h-8 md:w-9 md:h-9 rounded-full bg-white flex items-center justify-center overflow-hidden shrink-0 group-hover:scale-110 transition-transform shadow-inner">
             <img 
               src="https://drive.google.com/thumbnail?id=10taANe2B2DrYxggYuYrP098CD_pZntCN&sz=w1000" 
@@ -544,7 +544,7 @@ export default function App() {
               referrerPolicy="no-referrer"
             />
           </div>
-          <span className={`font-serif text-sm md:text-base font-medium tracking-tight transition-colors ${isScrolled ? 'text-natural-ink' : 'text-white'}`}>Thiago Figueiró</span>
+          <span className={`font-serif text-[10px] md:text-xs font-medium tracking-tight transition-colors text-center leading-tight ${isScrolled ? 'text-natural-ink' : 'text-white'}`}>Thiago<br/>Figueiró</span>
         </a>
 
         {/* Desktop Menu */}
