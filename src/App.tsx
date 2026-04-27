@@ -22,10 +22,10 @@ const WHATSAPP_LINK = `https://wa.me/5531994238535?text=${WHATSAPP_MESSAGE}`;
 const SCENES = [
   {
     id: 'dor',
-    title: 'Thiago Figueiró',
+    title: 'Como posso te ajudar?',
     audioText: 'piano leve e emocional',
     image: 'https://drive.google.com/thumbnail?id=1o0JTapO9ZtBT9LhP1KR3FpS1uF3UP74k&sz=w1000',
-    accent: 'Psicólogo Clínico'
+    accent: 'Thiago Figueiró'
   },
   {
     id: 'identificacao',
@@ -98,19 +98,27 @@ const Scene: React.FC<SceneProps> = ({ scene, index }) => {
   const imageY = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
 
   return (
-    <div ref={ref} className={`relative h-screen h-[100dvh] w-full flex overflow-hidden ${index === 0 ? 'justify-start items-end pb-32 pl-8 md:pl-16 lg:pl-20 lg:pb-24' : 'justify-center items-center'}`}>
+    <div ref={ref} className={`relative h-screen h-[100dvh] w-full flex overflow-hidden ${index === 0 ? 'justify-start items-end pb-24 sm:pb-32 pl-6 sm:pl-8 md:pl-16 lg:pl-20 lg:pb-24' : 'justify-center items-center'}`}>
       <motion.div 
-        style={{ opacity, scale, y: imageY }}
-        className="absolute inset-0 z-0 h-[120%] top-[-10%]"
+        style={{ 
+          opacity, 
+          scale, 
+          y: index === 0 ? 0 : imageY 
+        }}
+        className={`absolute inset-0 z-0 ${index === 0 ? 'h-full top-0' : 'h-[120%] top-[-10%]'} bg-[#1A1A1A]`}
       >
         <img 
           src={scene.image} 
           alt={scene.title}
-          className={`w-full h-full object-cover object-[80%_20%] sm:object-[45%_20%] ${index === 0 ? 'grayscale-0 sepia-0 brightness-[0.85]' : 'grayscale-[20%] sepia-[10%] brightness-[0.65]'}`}
+          className={`w-full h-full ${index === 0 ? 'object-contain sm:object-cover sm:object-[45%_20%]' : 'object-cover object-[80%_20%] sm:object-[45%_20%]'} ${index === 0 ? 'grayscale-0 sepia-0 brightness-[0.9]' : 'grayscale-[20%] sepia-[10%] brightness-[0.65]'}`}
           referrerPolicy="no-referrer"
         />
-        <div className={`absolute inset-0 ${index === 0 ? 'bg-black/20' : 'bg-black/50'}`} />
-        <div className="absolute inset-0 bg-linear-to-r from-[#1A1A1A]/95 via-[#1A1A1A]/40 to-transparent" />
+        <div className={`absolute inset-0 ${index === 0 ? 'bg-black/30 sm:bg-black/20' : 'bg-black/50'}`} />
+        <div className={`absolute inset-0 bg-linear-to-r from-[#1A1A1A]/95 via-[#1A1A1A]/30 to-transparent ${index === 0 ? 'hidden sm:block' : 'block'}`} />
+        {/* Mobile specific dark gradient for text readability if image is contained */}
+        {index === 0 && (
+          <div className="absolute inset-0 bg-linear-to-t from-[#1A1A1A] via-transparent to-transparent sm:hidden" />
+        )}
       </motion.div>
 
       <motion.div 
