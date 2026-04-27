@@ -926,7 +926,7 @@ export default function App() {
               <div className="space-y-6">
                 <div className="space-y-4">
                   <div className="inline-block">
-                    <span className="bg-olive/20 backdrop-blur-md border border-olive/30 text-olive-light px-4 py-1 rounded-full text-[10px] uppercase tracking-widest font-bold">
+                    <span className="bg-olive text-white px-5 py-1.5 rounded-full text-[10px] md:text-[11px] uppercase tracking-[0.2em] font-black shadow-lg shadow-olive/30 border border-white/10">
                       Mais escolhido
                     </span>
                   </div>
