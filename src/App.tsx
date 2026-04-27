@@ -987,7 +987,7 @@ export default function App() {
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 transition-all duration-500">
-            {TESTIMONIALS.slice(0, showAllTestimonials ? TESTIMONIALS.length : 4).map((t, i) => (
+            {TESTIMONIALS.slice(0, showAllTestimonials ? TESTIMONIALS.length : 3).map((t, i) => (
               <motion.div
                 key={t.name}
                 initial={{ opacity: 0, y: 30 }}
