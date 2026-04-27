@@ -442,7 +442,7 @@ const Scene: React.FC<SceneProps> = ({ scene, index }) => {
         style={{ opacity: scene.image ? opacity : 1, y: index === 0 ? 0 : y }}
         className={`relative z-10 w-full max-w-6xl px-4 md:px-12 flex flex-col md:flex-row items-center gap-12 ${index === 0 ? 'text-left lg:pl-0' : 'justify-center'}`}
       >
-        <div className={`max-w-xs sm:max-w-xl ${index === 0 ? 'text-left' : (scene.sideImage ? 'text-left' : 'text-center')}`}>
+        <div className={`max-w-xs sm:max-w-xl ${index === 0 ? 'text-left' : (scene.sideImage ? 'text-left' : (scene.id === 'identificacao' ? 'text-center max-w-[85%] mx-auto' : 'text-center'))}`}>
           <motion.span 
             initial={index === 0 ? { opacity: 1, x: 0 } : { opacity: 0, y: 10 }}
             animate={index === 0 ? { opacity: 1, x: 0 } : {}}
@@ -461,7 +461,7 @@ const Scene: React.FC<SceneProps> = ({ scene, index }) => {
               {scene.subtitle}
             </motion.span>
           )}
-          <h2 className={`text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-serif leading-[1.1] italic ${scene.image ? 'text-white drop-shadow-[0_10px_25px_rgba(0,0,0,0.9)] transition-all' : 'text-natural-ink'}`}>
+          <h2 className={`text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-serif italic ${scene.id === 'identificacao' ? 'leading-[1.5]' : 'leading-[1.1]'} ${scene.image ? 'text-white drop-shadow-[0_10px_30px_rgba(0,0,0,1)] transition-all' : 'text-natural-ink'}`}>
             {scene.title}
           </h2>
         </div>
@@ -588,31 +588,32 @@ export default function App() {
               initial={{ opacity: 0, x: '100%' }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: '100%' }}
-              className="fixed inset-0 bg-natural-ink z-[105] flex flex-col justify-center items-center gap-12 p-8"
+              className="fixed inset-0 bg-natural-sand z-[105] flex flex-col items-center pt-20 px-8"
             >
-              <nav className="flex flex-col items-center gap-8">
-                <a onClick={() => setIsMenuOpen(false)} href="#" className="text-4xl text-white font-serif italic">Home</a>
-                <a onClick={() => setIsMenuOpen(false)} href="#about" className="text-4xl text-white font-serif italic">Sobre Mim</a>
-                <a onClick={() => setIsMenuOpen(false)} href="#testimonials" className="text-4xl text-white font-serif italic">Relatos</a>
+              <div className="flex gap-5 mb-10 mt-12">
+                <a href="https://instagram.com/psicologo.thiagofigueiro" target="_blank" rel="noopener noreferrer" className="bg-white p-4 rounded-full shadow-lg transition-transform hover:scale-110">
+                  <Instagram size={24} className="text-[#E4405F]" />
+                </a>
+                <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="bg-white p-4 rounded-full shadow-lg transition-transform hover:scale-110">
+                  <MessageCircle size={24} className="text-[#25D366]" />
+                </a>
+              </div>
+
+              <nav className="flex flex-col items-center gap-6">
+                <a onClick={() => setIsMenuOpen(false)} href="#" className="text-3xl text-natural-ink font-serif italic hover:text-olive transition-colors">Home</a>
+                <a onClick={() => setIsMenuOpen(false)} href="#about" className="text-3xl text-natural-ink font-serif italic hover:text-olive transition-colors">Sobre Mim</a>
+                <a onClick={() => setIsMenuOpen(false)} href="#testimonials" className="text-3xl text-natural-ink font-serif italic hover:text-olive transition-colors">Relatos</a>
                 <button 
                   onClick={() => {
                     setIsMenuOpen(false);
                     openScheduling();
                   }} 
-                  className="mt-4 bg-olive text-white px-8 py-4 rounded-full font-sans text-xs uppercase tracking-[0.2em] font-bold flex items-center gap-3"
+                  className="mt-6 bg-olive text-white px-8 py-4 rounded-full font-sans text-xs uppercase tracking-[0.2em] font-bold flex items-center gap-3 shadow-lg shadow-olive/20"
                 >
                   <Calendar size={16} />
                   Agendar Consulta
                 </button>
               </nav>
-              <div className="flex gap-8 mt-4">
-                <a href="https://instagram.com/psicologo.thiagofigueiro" target="_blank" rel="noopener noreferrer" className="bg-white p-6 rounded-full shadow-lg transition-transform hover:scale-110">
-                  <img src="https://cdn.simpleicons.org/instagram/E4405F" className="w-8 h-8" alt="Instagram Logo" />
-                </a>
-                <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="bg-white p-6 rounded-full shadow-lg transition-transform hover:scale-110">
-                  <img src="https://cdn.simpleicons.org/whatsapp/25D366" className="w-8 h-8" alt="WhatsApp Logo" />
-                </a>
-              </div>
             </motion.div>
           )}
         </AnimatePresence>
