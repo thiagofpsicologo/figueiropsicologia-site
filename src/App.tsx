@@ -31,7 +31,7 @@ const SCENES = [
     id: 'identificacao',
     title: '"Ansiedade, excesso de pensamentos, dificuldade de se expressar…"',
     audioText: '',
-    image: 'https://drive.google.com/thumbnail?id=1u2aQsIBEyBbn9BWVfEzzPGxROJwQ4-_3&sz=w1000',
+    image: 'https://images.unsplash.com/photo-1499209974431-9dac3adaf471?auto=format&fit=crop&q=80&w=1080&h=1920',
     accent: 'Reflexão'
   },
   {
@@ -53,7 +53,7 @@ const SCENES = [
     id: 'transformacao',
     title: '"Entenda seus pensamentos. Cuide da sua mente. Viva com mais leveza."',
     audioText: '',
-    image: 'https://drive.google.com/thumbnail?id=1xXM_yXyvLBJIWxk9pVkoduzthNrdM50D&sz=w1000',
+    image: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80&w=1080&h=1920',
     accent: 'Leveza'
   }
 ];
@@ -98,7 +98,7 @@ const Scene: React.FC<SceneProps> = ({ scene, index }) => {
   const imageY = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
 
   return (
-    <div ref={ref} className={`relative h-screen h-[100dvh] w-full flex overflow-hidden ${index === 0 ? 'justify-start items-end pb-32 pl-8 md:pl-16 lg:pl-20 lg:pb-24' : 'justify-center items-center'}`}>
+    <div ref={ref} className={`relative h-screen h-[100dvh] w-full flex overflow-hidden ${index === 0 ? 'justify-start items-end pb-16 pl-8 md:pl-16 lg:pl-20 lg:pb-24' : 'justify-center items-center'}`}>
       <motion.div 
         style={{ opacity, scale, y: imageY }}
         className="absolute inset-0 z-0 h-[120%] top-[-10%]"
@@ -106,10 +106,9 @@ const Scene: React.FC<SceneProps> = ({ scene, index }) => {
         <img 
           src={scene.image} 
           alt={scene.title}
-          className={`w-full h-full object-cover object-[80%_20%] sm:object-[45%_20%] ${index === 0 ? 'grayscale-0 sepia-0 brightness-[0.85]' : 'grayscale-[20%] sepia-[10%] brightness-[0.65]'}`}
+          className="w-full h-full object-cover object-[50%_15%] sm:object-[45%_20%] grayscale-[20%] sepia-[10%] brightness-[0.75]"
           referrerPolicy="no-referrer"
         />
-        <div className={`absolute inset-0 ${index === 0 ? 'bg-black/20' : 'bg-black/50'}`} />
         <div className="absolute inset-0 bg-linear-to-r from-[#1A1A1A]/95 via-[#1A1A1A]/40 to-transparent" />
       </motion.div>
 
@@ -121,12 +120,12 @@ const Scene: React.FC<SceneProps> = ({ scene, index }) => {
           <motion.span 
             initial={index === 0 ? { opacity: 1, x: 0 } : { opacity: 0, y: 10 }}
             animate={index === 0 ? { opacity: 1, x: 0 } : {}}
-            whileInView={index === 0 ? {} : { opacity: 1, y: 0 }}
-            className="block font-sans text-[10px] md:text-xs uppercase tracking-[0.4em] text-white mb-4 font-bold drop-shadow-[0_2px_12px_rgba(0,0,0,1)]"
+            whileInView={index === 0 ? {} : { opacity: 0.9, y: 0 }}
+            className="block font-sans text-[10px] md:text-xs uppercase tracking-[0.4em] text-white mb-4 font-bold drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]"
           >
             {scene.accent}
           </motion.span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl text-white font-serif leading-[1.1] italic drop-shadow-[0_4px_16px_rgba(0,0,0,1)]">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl text-white font-serif leading-[1.1] italic drop-shadow-[0_4px_8px_rgba(0,0,0,0.5)]">
             {scene.title}
           </h2>
         </div>
@@ -361,76 +360,6 @@ export default function App() {
           </motion.div>
         </section>
 
-        {/* Services / Areas of Work Section */}
-        <section id="services" className="py-24 md:py-32 bg-natural-bg relative overflow-hidden">
-          <div className="max-w-6xl mx-auto px-6 md:px-8">
-            <div className="text-center max-w-2xl mx-auto mb-16 md:mb-24 space-y-4">
-              <span className="text-[9px] md:text-[10px] uppercase tracking-[0.3em] text-olive font-bold">O que trabalhamos</span>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif text-natural-ink italic leading-tight">
-                Como posso te ajudar
-              </h2>
-              <div className="w-12 h-[1px] bg-olive/30 mx-auto mt-8" />
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-              {[
-                {
-                  id: "001",
-                  title: "Sofrimento existencial e sentido de vida",
-                  description: "A angústia, o vazio e a falta de direção não são falhas individuais, mas experiências humanas profundas que podem abrir caminhos de reflexão e transformação."
-                },
-                {
-                  id: "002",
-                  title: "Ansiedade, depressão e sofrimento psíquico",
-                  description: "Compreendidos para além do sintoma, considerando as relações sociais, históricas e afetivas que atravessam cada sujeito."
-                },
-                {
-                  id: "003",
-                  title: "Identidade, raça e pertencimento",
-                  description: "Reflexões sobre quem se é em um contexto que muitas vezes invisibiliza, exclui ou silencia determinadas existências."
-                },
-                {
-                  id: "004",
-                  title: "Relações afetivas e vínculos",
-                  description: "Os encontros, desencontros, perdas e dependências que marcam nossa forma de existir com o outro."
-                },
-                {
-                  id: "005",
-                  title: "Corpo, sexualidade e desejo",
-                  description: "Uma escuta ética e sem julgamentos sobre as expressões do corpo, do desejo e das vivências que nem sempre encontram espaço de fala."
-                },
-                {
-                  id: "006",
-                  title: "Crise, ruptura e recomeço",
-                  description: "Momentos de mudança que desorganizam a vida, mas que também podem abrir possibilidades de novos caminhos."
-                }
-              ].map((item, i) => (
-                <motion.div
-                  key={item.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.1, duration: 0.8 }}
-                  whileHover={{ y: -8 }}
-                  className="bg-white p-8 md:p-10 rounded-2xl shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1)] border border-natural-ink/5 hover:border-olive/20 transition-all duration-500 flex flex-col group cursor-default"
-                >
-                  <div className="flex items-center justify-between mb-8">
-                    <span className="text-[10px] md:text-[11px] font-bold tracking-[0.2em] text-olive/40 py-1 px-2 bg-olive/5 rounded-md group-hover:text-olive transition-colors">
-                      {item.id}
-                    </span>
-                    <div className="w-1.5 h-1.5 rounded-full bg-olive opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </div>
-                  <h3 className="text-xl md:text-2xl font-serif text-natural-ink mb-5 leading-snug group-hover:italic group-hover:translate-x-1 transition-all">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm md:text-base text-natural-ink/60 leading-relaxed font-light mt-auto">
-                    {item.description}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* CTA Section */}
         <section id="contact" className="py-20 md:py-40 bg-natural-ink text-natural-bg relative overflow-hidden">
           <div className="absolute top-0 right-0 w-1/2 h-full opacity-5 pointer-events-none">
@@ -534,9 +463,26 @@ export default function App() {
           </a>
         </div>
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 items-center">
-          {/* Column 1: Identity & Social Media */}
-          <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-10">
-            <div className="flex flex-col items-center md:items-start gap-4">
+          {/* Column 1: Social Media */}
+          <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-6">
+            <h4 className="text-[10px] uppercase tracking-[0.3em] font-bold text-olive">Siga-me</h4>
+            <div className="flex gap-6">
+               <a href="https://instagram.com/psicologo.thiagofigueiro" target="_blank" rel="noopener noreferrer" className="text-[#E4405F] hover:scale-110 transition-transform" title="Instagram">
+                <Instagram size={24} />
+              </a>
+              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-transform" title="WhatsApp">
+                <img src="https://cdn.simpleicons.org/whatsapp/25D366" className="w-6 h-6" alt="WhatsApp" />
+              </a>
+            </div>
+          </div>
+
+          {/* Column 2: Impact Phrase + Profile */}
+          <div className="flex flex-col items-center justify-center text-center px-4 space-y-10">
+            <p className="font-serif italic text-2xl md:text-3xl leading-snug text-natural-ink/80 max-w-sm">
+              "Transformar a dor em sentido é o caminho para uma vida mais autêntica e plena."
+            </p>
+            
+            <div className="flex flex-col items-center gap-4">
               <div className="w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden border-2 border-olive/20 cinematic-shadow bg-white flex items-center justify-center">
                 <img 
                   src="https://drive.google.com/thumbnail?id=1WFI6vP05Btf4iz5HoHNcDDVKEGrVv7li&sz=w1000" 
@@ -550,25 +496,6 @@ export default function App() {
                 <p className="text-[10px] md:text-xs uppercase tracking-widest text-olive font-bold">CRP 04/48708</p>
               </div>
             </div>
-
-            <div className="space-y-6">
-              <h4 className="text-[10px] uppercase tracking-[0.3em] font-bold text-olive">Siga-me</h4>
-              <div className="flex gap-6">
-                 <a href="https://instagram.com/psicologo.thiagofigueiro" target="_blank" rel="noopener noreferrer" className="text-[#E4405F] hover:scale-110 transition-transform" title="Instagram">
-                  <Instagram size={24} />
-                </a>
-                <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-transform" title="WhatsApp">
-                  <img src="https://cdn.simpleicons.org/whatsapp/25D366" className="w-6 h-6" alt="WhatsApp" />
-                </a>
-              </div>
-            </div>
-          </div>
-
-          {/* Column 2: Impact Phrase */}
-          <div className="flex flex-col items-center justify-center text-center px-4">
-            <p className="font-serif italic text-2xl md:text-3xl leading-snug text-natural-ink/80 max-w-sm">
-              "Transformar a dor em sentido é o caminho para uma vida mais autêntica e plena."
-            </p>
           </div>
 
           {/* Column 3: Contacts & Links */}
