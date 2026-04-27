@@ -31,7 +31,7 @@ const SCENES = [
     id: 'identificacao',
     title: '"Ansiedade, excesso de pensamentos, dificuldade de se expressar…"',
     audioText: '',
-    image: 'https://images.unsplash.com/photo-1499209974431-9dac3adaf471?auto=format&fit=crop&q=80&w=1080&h=1920',
+    image: 'https://drive.google.com/thumbnail?id=1u2aQsIBEyBbn9BWVfEzzPGxROJwQ4-_3&sz=w1000',
     accent: 'Reflexão'
   },
   {
@@ -106,9 +106,10 @@ const Scene: React.FC<SceneProps> = ({ scene, index }) => {
         <img 
           src={scene.image} 
           alt={scene.title}
-          className="w-full h-full object-cover object-[80%_20%] sm:object-[45%_20%] grayscale-[20%] sepia-[10%] brightness-[0.75]"
+          className="w-full h-full object-cover object-[80%_20%] sm:object-[45%_20%] grayscale-[20%] sepia-[10%] brightness-[0.7]"
           referrerPolicy="no-referrer"
         />
+        <div className="absolute inset-0 bg-black/40" />
         <div className="absolute inset-0 bg-linear-to-r from-[#1A1A1A]/95 via-[#1A1A1A]/40 to-transparent" />
       </motion.div>
 
@@ -121,11 +122,11 @@ const Scene: React.FC<SceneProps> = ({ scene, index }) => {
             initial={index === 0 ? { opacity: 1, x: 0 } : { opacity: 0, y: 10 }}
             animate={index === 0 ? { opacity: 1, x: 0 } : {}}
             whileInView={index === 0 ? {} : { opacity: 0.9, y: 0 }}
-            className="block font-sans text-[10px] md:text-xs uppercase tracking-[0.4em] text-white mb-4 font-bold drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]"
+            className="block font-sans text-[10px] md:text-xs uppercase tracking-[0.4em] text-white mb-4 font-bold drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
           >
             {scene.accent}
           </motion.span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl text-white font-serif leading-[1.1] italic drop-shadow-[0_4px_8px_rgba(0,0,0,0.5)]">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl text-white font-serif leading-[1.1] italic drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]">
             {scene.title}
           </h2>
         </div>
