@@ -534,8 +534,8 @@ export default function App() {
         selectedPlan={selectedPlanModal}
       />
       {/* Navigation */}
-      <nav className={`fixed top-0 left-0 w-full z-[100] px-5 py-4 md:px-8 md:py-6 flex justify-between items-center transition-all duration-500 ${isScrolled ? 'py-3 md:py-4 backdrop-blur-xl bg-white/90 border-b border-olive/10 shadow-sm' : 'py-5 md:py-6'}`}>
-        <a href="#" className={`flex items-center gap-2 md:gap-3 px-3 py-1.5 md:px-4 md:py-2 rounded-full border transition-all group backdrop-blur-md shrink-0 ${isScrolled ? 'bg-white border-olive/10 shadow-sm' : 'bg-white/30 border-white/20'}`}>
+      <nav className={`fixed top-0 left-0 w-full z-[100] p-3 md:p-5 flex justify-between items-center transition-all duration-500 ${isScrolled ? 'py-3 md:py-4' : 'py-5'}`}>
+        <a href="#" className={`flex items-center gap-2 md:gap-3 px-3 py-1.5 md:px-4 md:py-2 rounded-full border transition-all group backdrop-blur-md ${isScrolled ? 'bg-white/80 border-olive/10 shadow-sm' : 'bg-white/30 border-white/20'}`}>
           <div className="w-8 h-8 md:w-9 md:h-9 rounded-full bg-white flex items-center justify-center overflow-hidden shrink-0 group-hover:scale-110 transition-transform shadow-inner">
             <img 
               src="https://drive.google.com/thumbnail?id=10taANe2B2DrYxggYuYrP098CD_pZntCN&sz=w1000" 
@@ -575,10 +575,9 @@ export default function App() {
         {/* Mobile menu button */}
         <button 
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className={`md:hidden w-14 h-14 min-w-[56px] rounded-full border flex items-center justify-center transition-all z-[110] backdrop-blur-md shrink-0 focus:outline-none ${isScrolled ? 'bg-white border-olive/10 text-olive shadow-md' : 'bg-white/30 border-white/20 text-white'}`}
-          aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"}
+          className={`md:hidden w-12 h-12 rounded-full border flex items-center justify-center transition-all z-[110] backdrop-blur-md ${isScrolled ? 'bg-white/80 border-olive/10 text-natural-ink shadow-sm' : 'bg-white/30 border-white/20 text-white'}`}
         >
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
 
         {/* Mobile Menu Overlay */}
@@ -588,32 +587,31 @@ export default function App() {
               initial={{ opacity: 0, x: '100%' }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: '100%' }}
-              className="fixed inset-0 bg-natural-sand z-[105] flex flex-col items-center pt-20 px-8"
+              className="fixed inset-0 bg-natural-ink z-[105] flex flex-col justify-center items-center gap-12 p-8"
             >
-              <div className="flex gap-5 mb-10 mt-12">
-                <a href="https://instagram.com/psicologo.thiagofigueiro" target="_blank" rel="noopener noreferrer" className="bg-white p-4 rounded-full shadow-lg transition-transform hover:scale-110">
-                  <Instagram size={24} className="text-[#E4405F]" />
-                </a>
-                <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="bg-white p-4 rounded-full shadow-lg transition-transform hover:scale-110">
-                  <MessageCircle size={24} className="text-[#25D366]" />
-                </a>
-              </div>
-
-              <nav className="flex flex-col items-center gap-6">
-                <a onClick={() => setIsMenuOpen(false)} href="#" className="text-3xl text-natural-ink font-serif italic hover:text-olive transition-colors">Home</a>
-                <a onClick={() => setIsMenuOpen(false)} href="#about" className="text-3xl text-natural-ink font-serif italic hover:text-olive transition-colors">Sobre Mim</a>
-                <a onClick={() => setIsMenuOpen(false)} href="#testimonials" className="text-3xl text-natural-ink font-serif italic hover:text-olive transition-colors">Relatos</a>
+              <nav className="flex flex-col items-center gap-8">
+                <a onClick={() => setIsMenuOpen(false)} href="#" className="text-4xl text-white font-serif italic">Home</a>
+                <a onClick={() => setIsMenuOpen(false)} href="#about" className="text-4xl text-white font-serif italic">Sobre Mim</a>
+                <a onClick={() => setIsMenuOpen(false)} href="#testimonials" className="text-4xl text-white font-serif italic">Relatos</a>
                 <button 
                   onClick={() => {
                     setIsMenuOpen(false);
                     openScheduling();
                   }} 
-                  className="mt-6 bg-olive text-white px-8 py-4 rounded-full font-sans text-xs uppercase tracking-[0.2em] font-bold flex items-center gap-3 shadow-lg shadow-olive/20"
+                  className="mt-4 bg-olive text-white px-8 py-4 rounded-full font-sans text-xs uppercase tracking-[0.2em] font-bold flex items-center gap-3"
                 >
                   <Calendar size={16} />
                   Agendar Consulta
                 </button>
               </nav>
+              <div className="flex gap-8 mt-4">
+                <a href="https://instagram.com/psicologo.thiagofigueiro" target="_blank" rel="noopener noreferrer" className="bg-white p-6 rounded-full shadow-lg transition-transform hover:scale-110">
+                  <img src="https://cdn.simpleicons.org/instagram/E4405F" className="w-8 h-8" alt="Instagram Logo" />
+                </a>
+                <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="bg-white p-6 rounded-full shadow-lg transition-transform hover:scale-110">
+                  <img src="https://cdn.simpleicons.org/whatsapp/25D366" className="w-8 h-8" alt="WhatsApp Logo" />
+                </a>
+              </div>
             </motion.div>
           )}
         </AnimatePresence>
