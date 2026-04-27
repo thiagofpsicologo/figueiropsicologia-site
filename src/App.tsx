@@ -22,10 +22,10 @@ const WHATSAPP_LINK = `https://wa.me/5531994238535?text=${WHATSAPP_MESSAGE}`;
 const SCENES = [
   {
     id: 'dor',
-    title: 'Como posso te ajudar?',
+    title: 'Thiago Figueiró',
     audioText: 'piano leve e emocional',
     image: 'https://drive.google.com/thumbnail?id=1o0JTapO9ZtBT9LhP1KR3FpS1uF3UP74k&sz=w1000',
-    accent: 'Thiago Figueiró'
+    accent: 'Psicólogo Clínico'
   },
   {
     id: 'identificacao',
@@ -38,14 +38,14 @@ const SCENES = [
     id: 'transicao',
     title: '"Você não precisa lidar com isso sozinho."',
     audioText: '',
-    image: 'https://drive.google.com/thumbnail?id=1SVUT2gzyECAgJSzsfloKOFD7NUXIMQ4-&sz=w1000',
+    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1080&h=1920',
     accent: 'Acolhimento'
   },
   {
     id: 'apresentacao',
     title: 'Psicólogo Thiago Figueiró',
     audioText: '',
-    image: 'https://drive.google.com/thumbnail?id=1tk2EfwEEl___GlgMXBDhGAG6WJAmCSU1&sz=w1000',
+    image: 'https://images.unsplash.com/photo-1556157382-97dee2dcb73c?auto=format&fit=crop&q=80&w=1080&h=1920',
     accent: 'Profissionalismo',
     sideImage: 'https://drive.google.com/thumbnail?id=10nGDSHCmTjRxdAQIpWBe-E5TdHPgWCBB&sz=w1000'
   },
@@ -98,27 +98,19 @@ const Scene: React.FC<SceneProps> = ({ scene, index }) => {
   const imageY = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
 
   return (
-    <div ref={ref} className={`relative h-screen h-[100dvh] w-full flex overflow-hidden ${index === 0 ? 'justify-start items-end pb-24 sm:pb-32 pl-6 sm:pl-8 md:pl-16 lg:pl-20 lg:pb-24' : 'justify-center items-center'}`}>
+    <div ref={ref} className={`relative h-screen h-[100dvh] w-full flex overflow-hidden ${index === 0 ? 'justify-start items-end pb-32 pl-8 md:pl-16 lg:pl-20 lg:pb-24' : 'justify-center items-center'}`}>
       <motion.div 
-        style={{ 
-          opacity, 
-          scale, 
-          y: index === 0 ? 0 : imageY 
-        }}
-        className={`absolute inset-0 z-0 ${index === 0 ? 'h-full top-0' : 'h-[120%] top-[-10%]'} bg-natural-bg`}
+        style={{ opacity, scale, y: imageY }}
+        className="absolute inset-0 z-0 h-[120%] top-[-10%]"
       >
         <img 
           src={scene.image} 
           alt={scene.title}
-          className={`w-full h-full ${index === 0 ? 'object-contain sm:object-cover sm:object-[45%_20%]' : 'object-cover object-[80%_20%] sm:object-[45%_20%]'} ${index === 0 ? 'grayscale-0 sepia-0 brightness-100' : 'grayscale-0 sepia-0 brightness-95'}`}
+          className={`w-full h-full object-cover object-[80%_20%] sm:object-[45%_20%] ${index === 0 ? 'grayscale-0 sepia-0 brightness-[0.85]' : 'grayscale-[20%] sepia-[10%] brightness-[0.65]'}`}
           referrerPolicy="no-referrer"
         />
-        <div className={`absolute inset-0 ${index === 0 ? 'bg-white/10 sm:bg-white/5' : 'bg-white/20'}`} />
-        <div className={`absolute inset-0 bg-linear-to-r from-natural-bg/95 via-natural-bg/30 to-transparent ${index === 0 ? 'hidden sm:block' : 'block'}`} />
-        {/* Mobile specific light gradient for text readability if image is contained */}
-        {index === 0 && (
-          <div className="absolute inset-0 bg-linear-to-t from-natural-bg via-transparent to-transparent sm:hidden" />
-        )}
+        <div className={`absolute inset-0 ${index === 0 ? 'bg-black/20' : 'bg-black/50'}`} />
+        <div className="absolute inset-0 bg-linear-to-r from-[#1A1A1A]/95 via-[#1A1A1A]/40 to-transparent" />
       </motion.div>
 
       <motion.div 
@@ -130,11 +122,11 @@ const Scene: React.FC<SceneProps> = ({ scene, index }) => {
             initial={index === 0 ? { opacity: 1, x: 0 } : { opacity: 0, y: 10 }}
             animate={index === 0 ? { opacity: 1, x: 0 } : {}}
             whileInView={index === 0 ? {} : { opacity: 1, y: 0 }}
-            className="block font-sans text-[10px] md:text-xs uppercase tracking-[0.4em] text-olive mb-4 font-bold"
+            className="block font-sans text-[10px] md:text-xs uppercase tracking-[0.4em] text-white mb-4 font-bold drop-shadow-[0_2px_12px_rgba(0,0,0,1)]"
           >
             {scene.accent}
           </motion.span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl text-natural-ink font-serif leading-[1.1] italic">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl text-white font-serif leading-[1.1] italic drop-shadow-[0_4px_16px_rgba(0,0,0,1)]">
             {scene.title}
           </h2>
         </div>
@@ -166,7 +158,7 @@ const Scene: React.FC<SceneProps> = ({ scene, index }) => {
           style={{ opacity }}
           animate={{ y: [0, 10, 0] }}
           transition={{ repeat: Infinity, duration: 2 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 text-olive/50 flex flex-col items-center gap-2 z-20"
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/50 flex flex-col items-center gap-2 z-20"
         >
           <span className="text-[9px] md:text-[10px] uppercase tracking-widest">Role para iniciar</span>
           <ChevronDown size={24} className="md:w-7 md:h-7" />
@@ -183,7 +175,7 @@ export default function App() {
     <div className="natural-gradient selection:bg-olive selection:text-white min-h-screen transition-colors duration-500">
       {/* Navigation */}
       <nav className="fixed top-0 left-0 w-full z-[100] p-3 md:p-5 flex justify-between items-center transition-all">
-        <a href="#" className="flex items-center gap-2 md:gap-3 bg-white/60 backdrop-blur-md px-3 py-1.5 md:px-4 md:py-2 rounded-full border border-olive/10 hover:bg-white/80 transition-all group">
+        <a href="#" className="flex items-center gap-2 md:gap-3 bg-white/30 backdrop-blur-md px-3 py-1.5 md:px-4 md:py-2 rounded-full border border-white/20 hover:bg-white/40 transition-all group">
           <div className="w-8 h-8 md:w-9 md:h-9 rounded-full bg-white flex items-center justify-center overflow-hidden shrink-0 group-hover:scale-110 transition-transform">
             <img 
               src="https://drive.google.com/thumbnail?id=10taANe2B2DrYxggYuYrP098CD_pZntCN&sz=w1000" 
@@ -192,15 +184,15 @@ export default function App() {
               referrerPolicy="no-referrer"
             />
           </div>
-          <span className="font-serif text-sm md:text-base text-natural-ink font-medium tracking-tight">Thiago Figueiró</span>
+          <span className="font-serif text-sm md:text-base text-white font-medium tracking-tight">Thiago Figueiró</span>
         </a>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex gap-6 lg:gap-8 items-center bg-white/60 backdrop-blur-md px-6 py-2.5 rounded-full border border-olive/10">
-          <a href="#" className="text-xs uppercase tracking-widest text-natural-ink hover:text-olive transition-colors font-sans font-bold">Home</a>
-          <a href="#about" className="text-xs uppercase tracking-widest text-natural-ink hover:text-olive transition-colors font-sans font-bold">Sobre Mim</a>
-          <a href="#testimonials" className="text-xs uppercase tracking-widest text-natural-ink hover:text-olive transition-colors font-sans font-bold">Relatos</a>
-          <div className="w-[1px] h-3 bg-olive/10 mx-1" />
+        <div className="hidden md:flex gap-6 lg:gap-8 items-center bg-white/30 backdrop-blur-md px-6 py-2.5 rounded-full border border-white/20">
+          <a href="#" className="text-xs uppercase tracking-widest text-white hover:text-white/80 transition-colors font-sans font-bold">Home</a>
+          <a href="#about" className="text-xs uppercase tracking-widest text-white hover:text-white/80 transition-colors font-sans font-bold">Sobre Mim</a>
+          <a href="#testimonials" className="text-xs uppercase tracking-widest text-white hover:text-white/80 transition-colors font-sans font-bold">Relatos</a>
+          <div className="w-[1px] h-3 bg-white/20 mx-1" />
           <div className="flex gap-4 items-center">
             <a href="https://instagram.com/psicologo.thiagofigueiro" target="_blank" rel="noopener noreferrer" className="transition-transform hover:scale-110" title="Instagram">
               <img src="https://cdn.simpleicons.org/instagram/E4405F" className="w-4 h-4" alt="Instagram" />
@@ -227,7 +219,7 @@ export default function App() {
         {/* Mobile menu button */}
         <button 
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="md:hidden w-12 h-12 rounded-full bg-white/60 backdrop-blur-md border border-olive/10 flex items-center justify-center text-natural-ink z-[110]"
+          className="md:hidden w-12 h-12 rounded-full bg-white/30 backdrop-blur-md border border-white/20 flex items-center justify-center text-white z-[110]"
         >
           {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
@@ -239,12 +231,12 @@ export default function App() {
               initial={{ opacity: 0, x: '100%' }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: '100%' }}
-              className="fixed inset-0 bg-natural-bg z-[105] flex flex-col justify-center items-center gap-12 p-8"
+              className="fixed inset-0 bg-natural-ink z-[105] flex flex-col justify-center items-center gap-12 p-8"
             >
               <nav className="flex flex-col items-center gap-8">
-                <a onClick={() => setIsMenuOpen(false)} href="#" className="text-4xl text-natural-ink font-serif italic">Home</a>
-                <a onClick={() => setIsMenuOpen(false)} href="#about" className="text-4xl text-natural-ink font-serif italic">Sobre Mim</a>
-                <a onClick={() => setIsMenuOpen(false)} href="#testimonials" className="text-4xl text-natural-ink font-serif italic">Relatos</a>
+                <a onClick={() => setIsMenuOpen(false)} href="#" className="text-4xl text-white font-serif italic">Home</a>
+                <a onClick={() => setIsMenuOpen(false)} href="#about" className="text-4xl text-white font-serif italic">Sobre Mim</a>
+                <a onClick={() => setIsMenuOpen(false)} href="#testimonials" className="text-4xl text-white font-serif italic">Relatos</a>
                 <motion.a 
                   onClick={() => setIsMenuOpen(false)} 
                   href={WHATSAPP_LINK}
@@ -440,9 +432,9 @@ export default function App() {
         </section>
 
         {/* CTA Section */}
-        <section id="contact" className="py-20 md:py-40 bg-olive/5 text-natural-ink relative overflow-hidden">
+        <section id="contact" className="py-20 md:py-40 bg-natural-ink text-natural-bg relative overflow-hidden">
           <div className="absolute top-0 right-0 w-1/2 h-full opacity-5 pointer-events-none">
-             <Sparkles className="w-full h-full text-olive" />
+             <Sparkles className="w-full h-full text-white" />
           </div>
           
           <div className="max-w-4xl mx-auto px-6 md:px-8 text-center relative z-10">
@@ -451,10 +443,10 @@ export default function App() {
               whileInView={{ opacity: 1, y: 0 }}
               className="space-y-8 md:space-y-12"
             >
-              <h2 className="text-5xl md:text-8xl font-serif italic text-natural-ink leading-none tracking-tighter">
+              <h2 className="text-5xl md:text-8xl font-serif italic text-white leading-none tracking-tighter">
                 Vamos conversar?
               </h2>
-              <p className="text-lg md:text-xl text-natural-ink/60 font-light max-w-xl mx-auto leading-relaxed">
+              <p className="text-lg md:text-xl text-white/60 font-light max-w-xl mx-auto leading-relaxed">
                 Dê o primeiro passo para uma vida mais leve. Agende sua consulta presencial ou online hoje mesmo.
               </p>
               
@@ -465,7 +457,7 @@ export default function App() {
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-olive text-white px-8 md:px-12 py-4 md:py-5 rounded-full font-sans text-[10px] md:text-xs uppercase tracking-[0.2em] font-bold flex items-center justify-center gap-3 shadow-xl hover:bg-olive/90 transition-all cursor-pointer w-full sm:w-auto"
+                  className="bg-olive text-white px-8 md:px-12 py-4 md:py-5 rounded-full font-sans text-[10px] md:text-xs uppercase tracking-[0.2em] font-bold flex items-center justify-center gap-3 shadow-2xl hover:bg-olive/90 transition-all cursor-pointer w-full sm:w-auto"
                 >
                   <img src="https://cdn.simpleicons.org/whatsapp/white" className="w-4 h-4 md:w-[18px] md:h-[18px]" alt="WhatsApp" />
                   WhatsApp
@@ -477,7 +469,7 @@ export default function App() {
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-white border border-olive/10 text-olive px-8 md:px-12 py-4 md:py-5 rounded-full font-sans text-[10px] md:text-xs uppercase tracking-[0.2em] hover:bg-olive/5 transition-all flex items-center justify-center gap-3 cursor-pointer w-full sm:w-auto shadow-sm"
+                  className="bg-white/10 backdrop-blur-md border border-white/20 text-white px-8 md:px-12 py-4 md:py-5 rounded-full font-sans text-[10px] md:text-xs uppercase tracking-[0.2em] hover:bg-white/20 transition-all flex items-center justify-center gap-3 cursor-pointer w-full sm:w-auto"
                 >
                   <Calendar size={18} />
                   Ver Horários
