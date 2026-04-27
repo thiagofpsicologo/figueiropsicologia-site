@@ -314,6 +314,20 @@ export default function App() {
               </h2>
             </div>
             
+            <div className="max-w-2xl mx-auto text-left space-y-6 md:space-y-8 py-4">
+              <p className="text-lg md:text-xl text-natural-ink/80 font-light leading-relaxed">
+                Psicólogo clínico formado pela <span className="font-medium text-olive">FUMEC</span>. Desde 2017, acompanho pessoas em seus processos de autoconhecimento, ajudando-as a compreender emoções, romper padrões de sofrimento e construir novas narrativas com mais clareza e leveza.
+              </p>
+              
+              <p className="text-lg md:text-xl text-natural-ink/80 font-light leading-relaxed border-l-2 border-olive/20 pl-6 md:pl-8 italic">
+                Acredito na força da escuta qualificada, no acolhimento e na construção de um espaço seguro, onde cada pessoa possa explorar suas emoções com autenticidade. Minha prática clínica é guiada por uma postura humana, sensível e sem julgamentos, favorecendo clareza, autoconhecimento e transformação.
+              </p>
+
+              <p className="text-lg md:text-xl text-natural-ink/80 font-light leading-relaxed">
+                Trabalho para ajudar você a compreender padrões, ressignificar experiências e desenvolver caminhos mais leves e possíveis para sua história.
+              </p>
+            </div>
+            
             <div className="grid sm:grid-cols-2 gap-4 lg:gap-6 pt-4 text-left">
               <div className="bg-olive-glow olive-border p-6 md:p-8 rounded-3xl space-y-3 md:space-y-4">
                 <Heart className="text-olive w-5 h-5 md:w-6 md:h-6" strokeWidth={1.5} />
