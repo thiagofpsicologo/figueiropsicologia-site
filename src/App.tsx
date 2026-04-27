@@ -636,7 +636,8 @@ export default function App() {
               {[
                 { name: 'Início', href: '#' },
                 { name: 'Sobre Mim', href: '#about' },
-                { name: 'Depoimentos', href: '#testimonials' }
+                { name: 'Depoimentos', href: '#testimonials' },
+                { name: 'Contato', href: '#contact' }
               ].map((link, idx) => (
                 <motion.a 
                   key={link.name}
@@ -1130,7 +1131,7 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <footer className="py-20 md:py-24 px-6 md:px-12 border-t border-natural-ink/5 bg-white/40 backdrop-blur-md">
+      <footer id="contact" className="py-20 md:py-24 px-6 md:px-12 border-t border-natural-ink/5 bg-white/40 backdrop-blur-md">
         <div className="max-w-7xl mx-auto flex flex-col items-center mb-16">
           <a 
             href={WHATSAPP_LINK} 
