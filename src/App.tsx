@@ -220,19 +220,25 @@ function SchedulingModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => 
                   <motion.div 
                     initial={{ scale: 0.5, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
-                    className={`inline-flex items-center justify-center p-6 rounded-full mb-2 ${errorSlot ? 'bg-red-50 text-red-500' : 'bg-olive/10 text-olive'}`}
+                    className={`inline-flex items-center justify-center p-6 rounded-full mb-2 ${errorSlot ? 'bg-red-50 text-red-500 shadow-lg shadow-red-100' : 'bg-olive/10 text-olive shadow-lg shadow-olive/5'}`}
                   >
-                    {errorSlot ? <X size={48} strokeWidth={1} /> : <Calendar size={48} strokeWidth={1} />}
+                    {errorSlot ? <X size={48} strokeWidth={1.5} /> : <Calendar size={48} strokeWidth={1} />}
                   </motion.div>
                   
                   <div className="space-y-2">
                     {errorSlot ? (
-                      <div className="space-y-3">
-                        <p className="text-xl md:text-2xl font-serif text-red-600 font-bold leading-tight">
+                      <motion.div 
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="space-y-3 px-4"
+                      >
+                        <h4 className="text-2xl md:text-3xl font-serif text-red-600 font-bold leading-tight">
                           Esse horário acabou de ficar indisponível.
+                        </h4>
+                        <p className="text-sm md:text-base text-natural-ink/70 max-w-[280px] mx-auto leading-relaxed">
+                          Por favor, escolha outro horário para o seu atendimento.
                         </p>
-                        <p className="text-sm text-natural-ink/60">Por favor, escolha outro horário para o seu atendimento.</p>
-                      </div>
+                      </motion.div>
                     ) : (
                       <>
                         <h4 className="text-lg text-natural-ink/60 font-medium italic">Você escolheu:</h4>
@@ -243,7 +249,7 @@ function SchedulingModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => 
                     )}
                   </div>
 
-                  <div className="flex flex-col gap-3">
+                  <div className="flex flex-col gap-3 px-4">
                     {errorSlot ? (
                       <button
                         onClick={() => setStep('time')}
@@ -611,20 +617,50 @@ export default function App() {
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1 }}
-            className="relative mb-16 max-w-lg w-full"
+            transition={{ duration: 1.2, ease: "easeOut" }}
+            className="relative mb-16 max-w-sm w-full mx-auto"
           >
-            <div className="aspect-[3/4] rounded-[24px] md:rounded-[40px] overflow-hidden cinematic-shadow border-8 md:border-[12px] border-white relative z-10">
+            {/* Architectural Accent Lines */}
+            <motion.div 
+              animate={{ y: [0, 10, 0], opacity: [0.3, 0.6, 0.3] }}
+              transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute -top-6 -right-6 w-24 h-24 border-t border-r border-olive/20 rounded-tr-3xl -z-0" 
+            />
+            <motion.div 
+              animate={{ y: [0, -10, 0], opacity: [0.3, 0.6, 0.3] }}
+              transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+              className="absolute -bottom-6 -left-6 w-24 h-24 border-b border-l border-olive/20 rounded-bl-3xl -z-0" 
+            />
+
+            {/* Offset Background Card */}
+            <div className="absolute inset-0 bg-olive/5 rounded-[48px] rotate-3 -z-10 translate-x-3 translate-y-3" />
+            
+            {/* Main Image Container */}
+            <div className="aspect-[3/4] rounded-[32px] md:rounded-[48px] overflow-hidden cinematic-shadow border-[6px] border-white relative z-10 bg-natural-stone/10 ring-1 ring-olive/5">
               <img 
                 src="https://drive.google.com/thumbnail?id=1tVcHVoHn9pV_CfvuJdn98sLlY3de_Ysh&sz=w1000" 
-                className="w-full h-full object-cover"
-                alt="Thiago Figueiró"
+                className="w-full h-full object-cover transition-transform duration-1000 hover:scale-105"
+                alt="Thiago Figueiró" 
                 referrerPolicy='no-referrer'
               />
             </div>
-            {/* Artistic deco element */}
-            <div className="absolute -bottom-4 -right-4 md:-bottom-8 -right-8 w-32 md:w-40 h-32 md:h-40 bg-olive/10 rounded-full blur-3xl -z-0" />
-            <div className="absolute -top-4 -left-4 md:-top-8 -left-8 w-32 md:w-40 h-32 md:h-40 bg-olive-light/20 rounded-full blur-3xl -z-0" />
+            
+            {/* CRP Badge below photo */}
+            <motion.div 
+              initial={{ y: 20, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.5, duration: 0.8 }}
+              className="mt-10 flex flex-col items-center"
+            >
+              <div className="h-[1px] w-8 bg-olive/30 mb-4" />
+              <div className="px-4 py-1.5 rounded-full bg-olive/5 border border-olive/10">
+                <span className="text-[10px] md:text-xs uppercase tracking-[0.4em] text-olive font-bold">CRP 04/48708</span>
+              </div>
+            </motion.div>
+
+            {/* Subtle Gradient Glows */}
+            <div className="absolute -bottom-16 -right-16 w-64 h-64 bg-olive/5 rounded-full blur-[100px] -z-20" />
+            <div className="absolute -top-16 -left-16 w-64 h-64 bg-olive-light/10 rounded-full blur-[100px] -z-20" />
           </motion.div>
 
           <motion.div 
