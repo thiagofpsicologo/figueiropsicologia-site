@@ -30,7 +30,7 @@ const STANDARD_SLOTS = [
   "08:00", "09:00", "10:00", "11:00", "14:00", "15:00", "16:00", "17:00", "18:00"
 ];
 
-function SchedulingModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
+function SchedulingModal({ isOpen, onClose, selectedPlan }: { isOpen: boolean; onClose: () => void; selectedPlan?: string }) {
   const [selectedDate, setSelectedDate] = useState<string>("");
   const [selectedTime, setSelectedTime] = useState<string>("");
   const [step, setStep] = useState<'date' | 'time' | 'confirm'>('date');
@@ -89,7 +89,8 @@ function SchedulingModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => 
     }
 
     const dateFormatted = new Date(selectedDate + 'T12:00:00').toLocaleDateString('pt-BR');
-    const message = `Olá, Thiago! Gostaria de agendar uma consulta.\n\nData escolhida: ${dateFormatted}\nHorário escolhido: ${selectedTime}\n\nAguardo a confirmação. Obrigado!`;
+    const planInfo = selectedPlan ? `Modalidade: ${selectedPlan}\n` : "";
+    const message = `Olá, Thiago! Gostaria de agendar uma consulta.\n\n${planInfo}Data escolhida: ${dateFormatted}\nHorário escolhido: ${selectedTime}\n\nAguardo a confirmação. Obrigado!`;
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank');
     onClose();
   };
@@ -506,7 +507,13 @@ export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isSchedulingOpen, setIsSchedulingOpen] = useState(false);
+  const [selectedPlanModal, setSelectedPlanModal] = useState<string | undefined>(undefined);
   const [showAllTestimonials, setShowAllTestimonials] = useState(false);
+
+  const openScheduling = (plan?: string) => {
+    setSelectedPlanModal(plan);
+    setIsSchedulingOpen(true);
+  };
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -520,7 +527,11 @@ export default function App() {
     <div className="natural-gradient selection:bg-olive selection:text-white min-h-screen transition-colors duration-500">
       <SchedulingModal 
         isOpen={isSchedulingOpen} 
-        onClose={() => setIsSchedulingOpen(false)} 
+        onClose={() => {
+          setIsSchedulingOpen(false);
+          setSelectedPlanModal(undefined);
+        }} 
+        selectedPlan={selectedPlanModal}
       />
       {/* Navigation */}
       <nav className={`fixed top-0 left-0 w-full z-[100] p-3 md:p-5 flex justify-between items-center transition-all duration-500 ${isScrolled ? 'py-3 md:py-4' : 'py-5'}`}>
@@ -554,7 +565,7 @@ export default function App() {
 
         {/* Desktop Agendar Button */}
         <button
-          onClick={() => setIsSchedulingOpen(true)}
+          onClick={() => openScheduling()}
           className={`hidden md:flex items-center gap-2 px-6 py-2.5 rounded-full shadow-xl transition-all font-sans text-xs uppercase tracking-widest font-bold ${isScrolled ? 'bg-olive text-white shadow-olive/20' : 'bg-olive text-white shadow-olive/20'}`}
         >
           <Calendar size={14} />
@@ -585,7 +596,7 @@ export default function App() {
                 <button 
                   onClick={() => {
                     setIsMenuOpen(false);
-                    setIsSchedulingOpen(true);
+                    openScheduling();
                   }} 
                   className="mt-4 bg-olive text-white px-8 py-4 rounded-full font-sans text-xs uppercase tracking-[0.2em] font-bold flex items-center gap-3"
                 >
@@ -813,7 +824,7 @@ export default function App() {
                   <p className="text-3xl font-serif text-natural-ink mt-1">R$ 120 <span className="text-sm italic font-light opacity-60">por sessão</span></p>
                 </div>
                 <button
-                  onClick={() => setIsSchedulingOpen(true)}
+                  onClick={() => openScheduling('Atendimento Pontual')}
                   className="w-full py-4 rounded-2xl border border-olive text-olive font-sans text-xs uppercase tracking-[0.2em] font-bold hover:bg-olive hover:text-white transition-all transform active:scale-95"
                 >
                   Agendar sessão
@@ -866,7 +877,7 @@ export default function App() {
                   <p className="text-3xl font-serif text-white mt-1">R$ 400 <span className="text-sm italic font-light opacity-60">por mês</span></p>
                 </div>
                 <button
-                  onClick={() => setIsSchedulingOpen(true)}
+                  onClick={() => openScheduling('Psicoterapia Semanal')}
                   className="w-full py-4 rounded-2xl bg-olive text-white font-sans text-xs uppercase tracking-[0.2em] font-bold shadow-xl shadow-olive/20 hover:scale-[1.02] active:scale-[0.98] transition-all"
                 >
                   Começar acompanhamento
@@ -914,7 +925,7 @@ export default function App() {
                   <p className="text-3xl font-serif text-natural-ink mt-1">R$ 250 <span className="text-sm italic font-light opacity-60">por mês</span></p>
                 </div>
                 <button
-                  onClick={() => setIsSchedulingOpen(true)}
+                  onClick={() => openScheduling('Psicoterapia Quinzenal')}
                   className="w-full py-4 rounded-2xl border border-olive text-olive font-sans text-xs uppercase tracking-[0.2em] font-bold hover:bg-olive hover:text-white transition-all transform active:scale-95"
                 >
                   Começar quinzenal
@@ -957,7 +968,7 @@ export default function App() {
                 </motion.a>
                 
                 <button 
-                  onClick={() => setIsSchedulingOpen(true)}
+                  onClick={() => openScheduling()}
                   className="bg-white/10 backdrop-blur-md border border-white/20 text-white px-8 md:px-12 py-4 md:py-5 rounded-full font-sans text-[10px] md:text-xs uppercase tracking-[0.2em] hover:bg-white/20 transition-all flex items-center justify-center gap-3 cursor-pointer w-full sm:w-auto"
                 >
                   <Calendar size={18} />
@@ -1161,7 +1172,7 @@ export default function App() {
       <div className="fixed bottom-6 right-6 z-[100] flex flex-col gap-4 items-end">
         {/* Floating Scheduling Button (WhatsApp secondary) */}
         <motion.button 
-          onClick={() => setIsSchedulingOpen(true)}
+          onClick={() => openScheduling()}
           className="bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform flex items-center justify-center group"
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
