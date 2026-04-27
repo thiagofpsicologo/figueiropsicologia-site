@@ -106,10 +106,10 @@ const Scene: React.FC<SceneProps> = ({ scene, index }) => {
         <img 
           src={scene.image} 
           alt={scene.title}
-          className="w-full h-full object-cover object-[80%_20%] sm:object-[45%_20%] grayscale-[20%] sepia-[10%] brightness-[0.65]"
+          className={`w-full h-full object-cover object-[80%_20%] sm:object-[45%_20%] ${index === 0 ? 'grayscale-0 sepia-0 brightness-[0.85]' : 'grayscale-[20%] sepia-[10%] brightness-[0.65]'}`}
           referrerPolicy="no-referrer"
         />
-        <div className="absolute inset-0 bg-black/50" />
+        <div className={`absolute inset-0 ${index === 0 ? 'bg-black/20' : 'bg-black/50'}`} />
         <div className="absolute inset-0 bg-linear-to-r from-[#1A1A1A]/95 via-[#1A1A1A]/40 to-transparent" />
       </motion.div>
 
