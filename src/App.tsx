@@ -516,6 +516,17 @@ export default function App() {
   };
 
   React.useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMenuOpen]);
+
+  React.useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
@@ -533,10 +544,23 @@ export default function App() {
         }} 
         selectedPlan={selectedPlanModal}
       />
-      {/* Navigation */}
-      <nav className={`fixed top-0 left-0 w-full z-[100] px-4 md:px-8 py-3 md:py-5 flex flex-row justify-between items-center transition-all duration-500 ${isScrolled ? 'py-2 md:py-3 shadow-md bg-white/90 backdrop-blur-xl' : 'py-3'}`}>
-        <a href="#" className={`flex items-center gap-1.5 md:gap-3 px-2.5 py-1.5 md:px-4 md:py-2 rounded-full border transition-all group backdrop-blur-md shrink-0 max-w-[75%] ${isScrolled ? 'bg-white border-olive/10 shadow-sm' : 'bg-white/40 border-white/30'}`}>
-          <div className="w-6.5 h-6.5 md:w-7 md:h-7 rounded-full bg-white flex items-center justify-center overflow-hidden shrink-0 group-hover:scale-110 transition-transform shadow-inner">
+      <nav className={`fixed top-0 left-0 w-full z-[100] px-4 md:px-12 py-3 md:py-6 flex flex-row justify-between items-center transition-all duration-500 ${isScrolled ? 'bg-white/95 backdrop-blur-md shadow-md border-b border-olive/5 py-2 md:py-4' : 'bg-transparent py-4'}`}>
+        
+        {/* Mobile menu button (Left) */}
+        <button 
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          className={`md:hidden shrink-0 w-11 h-11 rounded-full border flex items-center justify-center transition-all z-[120] backdrop-blur-md ${isMenuOpen ? 'bg-white/10 border-white/20 text-white' : (isScrolled ? 'bg-white border-olive/10 text-olive shadow-sm' : 'bg-white/40 border-white/30 text-white')}`}
+          aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"}
+        >
+          {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
+        </button>
+
+        {/* Branding (Right on mobile, Left on desktop) */}
+        <a 
+          href="#" 
+          className={`flex items-center gap-2 md:gap-3 px-3 py-2 md:px-5 md:py-2.5 rounded-full border transition-all group backdrop-blur-md shrink-0 max-w-[80%] hover:scale-102 active:scale-95 ${isScrolled ? 'bg-white border-olive/10 shadow-sm' : 'bg-white/40 border-white/30'}`}
+        >
+          <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-white flex items-center justify-center overflow-hidden shrink-0 group-hover:scale-110 transition-transform shadow-inner border border-olive/5">
             <img 
               src="https://drive.google.com/thumbnail?id=10taANe2B2DrYxggYuYrP098CD_pZntCN&sz=w1000" 
               alt="Logo Thiago Figueiró" 
@@ -544,9 +568,9 @@ export default function App() {
               referrerPolicy="no-referrer"
             />
           </div>
-          <span className={`font-serif text-[11px] md:text-sm font-medium tracking-tight transition-colors truncate ${isScrolled ? 'text-natural-ink' : 'text-white'}`}>Thiago Figueiró</span>
+          <span className={`font-serif text-[13px] md:text-base font-medium tracking-tight transition-colors truncate ${isScrolled ? 'text-natural-ink' : 'text-white'}`}>Thiago Figueiró</span>
         </a>
-
+ 
         {/* Desktop Menu */}
         <div className={`hidden md:flex gap-6 lg:gap-8 items-center px-6 py-2.5 rounded-full border transition-all backdrop-blur-md ${isScrolled ? 'bg-white/80 border-olive/10 shadow-sm' : 'bg-white/30 border-white/20'}`}>
           <a href="#" className={`text-xs uppercase tracking-widest transition-colors font-sans font-bold ${isScrolled ? 'text-natural-ink/70 hover:text-olive' : 'text-white hover:text-white/80'}`}>Home</a>
@@ -566,56 +590,82 @@ export default function App() {
         {/* Desktop Agendar Button */}
         <button
           onClick={() => openScheduling()}
-          className={`hidden md:flex items-center gap-2 px-6 py-2.5 rounded-full shadow-xl transition-all font-sans text-xs uppercase tracking-widest font-bold ${isScrolled ? 'bg-olive text-white shadow-olive/20' : 'bg-olive text-white shadow-olive/20'}`}
+          className={`hidden md:flex items-center gap-2 px-6 py-2.5 rounded-full shadow-xl transition-all font-sans text-xs uppercase tracking-widest font-bold ${isScrolled ? 'bg-olive text-white shadow-olive/20 hover:bg-natural-ink' : 'bg-olive text-white shadow-olive/20 hover:bg-white hover:text-olive'}`}
         >
           <Calendar size={14} />
           Agendar Consulta
         </button>
-
-        {/* Mobile menu button */}
-        <button 
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className={`md:hidden w-11 h-11 rounded-full border flex items-center justify-center transition-all z-[110] backdrop-blur-md ${isScrolled ? 'bg-white border-olive/10 text-olive shadow-md' : 'bg-white/60 border-white/40 text-white'}`}
-        >
-          {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
-        </button>
-
-        {/* Mobile Menu Overlay */}
-        <AnimatePresence>
-          {isMenuOpen && (
-            <motion.div 
-              initial={{ opacity: 0, x: '100%' }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: '100%' }}
-              className="fixed inset-0 bg-natural-ink z-[105] flex flex-col justify-center items-center gap-12 p-8"
-            >
-              <nav className="flex flex-col items-center gap-8">
-                <a onClick={() => setIsMenuOpen(false)} href="#" className="text-4xl text-white font-serif italic">Home</a>
-                <a onClick={() => setIsMenuOpen(false)} href="#about" className="text-4xl text-white font-serif italic">Sobre Mim</a>
-                <a onClick={() => setIsMenuOpen(false)} href="#testimonials" className="text-4xl text-white font-serif italic">Relatos</a>
-                <button 
-                  onClick={() => {
-                    setIsMenuOpen(false);
-                    openScheduling();
-                  }} 
-                  className="mt-4 bg-olive text-white px-8 py-4 rounded-full font-sans text-xs uppercase tracking-[0.2em] font-bold flex items-center gap-3"
-                >
-                  <Calendar size={16} />
-                  Agendar Consulta
-                </button>
-              </nav>
-              <div className="flex gap-8 mt-4">
-                <a href="https://instagram.com/psicologo.thiagofigueiro" target="_blank" rel="noopener noreferrer" className="bg-white p-6 rounded-full shadow-lg transition-transform hover:scale-110">
-                  <img src="https://cdn.simpleicons.org/instagram/E4405F" className="w-8 h-8" alt="Instagram Logo" />
-                </a>
-                <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="bg-white p-6 rounded-full shadow-lg transition-transform hover:scale-110">
-                  <img src="https://cdn.simpleicons.org/whatsapp/25D366" className="w-8 h-8" alt="WhatsApp Logo" />
-                </a>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </nav>
+
+      {/* Mobile Menu Overlay - Moved outside nav for perfect fixed alignment */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div 
+            initial={{ opacity: 0, scale: 1.1 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 1.1 }}
+            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            className="fixed inset-0 bg-natural-ink/98 z-[115] md:hidden flex flex-col justify-center items-center p-8 overflow-hidden"
+          >
+            {/* Background Texture for Menu */}
+            <div className="absolute inset-0 opacity-10 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/linen.png')] mix-blend-overlay" />
+            
+            <nav className="flex flex-col items-center gap-10 relative z-10 w-full max-w-xs">
+              {[
+                { name: 'Home', href: '#' },
+                { name: 'Sobre Mim', href: '#about' },
+                { name: 'Relatos', href: '#testimonials' }
+              ].map((link, idx) => (
+                <motion.a 
+                  key={link.name}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: idx * 0.1 + 0.2 }}
+                  onClick={() => setIsMenuOpen(false)} 
+                  href={link.href} 
+                  className="text-4xl text-white font-serif italic hover:text-olive transition-all tracking-tight"
+                >
+                  {link.name}
+                </motion.a>
+              ))}
+              
+              <motion.button 
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  openScheduling();
+                }} 
+                className="mt-6 w-full bg-olive text-white px-8 py-5 rounded-full font-sans text-xs uppercase tracking-[0.25em] font-bold flex items-center justify-center gap-3 shadow-2xl active:scale-95 hover:bg-white hover:text-olive transition-all"
+              >
+                <Calendar size={18} />
+                Agendar Consulta
+              </motion.button>
+            </nav>
+
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+              className="flex gap-10 mt-16 relative z-10"
+            >
+              <a href="https://instagram.com/psicologo.thiagofigueiro" target="_blank" rel="noopener noreferrer" className="bg-white/10 p-6 rounded-full shadow-lg transition-all hover:scale-110 active:scale-90 border border-white/10 group">
+                <img src="https://cdn.simpleicons.org/instagram/white" className="w-8 h-8 group-hover:scale-110 transition-transform" alt="Instagram Logo" />
+              </a>
+              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="bg-white/10 p-6 rounded-full shadow-lg transition-all hover:scale-110 active:scale-90 border border-white/10 group">
+                <img src="https://cdn.simpleicons.org/whatsapp/white" className="w-8 h-8 group-hover:scale-110 transition-transform" alt="WhatsApp Logo" />
+              </a>
+            </motion.div>
+
+            {/* Bottom Accent */}
+            <div className="absolute bottom-12 text-white/20 font-serif italic text-sm tracking-widest">
+              Thiago Figueiró
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
 
       {/* Cinematic Storytelling Sections */}
       <main className="relative">
@@ -1169,17 +1219,17 @@ export default function App() {
       </footer>
 
       {/* Floating Buttons Group */}
-      <div className="fixed bottom-6 right-6 md:right-12 z-[100] flex flex-col gap-4 items-end">
+      <div className="fixed bottom-6 right-5 md:right-8 lg:right-12 z-[100] flex flex-col gap-4 items-end pointer-events-none">
         {/* Floating Scheduling Button (WhatsApp secondary) */}
         <motion.button 
           onClick={() => openScheduling()}
-          className="bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform flex items-center justify-center group"
-          initial={{ scale: 0, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
+          className="bg-[#25D366] text-white p-3.5 md:p-4 rounded-full shadow-2xl hover:scale-110 transition-transform flex items-center justify-center group pointer-events-auto ring-4 ring-white/30 backdrop-blur-md"
+          initial={{ scale: 0, opacity: 0, y: 50 }}
+          animate={{ scale: 1, opacity: 1, y: 0 }}
           whileHover={{ y: -5 }}
           title="Ver horários"
         >
-          <img src="https://cdn.simpleicons.org/whatsapp/white" className="w-7 h-7 md:w-8 md:h-8" alt="WhatsApp" />
+          <img src="https://cdn.simpleicons.org/whatsapp/white" className="w-6.5 h-6.5 md:w-8 md:h-8" alt="WhatsApp" />
           <span className="max-w-0 overflow-hidden group-hover:max-w-xs group-hover:ml-2 transition-all duration-500 whitespace-nowrap text-sm font-bold">
             Agendar Consulta
           </span>
