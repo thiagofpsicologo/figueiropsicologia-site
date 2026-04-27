@@ -534,7 +534,7 @@ export default function App() {
         selectedPlan={selectedPlanModal}
       />
       {/* Navigation */}
-      <nav className={`fixed top-0 left-0 w-full z-[100] px-8 py-3 md:px-8 md:py-5 flex flex-row-reverse md:flex-row justify-between items-center transition-all duration-500 ${isScrolled ? 'py-2 md:py-3' : 'py-3'}`}>
+      <nav className={`fixed top-0 left-0 w-full z-[100] px-8 py-3 md:px-8 md:py-5 flex flex-row md:flex-row justify-between items-center transition-all duration-500 ${isScrolled ? 'py-2 md:py-3' : 'py-3'}`}>
         <a href="#" className={`flex items-center gap-1.5 md:gap-3 px-2 py-1 md:px-4 md:py-2 rounded-full border transition-all group backdrop-blur-md ${isScrolled ? 'bg-white border-olive/10 shadow-sm' : 'bg-white/40 border-white/30'}`}>
           <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-white flex items-center justify-center overflow-hidden shrink-0 group-hover:scale-110 transition-transform shadow-inner">
             <img 
