@@ -500,6 +500,7 @@ export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isSchedulingOpen, setIsSchedulingOpen] = useState(false);
+  const [showAllTestimonials, setShowAllTestimonials] = useState(false);
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -771,8 +772,8 @@ export default function App() {
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif">O que dizem os pacientes</h2>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {TESTIMONIALS.map((t, i) => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 transition-all duration-500">
+            {TESTIMONIALS.slice(0, showAllTestimonials ? TESTIMONIALS.length : 4).map((t, i) => (
               <motion.div
                 key={t.name}
                 initial={{ opacity: 0, y: 30 }}
@@ -817,6 +818,31 @@ export default function App() {
               </motion.div>
             ))}
           </div>
+
+          <motion.div 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="flex justify-center mt-12 md:mt-16"
+          >
+            <button
+              onClick={() => setShowAllTestimonials(!showAllTestimonials)}
+              className="group flex flex-col items-center gap-3 transition-all active:scale-95"
+            >
+              <div className="px-8 py-3 rounded-full border border-olive/20 text-olive font-sans text-xs uppercase tracking-[0.2em] font-bold hover:bg-olive hover:text-white transition-all cinematic-shadow bg-white/50 backdrop-blur-sm">
+                {showAllTestimonials ? 'Ver menos relatos' : 'Ver mais relatos'}
+              </div>
+              <motion.div
+                animate={{ y: showAllTestimonials ? -4 : 4 }}
+                transition={{ repeat: Infinity, duration: 1.5, repeatType: "reverse" }}
+              >
+                <ChevronDown 
+                  className={`text-olive/40 transition-transform duration-500 ${showAllTestimonials ? 'rotate-180' : ''}`} 
+                  size={24} 
+                />
+              </motion.div>
+            </button>
+          </motion.div>
         </section>
       </main>
 
