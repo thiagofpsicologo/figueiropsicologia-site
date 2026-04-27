@@ -773,6 +773,20 @@ export default function App() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 items-center">
           {/* Column 1: Social Media */}
           <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-6">
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center overflow-hidden shrink-0 shadow-sm border border-olive/10">
+                <img 
+                  src="https://drive.google.com/thumbnail?id=10taANe2B2DrYxggYuYrP098CD_pZntCN&sz=w1000" 
+                  alt="Logo Thiago Figueiró" 
+                  className="w-full h-full object-cover"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+              <div className="text-left">
+                <span className="block font-serif text-lg font-medium tracking-tight text-natural-ink">Thiago Figueiró</span>
+                <span className="block text-[9px] uppercase tracking-widest text-olive font-bold">CRP 04/48708</span>
+              </div>
+            </div>
             <h4 className="text-[10px] uppercase tracking-[0.3em] font-bold text-olive">Siga-me</h4>
             <div className="flex gap-6">
                <a href="https://instagram.com/psicologo.thiagofigueiro" target="_blank" rel="noopener noreferrer" className="text-[#E4405F] hover:scale-110 transition-transform" title="Instagram">
@@ -800,7 +814,6 @@ export default function App() {
                 />
               </div>
               <div className="space-y-1">
-                <h3 className="font-serif text-2xl md:text-3xl text-natural-ink">Thiago Figueiró</h3>
                 <p className="text-[10px] md:text-xs uppercase tracking-widest text-olive font-bold">CRP 04/48708</p>
               </div>
             </div>
