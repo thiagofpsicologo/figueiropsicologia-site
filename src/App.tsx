@@ -564,9 +564,10 @@ export default function App() {
  
         {/* Desktop Menu */}
         <div className={`hidden md:flex gap-6 lg:gap-8 items-center px-6 py-2.5 rounded-full border transition-all backdrop-blur-md ${isScrolled ? 'bg-white/80 border-olive/10 shadow-sm' : 'bg-white/30 border-white/20'}`}>
-          <a href="#" className={`text-xs uppercase tracking-widest transition-colors font-sans font-bold ${isScrolled ? 'text-natural-ink/70 hover:text-olive' : 'text-white hover:text-white/80'}`}>Home</a>
-          <a href="#about" className={`text-xs uppercase tracking-widest transition-colors font-sans font-bold ${isScrolled ? 'text-natural-ink/70 hover:text-olive' : 'text-white hover:text-white/80'}`}>Sobre Mim</a>
-          <a href="#testimonials" className={`text-xs uppercase tracking-widest transition-colors font-sans font-bold ${isScrolled ? 'text-natural-ink/70 hover:text-olive' : 'text-white hover:text-white/80'}`}>Depoimentos</a>
+          <a href="#" className={`text-xs transition-colors font-sans font-bold ${isScrolled ? 'text-natural-ink/70 hover:text-olive' : 'text-white hover:text-white/80'}`}>Início</a>
+          <a href="#about" className={`text-xs transition-colors font-sans font-bold ${isScrolled ? 'text-natural-ink/70 hover:text-olive' : 'text-white hover:text-white/80'}`}>Sobre Mim</a>
+          <a href="#testimonials" className={`text-xs transition-colors font-sans font-bold ${isScrolled ? 'text-natural-ink/70 hover:text-olive' : 'text-white hover:text-white/80'}`}>Depoimentos</a>
+          <a href="#contact" className={`text-xs transition-colors font-sans font-bold ${isScrolled ? 'text-natural-ink/70 hover:text-olive' : 'text-white hover:text-white/80'}`}>Contato</a>
           <div className={`w-[1px] h-3 mx-1 transition-colors ${isScrolled ? 'bg-olive/20' : 'bg-white/20'}`} />
           <div className="flex gap-4 items-center">
             <a href="https://instagram.com/psicologo.thiagofigueiro" target="_blank" rel="noopener noreferrer" className="transition-transform hover:scale-110" title="Instagram">
@@ -1223,7 +1224,7 @@ export default function App() {
             <div className="space-y-6 text-center md:text-left">
               <h4 className="text-[10px] uppercase tracking-[0.3em] font-bold text-olive">Navegação</h4>
               <div className="flex flex-col gap-3 text-sm font-sans text-natural-ink/70">
-                <a href="#" className="hover:text-olive transition-colors">Home</a>
+                <a href="#" className="hover:text-olive transition-colors">Início</a>
                 <a href="#about" className="hover:text-olive transition-colors">Sobre Mim</a>
                 <a href="#testimonials" className="hover:text-olive transition-colors">Depoimentos</a>
               </div>
