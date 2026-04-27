@@ -757,6 +757,173 @@ export default function App() {
           </motion.div>
         </section>
 
+        {/* Formas de Atendimento Section */}
+        <section id="services" className="py-20 md:py-40 px-6 md:px-8 max-w-7xl mx-auto">
+          <div className="text-center max-w-3xl mx-auto mb-16 md:mb-24 space-y-6">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="space-y-4"
+            >
+              <span className="text-[9px] md:text-[10px] uppercase tracking-[0.3em] text-olive font-bold">Planos e Formatos</span>
+              <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif text-natural-ink">Formas de atendimento</h2>
+              <p className="text-lg md:text-xl text-natural-ink/60 font-light leading-relaxed">
+                Cada pessoa tem um momento diferente. Escolha o formato que faz mais sentido para você — e, se preferir, podemos conversar antes de decidir.
+              </p>
+            </motion.div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+            {/* CARD 1: Atendimento pontual */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -10 }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="bg-white/50 backdrop-blur-sm border border-olive/10 p-8 md:p-12 rounded-[40px] flex flex-col justify-between cinematic-shadow group h-full transition-all hover:bg-white"
+            >
+              <div className="space-y-6">
+                <div className="space-y-2">
+                  <h3 className="text-2xl md:text-3xl font-serif text-natural-ink">Atendimento pontual</h3>
+                  <div className="h-[1px] w-12 bg-olive/20" />
+                </div>
+                <p className="text-sm md:text-base text-natural-ink/70 leading-relaxed min-h-[100px]">
+                  Indicado para quem precisa conversar sobre uma situação específica, tomar uma decisão ou lidar com um momento mais urgente. Um espaço de escuta, acolhimento e direcionamento.
+                </p>
+                <div className="space-y-4 pt-4">
+                  <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-olive font-bold">
+                    <Sparkles size={14} className="opacity-40" />
+                    <span>⏱ 50 minutos</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-olive font-bold">
+                    <Sparkles size={14} className="opacity-40" />
+                    <span>📅 Sessão avulsa</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-olive font-bold">
+                    <Sparkles size={14} className="opacity-40" />
+                    <span>🌐 Online</span>
+                  </div>
+                </div>
+              </div>
+              <div className="mt-12 space-y-6">
+                <div className="text-center">
+                  <span className="text-sm text-natural-ink/40 font-medium">Valor por sessão</span>
+                  <p className="text-3xl font-serif text-natural-ink mt-1">R$ 120 <span className="text-sm italic font-light opacity-60">por sessão</span></p>
+                </div>
+                <button
+                  onClick={() => setIsSchedulingOpen(true)}
+                  className="w-full py-4 rounded-2xl border border-olive text-olive font-sans text-xs uppercase tracking-[0.2em] font-bold hover:bg-olive hover:text-white transition-all transform active:scale-95"
+                >
+                  Agendar sessão
+                </button>
+              </div>
+            </motion.div>
+
+            {/* CARD 2: Psicoterapia semanal (DESTAQUE) */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -10 }}
+              transition={{ duration: 0.8 }}
+              className="bg-natural-ink text-white p-8 md:p-12 rounded-[40px] flex flex-col justify-between cinematic-shadow relative overflow-hidden h-full z-10"
+            >
+              <div className="space-y-6">
+                <div className="space-y-4">
+                  <div className="inline-block">
+                    <span className="bg-olive/20 backdrop-blur-md border border-olive/30 text-olive-light px-4 py-1 rounded-full text-[10px] uppercase tracking-widest font-bold">
+                      Mais escolhido
+                    </span>
+                  </div>
+                  <div className="space-y-2">
+                    <h3 className="text-2xl md:text-3xl font-serif">Psicoterapia semanal</h3>
+                    <div className="h-[1px] w-12 bg-white/20" />
+                  </div>
+                </div>
+                <p className="text-sm md:text-base text-white/70 leading-relaxed min-h-[100px]">
+                  Para quem deseja se aprofundar no processo terapêutico. O acompanhamento semanal permite trabalhar com mais continuidade, favorecendo mudanças mais consistentes ao longo do tempo.
+                </p>
+                <div className="space-y-4 pt-4">
+                  <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-white/90 font-bold">
+                    <Sparkles size={14} className="opacity-40" />
+                    <span>⏱ 50 min / sessão</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-white/90 font-bold">
+                    <Sparkles size={14} className="opacity-40" />
+                    <span>📅 1 sessão / semana</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-white/90 font-bold">
+                    <Sparkles size={14} className="opacity-40" />
+                    <span>🌐 Online</span>
+                  </div>
+                </div>
+              </div>
+              <div className="mt-12 space-y-6">
+                <div className="text-center">
+                  <span className="text-sm text-white/40 font-medium font-sans">Valor mensal</span>
+                  <p className="text-3xl font-serif text-white mt-1">R$ 400 <span className="text-sm italic font-light opacity-60">por mês</span></p>
+                </div>
+                <button
+                  onClick={() => setIsSchedulingOpen(true)}
+                  className="w-full py-4 rounded-2xl bg-olive text-white font-sans text-xs uppercase tracking-[0.2em] font-bold shadow-xl shadow-olive/20 hover:scale-[1.02] active:scale-[0.98] transition-all"
+                >
+                  Começar acompanhamento
+                </button>
+              </div>
+              {/* Artistic element */}
+              <div className="absolute -bottom-12 -right-12 w-32 h-32 bg-olive/10 rounded-full blur-3xl -z-10" />
+            </motion.div>
+
+            {/* CARD 3: Psicoterapia quinzenal */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -10 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="bg-white/50 backdrop-blur-sm border border-olive/10 p-8 md:p-12 rounded-[40px] flex flex-col justify-between cinematic-shadow group h-full transition-all hover:bg-white"
+            >
+              <div className="space-y-6">
+                <div className="space-y-2">
+                  <h3 className="text-2xl md:text-3xl font-serif text-natural-ink">Psicoterapia quinzenal</h3>
+                  <div className="h-[1px] w-12 bg-olive/20" />
+                </div>
+                <p className="text-sm md:text-base text-natural-ink/70 leading-relaxed min-h-[100px]">
+                  Uma opção para quem prefere um ritmo mais leve ou está em um momento de manutenção do processo terapêutico.
+                </p>
+                <div className="space-y-4 pt-4">
+                  <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-olive font-bold">
+                    <Sparkles size={14} className="opacity-40" />
+                    <span>⏱ 50 min / sessão</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-olive font-bold">
+                    <Sparkles size={14} className="opacity-40" />
+                    <span>📅 2 sessões / mês</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-olive font-bold">
+                    <Sparkles size={14} className="opacity-40" />
+                    <span>🌐 Online</span>
+                  </div>
+                </div>
+              </div>
+              <div className="mt-12 space-y-6">
+                <div className="text-center">
+                  <span className="text-sm text-natural-ink/40 font-medium">Valor mensal</span>
+                  <p className="text-3xl font-serif text-natural-ink mt-1">R$ 250 <span className="text-sm italic font-light opacity-60">por mês</span></p>
+                </div>
+                <button
+                  onClick={() => setIsSchedulingOpen(true)}
+                  className="w-full py-4 rounded-2xl border border-olive text-olive font-sans text-xs uppercase tracking-[0.2em] font-bold hover:bg-olive hover:text-white transition-all transform active:scale-95"
+                >
+                  Começar quinzenal
+                </button>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
         {/* CTA Section */}
         <section id="contact" className="py-20 md:py-40 bg-natural-ink text-natural-bg relative overflow-hidden">
           <div className="absolute top-0 right-0 w-1/2 h-full opacity-5 pointer-events-none">
