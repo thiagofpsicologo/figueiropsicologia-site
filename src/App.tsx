@@ -5,7 +5,7 @@
 
 import React, { useRef, useState } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
-import { Calendar, MessageCircle, ChevronDown, Sparkles, Heart, Shield, Instagram, Linkedin, Menu, X, Mail, MapPin, Phone, GraduationCap, Award, Briefcase, Brain, Sprout, MessageSquare, Puzzle, Users, Smile, Search, Wind, Lock, Compass } from 'lucide-react';
+import { Calendar, MessageCircle, ChevronDown, Sparkles, Heart, Shield, Instagram, Linkedin, Menu, X, Mail, MapPin, Phone, GraduationCap, Award, Briefcase } from 'lucide-react';
 
 // SCENE DATA based on the prompt provided by the user
 const WHATSAPP_MESSAGE = encodeURIComponent(`Olá! Seja muito bem-vindo(a) 
@@ -572,36 +572,16 @@ export default function App() {
               </p>
             </div>
             
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 pt-4 text-left">
+            <div className="grid sm:grid-cols-2 gap-4 lg:gap-6 pt-4 text-left">
               <div className="bg-olive-glow olive-border p-6 md:p-8 rounded-3xl space-y-3 md:space-y-4">
-                <Brain className="text-olive w-5 h-5 md:w-6 md:h-6" strokeWidth={1.5} />
-                <h4 className="font-serif text-xl md:text-2xl">Autoconhecimento</h4>
-                <p className="text-xs md:text-sm text-natural-ink/60 leading-relaxed">Compreenda seus pensamentos, emoções e padrões com mais clareza.</p>
+                <Heart className="text-olive w-5 h-5 md:w-6 md:h-6" strokeWidth={1.5} />
+                <h4 className="font-serif text-xl md:text-2xl">Empatia</h4>
+                <p className="text-xs md:text-sm text-natural-ink/60 leading-relaxed">Escuta ativa e um ambiente livre de quaisquer julgamentos.</p>
               </div>
               <div className="bg-olive-glow olive-border p-6 md:p-8 rounded-3xl space-y-3 md:space-y-4">
-                <Sprout className="text-olive w-5 h-5 md:w-6 md:h-6" strokeWidth={1.5} />
-                <h4 className="font-serif text-xl md:text-2xl">Equilíbrio emocional</h4>
-                <p className="text-xs md:text-sm text-natural-ink/60 leading-relaxed">Desenvolva ferramentas para lidar melhor com ansiedade e estresse.</p>
-              </div>
-              <div className="bg-olive-glow olive-border p-6 md:p-8 rounded-3xl space-y-3 md:space-y-4">
-                <MessageSquare className="text-olive w-5 h-5 md:w-6 md:h-6" strokeWidth={1.5} />
-                <h4 className="font-serif text-xl md:text-2xl">Escuta qualificada</h4>
-                <p className="text-xs md:text-sm text-natural-ink/60 leading-relaxed">Um espaço acolhedor e seguro onde sua fala é respeitada e valorizada.</p>
-              </div>
-              <div className="bg-olive-glow olive-border p-6 md:p-8 rounded-3xl space-y-3 md:space-y-4">
-                <Users className="text-olive w-5 h-5 md:w-6 md:h-6" strokeWidth={1.5} />
-                <h4 className="font-serif text-xl md:text-2xl">Relações saudáveis</h4>
-                <p className="text-xs md:text-sm text-natural-ink/60 leading-relaxed">Melhore a forma como você se relaciona consigo mesmo e com os outros.</p>
-              </div>
-              <div className="bg-olive-glow olive-border p-6 md:p-8 rounded-3xl space-y-3 md:space-y-4">
-                <Lock className="text-olive w-5 h-5 md:w-6 md:h-6" strokeWidth={1.5} />
-                <h4 className="font-serif text-xl md:text-2xl">Sigilo & Segurança</h4>
-                <p className="text-xs md:text-sm text-natural-ink/60 leading-relaxed">Privacidade absoluta para você se expressar com total liberdade.</p>
-              </div>
-              <div className="bg-olive-glow olive-border p-6 md:p-8 rounded-3xl space-y-3 md:space-y-4">
-                <Wind className="text-olive w-5 h-5 md:w-6 md:h-6" strokeWidth={1.5} />
-                <h4 className="font-serif text-xl md:text-2xl">Leveza</h4>
-                <p className="text-xs md:text-sm text-natural-ink/60 leading-relaxed">Encontre caminhos para viver com mais tranquilidade e equilíbrio.</p>
+                <Shield className="text-olive w-5 h-5 md:w-6 md:h-6" strokeWidth={1.5} />
+                <h4 className="font-serif text-xl md:text-2xl">Sigilo</h4>
+                <p className="text-xs md:text-sm text-natural-ink/60 leading-relaxed">Privacidade absoluta garantida em todas as sessões presenciais ou online.</p>
               </div>
             </div>
 
