@@ -1070,8 +1070,8 @@ export default function App() {
           </div>
         </section>
 
-        {/* CTA Section - Reimagined for Elegance */}
-        <section id="contact" className="py-32 md:py-48 bg-natural-ink text-natural-bg relative overflow-hidden">
+        {/* CTA Section - Reimagined for Elegance & Legibility */}
+        <section id="contact" className="py-32 md:py-48 bg-natural-ink text-white relative overflow-hidden">
           {/* Subtle architectural background elements */}
           <div className="absolute top-0 right-0 w-full h-full opacity-5 pointer-events-none">
             <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
@@ -1092,16 +1092,16 @@ export default function App() {
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   transition={{ delay: 0.2 }}
-                  className="inline-block text-[10px] md:text-xs uppercase tracking-[0.5em] text-olive font-black"
+                  className="inline-block text-[10px] md:text-xs uppercase tracking-[0.5em] text-[#D1D3C4] font-black"
                 >
                   Dê o primeiro passo
                 </motion.span>
                 <h2 className="text-6xl md:text-9xl font-serif italic text-white leading-[0.9] tracking-tighter">
-                  Sua jornada <br /> <span className="text-olive">começa aqui.</span>
+                  Sua jornada <br /> <span className="text-[#D1D3C4]">começa aqui.</span>
                 </h2>
               </div>
 
-              <p className="text-lg md:text-2xl text-white/50 font-light max-w-2xl mx-auto leading-relaxed font-serif italic">
+              <p className="text-lg md:text-2xl text-white/70 font-light max-w-2xl mx-auto leading-relaxed font-serif italic">
                 "Não é sobre ser perfeito, é sobre ser inteiro. Estou aqui para caminhar esse processo com você."
               </p>
               
@@ -1112,7 +1112,7 @@ export default function App() {
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.05, backgroundColor: "#5A5A40" }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-olive text-white px-10 md:px-16 py-5 md:py-6 rounded-full font-sans text-[11px] md:text-xs uppercase tracking-[0.3em] font-black flex items-center justify-center gap-4 shadow-[0_20px_50px_rgba(107,112,92,0.3)] transition-all cursor-pointer w-full sm:w-auto ring-1 ring-white/10"
+                  className="bg-olive text-white px-10 md:px-16 py-5 md:py-6 rounded-full font-sans text-[11px] md:text-xs uppercase tracking-[0.3em] font-black flex items-center justify-center gap-4 shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all cursor-pointer w-full sm:w-auto ring-1 ring-white/10"
                 >
                   <MessageCircle size={18} />
                   Agendar via WhatsApp
@@ -1120,17 +1120,18 @@ export default function App() {
                 
                 <button 
                   onClick={() => openScheduling()}
-                  className="group bg-white/5 backdrop-blur-xl border border-white/10 text-white px-10 md:px-16 py-5 md:py-6 rounded-full font-sans text-[11px] md:text-xs uppercase tracking-[0.3em] font-black hover:bg-white/10 transition-all flex items-center justify-center gap-4 cursor-pointer w-full sm:w-auto"
+                  className="group bg-white/5 backdrop-blur-xl border border-white/20 text-white px-10 md:px-16 py-5 md:py-6 rounded-full font-sans text-[11px] md:text-xs uppercase tracking-[0.3em] font-black hover:bg-white/10 transition-all flex items-center justify-center gap-4 cursor-pointer w-full sm:w-auto"
                 >
-                  <Calendar size={18} className="text-olive group-hover:scale-110 transition-transform" />
+                  <Calendar size={18} className="text-[#D1D3C4] group-hover:scale-110 transition-transform" />
                   Ver Disponibilidade
                 </button>
               </div>
             </motion.div>
           </div>
           
-          {/* Subtle bottom glow */}
-          <div className="absolute -bottom-24 left-1/2 -translate-x-1/2 w-[80%] h-48 bg-olive/10 blur-[120px] rounded-full pointer-events-none" />
+          {/* Enhanced atmospheric glow for separation */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-64 bg-olive/20 blur-[150px] rounded-full pointer-events-none opacity-40" />
+          <div className="absolute -bottom-24 left-1/2 -translate-x-1/2 w-[80%] h-48 bg-[#D1D3C4]/10 blur-[120px] rounded-full pointer-events-none" />
         </section>
 
         {/* Testimonials Section */}
