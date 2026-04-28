@@ -5,7 +5,7 @@
 
 import React, { useRef, useState } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
-import { Calendar, MessageCircle, ChevronDown, ChevronRight, Sparkles, Heart, Shield, Instagram, Linkedin, Menu, X, Mail, MapPin, Phone, GraduationCap, Award, Briefcase } from 'lucide-react';
+import { Calendar, MessageCircle, ChevronDown, ChevronRight, Sparkles, Heart, Shield, Instagram, Linkedin, Menu, X, Mail, MapPin, Phone, GraduationCap, Award, Briefcase, ArrowLeft, ArrowRight } from 'lucide-react';
 
 // SCENE DATA based on the prompt provided by the user
 const WHATSAPP_MESSAGE = encodeURIComponent(`Olá! Seja muito bem-vindo(a) 
@@ -563,6 +563,133 @@ const Scene: React.FC<SceneProps> = ({ scene, index }) => {
   );
 };
 
+function TestimonialCarousel() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState(0);
+
+  const next = () => {
+    setDirection(1);
+    setCurrentIndex((prev) => (prev + 1) % TESTIMONIALS.length);
+  };
+
+  const prev = () => {
+    setDirection(-1);
+    setCurrentIndex((prev) => (prev - 1 + TESTIMONIALS.length) % TESTIMONIALS.length);
+  };
+
+  const variants = {
+    enter: (direction: number) => ({
+      x: direction > 0 ? 500 : -500,
+      opacity: 0,
+      scale: 0.95
+    }),
+    center: {
+      zIndex: 1,
+      x: 0,
+      opacity: 1,
+      scale: 1
+    },
+    exit: (direction: number) => ({
+      zIndex: 0,
+      x: direction < 0 ? 500 : -500,
+      opacity: 0,
+      scale: 0.95
+    })
+  };
+
+  const testimonial = TESTIMONIALS[currentIndex];
+
+  return (
+    <div className="relative w-full max-w-5xl mx-auto py-12">
+      <div className="relative overflow-hidden h-[450px] md:h-[500px] flex items-center justify-center">
+        <AnimatePresence initial={false} custom={direction}>
+          <motion.div
+            key={currentIndex}
+            custom={direction}
+            variants={variants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{
+              x: { type: "spring", stiffness: 300, damping: 30 },
+              opacity: { duration: 0.4 },
+              scale: { duration: 0.4 }
+            }}
+            className="absolute w-full px-4 md:px-0"
+          >
+            <div className="max-w-4xl mx-auto bg-white p-8 md:p-16 rounded-[40px] md:rounded-[60px] cinematic-shadow olive-border relative group">
+              {/* Decorative elements */}
+              <div className="absolute top-12 left-12 text-olive/5 pointer-events-none">
+                <Sparkles size={80} />
+              </div>
+              
+              <div className="relative z-10 space-y-10 text-center italic">
+                <div className="flex justify-center gap-1.5">
+                  {[...Array(5)].map((_, i) => (
+                    <Sparkles key={i} size={18} className="text-olive fill-olive/10" />
+                  ))}
+                </div>
+                
+                <p className="text-xl md:text-3xl font-serif leading-relaxed text-natural-ink italic px-4 md:px-12">
+                  "{testimonial.quote}"
+                </p>
+                
+                <div className="flex flex-col items-center gap-5">
+                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden ring-4 ring-olive/10 bg-white cinematic-shadow">
+                    <img 
+                      src={testimonial.image} 
+                      alt={testimonial.name} 
+                      className="w-full h-full object-cover"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                  <div>
+                    <h4 className="font-sans font-bold text-sm md:text-base text-natural-ink uppercase tracking-[0.2em]">{testimonial.name}</h4>
+                    <p className="text-[9px] md:text-[10px] uppercase tracking-[0.3em] text-olive font-black mt-1.5">{testimonial.role}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      {/* Controls */}
+      <div className="flex items-center justify-center gap-8 md:gap-12 mt-8">
+        <button 
+          onClick={prev}
+          className="p-4 rounded-full border border-olive/10 hover:bg-olive hover:text-white transition-all group active:scale-90 cinematic-shadow bg-white"
+          aria-label="Anterior"
+        >
+          <ArrowLeft size={24} className="group-hover:-translate-x-1 transition-transform" />
+        </button>
+
+        <div className="flex gap-3">
+          {TESTIMONIALS.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => {
+                setDirection(i > currentIndex ? 1 : -1);
+                setCurrentIndex(i);
+              }}
+              className={`h-2 transition-all duration-500 rounded-full ${i === currentIndex ? 'w-10 bg-olive' : 'w-2 bg-olive/20 hover:bg-olive/40'}`}
+              aria-label={`Ir para depoimento ${i + 1}`}
+            />
+          ))}
+        </div>
+
+        <button 
+          onClick={next}
+          className="p-4 rounded-full border border-olive/10 hover:bg-olive hover:text-white transition-all group active:scale-90 cinematic-shadow bg-white"
+          aria-label="Próximo"
+        >
+          <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" />
+        </button>
+      </div>
+    </div>
+  );
+}
+
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -570,7 +697,6 @@ export default function App() {
   const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
   const [isTermsOpen, setIsTermsOpen] = useState(false);
   const [selectedPlanModal, setSelectedPlanModal] = useState<string | undefined>(undefined);
-  const [showAllTestimonials, setShowAllTestimonials] = useState(false);
 
   const openScheduling = (plan?: string) => {
     setSelectedPlanModal(plan);
@@ -1279,83 +1405,15 @@ export default function App() {
         </section>
 
         {/* Testimonials Section */}
-        <section id="testimonials" className="py-20 md:py-32 px-6 md:px-8 max-w-6xl mx-auto overflow-hidden">
-          <div className="text-center mb-12 md:mb-20 space-y-4">
-            <span className="text-[9px] md:text-[10px] uppercase tracking-[0.3em] text-olive font-bold">Depoimentos</span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif">O que dizem os pacientes</h2>
+        <section id="testimonials" className="py-20 md:py-32 px-6 md:px-8 max-w-7xl mx-auto overflow-hidden relative">
+          <div className="absolute top-0 left-0 w-full h-full bg-olive/[0.02] -z-1" />
+          
+          <div className="text-center mb-12 md:mb-16 space-y-4">
+            <span className="text-[9px] md:text-[10px] uppercase tracking-[0.4em] text-olive font-black">Depoimentos</span>
+            <h2 className="text-3xl sm:text-4xl md:text-6xl font-serif italic text-natural-ink">O que dizem os pacientes</h2>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 transition-all duration-500">
-            {TESTIMONIALS.slice(0, showAllTestimonials ? TESTIMONIALS.length : 3).map((t, i) => (
-              <motion.div
-                key={t.name}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                whileHover={{ 
-                  y: -10, 
-                  boxShadow: "0 25px 50px -12px rgba(90, 102, 63, 0.15)",
-                  transition: { type: "spring", stiffness: 400, damping: 10 }
-                }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ 
-                  duration: 0.8,
-                  delay: i * 0.1,
-                  ease: "easeOut"
-                }}
-                className="bg-white p-6 md:p-10 rounded-[24px] md:rounded-[32px] cinematic-shadow olive-border flex flex-col justify-between group h-full"
-              >
-                <div className="space-y-4">
-                  <div className="flex gap-1 mb-2">
-                    {[...Array(5)].map((_, starIdx) => (
-                      <Sparkles key={starIdx} size={14} className="text-olive/20 fill-olive/10" />
-                    ))}
-                  </div>
-                  <p className="text-base md:text-lg font-serif italic text-natural-ink/80 leading-relaxed mb-6 md:mb-8 line-clamp-6">
-                    "{t.quote}"
-                  </p>
-                </div>
-                <div className="flex items-center gap-3 md:gap-4 pt-6 border-t border-natural-ink/5 mt-auto">
-                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden ring-2 ring-olive/10 group-hover:ring-olive/30 transition-all duration-500">
-                    <img 
-                      src={t.image} 
-                      alt={t.name} 
-                      className="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-700 transform group-hover:scale-110"
-                      referrerPolicy="no-referrer"
-                    />
-                  </div>
-                  <div>
-                    <h4 className="font-sans font-bold text-xs md:text-sm text-natural-ink group-hover:text-olive transition-colors">{t.name}</h4>
-                    <p className="text-[8px] md:text-[10px] uppercase tracking-widest text-olive font-medium">{t.role}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          <motion.div 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="flex justify-center mt-12 md:mt-16"
-          >
-            <button
-              onClick={() => setShowAllTestimonials(!showAllTestimonials)}
-              className="group flex flex-col items-center gap-3 transition-all active:scale-95"
-            >
-              <div className="px-8 py-3 rounded-full border border-olive/20 text-olive font-sans text-xs uppercase tracking-[0.2em] font-bold hover:bg-olive hover:text-white transition-all cinematic-shadow bg-white/50 backdrop-blur-sm">
-                {showAllTestimonials ? 'Ver menos depoimentos' : 'Ver mais depoimentos'}
-              </div>
-              <motion.div
-                animate={{ y: showAllTestimonials ? -4 : 4 }}
-                transition={{ repeat: Infinity, duration: 1.5, repeatType: "reverse" }}
-              >
-                <ChevronDown 
-                  className={`text-olive/40 transition-transform duration-500 ${showAllTestimonials ? 'rotate-180' : ''}`} 
-                  size={24} 
-                />
-              </motion.div>
-            </button>
-          </motion.div>
+          <TestimonialCarousel />
         </section>
       </main>
 
