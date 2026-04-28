@@ -610,12 +610,23 @@ function TestimonialCarousel() {
             initial="enter"
             animate="center"
             exit="exit"
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={1}
+            onDragEnd={(_, info) => {
+              const swipeThreshold = 50;
+              if (info.offset.x < -swipeThreshold) {
+                next();
+              } else if (info.offset.x > swipeThreshold) {
+                prev();
+              }
+            }}
             transition={{
               x: { type: "spring", stiffness: 300, damping: 30 },
               opacity: { duration: 0.4 },
               scale: { duration: 0.4 }
             }}
-            className="absolute w-full px-4 md:px-0"
+            className="absolute w-full px-4 md:px-0 cursor-grab active:cursor-grabbing"
           >
             <div className="max-w-4xl mx-auto bg-white p-8 md:p-16 rounded-[40px] md:rounded-[60px] cinematic-shadow olive-border relative group">
               {/* Decorative elements */}
