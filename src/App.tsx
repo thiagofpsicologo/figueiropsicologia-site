@@ -1072,11 +1072,26 @@ export default function App() {
 
         {/* CTA Section - Reimagined for Elegance & Legibility */}
         <section id="contact" className="py-32 md:py-48 bg-natural-ink text-white relative overflow-hidden">
+          {/* Enhanced Scenic Background */}
+          <div className="absolute inset-0 z-0">
+            <motion.img 
+              initial={{ scale: 1.1, opacity: 0 }}
+              whileInView={{ scale: 1.05, opacity: 0.5 }}
+              transition={{ duration: 2.5, ease: "easeOut" }}
+              src="https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?q=80&w=2000&auto=format&fit=crop"
+              alt="Background"
+              className="w-full h-full object-cover grayscale"
+              referrerPolicy="no-referrer"
+            />
+            {/* Soft Overlay for depth and text legibility */}
+            <div className="absolute inset-0 bg-gradient-to-t from-natural-ink via-natural-ink/60 to-natural-ink/80" />
+          </div>
+
           {/* Subtle architectural background elements */}
-          <div className="absolute top-0 right-0 w-full h-full opacity-5 pointer-events-none">
+          <div className="absolute top-0 right-0 w-full h-full opacity-5 pointer-events-none z-1">
             <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-              <path d="M0 100 L100 0" stroke="currentColor" strokeWidth="0.1" fill="none" />
-              <path d="M0 0 L100 100" stroke="currentColor" strokeWidth="0.1" fill="none" />
+              <path d="M0 100 L100 0" stroke="currentColor" strokeWidth="0.05" fill="none" />
+              <path d="M0 0 L100 100" stroke="currentColor" strokeWidth="0.05" fill="none" />
             </svg>
           </div>
           
