@@ -305,6 +305,66 @@ function SchedulingModal({ isOpen, onClose, selectedPlan }: { isOpen: boolean; o
   );
 }
 
+function PolicyModal({ isOpen, onClose, title, content }: { isOpen: boolean; onClose: () => void; title: string; content: React.ReactNode }) {
+  // Prevent scroll when modal is open
+  React.useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [isOpen]);
+
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <div className="fixed inset-0 z-[300] flex items-center justify-center p-4 md:p-8">
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={onClose}
+            className="absolute inset-0 bg-natural-ink/40 backdrop-blur-md"
+          />
+          
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: 20 }}
+            className="relative bg-white w-full max-w-2xl rounded-[32px] shadow-2xl overflow-hidden flex flex-col max-h-[85vh] border border-olive/10"
+          >
+            {/* Header */}
+            <div className="p-6 md:p-8 border-b border-olive/5 flex justify-between items-center bg-natural-bg/30">
+              <h3 className="text-2xl md:text-3xl font-serif text-natural-ink italic">{title}</h3>
+              <button 
+                onClick={onClose}
+                className="p-2 hover:bg-olive/10 rounded-full transition-colors text-natural-ink/40"
+              >
+                <X size={24} />
+              </button>
+            </div>
+
+            {/* Content */}
+            <div className="flex-1 overflow-y-auto p-6 md:p-10 custom-scrollbar">
+              {content}
+            </div>
+
+            {/* Footer */}
+            <div className="p-6 border-t border-olive/5 bg-natural-bg/30 flex justify-end">
+              <button 
+                onClick={onClose}
+                className="px-8 py-3 bg-natural-ink text-white rounded-full font-sans text-xs uppercase tracking-widest font-bold hover:bg-olive transition-colors"
+              >
+                Fechar
+              </button>
+            </div>
+          </motion.div>
+        </div>
+      )}
+    </AnimatePresence>
+  );
+}
+
 const SCENES = [
   {
     id: 'dor',
@@ -507,6 +567,8 @@ export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isSchedulingOpen, setIsSchedulingOpen] = useState(false);
+  const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
+  const [isTermsOpen, setIsTermsOpen] = useState(false);
   const [selectedPlanModal, setSelectedPlanModal] = useState<string | undefined>(undefined);
   const [showAllTestimonials, setShowAllTestimonials] = useState(false);
 
@@ -543,6 +605,68 @@ export default function App() {
           setSelectedPlanModal(undefined);
         }} 
         selectedPlan={selectedPlanModal}
+      />
+
+      <PolicyModal 
+        isOpen={isPrivacyOpen} 
+        onClose={() => setIsPrivacyOpen(false)} 
+        title="Políticas de Privacidade"
+        content={
+          <div className="space-y-6 text-natural-ink/70 leading-relaxed font-light">
+            <p>Sua privacidade é importante para nós. Esta política descreve como coletamos e usamos seus dados ao utilizar nosso site.</p>
+            
+            <section className="space-y-3">
+              <h4 className="text-natural-ink font-serif text-xl italic">1. Coleta de Informações</h4>
+              <p>Coletamos apenas as informações necessárias para agendamentos e prestação de serviços psicológicos, como nome, telefone e e-mail fornecidos voluntariamente por você via WhatsApp ou formulários.</p>
+            </section>
+
+            <section className="space-y-3">
+              <h4 className="text-natural-ink font-serif text-xl italic">2. Sigilo Profissional</h4>
+              <p>Como psicólogo clínico, sigo rigorosamente o Código de Ética Profissional do Psicólogo, garantindo o sigilo absoluto de todas as informações compartilhadas durante as sessões e contatos preliminares.</p>
+            </section>
+
+            <section className="space-y-3">
+              <h4 className="text-natural-ink font-serif text-xl italic">3. Uso de Dados</h4>
+              <p>Seus dados são utilizados exclusivamente para entrar em contato, realizar agendamentos e enviar informações relevantes sobre sua jornada terapêutica. Nunca compartilhamos seus dados com terceiros sem seu consentimento expresso.</p>
+            </section>
+
+            <section className="space-y-3">
+              <h4 className="text-natural-ink font-serif text-xl italic">4. Seus Direitos</h4>
+              <p>Você tem o direito de acessar, corrigir ou solicitar a exclusão de seus dados pessoais a qualquer momento, bastando entrar em contato.</p>
+            </section>
+          </div>
+        }
+      />
+
+      <PolicyModal 
+        isOpen={isTermsOpen} 
+        onClose={() => setIsTermsOpen(false)} 
+        title="Termos de Uso"
+        content={
+          <div className="space-y-6 text-natural-ink/70 leading-relaxed font-light">
+            <p>Ao acessar este site, você concorda em cumprir estes termos de serviço e todas as leis e regulamentos aplicáveis.</p>
+            
+            <section className="space-y-3">
+              <h4 className="text-natural-ink font-serif text-xl italic">1. Agendamentos</h4>
+              <p>Os agendamentos realizados via site são pré-reservas e estão sujeitos à confirmação via WhatsApp. O descumprimento de horários sem aviso prévio de 24h poderá estar sujeito a cobrança, conforme acordado previamente.</p>
+            </section>
+
+            <section className="space-y-3">
+              <h4 className="text-natural-ink font-serif text-xl italic">2. Uso do Conteúdo</h4>
+              <p>Todo o conteúdo deste site (textos, imagens, identidade visual) pertence a Thiago Figueiró e é protegido por leis de direitos autorais. O uso não autorizado é proibido.</p>
+            </section>
+
+            <section className="space-y-3">
+              <h4 className="text-natural-ink font-serif text-xl italic">3. Links Externos</h4>
+              <p>Este site contém links para serviços de terceiros (como WhatsApp e Google Maps), que possuem suas próprias políticas de privacidade e termos de uso.</p>
+            </section>
+
+            <section className="space-y-3">
+              <h4 className="text-natural-ink font-serif text-xl italic">4. Alterações</h4>
+              <p>Reservamo-nos o direito de modificar estes termos a qualquer momento, para refletir mudanças em nossos serviços ou na legislação.</p>
+            </section>
+          </div>
+        }
       />
       <nav className={`fixed top-0 left-0 w-full z-[100] px-6 md:px-12 py-3 md:py-6 flex flex-row justify-between items-center transition-all duration-500 ${isScrolled ? 'bg-white/95 backdrop-blur-md shadow-md border-b border-olive/5 py-2 md:py-4' : 'bg-transparent py-4'}`}>
         
@@ -729,9 +853,14 @@ export default function App() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.7 }}
-                  className="text-[9px] text-white/20 uppercase tracking-[0.2em] font-medium"
+                  className="text-[9px] text-white/20 uppercase tracking-[0.2em] font-medium flex flex-col items-center gap-4"
                 >
-                  &copy; {new Date().getFullYear()} Thiago Figueiró &bull; CRP 04/48708
+                  <div className="flex gap-4">
+                    <button onClick={() => { setIsMenuOpen(false); setIsPrivacyOpen(true); }} className="hover:text-olive transition-colors">Privacidade</button>
+                    <span>&bull;</span>
+                    <button onClick={() => { setIsMenuOpen(false); setIsTermsOpen(true); }} className="hover:text-olive transition-colors">Termos</button>
+                  </div>
+                  <span>&copy; {new Date().getFullYear()} Thiago Figueiró &bull; CRP 04/48708</span>
                 </motion.p>
               </div>
             </div>
@@ -1373,12 +1502,18 @@ export default function App() {
             </div>
             
             <div className="flex items-center gap-8">
-               <span className="text-[9px] uppercase tracking-[0.2em] text-natural-ink/30 font-bold hover:text-natural-ink/60 transition-colors cursor-help">
+               <button 
+                 onClick={() => setIsPrivacyOpen(true)}
+                 className="text-[9px] uppercase tracking-[0.2em] text-natural-ink/30 font-bold hover:text-olive transition-colors cursor-pointer"
+               >
                  Políticas de Privacidade
-               </span>
-               <span className="text-[9px] uppercase tracking-[0.2em] text-natural-ink/30 font-bold hover:text-natural-ink/60 transition-colors cursor-help">
+               </button>
+               <button 
+                 onClick={() => setIsTermsOpen(true)}
+                 className="text-[9px] uppercase tracking-[0.2em] text-natural-ink/30 font-bold hover:text-olive transition-colors cursor-pointer"
+               >
                  Termos de Uso
-               </span>
+               </button>
             </div>
           </div>
         </div>
