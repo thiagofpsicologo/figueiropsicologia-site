@@ -1280,7 +1280,7 @@ export default function App() {
                 <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-olive/10 flex items-center justify-center text-olive hover:bg-olive hover:text-white transition-all group" title="WhatsApp">
                   <MessageCircle size={18} className="group-hover:scale-110 transition-transform" />
                 </a>
-                <a href="mailto:contato@thiagofigueiro.com.br" className="w-10 h-10 rounded-full border border-olive/10 flex items-center justify-center text-olive hover:bg-olive hover:text-white transition-all group" title="Email">
+                <a href="mailto:thiagomeirelesfigueiro@hotmail.com.br" className="w-10 h-10 rounded-full border border-olive/10 flex items-center justify-center text-olive hover:bg-olive hover:text-white transition-all group" title="Email">
                   <Mail size={18} className="group-hover:scale-110 transition-transform" />
                 </a>
               </div>
@@ -1337,7 +1337,7 @@ export default function App() {
                   </div>
                   <div>
                     <span className="block text-[10px] uppercase tracking-widest text-natural-ink/40 font-bold mb-1">Email</span>
-                    <a href="mailto:contato@thiagofigueiro.com.br" className="text-sm font-medium text-natural-ink/80 hover:text-olive transition-colors">contato@thiagofigueiro.com.br</a>
+                    <a href="mailto:thiagomeirelesfigueiro@hotmail.com.br" className="text-sm font-medium text-natural-ink/80 hover:text-olive transition-colors">thiagomeirelesfigueiro@hotmail.com.br</a>
                   </div>
                 </div>
               </div>
