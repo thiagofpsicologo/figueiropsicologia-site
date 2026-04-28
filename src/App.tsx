@@ -1070,48 +1070,67 @@ export default function App() {
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section id="contact" className="py-20 md:py-40 bg-natural-ink text-natural-bg relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-1/2 h-full opacity-5 pointer-events-none">
-             <Sparkles className="w-full h-full text-white" />
+        {/* CTA Section - Reimagined for Elegance */}
+        <section id="contact" className="py-32 md:py-48 bg-natural-ink text-natural-bg relative overflow-hidden">
+          {/* Subtle architectural background elements */}
+          <div className="absolute top-0 right-0 w-full h-full opacity-5 pointer-events-none">
+            <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+              <path d="M0 100 L100 0" stroke="currentColor" strokeWidth="0.1" fill="none" />
+              <path d="M0 0 L100 100" stroke="currentColor" strokeWidth="0.1" fill="none" />
+            </svg>
           </div>
           
-          <div className="max-w-4xl mx-auto px-6 md:px-8 text-center relative z-10">
+          <div className="max-w-5xl mx-auto px-6 md:px-8 text-center relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              className="space-y-8 md:space-y-12"
+              viewport={{ once: true }}
+              className="space-y-12 md:space-y-16"
             >
-              <h2 className="text-5xl md:text-8xl font-serif italic text-white leading-none tracking-tighter">
-                Vamos conversar?
-              </h2>
-              <p className="text-lg md:text-xl text-white/60 font-light max-w-xl mx-auto leading-relaxed">
-                Dê o primeiro passo para uma vida mais leve. Agende sua consulta presencial ou online hoje mesmo.
+              <div className="space-y-6">
+                <motion.span 
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ delay: 0.2 }}
+                  className="inline-block text-[10px] md:text-xs uppercase tracking-[0.5em] text-olive font-black"
+                >
+                  Dê o primeiro passo
+                </motion.span>
+                <h2 className="text-6xl md:text-9xl font-serif italic text-white leading-[0.9] tracking-tighter">
+                  Sua jornada <br /> <span className="text-olive">começa aqui.</span>
+                </h2>
+              </div>
+
+              <p className="text-lg md:text-2xl text-white/50 font-light max-w-2xl mx-auto leading-relaxed font-serif italic">
+                "Não é sobre ser perfeito, é sobre ser inteiro. Estou aqui para caminhar esse processo com você."
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center items-center pt-4 md:pt-8">
+              <div className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-8">
                 <motion.a 
                   href={WHATSAPP_LINK}
                   target="_blank"
                   rel="noopener noreferrer"
-                  whileHover={{ scale: 1.05 }}
+                  whileHover={{ scale: 1.05, backgroundColor: "#5A5A40" }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-olive text-white px-8 md:px-12 py-4 md:py-5 rounded-full font-sans text-[10px] md:text-xs uppercase tracking-[0.2em] font-bold flex items-center justify-center gap-3 shadow-2xl hover:bg-olive/90 transition-all cursor-pointer w-full sm:w-auto"
+                  className="bg-olive text-white px-10 md:px-16 py-5 md:py-6 rounded-full font-sans text-[11px] md:text-xs uppercase tracking-[0.3em] font-black flex items-center justify-center gap-4 shadow-[0_20px_50px_rgba(107,112,92,0.3)] transition-all cursor-pointer w-full sm:w-auto ring-1 ring-white/10"
                 >
-                  <img src="https://cdn.simpleicons.org/whatsapp/white" className="w-4 h-4 md:w-[18px] md:h-[18px]" alt="WhatsApp" />
-                  WhatsApp
+                  <MessageCircle size={18} />
+                  Agendar via WhatsApp
                 </motion.a>
                 
                 <button 
                   onClick={() => openScheduling()}
-                  className="bg-white/10 backdrop-blur-md border border-white/20 text-white px-8 md:px-12 py-4 md:py-5 rounded-full font-sans text-[10px] md:text-xs uppercase tracking-[0.2em] hover:bg-white/20 transition-all flex items-center justify-center gap-3 cursor-pointer w-full sm:w-auto"
+                  className="group bg-white/5 backdrop-blur-xl border border-white/10 text-white px-10 md:px-16 py-5 md:py-6 rounded-full font-sans text-[11px] md:text-xs uppercase tracking-[0.3em] font-black hover:bg-white/10 transition-all flex items-center justify-center gap-4 cursor-pointer w-full sm:w-auto"
                 >
-                  <Calendar size={18} />
-                  Ver Horários
+                  <Calendar size={18} className="text-olive group-hover:scale-110 transition-transform" />
+                  Ver Disponibilidade
                 </button>
               </div>
             </motion.div>
           </div>
+          
+          {/* Subtle bottom glow */}
+          <div className="absolute -bottom-24 left-1/2 -translate-x-1/2 w-[80%] h-48 bg-olive/10 blur-[120px] rounded-full pointer-events-none" />
         </section>
 
         {/* Testimonials Section */}
@@ -1195,111 +1214,164 @@ export default function App() {
         </section>
       </main>
 
-      {/* Footer */}
-      <footer id="contact" className="py-20 md:py-24 px-6 md:px-12 border-t border-natural-ink/5 bg-white/40 backdrop-blur-md">
-        <div className="max-w-7xl mx-auto flex flex-col items-center mb-16">
-          <a 
-            href={WHATSAPP_LINK} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="hover:scale-105 transition-transform duration-500 ease-out inline-block px-4"
-          >
-            <img 
-              src="https://drive.google.com/thumbnail?id=1OBgTceJbRAvCHXUGVfARabGLLrMS076Z&sz=w1000" 
-              alt="Logo Thiago Figueiró Rodapé" 
-              className="h-48 md:h-80 w-auto object-contain"
-              referrerPolicy="no-referrer"
-            />
-          </a>
+      {/* Footer - Reimagined for a Luxurious & Professional finish */}
+      <footer className="bg-natural-bg pt-20 pb-12 px-6 md:px-12 border-t border-olive/10 relative overflow-hidden">
+        {/* Artistic background label */}
+        <div className="absolute top-10 left-1/2 -translate-x-1/2 w-full text-center opacity-[0.02] pointer-events-none select-none overflow-hidden whitespace-nowrap">
+          <span className="font-serif italic text-[20vw] leading-none text-natural-ink">Thiago Figueiró</span>
         </div>
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 items-center">
-          {/* Column 1: Social Media */}
-          <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-6">
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center overflow-hidden shrink-0 shadow-sm border border-olive/10">
-                <img 
-                  src="https://drive.google.com/thumbnail?id=10taANe2B2DrYxggYuYrP098CD_pZntCN&sz=w1000" 
-                  alt="Logo Thiago Figueiró" 
-                  className="w-full h-full object-cover"
-                  referrerPolicy="no-referrer"
-                />
-              </div>
-              <div className="text-left">
-                <span className="block font-serif text-lg font-medium tracking-tight text-natural-ink">Thiago Figueiró</span>
-                <span className="block text-[9px] uppercase tracking-widest text-olive font-bold">CRP 04/48708</span>
-              </div>
-            </div>
-            <h4 className="text-[10px] uppercase tracking-[0.3em] font-bold text-olive">Siga-me</h4>
-            <div className="flex gap-6">
-               <a href="https://instagram.com/psicologo.thiagofigueiro" target="_blank" rel="noopener noreferrer" className="text-[#E4405F] hover:scale-110 transition-transform" title="Instagram">
-                <Instagram size={24} />
-              </a>
-              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-transform" title="WhatsApp">
-                <img src="https://cdn.simpleicons.org/whatsapp/25D366" className="w-6 h-6" alt="WhatsApp" />
-              </a>
-            </div>
-          </div>
 
-          {/* Column 2: Impact Phrase + Profile */}
-          <div className="flex flex-col items-center justify-center text-center px-4 space-y-10">
-            <p className="font-serif italic text-2xl md:text-3xl leading-snug text-natural-ink/80 max-w-sm">
-              "Transformar a dor em sentido é o caminho para uma vida mais autêntica e plena."
-            </p>
-            
-            <div className="flex flex-col items-center gap-4">
-              <div className="w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden border-2 border-olive/20 cinematic-shadow bg-white flex items-center justify-center">
-                <img 
-                  src="https://drive.google.com/thumbnail?id=1WFI6vP05Btf4iz5HoHNcDDVKEGrVv7li&sz=w1000" 
-                  alt="Logo Thiago Figueiró" 
-                  className="w-full h-full object-cover"
-                  referrerPolicy="no-referrer"
-                />
-              </div>
-              <div className="space-y-1">
-                <p className="text-[10px] md:text-xs uppercase tracking-widest text-olive font-bold">CRP 04/48708</p>
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 md:gap-12 mb-20 lg:mb-32">
+            {/* Column 1: Identity */}
+            <div className="space-y-8">
+                <motion.div 
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.5, duration: 0.8 }}
+                  className="flex flex-col gap-4"
+                >
+                  <div className="w-16 h-16 rounded-3xl bg-white flex items-center justify-center overflow-hidden cinematic-shadow border border-olive/5 ring-4 ring-olive/5">
+                    <img 
+                      src="https://drive.google.com/thumbnail?id=10taANe2B2DrYxggYuYrP098CD_pZntCN&sz=w1000" 
+                      alt="Logo Thiago Figueiró" 
+                      className="w-full h-full object-cover"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                  <div>
+                    <h3 className="font-serif text-2xl md:text-3xl tracking-tight text-natural-ink">Thiago Figueiró</h3>
+                    <div className="flex flex-wrap items-center gap-y-2 gap-x-4 mt-2">
+                      <p className="text-[10px] md:text-xs uppercase tracking-[0.3em] text-olive font-black">Psicólogo Clínico</p>
+                      <motion.div 
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: 0.8, duration: 0.5 }}
+                        className="px-2.5 py-1 rounded-full border border-olive/20 bg-white/50 backdrop-blur-sm flex items-center shadow-sm"
+                      >
+                         <span className="text-[9px] md:text-[10px] uppercase tracking-[0.2em] text-olive font-bold">CRP 04/48708</span>
+                      </motion.div>
+                    </div>
+                  </div>
+                </motion.div>
+              <p className="text-sm md:text-base text-natural-ink/50 leading-relaxed max-w-xs font-light">
+                Acompanhando processos de autoconhecimento e transformação com ética, sensibilidade e acolhimento.
+              </p>
+              <div className="flex gap-4">
+                <a href="https://instagram.com/psicologo.thiagofigueiro" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-olive/10 flex items-center justify-center text-olive hover:bg-olive hover:text-white transition-all group" title="Instagram">
+                  <Instagram size={18} className="group-hover:scale-110 transition-transform" />
+                </a>
+                <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-olive/10 flex items-center justify-center text-olive hover:bg-olive hover:text-white transition-all group" title="WhatsApp">
+                  <MessageCircle size={18} className="group-hover:scale-110 transition-transform" />
+                </a>
+                <a href="mailto:contato@thiagofigueiro.com.br" className="w-10 h-10 rounded-full border border-olive/10 flex items-center justify-center text-olive hover:bg-olive hover:text-white transition-all group" title="Email">
+                  <Mail size={18} className="group-hover:scale-110 transition-transform" />
+                </a>
               </div>
             </div>
-          </div>
 
-          {/* Column 3: Contacts & Links */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-10">
-            <div className="space-y-6 text-center md:text-left">
-              <h4 className="text-[10px] uppercase tracking-[0.3em] font-bold text-olive">Contatos</h4>
-              <div className="space-y-4 text-sm font-sans text-natural-ink/70">
-                <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center md:justify-start gap-3 hover:text-olive transition-colors">
-                  <img src="https://cdn.simpleicons.org/whatsapp/25D366" className="w-4 h-4" alt="WhatsApp" />
-                  Agendar via WhatsApp
-                </a>
-                <a href="tel:+5531994238535" className="flex items-center justify-center md:justify-start gap-3 hover:text-olive transition-colors">
-                  <Phone size={16} className="text-black" />
-                  (31) 99423-8535
-                </a>
-                <a href="https://instagram.com/psicologo.thiagofigueiro" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center md:justify-start gap-3 hover:text-olive transition-colors">
-                  <Instagram size={16} className="text-[#E4405F]" />
-                  @psicologo.thiagofigueiro
-                </a>
-                <div className="flex items-center justify-center md:justify-start gap-3">
-                  <img src="https://cdn.simpleicons.org/googlemaps/EA4335" className="w-4 h-4" alt="Google Maps" />
-                  <span>Belo Horizonte, MG</span>
+            {/* Column 2: Navigation */}
+            <div className="space-y-8">
+              <h4 className="text-[10px] uppercase tracking-[0.4em] font-black text-olive">Navegação</h4>
+              <nav className="flex flex-col gap-4">
+                {[
+                  { name: 'Início', href: '#' },
+                  { name: 'Sobre Mim', href: '#about' },
+                  { name: 'Atendimentos', href: '#services' },
+                  { name: 'Depoimentos', href: '#testimonials' },
+                  { name: 'Contato', href: '#contact' }
+                ].map((item) => (
+                  <a 
+                    key={item.name} 
+                    href={item.href} 
+                    className="text-sm font-medium text-natural-ink/70 hover:text-olive transition-all flex items-center gap-2 group w-fit"
+                  >
+                    <span className="w-0 h-px bg-olive transition-all group-hover:w-4" />
+                    {item.name}
+                  </a>
+                ))}
+              </nav>
+            </div>
+
+            {/* Column 3: Contact Details */}
+            <div className="space-y-8">
+              <h4 className="text-[10px] uppercase tracking-[0.4em] font-black text-olive">Contatos</h4>
+              <div className="space-y-6">
+                <div className="flex items-start gap-4">
+                  <div className="mt-1 w-8 h-8 rounded-xl bg-olive/5 flex items-center justify-center text-olive shrink-0">
+                    <Phone size={14} />
+                  </div>
+                  <div>
+                    <span className="block text-[10px] uppercase tracking-widest text-natural-ink/40 font-bold mb-1">Telefone</span>
+                    <a href="tel:+5531994238535" className="text-sm font-medium text-natural-ink/80 hover:text-olive transition-colors">(31) 99423-8535</a>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="mt-1 w-8 h-8 rounded-xl bg-olive/5 flex items-center justify-center text-olive shrink-0">
+                    <MapPin size={14} />
+                  </div>
+                  <div>
+                    <span className="block text-[10px] uppercase tracking-widest text-natural-ink/40 font-bold mb-1">Localização</span>
+                    <span className="text-sm font-medium text-natural-ink/80">Belo Horizonte, MG</span>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="mt-1 w-8 h-8 rounded-xl bg-olive/5 flex items-center justify-center text-olive shrink-0">
+                    <Mail size={14} />
+                  </div>
+                  <div>
+                    <span className="block text-[10px] uppercase tracking-widest text-natural-ink/40 font-bold mb-1">Email</span>
+                    <a href="mailto:contato@thiagofigueiro.com.br" className="text-sm font-medium text-natural-ink/80 hover:text-olive transition-colors">contato@thiagofigueiro.com.br</a>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div className="space-y-6 text-center md:text-left">
-              <h4 className="text-[10px] uppercase tracking-[0.3em] font-bold text-olive">Navegação</h4>
-              <div className="flex flex-col gap-3 text-sm font-sans text-natural-ink/70">
-                <a href="#" className="hover:text-olive transition-colors">Início</a>
-                <a href="#about" className="hover:text-olive transition-colors">Sobre Mim</a>
-                <a href="#testimonials" className="hover:text-olive transition-colors">Depoimentos</a>
+            {/* Column 4: Quick Action */}
+            <div className="space-y-8 bg-white/40 p-8 rounded-[32px] border border-olive/5 cinematic-shadow">
+              <div className="space-y-2">
+                <h4 className="font-serif text-xl italic text-natural-ink">Reserve seu horário</h4>
+                <p className="text-xs text-natural-ink/50 leading-relaxed">
+                  Consulte a disponibilidade em tempo real e inicie sua jornada.
+                </p>
               </div>
+              <button 
+                onClick={() => openScheduling()}
+                className="w-full bg-olive text-white py-4 rounded-2xl font-sans text-[10px] uppercase tracking-[0.2em] font-bold shadow-lg shadow-olive/10 hover:shadow-olive/20 hover:-translate-y-1 transition-all flex items-center justify-center gap-3"
+              >
+                <Calendar size={14} />
+                Agendar Consulta
+              </button>
+              <div className="pt-2 flex items-center justify-center gap-2 grayscale hover:grayscale-0 transition-opacity opacity-40 hover:opacity-100">
+                <Shield size={12} className="text-olive" />
+                <span className="text-[9px] uppercase tracking-widest font-bold">Ambiente 100% Suguro</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="pt-12 border-t border-olive/10 flex flex-col md:flex-row justify-between items-center gap-8 md:gap-4">
+            <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
+              <p className="text-[9px] md:text-[10px] uppercase tracking-[0.2em] text-natural-ink/30 font-bold text-center md:text-left leading-relaxed">
+                © {new Date().getFullYear()} Thiago Figueiró &bull; CRP 04/48708 &bull; Todos os direitos reservados.
+              </p>
+            </div>
+            
+            <div className="flex items-center gap-8">
+               <span className="text-[9px] uppercase tracking-[0.2em] text-natural-ink/30 font-bold hover:text-natural-ink/60 transition-colors cursor-help">
+                 Políticas de Privacidade
+               </span>
+               <span className="text-[9px] uppercase tracking-[0.2em] text-natural-ink/30 font-bold hover:text-natural-ink/60 transition-colors cursor-help">
+                 Termos de Uso
+               </span>
             </div>
           </div>
         </div>
 
-        <div className="mt-20 pt-8 border-t border-natural-ink/5 text-center">
-          <p className="text-[9px] md:text-[10px] uppercase tracking-[0.3em] text-natural-ink/30 font-bold">
-            © {new Date().getFullYear()} THIAGO FIGUEIRÓ — Todos os direitos reservados.
-          </p>
+        {/* Signature Element */}
+        <div className="mt-16 flex justify-center opacity-[0.05]">
+          <h2 className="font-serif italic text-4xl md:text-6xl text-natural-ink tracking-tighter">
+            Thiago Figueiró
+          </h2>
         </div>
       </footer>
 
