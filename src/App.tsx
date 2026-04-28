@@ -6,7 +6,6 @@
 import React, { useRef, useState } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
 import { Calendar, MessageCircle, ChevronDown, ChevronRight, Sparkles, Heart, Shield, Instagram, Linkedin, Menu, X, Mail, MapPin, Phone, GraduationCap, Award, Briefcase, ArrowLeft, ArrowRight } from 'lucide-react';
-import { SplashLoader } from './components/SplashLoader';
 
 // SCENE DATA based on the prompt provided by the user
 const WHATSAPP_MESSAGE = encodeURIComponent(`Olá! Seja muito bem-vindo(a) 
@@ -703,7 +702,6 @@ function TestimonialCarousel() {
 }
 
 export default function App() {
-  const [isLoading, setIsLoading] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isSchedulingOpen, setIsSchedulingOpen] = useState(false);
@@ -736,17 +734,7 @@ export default function App() {
   }, []);
 
   return (
-    <AnimatePresence mode="wait">
-      {isLoading ? (
-        <SplashLoader key="loader" onComplete={() => setIsLoading(false)} />
-      ) : (
-        <motion.div
-          key="content"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-          className="natural-gradient selection:bg-olive selection:text-white min-h-screen transition-colors duration-500 overflow-x-hidden w-full relative"
-        >
+    <div className="natural-gradient selection:bg-olive selection:text-white min-h-screen transition-colors duration-500 overflow-x-hidden w-full relative">
       <SchedulingModal 
         isOpen={isSchedulingOpen} 
         onClose={() => {
@@ -1653,8 +1641,6 @@ export default function App() {
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.div>
-    )}
-    </AnimatePresence>
+    </div>
   );
 }
