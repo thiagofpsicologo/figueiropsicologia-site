@@ -637,8 +637,8 @@ function TestimonialCarousel() {
           >
             <div className="grid md:grid-cols-[1fr_1.5fr] gap-12 md:gap-20 items-center">
               {/* Image side */}
-              <div className="relative group">
-                <div className="aspect-[4/5] overflow-hidden rounded-[40px] md:rounded-[60px] cinematic-shadow relative z-10 border-8 border-white">
+              <div className="relative group max-w-[280px] md:max-w-none mx-auto w-full">
+                <div className="aspect-[4/5] overflow-hidden rounded-[30px] md:rounded-[60px] cinematic-shadow relative z-10 border-4 md:border-8 border-white">
                   <img 
                     src={testimonial.image} 
                     alt={testimonial.name} 
