@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { MessageCircle, X, Send, Phone, Info, AlertTriangle, CreditCard, ChevronRight, User, Sparkles } from 'lucide-react';
+import { MessageCircle, X, Send, Phone, Info, AlertTriangle, CreditCard, ChevronRight, ChevronLeft, User, Sparkles } from 'lucide-react';
 import { GoogleGenAI } from "@google/genai";
 
 /**
@@ -68,6 +68,7 @@ const PsychologistChatbot: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [isTyping, setIsTyping] = useState(false);
   const [inputValue, setInputValue] = useState("");
+  const [showOptionsGrid, setShowOptionsGrid] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const aiRef = useRef<GoogleGenAI | null>(null);
 
@@ -110,6 +111,8 @@ const PsychologistChatbot: React.FC = () => {
         behavior: 'smooth'
       });
     }
+    // Reseta a visualização das opções quando chega mensagem nova
+    setShowOptionsGrid(false);
   }, [messages, isTyping]);
 
   const addBotMessage = async (message: Message) => {
@@ -354,7 +357,7 @@ const PsychologistChatbot: React.FC = () => {
             {/* Área de Mensagens */}
             <div 
               ref={scrollRef}
-              className="flex-1 overflow-y-auto p-4 space-y-5 bg-[#F9F8F6]/60 scroll-smooth"
+              className="flex-1 overflow-y-auto p-4 space-y-5 bg-[#F9F8F6]/60 scroll-smooth relative"
               id="messages-container"
               style={{ backgroundImage: 'radial-gradient(#5c6d67 0.5px, transparent 0.5px)', backgroundSize: '20px 20px', backgroundAlpha: 0.05 }}
             >
@@ -403,18 +406,68 @@ const PsychologistChatbot: React.FC = () => {
             <div className="p-4 bg-white border-t border-gray-100 shadow-[0_-4px_15px_rgba(0,0,0,0.02)]">
               {/* Opções Sugeridas */}
               {messages.length > 0 && messages[messages.length - 1].options && !isTyping && (
-                <div className="flex flex-col gap-2 mb-4">
-                  {messages[messages.length - 1].options?.map((opt, idx) => (
-                    <motion.button
-                      key={idx}
-                      whileHover={{ x: 4, backgroundColor: '#5c6d67', color: '#fff' }}
-                      onClick={() => handleOptionClick(opt)}
-                      className="text-left py-2.5 px-4 rounded-xl text-[13px] border border-gray-200 text-gray-600 hover:border-transparent transition-all flex items-center justify-between group"
+                <div className="relative mb-4">
+                  {showOptionsGrid ? (
+                    // Visualização Expandida (Grid)
+                    <motion.div 
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      className="grid grid-cols-1 gap-2 mb-2"
                     >
-                      {opt.label}
-                      <ChevronRight size={14} className="opacity-40 group-hover:opacity-100" />
-                    </motion.button>
-                  ))}
+                      <div className="flex justify-between items-center mb-1 px-1">
+                        <span className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider">Sugestões</span>
+                        <button 
+                          onClick={() => setShowOptionsGrid(false)}
+                          className="text-[11px] text-[#5c6d67] font-medium hover:underline flex items-center gap-1"
+                        >
+                          Recolher <ChevronLeft size={10} />
+                        </button>
+                      </div>
+                      {messages[messages.length - 1].options?.map((opt, idx) => (
+                        <motion.button
+                          key={idx}
+                          initial={{ x: -10, opacity: 0 }}
+                          animate={{ x: 0, opacity: 1 }}
+                          transition={{ delay: idx * 0.05 }}
+                          whileHover={{ x: 4, backgroundColor: '#5c6d67', color: '#fff' }}
+                          onClick={() => handleOptionClick(opt)}
+                          className="text-left py-2.5 px-4 rounded-xl text-[13px] border border-gray-200 text-gray-600 hover:border-transparent transition-all flex items-center justify-between group bg-white"
+                        >
+                          {opt.label}
+                          <ChevronRight size={14} className="opacity-40 group-hover:opacity-100" />
+                        </motion.button>
+                      ))}
+                    </motion.div>
+                  ) : (
+                    // Visualização Compacta (Carrossel)
+                    <div className="relative -mx-4 px-4 flex items-center gap-2">
+                      <div className="flex-1 overflow-x-auto gap-2 pb-2 no-scrollbar snap-x snap-mandatory flex scroll-smooth">
+                        {messages[messages.length - 1].options?.map((opt, idx) => (
+                          <motion.button
+                            key={idx}
+                            whileHover={{ scale: 1.02, backgroundColor: '#5c6d67', color: '#fff' }}
+                            whileTap={{ scale: 0.98 }}
+                            onClick={() => handleOptionClick(opt)}
+                            className="whitespace-nowrap shrink-0 py-2 px-4 rounded-full text-[12px] border border-gray-200 text-gray-600 hover:border-transparent transition-all flex items-center gap-2 bg-white shadow-sm snap-start"
+                          >
+                            {opt.label}
+                          </motion.button>
+                        ))}
+                        
+                        {/* Botão "Ver mais" no final do scroll */}
+                        {messages[messages.length - 1].options!.length > 2 && (
+                          <button
+                            onClick={() => setShowOptionsGrid(true)}
+                            className="whitespace-nowrap shrink-0 py-2 px-4 rounded-full text-[12px] font-semibold text-[#5c6d67] bg-[#5c6d67]/5 flex items-center gap-1 hover:bg-[#5c6d67]/10 transition-colors"
+                          >
+                            Ver mais <ChevronRight size={12} />
+                          </button>
+                        )}
+                      </div>
+                      {/* Indicador de "mais opções" (gradiente suave) se não estiver no final */}
+                      <div className="absolute right-0 top-0 bottom-2 w-8 bg-gradient-to-l from-white to-transparent pointer-events-none" />
+                    </div>
+                  )}
                 </div>
               )}
 
