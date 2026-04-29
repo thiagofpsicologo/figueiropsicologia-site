@@ -4,8 +4,9 @@
  */
 
 import React, { useRef, useState, useEffect } from 'react';
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
 import { Calendar, MessageCircle, ChevronDown, ChevronRight, Sparkles, Heart, Shield, Instagram, Linkedin, Menu, X, Mail, MapPin, Phone, GraduationCap, Award, Briefcase, ArrowLeft, ArrowRight } from 'lucide-react';
+import PsychologistChatbot from './components/PsychologistChatbot';
 
 // SCENE DATA based on the prompt provided by the user
 const WHATSAPP_MESSAGE = encodeURIComponent(`Olá! Seja muito bem-vindo(a) 
@@ -1694,6 +1695,8 @@ function App() {
                 Ver Instagram
               </span>
             </motion.a>
+
+            <PsychologistChatbot />
           </motion.div>
         )}
       </AnimatePresence>
