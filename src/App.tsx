@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useRef, useState } from 'react';
-import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
+import React, { useRef, useState, useEffect } from 'react';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { Calendar, MessageCircle, ChevronDown, ChevronRight, Sparkles, Heart, Shield, Instagram, Linkedin, Menu, X, Mail, MapPin, Phone, GraduationCap, Award, Briefcase, ArrowLeft, ArrowRight } from 'lucide-react';
 
 // SCENE DATA based on the prompt provided by the user
@@ -38,7 +38,7 @@ function SchedulingModal({ isOpen, onClose, selectedPlan }: { isOpen: boolean; o
   const [sessionUnavailable, setSessionUnavailable] = useState<Record<string, string[]>>({});
 
   // Reset modal state when closing
-  React.useEffect(() => {
+  useEffect(() => {
     if (!isOpen) {
       setSelectedDate("");
       setSelectedTime("");
@@ -307,7 +307,7 @@ function SchedulingModal({ isOpen, onClose, selectedPlan }: { isOpen: boolean; o
 
 function PolicyModal({ isOpen, onClose, title, content }: { isOpen: boolean; onClose: () => void; title: string; content: React.ReactNode }) {
   // Prevent scroll when modal is open
-  React.useEffect(() => {
+  useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
     } else {
@@ -407,25 +407,25 @@ const TESTIMONIALS = [
     name: "Ana P.",
     role: "Paciente a 1 ano",
     quote: "O Thiago tem uma sensibilidade única. Me senti acolhida desde a primeira sessão, sem julgamentos.",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=60&w=200&h=200"
+    image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=800&h=1000"
   },
   {
     name: "Carlos M.",
     role: "Acompanhamento Semanal",
     quote: "Processo transformador. Aprendi a lidar com minha ansiedade de uma forma que nunca imaginei ser possível.",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=60&w=200&h=200"
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=800&h=1000"
   },
   {
     name: "Juliana R.",
     role: "Superação de Burnout",
     quote: "Um espaço de cura real. O Thiago é extremamente profissional e humano ao mesmo tempo.",
-    image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=60&w=200&h=200"
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=800&h=1000"
   },
   {
     name: "Lucas F.",
     role: "Autoconhecimento",
     quote: "Excelente profissional. Me ajudou a entender padrões que eu repetia há anos sem perceber, trazendo clareza para minha vida.",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=60&w=200&h=200"
+    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=800&h=1000"
   },
   {
     name: "Maria S.",
@@ -579,30 +579,36 @@ function TestimonialCarousel() {
 
   const variants = {
     enter: (direction: number) => ({
-      x: direction > 0 ? 500 : -500,
+      x: direction > 0 ? 100 : -100,
       opacity: 0,
-      scale: 0.95
+      filter: "blur(4px)",
+      scale: 0.98
     }),
     center: {
       zIndex: 1,
       x: 0,
       opacity: 1,
+      filter: "blur(0px)",
       scale: 1
     },
     exit: (direction: number) => ({
       zIndex: 0,
-      x: direction < 0 ? 500 : -500,
+      x: direction < 0 ? 100 : -100,
       opacity: 0,
-      scale: 0.95
+      filter: "blur(4px)",
+      scale: 0.98
     })
   };
 
   const testimonial = TESTIMONIALS[currentIndex];
 
   return (
-    <div className="relative w-full max-w-5xl mx-auto py-12">
-      <div className="relative overflow-hidden h-[450px] md:h-[500px] flex items-center justify-center">
-        <AnimatePresence initial={false} custom={direction}>
+    <div className="relative w-full max-w-6xl mx-auto py-16 px-4">
+      {/* Background decoration */}
+      <div className="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 w-96 h-96 bg-olive/5 rounded-full blur-3xl pointer-events-none" />
+      
+      <div className="relative min-h-[500px] flex items-center justify-center">
+        <AnimatePresence initial={false} custom={direction} mode="wait">
           <motion.div
             key={currentIndex}
             custom={direction}
@@ -612,7 +618,7 @@ function TestimonialCarousel() {
             exit="exit"
             drag="x"
             dragConstraints={{ left: 0, right: 0 }}
-            dragElastic={1}
+            dragElastic={0.2}
             onDragEnd={(_, info) => {
               const swipeThreshold = 50;
               if (info.offset.x < -swipeThreshold) {
@@ -622,42 +628,78 @@ function TestimonialCarousel() {
               }
             }}
             transition={{
-              x: { type: "spring", stiffness: 300, damping: 30 },
-              opacity: { duration: 0.4 },
-              scale: { duration: 0.4 }
+              x: { type: "spring", stiffness: 200, damping: 25 },
+              opacity: { duration: 0.5 },
+              filter: { duration: 0.5 },
+              scale: { duration: 0.5 }
             }}
-            className="absolute w-full px-4 md:px-0 cursor-grab active:cursor-grabbing"
+            className="w-full cursor-grab active:cursor-grabbing"
           >
-            <div className="max-w-4xl mx-auto bg-white p-8 md:p-16 rounded-[40px] md:rounded-[60px] cinematic-shadow olive-border relative group">
-              {/* Decorative elements */}
-              <div className="absolute top-12 left-12 text-olive/5 pointer-events-none">
-                <Sparkles size={80} />
-              </div>
-              
-              <div className="relative z-10 space-y-10 text-center italic">
-                <div className="flex justify-center gap-1.5">
-                  {[...Array(5)].map((_, i) => (
-                    <Sparkles key={i} size={18} className="text-olive fill-olive/10" />
-                  ))}
+            <div className="grid md:grid-cols-[1fr_1.5fr] gap-12 md:gap-20 items-center">
+              {/* Image side */}
+              <div className="relative group">
+                <div className="aspect-[4/5] overflow-hidden rounded-[40px] md:rounded-[60px] cinematic-shadow relative z-10 border-8 border-white">
+                  <img 
+                    src={testimonial.image} 
+                    alt={testimonial.name} 
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute inset-0 bg-olive/10 mix-blend-multiply" />
                 </div>
+                {/* Decorative frames */}
+                <div className="absolute -top-4 -left-4 w-full h-full border-2 border-olive/10 rounded-[60px] translate-x-1 translate-y-1" />
+                <div className="absolute -bottom-4 -right-4 w-1/2 h-1/2 bg-natural-stone/30 rounded-3xl -z-10" />
                 
-                <p className="text-xl md:text-3xl font-serif leading-relaxed text-natural-ink italic px-4 md:px-12">
-                  "{testimonial.quote}"
-                </p>
-                
-                <div className="flex flex-col items-center gap-5">
-                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden ring-4 ring-olive/10 bg-white cinematic-shadow">
-                    <img 
-                      src={testimonial.image} 
-                      alt={testimonial.name} 
-                      className="w-full h-full object-cover"
-                      referrerPolicy="no-referrer"
-                    />
+                {/* Index Indicator */}
+                <div className="absolute top-10 -right-10 z-20 hidden lg:block">
+                  <span className="text-7xl font-serif text-olive/10 select-none">
+                    0{currentIndex + 1}
+                  </span>
+                </div>
+              </div>
+
+              {/* Text content side */}
+              <div className="relative space-y-8 md:space-y-10">
+                {/* Large Decorative Quote */}
+                <span className="absolute -top-12 -left-4 md:-top-16 md:-left-8 text-8xl md:text-9xl font-serif text-olive/5 select-none pointer-events-none italic">
+                  &ldquo;
+                </span>
+
+                <div className="space-y-8 relative z-10">
+                  <div className="flex gap-1">
+                    {[...Array(5)].map((_, i) => (
+                      <Sparkles key={i} size={14} className="text-olive fill-olive/10" />
+                    ))}
                   </div>
-                  <div>
-                    <h4 className="font-sans font-bold text-sm md:text-base text-natural-ink uppercase tracking-[0.2em]">{testimonial.name}</h4>
-                    <p className="text-[9px] md:text-[10px] uppercase tracking-[0.3em] text-olive font-black mt-1.5">{testimonial.role}</p>
+
+                  <p className="text-xl md:text-2xl lg:text-3xl font-serif leading-relaxed text-natural-ink italic">
+                    {testimonial.quote}
+                  </p>
+
+                  <div className="space-y-1 pt-6 border-t border-olive/10 max-w-[200px]">
+                    <h4 className="font-sans font-bold text-sm md:text-base text-natural-ink uppercase tracking-[0.2em]">
+                      {testimonial.name}
+                    </h4>
+                    <p className="text-[10px] md:text-[11px] uppercase tracking-[0.3em] text-olive font-black">
+                      {testimonial.role}
+                    </p>
                   </div>
+                </div>
+
+                {/* Mobile controls integrated into the card area */}
+                <div className="flex md:hidden items-center justify-between pt-4">
+                  <div className="flex gap-2">
+                    <button onClick={prev} className="p-3 bg-white border border-olive/10 rounded-full text-olive active:scale-90 transition-all shadow-sm">
+                      <ArrowLeft size={18} />
+                    </button>
+                    <button onClick={next} className="p-3 bg-white border border-olive/10 rounded-full text-olive active:scale-90 transition-all shadow-sm">
+                      <ArrowRight size={18} />
+                    </button>
+                  </div>
+                  <span className="text-[10px] uppercase tracking-widest font-bold text-olive/40 font-mono">
+                    0{currentIndex + 1} / 0{TESTIMONIALS.length}
+                  </span>
                 </div>
               </div>
             </div>
@@ -665,43 +707,52 @@ function TestimonialCarousel() {
         </AnimatePresence>
       </div>
 
-      {/* Controls */}
-      <div className="flex items-center justify-center gap-8 md:gap-12 mt-8">
-        <button 
-          onClick={prev}
-          className="p-4 rounded-full border border-olive/10 hover:bg-olive hover:text-white transition-all group active:scale-90 cinematic-shadow bg-white"
-          aria-label="Anterior"
-        >
-          <ArrowLeft size={24} className="group-hover:-translate-x-1 transition-transform" />
-        </button>
+      {/* Desktop Controls - External */}
+      <div className="hidden md:flex items-center justify-between mt-12 px-6">
+        <div className="flex items-center gap-10">
+          <div className="flex gap-4">
+            <button 
+              onClick={prev}
+              className="w-12 h-12 flex items-center justify-center rounded-full border border-olive/10 bg-white text-olive hover:bg-olive hover:text-white transition-all cinematic-shadow group active:scale-90"
+              aria-label="Anterior"
+            >
+              <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
+            </button>
+            <button 
+              onClick={next}
+              className="w-12 h-12 flex items-center justify-center rounded-full border border-olive/10 bg-white text-olive hover:bg-olive hover:text-white transition-all cinematic-shadow group active:scale-90"
+              aria-label="Próximo"
+            >
+              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+            </button>
+          </div>
 
-        <div className="flex gap-3">
-          {TESTIMONIALS.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => {
-                setDirection(i > currentIndex ? 1 : -1);
-                setCurrentIndex(i);
-              }}
-              className={`h-2 transition-all duration-500 rounded-full ${i === currentIndex ? 'w-10 bg-olive' : 'w-2 bg-olive/20 hover:bg-olive/40'}`}
-              aria-label={`Ir para depoimento ${i + 1}`}
-            />
-          ))}
+          {/* Minimal pagination dots */}
+          <div className="flex gap-2.5">
+            {TESTIMONIALS.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => {
+                  setDirection(i > currentIndex ? 1 : -1);
+                  setCurrentIndex(i);
+                }}
+                className={`h-1.5 transition-all duration-500 rounded-full ${i === currentIndex ? 'w-8 bg-olive' : 'w-1.5 bg-olive/20 hover:bg-olive/40'}`}
+                aria-label={`Ir para depoimento ${i + 1}`}
+              />
+            ))}
+          </div>
         </div>
 
-        <button 
-          onClick={next}
-          className="p-4 rounded-full border border-olive/10 hover:bg-olive hover:text-white transition-all group active:scale-90 cinematic-shadow bg-white"
-          aria-label="Próximo"
-        >
-          <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" />
-        </button>
+        <div className="text-[11px] uppercase tracking-[0.4em] font-bold text-olive/30 flex items-center gap-4">
+          <span className="w-12 h-[1px] bg-olive/10" />
+          Depoimentos Reais
+        </div>
       </div>
     </div>
   );
 }
 
-export default function App() {
+function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isSchedulingOpen, setIsSchedulingOpen] = useState(false);
@@ -714,7 +765,7 @@ export default function App() {
     setIsSchedulingOpen(true);
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (isMenuOpen) {
       document.body.style.overflow = 'hidden';
     } else {
@@ -725,7 +776,7 @@ export default function App() {
     };
   }, [isMenuOpen]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
@@ -1649,3 +1700,5 @@ export default function App() {
     </div>
   );
 }
+
+export default App;
