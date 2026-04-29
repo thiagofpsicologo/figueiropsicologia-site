@@ -1,9 +1,20 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { MessageCircle, X, Send, Sparkles, User, Brain } from 'lucide-react';
 import { GoogleGenAI } from '@google/genai';
 
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+const getAi = () => {
+  try {
+    // In Vite, process.env.GEMINI_API_KEY is replaced by define at build time.
+    // We check it cautiously.
+    const apiKey = typeof process !== 'undefined' ? process.env.GEMINI_API_KEY : undefined;
+    if (!apiKey) return null;
+    return new GoogleGenAI({ apiKey });
+  } catch (e) {
+    console.error('Failed to initialize GoogleGenAI:', e);
+    return null;
+  }
+};
 
 interface Message {
   role: 'user' | 'model';
@@ -40,6 +51,8 @@ export function Chatbot() {
   const [isLoading, setIsLoading] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
+  const ai = useMemo(() => getAi(), []);
+
   useEffect(() => {
     if (scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
@@ -48,6 +61,11 @@ export function Chatbot() {
 
   const handleSend = async () => {
     if (!input.trim() || isLoading) return;
+
+    if (!ai) {
+      setMessages(prev => [...prev, { role: 'model', text: 'Desculpe, o serviço de IA não está configurado corretamente no momento. Por favor, entre em contato via WhatsApp para um atendimento imediato.' }]);
+      return;
+    }
 
     const userMessage = input.trim();
     setInput('');
@@ -89,18 +107,17 @@ export function Chatbot() {
   };
 
   return (
-    <div className="relative z-[200] pointer-events-auto" id="chatbot-container">
+    <div className="relative z-[200] pointer-events-auto">
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            id="chatbot-window"
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
             className="absolute bottom-20 right-0 w-[350px] sm:w-[400px] h-[500px] bg-white rounded-[32px] shadow-2xl flex flex-col overflow-hidden border border-olive/10"
           >
             {/* Header */}
-            <div className="bg-olive p-6 text-white flex justify-between items-center" id="chatbot-header">
+            <div className="bg-olive p-6 text-white flex justify-between items-center">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
                   <Brain size={20} />
@@ -111,7 +128,6 @@ export function Chatbot() {
                 </div>
               </div>
               <button 
-                id="chatbot-close-button"
                 onClick={() => setIsOpen(false)} 
                 className="p-2 hover:bg-white/10 rounded-full transition-colors"
               >
@@ -122,7 +138,6 @@ export function Chatbot() {
             {/* Messages */}
             <div 
               ref={scrollRef} 
-              id="chatbot-messages-list"
               className="flex-1 overflow-y-auto p-6 space-y-4 bg-natural-bg/30 custom-scrollbar"
             >
               {messages.map((m, i) => (
@@ -138,7 +153,7 @@ export function Chatbot() {
                 </div>
               ))}
               {isLoading && (
-                <div className="flex justify-start" id="chatbot-loading-indicator">
+                <div className="flex justify-start">
                   <div className="flex gap-2 max-w-[85%]">
                     <div className="w-8 h-8 rounded-full shrink-0 bg-white border border-olive/10 text-olive flex items-center justify-center">
                       <Brain size={14} className="animate-pulse" />
@@ -154,10 +169,9 @@ export function Chatbot() {
             </div>
 
             {/* Input */}
-            <div className="p-4 bg-white border-t border-olive/5" id="chatbot-input-container">
+            <div className="p-4 bg-white border-t border-olive/5">
               <div className="relative flex items-center">
                 <input
-                  id="chatbot-input-field"
                   type="text"
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
@@ -166,7 +180,6 @@ export function Chatbot() {
                   className="w-full pl-6 pr-12 py-4 bg-neutral-50 border border-olive/10 rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-olive/20 focus:border-olive/30 transition-all"
                 />
                 <button
-                  id="chatbot-send-button"
                   disabled={isLoading || !input.trim()}
                   onClick={handleSend}
                   className="absolute right-3 p-2 bg-olive text-white rounded-xl hover:scale-105 active:scale-95 disabled:opacity-50 disabled:scale-100 transition-all"
@@ -180,7 +193,6 @@ export function Chatbot() {
       </AnimatePresence>
 
       <motion.button
-        id="chatbot-toggle-button"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => setIsOpen(!isOpen)}
