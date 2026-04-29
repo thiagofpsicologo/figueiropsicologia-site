@@ -91,6 +91,7 @@ export const SchedulingModal: React.FC<SchedulingModalProps> = ({ isOpen, onClos
     const icsContent = [
       "BEGIN:VCALENDAR",
       "VERSION:2.0",
+      "PRODID:-//Thiago Figueiro//Consultas//PT",
       "BEGIN:VEVENT",
       `DTSTART:${formatDateICS(start)}`,
       `DTEND:${formatDateICS(end)}`,
@@ -101,14 +102,10 @@ export const SchedulingModal: React.FC<SchedulingModalProps> = ({ isOpen, onClos
       "END:VCALENDAR"
     ].join("\r\n");
 
-    const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
-    const url = window.URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.setAttribute('download', 'consulta-thiago-figueiro.ics');
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    // Para dispositivos Apple, usar data URI sem o atributo 'download' costuma
+    // abrir diretamente a tela de "Adicionar Evento" do calendário nativo.
+    const uri = "data:text/calendar;charset=utf8," + encodeURIComponent(icsContent);
+    window.location.href = uri;
   };
 
   return (
