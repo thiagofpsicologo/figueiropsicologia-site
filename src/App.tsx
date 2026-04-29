@@ -1254,7 +1254,7 @@ export default function App() {
                   </div>
                   <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-white/90 font-bold">
                     <Sparkles size={14} className="opacity-40" />
-                    <span>📅 4 sessões / mês</span>
+                    <span>📅 1 sessão por semana (aprox. 4 por mês)</span>
                   </div>
                   <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-white/90 font-bold">
                     <Sparkles size={14} className="opacity-40" />
@@ -1325,6 +1325,20 @@ export default function App() {
               </div>
             </motion.div>
           </div>
+
+          {/* Subtle note about frequency - professionally styled */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="max-w-xl mx-auto mt-20 text-center px-6"
+          >
+            <div className="h-[1px] w-12 bg-olive/20 mx-auto mb-6" />
+            <p className="text-sm md:text-base text-natural-ink/40 font-medium italic">
+              A frequência pode ser ajustada conforme a necessidade ao longo do processo.
+            </p>
+          </motion.div>
         </section>
 
         {/* CTA Section - Reimagined for Elegance & Legibility */}
