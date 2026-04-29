@@ -1196,7 +1196,7 @@ export default function App() {
                 <div className="space-y-4 pt-4">
                   <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-olive font-bold">
                     <Sparkles size={14} className="opacity-40" />
-                    <span>⏱ 50 minutos</span>
+                    <span>⏱ 60 minutos</span>
                   </div>
                   <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-olive font-bold">
                     <Sparkles size={14} className="opacity-40" />
@@ -1250,7 +1250,7 @@ export default function App() {
                 <div className="space-y-4 pt-4">
                   <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-white/90 font-bold">
                     <Sparkles size={14} className="opacity-40" />
-                    <span>⏱ 50 minutos por sessão</span>
+                    <span>⏱ 60 minutos por sessão</span>
                   </div>
                   <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-white/90 font-bold">
                     <Sparkles size={14} className="opacity-40" />
@@ -1299,7 +1299,7 @@ export default function App() {
                 <div className="space-y-4 pt-4">
                   <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-olive font-bold">
                     <Sparkles size={14} className="opacity-40" />
-                    <span>⏱ 50 minutos por sessão</span>
+                    <span>⏱ 60 minutos por sessão</span>
                   </div>
                   <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-olive font-bold">
                     <Sparkles size={14} className="opacity-40" />
