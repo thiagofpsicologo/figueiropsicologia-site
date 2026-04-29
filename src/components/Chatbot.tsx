@@ -1,20 +1,18 @@
-import React, { useState, useRef, useEffect, useMemo } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { MessageCircle, X, Send, Sparkles, User, Brain } from 'lucide-react';
+import { MessageCircle, X, Send, User, Brain } from 'lucide-react';
 import { GoogleGenAI } from '@google/genai';
+import ReactMarkdown from 'react-markdown';
 
-const getAi = () => {
+const ai = (() => {
   try {
-    // In Vite, process.env.GEMINI_API_KEY is replaced by define at build time.
-    // We check it cautiously.
-    const apiKey = typeof process !== 'undefined' ? process.env.GEMINI_API_KEY : undefined;
-    if (!apiKey) return null;
-    return new GoogleGenAI({ apiKey });
-  } catch (e) {
-    console.error('Failed to initialize GoogleGenAI:', e);
+    const key = process.env.GEMINI_API_KEY;
+    if (!key) return null;
+    return new GoogleGenAI({ apiKey: key });
+  } catch (err) {
     return null;
   }
-};
+})();
 
 interface Message {
   role: 'user' | 'model';
@@ -51,8 +49,6 @@ export function Chatbot() {
   const [isLoading, setIsLoading] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  const ai = useMemo(() => getAi(), []);
-
   useEffect(() => {
     if (scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
@@ -63,7 +59,7 @@ export function Chatbot() {
     if (!input.trim() || isLoading) return;
 
     if (!ai) {
-      setMessages(prev => [...prev, { role: 'model', text: 'Desculpe, o serviço de IA não está configurado corretamente no momento. Por favor, entre em contato via WhatsApp para um atendimento imediato.' }]);
+      setMessages(prev => [...prev, { role: 'model', text: 'O assistente de IA está temporariamente indisponível. Por favor, entre em contato diretamente com o Thiago pelo WhatsApp para agendamentos e dúvidas.' }]);
       return;
     }
 
@@ -114,7 +110,7 @@ export function Chatbot() {
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            className="absolute bottom-20 right-0 w-[350px] sm:w-[400px] h-[500px] bg-white rounded-[32px] shadow-2xl flex flex-col overflow-hidden border border-olive/10"
+            className="absolute bottom-full mb-4 right-[-1rem] sm:right-0 w-[calc(100vw-2rem)] sm:w-[400px] h-[70vh] max-h-[600px] bg-white rounded-[24px] sm:rounded-[32px] shadow-2xl flex flex-col overflow-hidden border border-olive/10"
           >
             {/* Header */}
             <div className="bg-olive p-6 text-white flex justify-between items-center">
@@ -147,7 +143,9 @@ export function Chatbot() {
                       {m.role === 'user' ? <User size={14} /> : <Brain size={14} />}
                     </div>
                     <div className={`p-4 rounded-2xl text-sm leading-relaxed ${m.role === 'user' ? 'bg-olive text-white rounded-tr-none' : 'bg-white text-natural-ink shadow-sm border border-olive/5 rounded-tl-none'}`}>
-                      {m.text}
+                      <div className="markdown-body">
+                        <ReactMarkdown>{m.text}</ReactMarkdown>
+                      </div>
                     </div>
                   </div>
                 </div>

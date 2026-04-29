@@ -366,7 +366,17 @@ function PolicyModal({ isOpen, onClose, title, content }: { isOpen: boolean; onC
   );
 }
 
-const SCENES = [
+interface SceneData {
+  id: string;
+  title: string;
+  audioText: string;
+  image?: string;
+  accent: string;
+  subtitle?: string;
+  sideImage?: string;
+}
+
+const SCENES: SceneData[] = [
   {
     id: 'dor',
     title: 'Thiago Figueiró',
@@ -461,7 +471,7 @@ const TESTIMONIALS = [
 ];
 
 interface SceneProps {
-  scene: typeof SCENES[0] & { sideImage?: string; image?: string; subtitle?: string };
+  scene: SceneData;
   index: number;
   total: number;
 }
