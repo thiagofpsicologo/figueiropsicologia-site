@@ -78,6 +78,39 @@ export const SchedulingModal: React.FC<SchedulingModalProps> = ({ isOpen, onClos
     window.open(url, '_blank');
   };
 
+  const addToAppleCalendar = () => {
+    const [hours, minutes] = selectedTime.split(':').map(Number);
+    const start = new Date(selectedDate + 'T00:00:00');
+    start.setHours(hours, minutes);
+    const end = new Date(start.getTime() + 50 * 60000);
+
+    const formatDateICS = (date: Date) => {
+      return date.toISOString().replace(/-|:|\.\d\d\d/g, "");
+    };
+
+    const icsContent = [
+      "BEGIN:VCALENDAR",
+      "VERSION:2.0",
+      "BEGIN:VEVENT",
+      `DTSTART:${formatDateICS(start)}`,
+      `DTEND:${formatDateICS(end)}`,
+      "SUMMARY:Consulta com Thiago Figueiró",
+      "DESCRIPTION:Consulta psicológica agendada com Thiago Figueiró",
+      "LOCATION:Atendimento online ou presencial, a confirmar pelo WhatsApp",
+      "END:VEVENT",
+      "END:VCALENDAR"
+    ].join("\r\n");
+
+    const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+    const url = window.URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', 'consulta-thiago-figueiro.ics');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -243,6 +276,17 @@ export const SchedulingModal: React.FC<SchedulingModalProps> = ({ isOpen, onClos
                         >
                           <Calendar size={16} />
                           Adicionar ao Google Agenda
+                        </button>
+
+                        <button
+                          onClick={addToAppleCalendar}
+                          className="w-full bg-white border border-olive/20 text-olive py-4 rounded-2xl font-sans text-xs uppercase tracking-[0.2em] font-bold hover:bg-olive/5 transition-all flex items-center justify-center gap-2"
+                          id="apple-calendar-btn"
+                        >
+                          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" className="lucide-apple">
+                            <path d="M17.05 20.28c-.96.95-2.15 1.57-3.57 1.57-1.39 0-2.48-.48-3.52-.48-1.04 0-2.28.51-3.55.51-3.66 0-6.75-5.91-6.75-9.67 0-3.67 2.05-5.74 4.54-5.74 1.34 0 2.45.67 3.32.67.87 0 2.22-.72 3.73-.72 1.41 0 3.1.66 4.14 2-.09.06-2.58 1.48-2.58 4.63 0 3.19 2.58 4.41 2.65 4.44-.06.18-1.42 2.89-3.43 4.8zm-4.73-15.1c0 0 .01-.01.01-.01.99-1.2 1.66-2.88 1.48-4.54-.15-.01-.32-.02-.5-.02-2.13 0-3.76 1.43-4.56 3.18-.75 1.62-.64 3.34-.43 4.56.09.01.19.01.29.01 2.06 0 3.71-1.32 4.11-3.18z" />
+                          </svg>
+                          Adicionar ao Calendário Apple
                         </button>
 
                         <button
