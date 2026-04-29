@@ -1187,10 +1187,11 @@ export default function App() {
               <div className="space-y-6">
                 <div className="space-y-2">
                   <h3 className="text-2xl md:text-3xl font-serif text-natural-ink">Atendimento pontual</h3>
+                  <p className="text-xs uppercase tracking-widest text-olive font-bold italic">Para momentos específicos que precisam de clareza.</p>
                   <div className="h-[1px] w-12 bg-olive/20" />
                 </div>
                 <p className="text-sm md:text-base text-natural-ink/70 leading-relaxed min-h-[100px]">
-                  Indicado para quem precisa conversar sobre uma situação específica, tomar uma decisão ou lidar com um momento mais urgente. Um espaço de escuta, acolhimento e direcionamento.
+                  Se você está passando por uma situação difícil, precisa tomar uma decisão ou organizar seus pensamentos, esse é um espaço de escuta, acolhimento e direcionamento.
                 </p>
                 <div className="space-y-4 pt-4">
                   <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-olive font-bold">
@@ -1203,11 +1204,7 @@ export default function App() {
                   </div>
                   <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-olive font-bold">
                     <Sparkles size={14} className="opacity-40" />
-                    <span>🌐 Online</span>
-                  </div>
-                  <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-olive font-bold">
-                    <MapPin size={14} className="opacity-40" />
-                    <span>📍 Presencial</span>
+                    <span>🌐 Online ou presencial</span>
                   </div>
                 </div>
               </div>
@@ -1238,33 +1235,30 @@ export default function App() {
                 <div className="space-y-4">
                   <div className="inline-block">
                     <span className="bg-olive text-white px-5 py-1.5 rounded-full text-[10px] md:text-[11px] uppercase tracking-[0.2em] font-black shadow-lg shadow-olive/30 border border-white/10">
-                      Mais escolhido
+                      ⭐ Mais escolhido
                     </span>
                   </div>
                   <div className="space-y-2">
                     <h3 className="text-2xl md:text-3xl font-serif">Psicoterapia semanal</h3>
+                    <p className="text-xs uppercase tracking-widest text-olive-light font-bold italic">Para quem quer mudanças reais e consistentes.</p>
                     <div className="h-[1px] w-12 bg-white/20" />
                   </div>
                 </div>
                 <p className="text-sm md:text-base text-white/70 leading-relaxed min-h-[100px]">
-                  Para quem deseja se aprofundar no processo terapêutico. O acompanhamento semanal permite trabalhar com mais continuidade, favorecendo mudanças mais consistentes ao longo do tempo.
+                  O acompanhamento semanal permite aprofundar questões emocionais com continuidade, favorecendo autoconhecimento e transformação ao longo do tempo.
                 </p>
                 <div className="space-y-4 pt-4">
                   <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-white/90 font-bold">
                     <Sparkles size={14} className="opacity-40" />
-                    <span>⏱ 50 min / sessão</span>
+                    <span>⏱ 50 minutos por sessão</span>
                   </div>
                   <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-white/90 font-bold">
                     <Sparkles size={14} className="opacity-40" />
-                    <span>📅 1 sessão / semana</span>
+                    <span>📅 4 sessões / mês</span>
                   </div>
                   <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-white/90 font-bold">
                     <Sparkles size={14} className="opacity-40" />
-                    <span>🌐 Online</span>
-                  </div>
-                  <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-white/90 font-bold">
-                    <MapPin size={14} className="opacity-40" />
-                    <span>📍 Presencial</span>
+                    <span>🌐 Online ou presencial</span>
                   </div>
                 </div>
               </div>
@@ -1296,27 +1290,24 @@ export default function App() {
               <div className="space-y-6">
                 <div className="space-y-2">
                   <h3 className="text-2xl md:text-3xl font-serif text-natural-ink">Psicoterapia quinzenal</h3>
+                  <p className="text-xs uppercase tracking-widest text-olive font-bold italic">Um ritmo mais leve, sem perder o cuidado com você.</p>
                   <div className="h-[1px] w-12 bg-olive/20" />
                 </div>
                 <p className="text-sm md:text-base text-natural-ink/70 leading-relaxed min-h-[100px]">
-                  Uma opção para quem prefere um ritmo mais leve ou está em um momento de manutenção do processo terapêutico.
+                  Indicado para quem já iniciou o processo terapêutico ou prefere um acompanhamento mais espaçado, mantendo o equilíbrio emocional.
                 </p>
                 <div className="space-y-4 pt-4">
                   <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-olive font-bold">
                     <Sparkles size={14} className="opacity-40" />
-                    <span>⏱ 50 min / sessão</span>
+                    <span>⏱ 50 minutos por sessão</span>
                   </div>
                   <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-olive font-bold">
                     <Sparkles size={14} className="opacity-40" />
-                    <span>📅 2 sessões / mês</span>
+                    <span>📅 2 sessões por mês</span>
                   </div>
                   <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-olive font-bold">
                     <Sparkles size={14} className="opacity-40" />
-                    <span>🌐 Online</span>
-                  </div>
-                  <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-olive font-bold">
-                    <MapPin size={14} className="opacity-40" />
-                    <span>📍 Presencial</span>
+                    <span>🌐 Online ou presencial</span>
                   </div>
                 </div>
               </div>
@@ -1329,7 +1320,7 @@ export default function App() {
                   onClick={() => openScheduling('Psicoterapia Quinzenal')}
                   className="w-full py-4 rounded-2xl border border-olive text-olive font-sans text-xs uppercase tracking-[0.2em] font-bold hover:bg-olive hover:text-white transition-all transform active:scale-95"
                 >
-                  Começar quinzenal
+                  Agendar sessões
                 </button>
               </div>
             </motion.div>
