@@ -145,17 +145,17 @@ export const Footer: React.FC<FooterProps> = ({
             © {new Date().getFullYear()} Thiago Figueiró &bull; CRP 04/48708 &bull; Todos os direitos reservados.
           </p>
           
-          <div className="flex items-center gap-8">
+          <div className="flex items-center gap-4">
              <button 
                onClick={() => setIsPrivacyOpen(true)}
-               className="text-[9px] uppercase tracking-[0.2em] text-natural-ink/30 font-bold hover:text-olive transition-colors cursor-pointer"
+               className="text-[9px] uppercase tracking-[0.2em] text-natural-ink/40 font-black hover:text-olive hover:bg-olive/5 px-4 py-2 rounded-full border border-olive/10 transition-all cursor-pointer backdrop-blur-sm"
                id="privacy-policy-link"
              >
                Políticas de Privacidade
              </button>
              <button 
                onClick={() => setIsTermsOpen(true)}
-               className="text-[9px] uppercase tracking-[0.2em] text-natural-ink/30 font-bold hover:text-olive transition-colors cursor-pointer"
+               className="text-[9px] uppercase tracking-[0.2em] text-natural-ink/40 font-black hover:text-olive hover:bg-olive/5 px-4 py-2 rounded-full border border-olive/10 transition-all cursor-pointer backdrop-blur-sm"
                id="terms-of-use-link"
              >
                Termos de Uso

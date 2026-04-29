@@ -190,13 +190,22 @@ export const Header: React.FC<HeaderProps> = ({
                     <span className="text-[10px] uppercase tracking-widest text-white/30 font-bold group-hover:text-white/60 transition-colors">WhatsApp</span>
                   </a>
                 </motion.div>
-                <div className="text-[9px] text-white/20 uppercase tracking-[0.2em] font-medium flex flex-col items-center gap-4">
+                <div className="text-[9px] text-white/30 uppercase tracking-[0.2em] font-bold flex flex-col items-center gap-4">
                   <div className="flex gap-4">
-                    <button onClick={() => { setIsMenuOpen(false); setIsPrivacyOpen(true); }} className="hover:text-olive transition-colors">Privacidade</button>
-                    <span>&bull;</span>
-                    <button onClick={() => { setIsMenuOpen(false); setIsTermsOpen(true); }} className="hover:text-olive transition-colors">Termos</button>
+                    <button 
+                      onClick={() => { setIsMenuOpen(false); setIsPrivacyOpen(true); }} 
+                      className="hover:text-olive bg-white/5 border border-white/10 px-4 py-2 rounded-full transition-all"
+                    >
+                      Privacidade
+                    </button>
+                    <button 
+                      onClick={() => { setIsMenuOpen(false); setIsTermsOpen(true); }} 
+                      className="hover:text-olive bg-white/5 border border-white/10 px-4 py-2 rounded-full transition-all"
+                    >
+                      Termos
+                    </button>
                   </div>
-                  <span>&copy; {new Date().getFullYear()} Thiago Figueiró &bull; CRP 04/48708</span>
+                  <span className="opacity-60">&copy; {new Date().getFullYear()} Thiago Figueiró &bull; CRP 04/48708</span>
                 </div>
               </div>
             </div>
