@@ -15,9 +15,9 @@ export const Footer: React.FC<FooterProps> = ({
   setIsTermsOpen 
 }) => {
   return (
-    <footer className="bg-[#F7F5F2] pt-24 md:pt-20 pb-12 px-6 md:px-12 border-t border-olive/10 relative overflow-hidden">
-      <div className="absolute top-12 md:top-10 left-1/2 -translate-x-1/2 w-full text-center opacity-[0.02] pointer-events-none select-none overflow-hidden whitespace-nowrap px-4">
-        <span className="font-serif italic text-[14vw] md:text-[20vw] leading-none text-natural-ink">Thiago Figueiró</span>
+    <footer className="bg-[#F7F5F2] pt-20 pb-12 px-6 md:px-12 border-t border-olive/10 relative overflow-hidden">
+      <div className="absolute top-10 left-1/2 -translate-x-1/2 w-full text-center opacity-[0.02] pointer-events-none select-none overflow-hidden whitespace-nowrap">
+        <span className="font-serif italic text-[20vw] leading-none text-natural-ink">Thiago Figueiró</span>
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
@@ -31,7 +31,7 @@ export const Footer: React.FC<FooterProps> = ({
             >
               <div className="w-16 h-16 rounded-3xl bg-white flex items-center justify-center overflow-hidden cinematic-shadow border border-olive/5 ring-4 ring-olive/5">
                 <img 
-                  src="https://drive.google.com/thumbnail?id=1UE5CsG4ztDBjSVYmyPzR_xuCpnrMJZfq&sz=w1000" 
+                  src="https://drive.google.com/thumbnail?id=10taANe2B2DrYxggYuYrP098CD_pZntCN&sz=w1000" 
                   alt="Logo Thiago Figueiró" 
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
