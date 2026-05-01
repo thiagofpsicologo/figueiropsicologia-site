@@ -36,10 +36,10 @@ export const Scene: React.FC<SceneProps> = ({ scene, index }) => {
           <img 
             src={scene.image} 
             alt={scene.title}
-            className={`w-full h-full object-cover object-[85%_center] sm:object-[45%_20%] ${scene.id === 'identificacao' ? 'brightness-[0.8] contrast-[0.9]' : (index === 0 ? 'brightness-[1.05] contrast-[1.05]' : '')}`}
+            className={`w-full h-full object-cover object-[85%_center] sm:object-[45%_20%] ${scene.id === 'identificacao' ? 'brightness-[0.8] contrast-[0.9]' : (index === 0 ? 'brightness-[1.1]' : '')}`}
             referrerPolicy="no-referrer"
           />
-          <div className={`absolute inset-0 ${index === 0 ? 'bg-gradient-to-r from-[#1A1A1A]/40 via-[#1A1A1A]/10 to-transparent' : (scene.id === 'identificacao' ? 'bg-black/60 backdrop-blur-[2px]' : 'bg-black/30')}`} />
+          <div className={`absolute inset-0 ${index === 0 ? 'bg-gradient-to-r from-[#1A1A1A]/60 via-[#1A1A1A]/20 to-transparent' : (scene.id === 'identificacao' ? 'bg-black/60 backdrop-blur-[2px]' : 'bg-black/30')}`} />
         </motion.div>
       )}
 
