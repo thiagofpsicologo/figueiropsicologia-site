@@ -31,7 +31,7 @@ export const Footer: React.FC<FooterProps> = ({
             >
               <div className="w-16 h-16 rounded-3xl bg-white flex items-center justify-center overflow-hidden cinematic-shadow border border-olive/5 ring-4 ring-olive/5">
                 <img 
-                  src="https://drive.google.com/thumbnail?id=1eZsv4ltEYAn_q3L5L0FTEK9EH5IovGTm&sz=w1000" 
+                  src="https://drive.google.com/thumbnail?id=10taANe2B2DrYxggYuYrP098CD_pZntCN&sz=w1000" 
                   alt="Logo Thiago Figueiró" 
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
