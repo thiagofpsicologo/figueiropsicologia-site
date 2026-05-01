@@ -27,9 +27,9 @@ export const Header: React.FC<HeaderProps> = ({
           href="#" 
           className={`flex items-center gap-2 md:gap-3 px-3 py-1.5 md:px-5 md:py-2.5 rounded-full border transition-all group backdrop-blur-md shrink-0 max-w-[70%] hover:scale-102 active:scale-95 ${isScrolled ? 'bg-white border-olive/10 shadow-sm' : 'bg-white/40 border-white/30'}`}
         >
-          <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-white flex items-center justify-center overflow-hidden shrink-0 group-hover:scale-110 transition-transform shadow-inner border border-olive/5">
+          <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-white flex items-center justify-center overflow-hidden shrink-0 group-hover:scale-110 transition-transform shadow-md border border-olive/10">
             <img 
-              src="https://drive.google.com/thumbnail?id=10taANe2B2DrYxggYuYrP098CD_pZntCN&sz=w1000" 
+              src="https://drive.google.com/thumbnail?id=18OxYoRjXAKjdK4w608G6HkYJxF4HAn0O&sz=w1000" 
               alt="Logo Thiago Figueiró" 
               className="w-full h-full object-cover"
               referrerPolicy="no-referrer"
@@ -108,11 +108,11 @@ export const Header: React.FC<HeaderProps> = ({
                   <span className="font-serif text-white text-base tracking-tight leading-none mb-1">Thiago Figueiró</span>
                   <span className="text-[8px] uppercase tracking-[0.3em] text-olive font-black">Psicólogo Clínico</span>
                 </div>
-                <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center p-0.5 border border-white/10 ring-4 ring-white/5">
+                <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center overflow-hidden border border-white/20 ring-4 ring-white/5 shadow-xl">
                   <img 
-                    src="https://drive.google.com/thumbnail?id=10taANe2B2DrYxggYuYrP098CD_pZntCN&sz=1000" 
+                    src="https://drive.google.com/thumbnail?id=18OxYoRjXAKjdK4w608G6HkYJxF4HAn0O&sz=1000" 
                     alt="Logo" 
-                    className="w-full h-full rounded-full object-cover"
+                    className="w-full h-full object-cover"
                     referrerPolicy="no-referrer"
                   />
                 </div>

@@ -29,9 +29,9 @@ export const Footer: React.FC<FooterProps> = ({
               transition={{ delay: 0.5, duration: 0.8 }}
               className="flex flex-col gap-4"
             >
-              <div className="w-16 h-16 rounded-3xl bg-white flex items-center justify-center overflow-hidden cinematic-shadow border border-olive/5 ring-4 ring-olive/5">
+              <div className="w-20 h-20 rounded-full bg-white flex items-center justify-center overflow-hidden shadow-2xl border border-olive/5 ring-8 ring-white/50 backdrop-blur-sm">
                 <img 
-                  src="https://drive.google.com/thumbnail?id=10taANe2B2DrYxggYuYrP098CD_pZntCN&sz=w1000" 
+                  src="https://drive.google.com/thumbnail?id=18OxYoRjXAKjdK4w608G6HkYJxF4HAn0O&sz=w1000" 
                   alt="Logo Thiago Figueiró" 
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
