@@ -112,7 +112,7 @@ export const Footer: React.FC<FooterProps> = ({
                 </div>
                 <div>
                   <span className="block text-[10px] uppercase tracking-widest text-natural-ink/40 font-bold mb-1">Email</span>
-                  <a href="mailto:thiagomeirelesfigueiro@hotmail.com.br" className="text-sm font-medium text-natural-ink/80 hover:text-olive transition-colors">thiagomeirelesfigueiro@@hotmail.com.br</a>
+                  <a href="mailto:thiagomeirelesfigueiro@hotmail.com.br" className="text-sm font-medium text-natural-ink/80 hover:text-olive transition-colors">thiagomeirelesfigueiro@hotmail.com.br</a>
                 </div>
               </div>
             </div>
