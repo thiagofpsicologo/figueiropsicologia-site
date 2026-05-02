@@ -26,7 +26,7 @@ export const SCENES = [
     id: 'dor',
     title: 'Thiago Figueiró',
     audioText: 'piano leve e emocional',
-    image: 'https://drive.google.com/thumbnail?id=1O92okHSdMn0uk8RIoTdXsZrBWA6PO9u2&sz=w2000',
+    image: 'https://drive.google.com/thumbnail?id=1V1wtWexOw3e6-5bNr1iVZAc9cAtto8PY&sz=w2000',
     accent: 'Psicólogo Clínico',
     subtitle: 'Como posso te ajudar?'
   },
