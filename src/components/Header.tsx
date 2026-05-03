@@ -25,9 +25,9 @@ export const Header: React.FC<HeaderProps> = ({
       <nav className={`fixed top-0 left-0 w-full z-[100] px-6 md:px-12 py-3 md:py-6 flex flex-row justify-between items-center transition-all duration-500 ${isScrolled ? 'bg-white/95 backdrop-blur-md shadow-md border-b border-olive/5 py-2 md:py-4' : 'bg-transparent py-4'}`}>
         <a 
           href="#" 
-          className={`flex items-center gap-2 md:gap-3 px-3 py-1.5 md:px-4 md:py-2 rounded-full border transition-all group backdrop-blur-md shrink-0 max-w-[70%] hover:scale-102 active:scale-95 ${isScrolled ? 'bg-white border-olive/10 shadow-sm' : 'bg-white/40 border-white/30'}`}
+          className={`flex items-center gap-2 md:gap-3 px-3 py-1.5 md:px-5 md:py-2.5 rounded-full border transition-all group backdrop-blur-md shrink-0 max-w-[70%] hover:scale-102 active:scale-95 ${isScrolled ? 'bg-white border-olive/10 shadow-sm' : 'bg-white/40 border-white/30'}`}
         >
-          <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-white flex items-center justify-center overflow-hidden shrink-0 group-hover:scale-110 transition-transform shadow-md border border-olive/10">
+          <div className="w-7 h-7 md:w-10 md:h-10 rounded-full bg-white flex items-center justify-center overflow-hidden shrink-0 group-hover:scale-110 transition-transform shadow-md border border-olive/10">
             <img 
               src="https://drive.google.com/thumbnail?id=18OxYoRjXAKjdK4w608G6HkYJxF4HAn0O&sz=w1000" 
               alt="Logo Thiago Figueiró" 
@@ -35,7 +35,7 @@ export const Header: React.FC<HeaderProps> = ({
               referrerPolicy="no-referrer"
             />
           </div>
-          <span className={`font-serif text-[10px] md:text-sm font-medium tracking-tight transition-colors truncate ${isScrolled ? 'text-natural-ink' : 'text-white'}`}>Thiago Figueiró</span>
+          <span className={`font-serif text-[10px] md:text-base font-medium tracking-tight transition-colors truncate ${isScrolled ? 'text-natural-ink' : 'text-white'}`}>Thiago Figueiró</span>
         </a>
  
         <div className={`hidden md:flex gap-6 lg:gap-8 items-center px-8 py-3 rounded-full border transition-all duration-500 backdrop-blur-md ${isScrolled ? 'bg-white/90 border-olive/10 shadow-lg' : 'bg-white/20 border-white/20'}`}>

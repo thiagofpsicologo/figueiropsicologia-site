@@ -43,18 +43,22 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ openScheduling
               Se você precisa de clareza imediata sobre uma situação ou decisão específica, esse espaço oferece escuta e direcionamento terapêutico.
             </p>
             <div className="space-y-4 pt-4">
-              <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-olive font-bold">
-                <Sparkles size={14} className="opacity-40" />
-                <span>⏱ 50 minutos</span>
-              </div>
-              <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-olive font-bold">
-                <Sparkles size={14} className="opacity-40" />
-                <span>📅 Sessão avulsa</span>
-              </div>
-              <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-olive font-bold">
-                <Sparkles size={14} className="opacity-40" />
-                <span>🌐 Online ou presencial</span>
-              </div>
+              {[
+                { icon: '⏱', text: '50 minutos' },
+                { icon: '📅', text: 'Sessão avulsa' },
+                { icon: '🌐', text: 'Online ou presencial' }
+              ].map((feature, i) => (
+                <motion.div 
+                  key={i}
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.3 + i * 0.1 }}
+                  className="flex items-center gap-3 text-xs uppercase tracking-widest text-olive font-bold"
+                >
+                  <Sparkles size={14} className="opacity-40" />
+                  <span>{feature.icon} {feature.text}</span>
+                </motion.div>
+              ))}
             </div>
           </div>
           <div className="mt-12 space-y-6">
@@ -96,18 +100,22 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ openScheduling
               Continuidade terapêutica que aprofunda questões emocionais, favorecendo mudanças reais e duradouras ao longo do tempo.
             </p>
             <div className="space-y-4 pt-4">
-              <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-white/90 font-bold">
-                <Sparkles size={14} className="opacity-40" />
-                <span>⏱ 50 minutos por sessão</span>
-              </div>
-              <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-white/90 font-bold">
-                <Sparkles size={14} className="opacity-40" />
-                <span>📅 1 sessão por semana</span>
-              </div>
-              <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-white/90 font-bold">
-                <Sparkles size={14} className="opacity-40" />
-                <span>🌐 Online ou presencial</span>
-              </div>
+              {[
+                { icon: '⏱', text: '50 minutos por sessão' },
+                { icon: '📅', text: '1 sessão por semana' },
+                { icon: '🌐', text: 'Online ou presencial' }
+              ].map((feature, i) => (
+                <motion.div 
+                  key={i}
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.2 + i * 0.1 }}
+                  className="flex items-center gap-3 text-xs uppercase tracking-widest text-white/90 font-bold"
+                >
+                  <Sparkles size={14} className="opacity-40" />
+                  <span>{feature.icon} {feature.text}</span>
+                </motion.div>
+              ))}
             </div>
           </div>
           <div className="mt-12 space-y-6">
@@ -143,18 +151,22 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ openScheduling
               Ideal para manutenção e processos iniciados que preferem um ritmo mais espaçado, sem abrir mão do cuidado contínuo.
             </p>
             <div className="space-y-4 pt-4">
-              <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-olive font-bold">
-                <Sparkles size={14} className="opacity-40" />
-                <span>⏱ 50 minutos por sessão</span>
-              </div>
-              <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-olive font-bold">
-                <Sparkles size={14} className="opacity-40" />
-                <span>📅 2 sessões por mês</span>
-              </div>
-              <div className="flex items-center gap-3 text-xs uppercase tracking-widest text-olive font-bold">
-                <Sparkles size={14} className="opacity-40" />
-                <span>🌐 Online ou presencial</span>
-              </div>
+              {[
+                { icon: '⏱', text: '50 minutos por sessão' },
+                { icon: '📅', text: '2 sessões por mês' },
+                { icon: '🌐', text: 'Online ou presencial' }
+              ].map((feature, i) => (
+                <motion.div 
+                  key={i}
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.4 + i * 0.1 }}
+                  className="flex items-center gap-3 text-xs uppercase tracking-widest text-olive font-bold"
+                >
+                  <Sparkles size={14} className="opacity-40" />
+                  <span>{feature.icon} {feature.text}</span>
+                </motion.div>
+              ))}
             </div>
           </div>
           <div className="mt-12 space-y-6">

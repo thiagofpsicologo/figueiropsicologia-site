@@ -78,6 +78,9 @@ export const AboutSection: React.FC = () => {
         
         <div className="grid sm:grid-cols-2 gap-4 lg:gap-6 pt-4 text-left">
           <motion.div 
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
             whileHover={{ y: -5 }}
             className="bg-olive/5 border border-olive/10 p-6 md:p-8 rounded-3xl space-y-3 md:space-y-4"
           >
@@ -86,6 +89,9 @@ export const AboutSection: React.FC = () => {
             <p className="text-xs md:text-sm text-natural-ink/60 leading-relaxed">Escuta ativa e um ambiente livre de quaisquer julgamentos.</p>
           </motion.div>
           <motion.div 
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
             whileHover={{ y: -5 }}
             className="bg-olive/5 border border-olive/10 p-6 md:p-8 rounded-3xl space-y-3 md:space-y-4"
           >
@@ -96,41 +102,38 @@ export const AboutSection: React.FC = () => {
         </div>
 
         <div className="pt-12 md:pt-16 space-y-8 text-left">
-          <div className="space-y-4">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="space-y-4"
+          >
             <span className="text-[9px] md:text-[10px] uppercase tracking-[0.3em] text-olive font-bold">Qualificações e Experiência</span>
             <h3 className="text-3xl md:text-4xl font-serif text-natural-ink italic">Trajetória Profissional</h3>
-          </div>
+          </motion.div>
 
           <div className="grid gap-6">
-            <div className="flex gap-5 items-start font-sans">
-              <div className="w-10 h-10 md:w-12 md:h-12 shrink-0 bg-white rounded-2xl flex items-center justify-center cinematic-shadow border border-olive/5">
-                <GraduationCap className="text-olive w-5 h-5 md:w-6 md:h-6" strokeWidth={1.5} />
-              </div>
-              <div>
-                <h5 className="font-bold text-sm md:text-base text-natural-ink mb-1">Formação Acadêmica</h5>
-                <p className="text-xs md:text-sm text-natural-ink/60 leading-relaxed">Graduação em Psicologia pela FUMEC</p>
-              </div>
-            </div>
-
-            <div className="flex gap-5 items-start font-sans">
-              <div className="w-10 h-10 md:w-12 md:h-12 shrink-0 bg-white rounded-2xl flex items-center justify-center cinematic-shadow border border-olive/5">
-                <Award className="text-olive w-5 h-5 md:w-6 md:h-6" strokeWidth={1.5} />
-              </div>
-              <div>
-                <h5 className="font-bold text-sm md:text-base text-natural-ink mb-1">Especializações</h5>
-                <p className="text-xs md:text-sm text-natural-ink/60 leading-relaxed">Psicólogo clínico com atuação desde 2017</p>
-              </div>
-            </div>
-
-            <div className="flex gap-5 items-start font-sans">
-              <div className="w-10 h-10 md:w-12 md:h-12 shrink-0 bg-white rounded-2xl flex items-center justify-center cinematic-shadow border border-olive/5">
-                <Briefcase className="text-olive w-5 h-5 md:w-6 md:h-6" strokeWidth={1.5} />
-              </div>
-              <div>
-                <h5 className="font-bold text-sm md:text-base text-natural-ink mb-1">Experiência Clínica</h5>
-                <p className="text-xs md:text-sm text-natural-ink/60 leading-relaxed">Acompanhamento clínico individual em processos de autoconhecimento e saúde mental.</p>
-              </div>
-            </div>
+            {[
+              { icon: GraduationCap, title: 'Formação Acadêmica', desc: 'Graduação em Psicologia pela FUMEC' },
+              { icon: Award, title: 'Especializações', desc: 'Psicólogo clínico com atuação desde 2017' },
+              { icon: Briefcase, title: 'Experiência Clínica', desc: 'Acompanhamento clínico individual em processos de autoconhecimento e saúde mental.' }
+            ].map((item, idx) => (
+              <motion.div 
+                key={item.title}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 + idx * 0.1 }}
+                className="flex gap-5 items-start font-sans"
+              >
+                <div className="w-10 h-10 md:w-12 md:h-12 shrink-0 bg-white rounded-2xl flex items-center justify-center cinematic-shadow border border-olive/5">
+                  <item.icon className="text-olive w-5 h-5 md:w-6 md:h-6" strokeWidth={1.5} />
+                </div>
+                <div>
+                  <h5 className="font-bold text-sm md:text-base text-natural-ink mb-1">{item.title}</h5>
+                  <p className="text-xs md:text-sm text-natural-ink/60 leading-relaxed">{item.desc}</p>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </motion.div>

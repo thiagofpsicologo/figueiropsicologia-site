@@ -10,9 +10,11 @@ import { PolicyModal } from './components/PolicyModal';
 import { AboutSection } from './components/AboutSection';
 import { ServicesSection } from './components/ServicesSection';
 import { CTASection } from './components/CTASection';
+import { LoadingScreen } from './components/LoadingScreen';
 import { SCENES, WHATSAPP_LINK } from './constants';
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isSchedulingOpen, setIsSchedulingOpen] = useState(false);
@@ -37,6 +39,13 @@ function App() {
   }, [isMenuOpen]);
 
   useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
@@ -46,6 +55,10 @@ function App() {
 
   return (
     <div className="natural-gradient selection:bg-olive selection:text-white min-h-screen transition-colors duration-500 overflow-x-hidden w-full relative">
+      <AnimatePresence>
+        {isLoading && <LoadingScreen key="loader" />}
+      </AnimatePresence>
+
       <SchedulingModal 
         isOpen={isSchedulingOpen} 
         onClose={() => {

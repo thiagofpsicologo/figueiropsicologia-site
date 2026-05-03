@@ -53,26 +53,31 @@ export const Scene: React.FC<SceneProps> = ({ scene, index }) => {
       >
         <div className={`max-w-xs sm:max-w-xl ${index === 0 ? 'text-left' : (scene.sideImage ? 'text-left' : (scene.id === 'identificacao' ? 'text-center max-w-[85%] mx-auto' : 'text-center'))}`}>
           <motion.span 
-            initial={index === 0 ? { opacity: 1, x: 0 } : { opacity: 0, y: 10 }}
-            animate={index === 0 ? { opacity: 1, x: 0 } : {}}
-            whileInView={index === 0 ? {} : { opacity: 0.9, y: 0 }}
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 0.9, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
             className={`block font-sans text-[10px] md:text-xs uppercase tracking-[0.4em] mb-2 font-bold ${scene.image ? 'text-white drop-shadow-[0_4px_6px_rgba(0,0,0,0.8)]' : 'text-olive'}`}
           >
             {scene.accent}
           </motion.span>
           {scene.subtitle && (
             <motion.span 
-              initial={index === 0 ? { opacity: 1, x: 0 } : { opacity: 0, y: 10 }}
-              animate={index === 0 ? { opacity: 1, x: 0 } : {}}
-              whileInView={index === 0 ? {} : { opacity: 0.9, y: 0 }}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 0.9, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
               className={`block font-sans text-[10px] md:text-xs uppercase tracking-[0.2em] mb-4 font-medium italic ${scene.image ? 'text-white/80 drop-shadow-[0_4px_6px_rgba(0,0,0,0.8)]' : 'text-olive/80'}`}
             >
               {scene.subtitle}
             </motion.span>
           )}
-          <h2 className={`text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-serif italic ${scene.id === 'identificacao' ? 'leading-[1.5]' : 'leading-[1.1]'} ${scene.image ? 'text-white drop-shadow-[0_10px_30px_rgba(0,0,0,1)] transition-all' : 'text-natural-ink'}`}>
+          <motion.h2 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
+            className={`text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-serif italic ${scene.id === 'identificacao' ? 'leading-[1.5]' : 'leading-[1.1]'} ${scene.image ? 'text-white drop-shadow-[0_10px_30px_rgba(0,0,0,1)] transition-all' : 'text-natural-ink'}`}
+          >
             {scene.title}
-          </h2>
+          </motion.h2>
         </div>
 
         {scene.sideImage && (
