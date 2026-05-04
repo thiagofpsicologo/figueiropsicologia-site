@@ -42,12 +42,12 @@ export const CTASection: React.FC<CTASectionProps> = ({ openScheduling }) => {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
-              className="inline-block text-[10px] md:text-xs uppercase tracking-[0.5em] text-[#D1D3C4] font-black"
+              className="inline-block text-[10px] md:text-xs uppercase tracking-[0.5em] text-[#93C5FD] font-black"
             >
               Dê o primeiro passo
             </motion.span>
             <h2 className="text-6xl md:text-9xl font-serif italic text-white leading-[0.9] tracking-tighter">
-              Sua jornada <br /> <span className="text-[#D1D3C4]">começa aqui.</span>
+              Sua jornada <br /> <span className="text-[#93C5FD]">começa aqui.</span>
             </h2>
           </div>
 
@@ -74,7 +74,7 @@ export const CTASection: React.FC<CTASectionProps> = ({ openScheduling }) => {
               className="group bg-white/5 backdrop-blur-xl border border-white/20 text-white px-10 md:px-16 py-5 md:py-6 rounded-full font-sans text-[11px] md:text-xs uppercase tracking-[0.3em] font-black hover:bg-white/10 transition-all flex items-center justify-center gap-4 cursor-pointer w-full sm:w-auto"
               id="cta-availability-btn"
             >
-              <Calendar size={18} className="text-[#D1D3C4] group-hover:scale-110 transition-transform" />
+              <Calendar size={18} className="text-[#93C5FD] group-hover:scale-110 transition-transform" />
               Ver Disponibilidade
             </button>
           </div>
@@ -82,7 +82,7 @@ export const CTASection: React.FC<CTASectionProps> = ({ openScheduling }) => {
       </div>
       
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-64 bg-primary-blue/20 blur-[150px] rounded-full pointer-events-none opacity-40 text-center" />
-      <div className="absolute -bottom-24 left-1/2 -translate-x-1/2 w-[80%] h-48 bg-[#D1D3C4]/10 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute -bottom-24 left-1/2 -translate-x-1/2 w-[80%] h-48 bg-[#93C5FD]/10 blur-[120px] rounded-full pointer-events-none" />
     </section>
   );
 };
