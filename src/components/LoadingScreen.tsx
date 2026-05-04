@@ -14,7 +14,7 @@ export const LoadingScreen: React.FC = () => {
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 1, ease: "easeOut" }}
-          className="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-primary-blue/20 shadow-2xl relative z-10"
+          className="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-primary-blue shadow-2xl relative z-10"
         >
           <img 
             src="https://drive.google.com/thumbnail?id=18OxYoRjXAKjdK4w608G6HkYJxF4HAn0O&sz=1000" 
@@ -22,6 +22,7 @@ export const LoadingScreen: React.FC = () => {
             className="w-full h-full object-cover"
             referrerPolicy="no-referrer"
           />
+          <div className="absolute inset-0 bg-primary-blue/20 mix-blend-color" />
         </motion.div>
         
         <motion.div
@@ -47,7 +48,7 @@ export const LoadingScreen: React.FC = () => {
         <h2 className="font-serif text-2xl md:text-3xl italic text-natural-ink">Thiago Figueiró</h2>
         <div className="flex items-center justify-center gap-4">
           <div className="h-[1px] w-8 bg-primary-blue/30" />
-          <span className="text-[9px] md:text-[10px] uppercase tracking-[0.4em] text-white font-black">Psicólogo Clínico</span>
+          <span className="text-[9px] md:text-[10px] uppercase tracking-[0.4em] text-natural-ink font-black">Psicólogo Clínico</span>
           <div className="h-[1px] w-8 bg-primary-blue/30" />
         </div>
       </motion.div>

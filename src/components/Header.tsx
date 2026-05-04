@@ -27,7 +27,7 @@ export const Header: React.FC<HeaderProps> = ({
           href="#" 
           className={`flex items-center gap-2 md:gap-3 px-3 py-1.5 md:px-5 md:py-2.5 rounded-full border transition-all group backdrop-blur-md shrink-0 max-w-[70%] hover:scale-102 active:scale-95 ${isScrolled ? 'bg-white border-primary-blue/10 shadow-sm' : 'bg-white/40 border-white/30'}`}
         >
-          <div className="w-7 h-7 md:w-10 md:h-10 rounded-full bg-white flex items-center justify-center overflow-hidden shrink-0 group-hover:scale-110 transition-transform shadow-md border border-primary-blue/10">
+          <div className="w-7 h-7 md:w-10 md:h-10 rounded-full bg-black flex items-center justify-center overflow-hidden shrink-0 group-hover:scale-110 transition-transform shadow-md border border-primary-blue/10">
             <img 
               src="https://drive.google.com/thumbnail?id=18OxYoRjXAKjdK4w608G6HkYJxF4HAn0O&sz=w1000" 
               alt="Logo Thiago Figueiró" 
@@ -75,7 +75,7 @@ export const Header: React.FC<HeaderProps> = ({
 
         <button 
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className={`md:hidden shrink-0 w-10 h-10 rounded-full border flex items-center justify-center transition-all z-[120] backdrop-blur-md ${isMenuOpen ? 'bg-white/10 border-white/20 text-white' : (isScrolled ? 'bg-white border-primary-blue/10 text-natural-ink shadow-sm' : 'bg-white/40 border-white/30 text-white')}`}
+          className={`md:hidden shrink-0 w-10 h-10 rounded-full border flex items-center justify-center transition-all z-[120] backdrop-blur-md ${isMenuOpen ? 'bg-white/10 border-white/20 text-white' : (isScrolled ? 'bg-white border-natural-ink/10 text-natural-ink shadow-sm' : 'bg-white/40 border-white/30 text-white')}`}
           aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"}
         >
           {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -91,8 +91,8 @@ export const Header: React.FC<HeaderProps> = ({
             transition={{ duration: 0.4 }}
             className="fixed inset-0 bg-black z-[130] md:hidden flex flex-col p-6 overflow-y-auto overflow-x-hidden"
           >
-            <div className="absolute top-0 right-0 w-64 h-64 bg-primary-blue/10 filter blur-[100px] rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary-blue/5 filter blur-[120px] rounded-full translate-y-1/3 -translate-x-1/3 pointer-events-none" />
+            <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 filter blur-[100px] rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-96 h-96 bg-white/5 filter blur-[120px] rounded-full translate-y-1/3 -translate-x-1/3 pointer-events-none" />
             
             <div className="flex justify-between items-center w-full mb-12 relative z-10 shrink-0">
               <button 
@@ -106,9 +106,9 @@ export const Header: React.FC<HeaderProps> = ({
               <div className="flex items-center gap-3">
                 <div className="flex flex-col items-end text-right">
                   <span className="font-serif text-white text-sm tracking-tight leading-none mb-1">Thiago Figueiró</span>
-                  <span className="text-[7px] uppercase tracking-[0.3em] text-primary-blue font-black">Psicólogo Clínico</span>
+                  <span className="text-[7px] uppercase tracking-[0.3em] text-white font-black">Psicólogo Clínico</span>
                 </div>
-                <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center overflow-hidden border border-white/20 ring-4 ring-white/5 shadow-xl">
+                <div className="w-10 h-10 rounded-full bg-black flex items-center justify-center overflow-hidden border border-white/20 ring-4 ring-white/5 shadow-xl">
                   <img 
                     src="https://drive.google.com/thumbnail?id=18OxYoRjXAKjdK4w608G6HkYJxF4HAn0O&sz=1000" 
                     alt="Logo" 
@@ -122,7 +122,7 @@ export const Header: React.FC<HeaderProps> = ({
             <div className="flex-1 flex flex-col items-center justify-center relative z-10">
               <div className="w-full max-w-[280px] space-y-10">
                 <div className="space-y-1">
-                  <span className="text-[10px] uppercase tracking-[0.3em] text-primary-blue font-black ml-1 mb-6 block">Menu</span>
+                  <span className="text-[10px] uppercase tracking-[0.3em] text-white/40 font-black ml-1 mb-6 block">Menu</span>
                   <nav className="flex flex-col gap-6">
                     {[
                       { name: 'Início', href: '#' },
@@ -139,10 +139,10 @@ export const Header: React.FC<HeaderProps> = ({
                         href={link.href} 
                         className="group flex items-center justify-between py-1"
                       >
-                        <span className="text-4xl text-white font-serif italic transition-all group-hover:pl-4 group-hover:text-primary-blue">
+                        <span className="text-4xl text-white font-serif italic transition-all group-hover:pl-4 group-hover:text-white/60">
                           {link.name}
                         </span>
-                        <div className="opacity-0 group-hover:opacity-100 transition-all text-primary-blue -translate-x-4 group-hover:translate-x-0">
+                        <div className="opacity-0 group-hover:opacity-100 transition-all text-white/40 -translate-x-4 group-hover:translate-x-0">
                           <ChevronRight size={14} />
                         </div>
                       </motion.a>
