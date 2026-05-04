@@ -75,7 +75,7 @@ export const Header: React.FC<HeaderProps> = ({
 
         <button 
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className={`md:hidden shrink-0 w-10 h-10 rounded-full border flex items-center justify-center transition-all z-[120] backdrop-blur-md ${isMenuOpen ? 'bg-white/10 border-white/20 text-white' : (isScrolled ? 'bg-white border-primary-blue/10 text-primary-blue shadow-sm' : 'bg-white/40 border-white/30 text-white')}`}
+          className={`md:hidden shrink-0 w-10 h-10 rounded-full border flex items-center justify-center transition-all z-[120] backdrop-blur-md ${isMenuOpen ? 'bg-white/10 border-white/20 text-white' : (isScrolled ? 'bg-white border-primary-blue/10 text-natural-ink shadow-sm' : 'bg-white/40 border-white/30 text-white')}`}
           aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"}
         >
           {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -89,7 +89,7 @@ export const Header: React.FC<HeaderProps> = ({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4 }}
-            className="fixed inset-0 bg-[#1A1A1A] z-[130] md:hidden flex flex-col p-6 overflow-y-auto overflow-x-hidden"
+            className="fixed inset-0 bg-black z-[130] md:hidden flex flex-col p-6 overflow-y-auto overflow-x-hidden"
           >
             <div className="absolute top-0 right-0 w-64 h-64 bg-primary-blue/10 filter blur-[100px] rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
             <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary-blue/5 filter blur-[120px] rounded-full translate-y-1/3 -translate-x-1/3 pointer-events-none" />

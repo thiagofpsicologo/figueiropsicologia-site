@@ -7,14 +7,14 @@
   
   --color-natural-bg: #FFFFFF;
   --color-natural-ink: #0F172A;
-  --color-primary-blue: #1E40AF;
-  --color-secondary-blue: #3B82F6;
-  --color-blue-glow: rgba(30, 64, 175, 0.05);
+  --color-primary-blue: #92A8C3;
+  --color-secondary-blue: #B0C4DE;
+  --color-blue-glow: rgba(146, 168, 195, 0.05);
 
   /* Mapping old variable names to new blue colors to minimize breakage if they are used by name */
-  --color-olive: #1E40AF;
-  --color-olive-light: #93C5FD;
-  --color-olive-glow: rgba(30, 64, 175, 0.05);
+  --color-olive: #92A8C3;
+  --color-olive-light: #B0C4DE;
+  --color-olive-glow: rgba(146, 168, 195, 0.05);
 }
 
 @layer base {

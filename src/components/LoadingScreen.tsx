@@ -47,7 +47,7 @@ export const LoadingScreen: React.FC = () => {
         <h2 className="font-serif text-2xl md:text-3xl italic text-natural-ink">Thiago Figueiró</h2>
         <div className="flex items-center justify-center gap-4">
           <div className="h-[1px] w-8 bg-primary-blue/30" />
-          <span className="text-[9px] md:text-[10px] uppercase tracking-[0.4em] text-primary-blue font-black">Psicólogo Clínico</span>
+          <span className="text-[9px] md:text-[10px] uppercase tracking-[0.4em] text-white font-black">Psicólogo Clínico</span>
           <div className="h-[1px] w-8 bg-primary-blue/30" />
         </div>
       </motion.div>
