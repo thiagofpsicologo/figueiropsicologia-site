@@ -54,7 +54,7 @@ function App() {
   }, []);
 
   return (
-    <div className="natural-gradient selection:bg-olive selection:text-white min-h-screen transition-colors duration-500 overflow-x-hidden w-full relative">
+    <div className="natural-gradient selection:bg-primary-blue selection:text-white min-h-screen transition-colors duration-500 overflow-x-hidden w-full relative">
       <AnimatePresence>
         {isLoading && <LoadingScreen key="loader" />}
       </AnimatePresence>
@@ -149,10 +149,10 @@ function App() {
         <AboutSection />
         
         <section id="testimonials" className="py-20 md:py-32 px-6 md:px-8 max-w-7xl mx-auto overflow-hidden relative">
-          <div className="absolute top-0 left-0 w-full h-full bg-olive/[0.02] -z-1" />
+          <div className="absolute top-0 left-0 w-full h-full bg-primary-blue/[0.02] -z-1" />
           
           <div className="text-center mb-12 md:mb-16 space-y-4">
-            <span className="text-[9px] md:text-[10px] uppercase tracking-[0.4em] text-olive font-black">Depoimentos</span>
+            <span className="text-[9px] md:text-[10px] uppercase tracking-[0.4em] text-primary-blue font-black">Depoimentos</span>
             <h2 className="text-3xl sm:text-4xl md:text-6xl font-serif italic text-natural-ink">O que dizem os pacientes</h2>
           </div>
           

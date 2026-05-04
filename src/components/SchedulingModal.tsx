@@ -126,14 +126,14 @@ export const SchedulingModal: React.FC<SchedulingModalProps> = ({ isOpen, onClos
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
             className="relative bg-white w-full max-w-[520px] rounded-[32px] shadow-2xl overflow-hidden flex flex-col max-h-[90vh]"
           >
-            <div className="p-6 md:p-8 bg-olive/5 border-b border-olive/10 flex justify-between items-start">
+            <div className="p-6 md:p-8 bg-primary-blue/5 border-b border-primary-blue/10 flex justify-between items-start">
               <div>
                 <h3 className="text-2xl md:text-3xl font-serif text-natural-ink">Agende sua consulta</h3>
                 <p className="text-sm text-natural-ink/60 mt-1">Escolha o melhor dia e horário para o seu atendimento.</p>
               </div>
               <button 
                 onClick={onClose}
-                className="p-2 hover:bg-olive/10 rounded-full transition-colors text-natural-ink/40"
+                className="p-2 hover:bg-primary-blue/10 rounded-full transition-colors text-natural-ink/40"
                 id="close-scheduling-btn"
               >
                 <X size={24} />
@@ -143,7 +143,7 @@ export const SchedulingModal: React.FC<SchedulingModalProps> = ({ isOpen, onClos
             <div className="flex-1 overflow-y-auto p-6 md:p-8 custom-scrollbar">
               {step === 'date' && (
                 <div className="space-y-6">
-                  <span className="text-xs uppercase tracking-widest font-bold text-olive">Selecione uma data</span>
+                  <span className="text-xs uppercase tracking-widest font-bold text-primary-blue">Selecione uma data</span>
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                     {availableDays.map(date => {
                       const d = new Date(date + 'T12:00:00');
@@ -155,11 +155,11 @@ export const SchedulingModal: React.FC<SchedulingModalProps> = ({ isOpen, onClos
                         <button
                           key={date}
                           onClick={() => handleDateSelect(date)}
-                          className="flex flex-col items-center justify-center p-4 rounded-2xl border border-olive/10 hover:border-olive hover:bg-olive/5 transition-all group active:scale-95"
+                          className="flex flex-col items-center justify-center p-4 rounded-2xl border border-primary-blue/10 hover:border-primary-blue hover:bg-primary-blue/5 transition-all group active:scale-95"
                           id={`date-${date}`}
                         >
-                          <span className="text-[10px] uppercase tracking-widest text-olive/60 font-bold mb-1">{dayName}</span>
-                          <span className="text-xl font-serif text-natural-ink group-hover:text-olive transition-colors">{dayNum}</span>
+                          <span className="text-[10px] uppercase tracking-widest text-primary-blue/60 font-bold mb-1">{dayName}</span>
+                          <span className="text-xl font-serif text-natural-ink group-hover:text-primary-blue transition-colors">{dayNum}</span>
                           <span className="text-[10px] uppercase tracking-widest text-natural-ink/40 font-medium">{month}</span>
                         </button>
                       );
@@ -171,10 +171,10 @@ export const SchedulingModal: React.FC<SchedulingModalProps> = ({ isOpen, onClos
               {step === 'time' && (
                 <div className="space-y-6">
                   <div className="flex items-center gap-4">
-                    <button onClick={() => setStep('date')} className="bg-olive/10 p-2 rounded-full text-olive hover:bg-olive/20 transition-colors" id="back-to-date-btn">
+                    <button onClick={() => setStep('date')} className="bg-primary-blue/10 p-2 rounded-full text-primary-blue hover:bg-primary-blue/20 transition-colors" id="back-to-date-btn">
                       <ChevronDown className="rotate-90" size={16} />
                     </button>
-                    <span className="text-xs uppercase tracking-widest font-bold text-olive">
+                    <span className="text-xs uppercase tracking-widest font-bold text-primary-blue">
                       {new Date(selectedDate + 'T12:00:00').toLocaleDateString('pt-BR', { weekday: 'long', day: '2-digit', month: 'long' })}
                     </span>
                   </div>
@@ -195,7 +195,7 @@ export const SchedulingModal: React.FC<SchedulingModalProps> = ({ isOpen, onClos
                             relative flex flex-col items-center justify-center p-4 rounded-2xl border transition-all active:scale-95
                             ${isDisabled 
                               ? 'bg-natural-stone/20 border-natural-ink/5 opacity-40 cursor-not-allowed' 
-                              : 'bg-white border-olive/10 hover:border-olive hover:bg-olive/5'
+                              : 'bg-white border-primary-blue/10 hover:border-primary-blue hover:bg-primary-blue/5'
                             }
                           `}
                         >
@@ -217,7 +217,7 @@ export const SchedulingModal: React.FC<SchedulingModalProps> = ({ isOpen, onClos
                   <motion.div 
                     initial={{ scale: 0.5, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
-                    className={`inline-flex items-center justify-center p-6 rounded-full mb-2 ${errorSlot ? 'bg-red-50 text-red-500 shadow-lg shadow-red-100' : 'bg-olive/10 text-olive shadow-lg shadow-olive/5'}`}
+                    className={`inline-flex items-center justify-center p-6 rounded-full mb-2 ${errorSlot ? 'bg-red-50 text-red-500 shadow-lg shadow-red-100' : 'bg-primary-blue/10 text-primary-blue shadow-lg shadow-primary-blue/5'}`}
                   >
                     {errorSlot ? <X size={48} strokeWidth={1.5} /> : <Calendar size={48} strokeWidth={1} />}
                   </motion.div>
@@ -259,7 +259,7 @@ export const SchedulingModal: React.FC<SchedulingModalProps> = ({ isOpen, onClos
                       <>
                         <button
                           onClick={confirmAgendamento}
-                          className="w-full bg-olive text-white py-4 rounded-2xl font-sans text-xs uppercase tracking-[0.2em] font-bold shadow-xl shadow-olive/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2"
+                          className="w-full bg-primary-blue text-white py-4 rounded-2xl font-sans text-xs uppercase tracking-[0.2em] font-bold shadow-xl shadow-primary-blue/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2"
                           id="confirm-scheduling-btn"
                         >
                           <MessageCircle size={16} />
@@ -268,7 +268,7 @@ export const SchedulingModal: React.FC<SchedulingModalProps> = ({ isOpen, onClos
                         
                         <button
                           onClick={addToGoogleCalendar}
-                          className="w-full bg-white border border-olive/20 text-olive py-4 rounded-2xl font-sans text-xs uppercase tracking-[0.2em] font-bold hover:bg-olive/5 transition-all flex items-center justify-center gap-2"
+                          className="w-full bg-white border border-primary-blue/20 text-primary-blue py-4 rounded-2xl font-sans text-xs uppercase tracking-[0.2em] font-bold hover:bg-primary-blue/5 transition-all flex items-center justify-center gap-2"
                           id="google-calendar-btn"
                         >
                           <Calendar size={16} />
@@ -277,7 +277,7 @@ export const SchedulingModal: React.FC<SchedulingModalProps> = ({ isOpen, onClos
 
                         <button
                           onClick={addToAppleCalendar}
-                          className="w-full bg-white border border-olive/20 text-olive py-4 rounded-2xl font-sans text-xs uppercase tracking-[0.2em] font-bold hover:bg-olive/5 transition-all flex items-center justify-center gap-2"
+                          className="w-full bg-white border border-primary-blue/20 text-primary-blue py-4 rounded-2xl font-sans text-xs uppercase tracking-[0.2em] font-bold hover:bg-primary-blue/5 transition-all flex items-center justify-center gap-2"
                           id="apple-calendar-btn"
                         >
                           <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" className="lucide-apple">

@@ -62,7 +62,7 @@ export const CTASection: React.FC<CTASectionProps> = ({ openScheduling }) => {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-olive text-white px-10 md:px-16 py-5 md:py-6 rounded-full font-sans text-[11px] md:text-xs uppercase tracking-[0.3em] font-black flex items-center justify-center gap-4 shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all cursor-pointer w-full sm:w-auto ring-1 ring-white/10"
+              className="bg-primary-blue text-white px-10 md:px-16 py-5 md:py-6 rounded-full font-sans text-[11px] md:text-xs uppercase tracking-[0.3em] font-black flex items-center justify-center gap-4 shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all cursor-pointer w-full sm:w-auto ring-1 ring-white/10"
               id="cta-whatsapp-btn"
             >
               <MessageCircle size={18} />
@@ -81,7 +81,7 @@ export const CTASection: React.FC<CTASectionProps> = ({ openScheduling }) => {
         </motion.div>
       </div>
       
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-64 bg-olive/20 blur-[150px] rounded-full pointer-events-none opacity-40 text-center" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-64 bg-primary-blue/20 blur-[150px] rounded-full pointer-events-none opacity-40 text-center" />
       <div className="absolute -bottom-24 left-1/2 -translate-x-1/2 w-[80%] h-48 bg-[#D1D3C4]/10 blur-[120px] rounded-full pointer-events-none" />
     </section>
   );

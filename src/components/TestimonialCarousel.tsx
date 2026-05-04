@@ -44,7 +44,7 @@ export const TestimonialCarousel: React.FC = () => {
 
   return (
     <div className="relative w-full max-w-6xl mx-auto py-16 px-4">
-      <div className="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 w-96 h-96 bg-olive/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 w-96 h-96 bg-primary-blue/5 rounded-full blur-3xl pointer-events-none" />
       
       <div className="relative min-h-[500px] flex items-center justify-center">
         <AnimatePresence initial={false} custom={direction} mode="wait">
@@ -83,27 +83,27 @@ export const TestimonialCarousel: React.FC = () => {
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     referrerPolicy="no-referrer"
                   />
-                  <div className="absolute inset-0 bg-olive/10 mix-blend-multiply" />
+                  <div className="absolute inset-0 bg-primary-blue/10 mix-blend-multiply" />
                 </div>
-                <div className="absolute -top-4 -left-4 w-full h-full border-2 border-olive/10 rounded-[60px] translate-x-1 translate-y-1" />
+                <div className="absolute -top-4 -left-4 w-full h-full border-2 border-primary-blue/10 rounded-[60px] translate-x-1 translate-y-1" />
                 <div className="absolute -bottom-4 -right-4 w-1/2 h-1/2 bg-natural-stone/30 rounded-3xl -z-10" />
                 
                 <div className="absolute top-10 -right-10 z-20 hidden lg:block">
-                  <span className="text-7xl font-serif text-olive/10 select-none">
+                  <span className="text-7xl font-serif text-primary-blue/10 select-none">
                     0{currentIndex + 1}
                   </span>
                 </div>
               </div>
 
               <div className="relative space-y-8 md:space-y-10 text-left">
-                <span className="absolute -top-12 -left-4 md:-top-16 md:-left-8 text-8xl md:text-9xl font-serif text-olive/5 select-none pointer-events-none italic">
+                <span className="absolute -top-12 -left-4 md:-top-16 md:-left-8 text-8xl md:text-9xl font-serif text-primary-blue/5 select-none pointer-events-none italic">
                   &ldquo;
                 </span>
 
                 <div className="space-y-8 relative z-10">
                   <div className="flex gap-1">
                     {[...Array(5)].map((_, i) => (
-                      <Sparkles key={i} size={14} className="text-olive fill-olive/10" />
+                      <Sparkles key={i} size={14} className="text-primary-blue fill-primary-blue/10" />
                     ))}
                   </div>
 
@@ -111,11 +111,11 @@ export const TestimonialCarousel: React.FC = () => {
                     {testimonial.quote}
                   </p>
 
-                  <div className="space-y-1 pt-6 border-t border-olive/10 max-w-[200px]">
+                  <div className="space-y-1 pt-6 border-t border-primary-blue/10 max-w-[200px]">
                     <h4 className="font-sans font-bold text-sm md:text-base text-natural-ink uppercase tracking-[0.2em]">
                       {testimonial.name}
                     </h4>
-                    <p className="text-[10px] md:text-[11px] uppercase tracking-[0.3em] text-olive font-black">
+                    <p className="text-[10px] md:text-[11px] uppercase tracking-[0.3em] text-primary-blue font-black">
                       {testimonial.role}
                     </p>
                   </div>
@@ -123,14 +123,14 @@ export const TestimonialCarousel: React.FC = () => {
 
                 <div className="flex md:hidden items-center justify-between pt-4">
                   <div className="flex gap-2">
-                    <button onClick={prev} className="p-3 bg-white border border-olive/10 rounded-full text-olive active:scale-90 transition-all shadow-sm">
+                    <button onClick={prev} className="p-3 bg-white border border-primary-blue/10 rounded-full text-primary-blue active:scale-90 transition-all shadow-sm">
                       <ArrowLeft size={18} />
                     </button>
-                    <button onClick={next} className="p-3 bg-white border border-olive/10 rounded-full text-olive active:scale-90 transition-all shadow-sm">
+                    <button onClick={next} className="p-3 bg-white border border-primary-blue/10 rounded-full text-primary-blue active:scale-90 transition-all shadow-sm">
                       <ArrowRight size={18} />
                     </button>
                   </div>
-                  <span className="text-[10px] uppercase tracking-widest font-bold text-olive/40 font-mono">
+                  <span className="text-[10px] uppercase tracking-widest font-bold text-primary-blue/40 font-mono">
                     0{currentIndex + 1} / 0{TESTIMONIALS.length}
                   </span>
                 </div>
@@ -145,14 +145,14 @@ export const TestimonialCarousel: React.FC = () => {
           <div className="flex gap-4">
             <button 
               onClick={prev}
-              className="w-12 h-12 flex items-center justify-center rounded-full border border-olive/10 bg-white text-olive hover:bg-olive hover:text-white transition-all cinematic-shadow group active:scale-90"
+              className="w-12 h-12 flex items-center justify-center rounded-full border border-primary-blue/10 bg-white text-primary-blue hover:bg-primary-blue hover:text-white transition-all cinematic-shadow group active:scale-90"
               aria-label="Anterior"
             >
               <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
             </button>
             <button 
               onClick={next}
-              className="w-12 h-12 flex items-center justify-center rounded-full border border-olive/10 bg-white text-olive hover:bg-olive hover:text-white transition-all cinematic-shadow group active:scale-90"
+              className="w-12 h-12 flex items-center justify-center rounded-full border border-primary-blue/10 bg-white text-primary-blue hover:bg-primary-blue hover:text-white transition-all cinematic-shadow group active:scale-90"
               aria-label="Próximo"
             >
               <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
@@ -167,15 +167,15 @@ export const TestimonialCarousel: React.FC = () => {
                   setDirection(i > currentIndex ? 1 : -1);
                   setCurrentIndex(i);
                 }}
-                className={`h-1.5 transition-all duration-500 rounded-full ${i === currentIndex ? 'w-8 bg-olive' : 'w-1.5 bg-olive/20 hover:bg-olive/40'}`}
+                className={`h-1.5 transition-all duration-500 rounded-full ${i === currentIndex ? 'w-8 bg-primary-blue' : 'w-1.5 bg-primary-blue/20 hover:bg-primary-blue/40'}`}
                 aria-label={`Ir para depoimento ${i + 1}`}
               />
             ))}
           </div>
         </div>
 
-        <div className="text-[11px] uppercase tracking-[0.4em] font-bold text-olive/30 flex items-center gap-4">
-          <span className="w-12 h-[1px] bg-olive/10" />
+        <div className="text-[11px] uppercase tracking-[0.4em] font-bold text-primary-blue/30 flex items-center gap-4">
+          <span className="w-12 h-[1px] bg-primary-blue/10" />
           Depoimentos Reais
         </div>
       </div>

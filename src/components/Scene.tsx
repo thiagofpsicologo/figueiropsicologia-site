@@ -44,7 +44,7 @@ export const Scene: React.FC<SceneProps> = ({ scene, index }) => {
       )}
 
       {!scene.image && (
-        <div className="absolute inset-0 bg-gradient-to-b from-olive/20 to-natural-bg z-0" />
+        <div className="absolute inset-0 bg-gradient-to-b from-primary-blue/20 to-natural-bg z-0" />
       )}
 
       <motion.div 
@@ -56,7 +56,7 @@ export const Scene: React.FC<SceneProps> = ({ scene, index }) => {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 0.9, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className={`block font-sans text-[10px] md:text-xs uppercase tracking-[0.4em] mb-2 font-bold ${scene.image ? 'text-white drop-shadow-[0_4px_6px_rgba(0,0,0,0.8)]' : 'text-olive'}`}
+            className={`block font-sans text-[10px] md:text-xs uppercase tracking-[0.4em] mb-2 font-bold ${scene.image ? 'text-white drop-shadow-[0_4px_6px_rgba(0,0,0,0.8)]' : 'text-primary-blue'}`}
           >
             {scene.accent}
           </motion.span>
@@ -65,7 +65,7 @@ export const Scene: React.FC<SceneProps> = ({ scene, index }) => {
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 0.9, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className={`block font-sans text-[10px] md:text-xs uppercase tracking-[0.2em] mb-4 font-medium italic ${scene.image ? 'text-white/80 drop-shadow-[0_4px_6px_rgba(0,0,0,0.8)]' : 'text-olive/80'}`}
+              className={`block font-sans text-[10px] md:text-xs uppercase tracking-[0.2em] mb-4 font-medium italic ${scene.image ? 'text-white/80 drop-shadow-[0_4px_6px_rgba(0,0,0,0.8)]' : 'text-primary-blue/80'}`}
             >
               {scene.subtitle}
             </motion.span>
