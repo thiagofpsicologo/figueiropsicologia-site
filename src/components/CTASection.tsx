@@ -47,12 +47,12 @@ export const CTASection: React.FC<CTASectionProps> = ({ openScheduling }) => {
               Dê o primeiro passo
             </motion.span>
             <h2 className="text-6xl md:text-9xl font-serif italic text-white leading-[0.9] tracking-tighter">
-              Sua jornada <br /> <span className="text-[#93C5FD]">começa aqui.</span>
+              Sua jornada <br /> <span className="text-primary-blue">começa aqui.</span>
             </h2>
           </div>
 
-          <p className="text-lg md:text-2xl text-white/70 font-light max-w-2xl mx-auto leading-relaxed font-serif italic text-center">
-            "Não é sobre ser perfeito, é sobre ser inteiro. Estou aqui para caminhar esse processo com você."
+          <p className="text-xl md:text-3xl text-white/70 font-light max-w-3xl mx-auto leading-relaxed font-serif italic text-center">
+            &ldquo;Não é sobre ser perfeito, é sobre ser inteiro. Estou aqui para caminhar esse processo ao seu lado.&rdquo;
           </p>
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-8">
