@@ -32,45 +32,42 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ openScheduling
           whileHover={{ y: -10 }}
           transition={{ duration: 0.8, delay: 0.1 }}
           className="bg-white border border-primary-blue/10 p-8 md:p-12 rounded-[40px] flex flex-col justify-between cinematic-shadow group h-full transition-all"
-        >
-          <div className="space-y-6 text-left">
-            <div className="space-y-2">
-              <h3 className="text-2xl md:text-3xl font-serif text-natural-ink italic">Atendimento pontual</h3>
-              <p className="text-xs uppercase tracking-widest text-primary-blue font-bold italic">Foco em situações específicas.</p>
-              <div className="h-[1px] w-12 bg-primary-blue/20" />
+        >          <div className="space-y-8 text-left">
+            <div className="space-y-3">
+              <h3 className="text-2xl md:text-3xl font-serif text-natural-ink italic leading-tight">Atendimento pontual</h3>
+              <div className="flex items-center gap-3">
+                <div className="h-[1px] w-8 bg-primary-blue/30" />
+                <p className="text-[10px] uppercase tracking-[0.2em] text-primary-blue font-black">Foco em clareza imediata</p>
+              </div>
             </div>
-            <p className="text-sm md:text-base text-natural-ink/70 leading-relaxed min-h-[100px]">
-              Se você precisa de clareza imediata sobre uma situação ou decisão específica, esse espaço oferece escuta e direcionamento terapêutico.
+            
+            <p className="text-sm md:text-base text-natural-ink/60 leading-relaxed font-light">
+              Ideal para quem busca clareza sobre uma situação ou decisão específica, oferecendo escuta técnica e apoio imediato.
             </p>
-            <div className="space-y-4 pt-4">
+
+            <div className="space-y-1 pt-4">
               {[
-                { icon: '⏱', text: '50 minutos' },
-                { icon: '📅', text: 'Sessão avulsa' },
-                { icon: '🌐', text: 'Online ou presencial' }
-              ].map((feature, i) => (
-                <motion.div 
-                  key={i}
-                  initial={{ opacity: 0, x: -10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.3 + i * 0.1 }}
-                  className="flex items-center gap-3 text-xs uppercase tracking-widest text-primary-blue font-bold"
-                >
-                  <Sparkles size={14} className="opacity-40" />
-                  <span>{feature.icon} {feature.text}</span>
-                </motion.div>
+                { label: 'Duração', value: '50 minutos' },
+                { label: 'Formato', value: 'Sessão avulsa' },
+                { label: 'Modalidade', value: 'Online / Presencial' }
+              ].map((item, i) => (
+                <div key={i} className="flex justify-between items-center py-3 border-b border-primary-blue/5">
+                  <span className="text-[9px] uppercase tracking-widest text-natural-ink/40 font-bold">{item.label}</span>
+                  <span className="text-[10px] uppercase tracking-widest text-primary-blue font-black">{item.value}</span>
+                </div>
               ))}
             </div>
           </div>
-          <div className="mt-12 space-y-6">
-            <div className="text-center">
-              <span className="text-sm text-natural-ink/40 font-medium">Valor por sessão</span>
-              <p className="text-3xl font-serif text-natural-ink mt-1">R$ 120 <span className="text-sm italic font-light opacity-60">por sessão</span></p>
+          <div className="mt-12 space-y-8">
+            <div className="text-center group-hover:scale-110 transition-transform duration-500">
+              <span className="text-[10px] uppercase tracking-widest text-natural-ink/30 font-bold">Investimento</span>
+              <p className="text-4xl font-serif text-natural-ink mt-2">R$ 120 <span className="text-xs italic font-light opacity-40">/sessão</span></p>
             </div>
             <button
               onClick={() => openScheduling('Atendimento Pontual')}
-              className="w-full py-4 rounded-2xl border border-primary-blue text-primary-blue font-sans text-xs uppercase tracking-[0.2em] font-bold hover:bg-primary-blue hover:text-white transition-all transform active:scale-95"
+              className="w-full py-5 rounded-2xl border border-primary-blue/20 text-primary-blue font-sans text-[10px] uppercase tracking-[0.3em] font-black hover:bg-primary-blue hover:text-white hover:border-primary-blue transition-all transform active:scale-95 cinematic-shadow"
             >
-              Agendar sessão
+              Iniciar Conversa
             </button>
           </div>
         </motion.div>
@@ -79,58 +76,63 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ openScheduling
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          whileHover={{ y: -10 }}
-          transition={{ duration: 0.8 }}
-          className="bg-natural-ink text-white p-8 md:p-12 rounded-[40px] flex flex-col justify-between cinematic-shadow relative overflow-hidden h-full z-10"
+          whileHover={{ y: -15 }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          className="bg-natural-ink text-white p-8 md:p-14 rounded-[50px] flex flex-col justify-between cinematic-shadow relative overflow-hidden h-full z-10 border border-white/5"
         >
-          <div className="space-y-6 text-left">
-            <div className="space-y-4">
+          {/* Decorative grain/glow */}
+          <div className="absolute top-0 right-0 w-64 h-64 bg-primary-blue/10 rounded-full blur-[100px] -z-10" />
+          
+          <div className="space-y-8 text-left">
+            <div className="space-y-5">
               <div className="inline-block">
-                <span className="bg-primary-blue text-white px-5 py-1.5 rounded-full text-[10px] md:text-[11px] uppercase tracking-[0.2em] font-black shadow-lg shadow-primary-blue/30 border border-white/10">
-                  ⭐ Mais escolhido
-                </span>
+                <motion.span 
+                  animate={{ scale: [1, 1.05, 1] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                  className="bg-primary-blue text-white px-5 py-2 rounded-full text-[9px] uppercase tracking-[0.3em] font-black shadow-2xl shadow-primary-blue/20"
+                >
+                  Mais escolhido
+                </motion.span>
               </div>
-              <div className="space-y-2">
-                <h3 className="text-2xl md:text-3xl font-serif italic">Psicoterapia semanal</h3>
-                <p className="text-xs uppercase tracking-widest text-primary-blue font-bold italic">Transformação consistente.</p>
-                <div className="h-[1px] w-12 bg-white/20" />
+              <div className="space-y-3">
+                <h3 className="text-3xl md:text-4xl font-serif italic leading-tight">Psicoterapia semanal</h3>
+                <div className="flex items-center gap-3">
+                  <div className="h-[1px] w-8 bg-white/30" />
+                  <p className="text-[10px] uppercase tracking-[0.2em] text-primary-blue font-black italic">Acompanhamento Contínuo</p>
+                </div>
               </div>
             </div>
-            <p className="text-sm md:text-base text-white/70 leading-relaxed min-h-[100px]">
-              Continuidade terapêutica que aprofunda questões emocionais, favorecendo mudanças reais e duradouras ao longo do tempo.
+            
+            <p className="text-sm md:text-base text-white/60 leading-relaxed font-light">
+              Continuidade terapêutica para aprofundar questões emocionais e padrões de comportamento, visando transformações reais.
             </p>
-            <div className="space-y-4 pt-4">
+
+            <div className="space-y-1 pt-4">
               {[
-                { icon: '⏱', text: '50 minutos por sessão' },
-                { icon: '📅', text: '1 sessão por semana' },
-                { icon: '🌐', text: 'Online ou presencial' }
-              ].map((feature, i) => (
-                <motion.div 
-                  key={i}
-                  initial={{ opacity: 0, x: -10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.2 + i * 0.1 }}
-                  className="flex items-center gap-3 text-xs uppercase tracking-widest text-white/90 font-bold"
-                >
-                  <Sparkles size={14} className="opacity-40" />
-                  <span>{feature.icon} {feature.text}</span>
-                </motion.div>
+                { label: 'Frequência', value: '1x por semana' },
+                { label: 'Processo', value: 'Longo Prazo' },
+                { label: 'Foco', value: 'Autoconhecimento' }
+              ].map((item, i) => (
+                <div key={i} className="flex justify-between items-center py-3 border-b border-white/5">
+                  <span className="text-[9px] uppercase tracking-widest text-white/30 font-bold">{item.label}</span>
+                  <span className="text-[10px] uppercase tracking-widest text-white font-black">{item.value}</span>
+                </div>
               ))}
             </div>
           </div>
-          <div className="mt-12 space-y-6">
+          
+          <div className="mt-12 space-y-8">
             <div className="text-center">
-              <span className="text-sm text-white/40 font-medium font-sans">Valor mensal</span>
-              <p className="text-3xl font-serif text-white mt-1">R$ 400 <span className="text-sm italic font-light opacity-60">por mês</span></p>
+              <span className="text-[10px] uppercase tracking-widest text-white/30 font-bold font-sans">Compromisso Mensal</span>
+              <p className="text-4xl font-serif text-white mt-2">R$ 400 <span className="text-xs italic font-light opacity-40">/mês</span></p>
             </div>
             <button
               onClick={() => openScheduling('Psicoterapia Semanal')}
-              className="w-full py-4 rounded-2xl bg-primary-blue text-white font-sans text-xs uppercase tracking-[0.2em] font-bold shadow-xl shadow-primary-blue/20 hover:scale-[1.02] active:scale-[0.98] transition-all"
+              className="w-full py-5 rounded-2xl bg-white text-natural-ink font-sans text-[10px] uppercase tracking-[0.3em] font-black shadow-2xl hover:scale-[1.02] active:scale-[0.98] transition-all"
             >
-              Começar acompanhamento
+              Começar Jornada
             </button>
           </div>
-          <div className="absolute -bottom-12 -right-12 w-32 h-32 bg-primary-blue/10 rounded-full blur-3xl -z-10" />
         </motion.div>
 
         <motion.div
@@ -138,47 +140,45 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ openScheduling
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           whileHover={{ y: -10 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
           className="bg-white border border-primary-blue/10 p-8 md:p-12 rounded-[40px] flex flex-col justify-between cinematic-shadow group h-full transition-all"
         >
-          <div className="space-y-6 text-left">
-            <div className="space-y-2">
-              <h3 className="text-2xl md:text-3xl font-serif text-natural-ink italic">Psicoterapia quinzenal</h3>
-              <p className="text-xs uppercase tracking-widest text-primary-blue font-bold italic">Um ritmo equilibrado.</p>
-              <div className="h-[1px] w-12 bg-primary-blue/20" />
+          <div className="space-y-8 text-left">
+            <div className="space-y-3">
+              <h3 className="text-2xl md:text-3xl font-serif text-natural-ink italic leading-tight">Psicoterapia quinzenal</h3>
+              <div className="flex items-center gap-3">
+                <div className="h-[1px] w-8 bg-primary-blue/30" />
+                <p className="text-[10px] uppercase tracking-[0.2em] text-primary-blue font-black">Ritmo Equilibrado</p>
+              </div>
             </div>
-            <p className="text-sm md:text-base text-natural-ink/70 leading-relaxed min-h-[100px]">
-              Ideal para manutenção e processos iniciados que preferem um ritmo mais espaçado, sem abrir mão do cuidado contínuo.
+            
+            <p className="text-sm md:text-base text-natural-ink/60 leading-relaxed font-light">
+              Ideal para manutenção de processos ou para quem prefere um ritmo mais espaçado, mantendo o cuidado constante.
             </p>
-            <div className="space-y-4 pt-4">
+
+            <div className="space-y-1 pt-4">
               {[
-                { icon: '⏱', text: '50 minutos por sessão' },
-                { icon: '📅', text: '2 sessões por mês' },
-                { icon: '🌐', text: 'Online ou presencial' }
-              ].map((feature, i) => (
-                <motion.div 
-                  key={i}
-                  initial={{ opacity: 0, x: -10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.4 + i * 0.1 }}
-                  className="flex items-center gap-3 text-xs uppercase tracking-widest text-primary-blue font-bold"
-                >
-                  <Sparkles size={14} className="opacity-40" />
-                  <span>{feature.icon} {feature.text}</span>
-                </motion.div>
+                { label: 'Frequência', value: '2x por mês' },
+                { label: 'Modalidade', value: 'Online / Presencial' },
+                { label: 'Plano', value: 'Quinzenal' }
+              ].map((item, i) => (
+                <div key={i} className="flex justify-between items-center py-3 border-b border-primary-blue/5">
+                  <span className="text-[9px] uppercase tracking-widest text-natural-ink/40 font-bold">{item.label}</span>
+                  <span className="text-[10px] uppercase tracking-widest text-primary-blue font-black">{item.value}</span>
+                </div>
               ))}
             </div>
           </div>
-          <div className="mt-12 space-y-6">
-            <div className="text-center">
-              <span className="text-sm text-natural-ink/40 font-medium">Valor mensal</span>
-              <p className="text-3xl font-serif text-natural-ink mt-1">R$ 250 <span className="text-sm italic font-light opacity-60">por mês</span></p>
+          <div className="mt-12 space-y-8">
+            <div className="text-center group-hover:scale-110 transition-transform duration-500">
+              <span className="text-[10px] uppercase tracking-widest text-natural-ink/30 font-bold">Investimento</span>
+              <p className="text-4xl font-serif text-natural-ink mt-2">R$ 250 <span className="text-xs italic font-light opacity-40">/mês</span></p>
             </div>
             <button
               onClick={() => openScheduling('Psicoterapia Quinzenal')}
-              className="w-full py-4 rounded-2xl border border-primary-blue text-primary-blue font-sans text-xs uppercase tracking-[0.2em] font-bold hover:bg-primary-blue hover:text-white transition-all transform active:scale-95"
+              className="w-full py-5 rounded-2xl border border-primary-blue/20 text-primary-blue font-sans text-[10px] uppercase tracking-[0.3em] font-black hover:bg-primary-blue hover:text-white hover:border-primary-blue transition-all transform active:scale-95 cinematic-shadow"
             >
-              Agendar sessões
+              Ver Disponibilidade
             </button>
           </div>
         </motion.div>

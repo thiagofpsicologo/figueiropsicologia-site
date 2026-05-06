@@ -49,54 +49,83 @@ export const Scene: React.FC<SceneProps> = ({ scene, index }) => {
 
       <motion.div 
         style={{ opacity: scene.image ? opacity : 1, y: index === 0 ? 0 : y }}
-        className={`relative z-10 w-full max-w-6xl px-4 md:px-12 flex flex-col md:flex-row items-center gap-12 ${index === 0 ? 'text-left lg:pl-0' : 'justify-center'}`}
+        className={`relative z-10 w-full max-w-7xl px-6 md:px-12 flex flex-col md:flex-row items-center gap-12 lg:gap-20 ${index === 0 ? 'text-center lg:text-left justify-center lg:justify-start lg:pl-0' : 'justify-center'}`}
       >
-        <div className={`max-w-xs sm:max-w-xl ${index === 0 ? 'text-left' : (scene.sideImage ? 'text-left' : (scene.id === 'identificacao' ? 'text-center max-w-[85%] mx-auto' : 'text-center'))}`}>
-          <motion.span 
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 0.9, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className={`block font-sans text-[10px] md:text-xs uppercase tracking-[0.4em] mb-2 font-bold ${scene.image ? 'text-white drop-shadow-[0_4px_6px_rgba(0,0,0,0.8)]' : 'text-primary-blue'}`}
-          >
-            {scene.accent}
-          </motion.span>
-          {scene.subtitle && (
+        <div className={`max-w-xl lg:max-w-3xl flex flex-col ${index === 0 ? 'items-center lg:items-start' : (scene.sideImage ? 'text-left items-start' : (scene.id === 'identificacao' ? 'text-center max-w-4xl mx-auto items-center' : 'text-center items-center'))}`}>
+          <div className="overflow-hidden mb-4">
             <motion.span 
-              initial={{ opacity: 0, y: 10 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 0.9, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className={`block font-sans text-[10px] md:text-xs uppercase tracking-[0.2em] mb-4 font-medium italic ${scene.image ? 'text-white/80 drop-shadow-[0_4px_6px_rgba(0,0,0,0.8)]' : 'text-primary-blue/80'}`}
+              viewport={{ once: false }}
+              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+              className={`block font-sans text-[10px] md:text-xs uppercase tracking-[0.4em] font-bold ${scene.image ? 'text-white' : 'text-primary-blue'}`}
             >
-              {scene.subtitle}
+              {scene.accent}
             </motion.span>
+          </div>
+          
+          {scene.subtitle && (
+            <div className="overflow-hidden mb-6">
+              <motion.span 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 0.8, y: 0 }}
+                viewport={{ once: false }}
+                transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+                className={`block font-sans text-xs md:text-sm uppercase tracking-[0.1em] font-medium italic ${scene.image ? 'text-white/80' : 'text-primary-blue/80'}`}
+              >
+                {scene.subtitle}
+              </motion.span>
+            </div>
           )}
-          <motion.h2 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
-            className={`text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-serif italic ${scene.id === 'identificacao' ? 'leading-[1.5]' : 'leading-[1.1]'} ${scene.image ? 'text-white drop-shadow-[0_10px_30px_rgba(0,0,0,1)] transition-all' : 'text-natural-ink'}`}
-          >
-            {scene.title}
-          </motion.h2>
+
+          <div className="relative">
+            <motion.h2 
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false }}
+              transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+              className={`text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-serif italic ${scene.id === 'identificacao' ? 'leading-[1.1] md:leading-[1.1]' : (index === 0 ? 'leading-[0.9] -ml-1' : 'leading-[1.1]')} ${scene.image ? 'text-white drop-shadow-[0_20px_50px_rgba(0,0,0,0.4)]' : 'text-natural-ink'}`}
+            >
+              {scene.title}
+            </motion.h2>
+            
+            {index === 0 && (
+              <motion.div 
+                initial={{ width: 0 }}
+                whileInView={{ width: '40%' }}
+                transition={{ duration: 1.5, delay: 1, ease: "circOut" }}
+                className="h-px bg-white/30 mt-8 hidden md:block"
+              />
+            )}
+          </div>
         </div>
 
         {scene.sideImage && (
           <motion.div 
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative w-56 h-72 md:w-80 md:h-[400px] lg:w-96 lg:h-[480px] shrink-0"
+            initial={{ opacity: 0, scale: 0.9, x: 40 }}
+            whileInView={{ opacity: 1, scale: 1, x: 0 }}
+            viewport={{ once: false }}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+            className="relative w-64 h-[400px] md:w-80 md:h-[500px] lg:w-[420px] lg:h-[600px] shrink-0"
           >
-            <div className="w-full h-full rounded-[40px] overflow-hidden border-4 border-white/20 backdrop-blur-sm cinematic-shadow group transition-transform duration-500 hover:scale-105">
+            <div className="w-full h-full rounded-[60px] md:rounded-[100px] overflow-hidden border border-white/20 glass-morphism cinematic-shadow group transition-all duration-700 hover:rounded-[40px]">
               <img 
                 src={scene.sideImage} 
                 alt="Thiago Figueiró Professional" 
-                className="w-full h-full object-cover object-top md:object-center"
+                className="w-full h-full object-cover object-top filter grayscale-[20%] group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
                 referrerPolicy="no-referrer"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
             </div>
-            <div className="absolute -z-10 -bottom-4 -right-4 w-full h-full border border-white/10 rounded-[40px]" />
+            
+            {/* Elegant Floating Element */}
+            <motion.div 
+              animate={{ y: [0, -15, 0] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute -bottom-6 -right-6 md:-bottom-10 md:-right-10 w-24 h-24 md:w-32 md:h-32 rounded-full glass-morphism border border-white/30 flex items-center justify-center p-4 text-center z-20 shadow-2xl"
+            >
+              <span className="text-[8px] md:text-[10px] uppercase tracking-widest font-bold text-natural-ink italic">Espaço de Escuta</span>
+            </motion.div>
           </motion.div>
         )}
       </motion.div>

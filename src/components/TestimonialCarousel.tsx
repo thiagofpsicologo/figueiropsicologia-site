@@ -107,8 +107,8 @@ export const TestimonialCarousel: React.FC = () => {
                     ))}
                   </div>
 
-                  <p className="text-xl md:text-2xl lg:text-3xl font-serif leading-relaxed text-natural-ink italic">
-                    {testimonial.quote}
+                  <p className="text-2xl md:text-3xl lg:text-5xl font-serif leading-tight text-natural-ink italic tracking-tight">
+                    &ldquo;{testimonial.quote}&rdquo;
                   </p>
 
                   <div className="space-y-1 pt-6 border-t border-primary-blue/10 max-w-[200px]">
