@@ -15,7 +15,7 @@ export const Footer: React.FC<FooterProps> = ({
   setIsTermsOpen 
 }) => {
   return (
-    <footer className="bg-white pt-20 pb-12 px-6 md:px-12 border-t border-primary-blue/10 relative overflow-hidden">
+    <footer className="bg-[#F7F5F2] pt-20 pb-12 px-6 md:px-12 border-t border-primary-blue/10 relative overflow-hidden">
       <div className="absolute top-10 left-1/2 -translate-x-1/2 w-full text-center opacity-[0.02] pointer-events-none select-none overflow-hidden whitespace-nowrap">
         <span className="font-serif italic text-[20vw] leading-none text-natural-ink">Thiago Figueiró</span>
       </div>

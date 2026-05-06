@@ -22,66 +22,64 @@ export const Header: React.FC<HeaderProps> = ({
 }) => {
   return (
     <>
-      <nav className={`fixed top-0 left-0 w-full z-[100] px-6 md:px-12 transition-all duration-700 ${isScrolled ? 'py-3 md:py-4' : 'py-6 md:py-10'}`}>
-        <div className={`max-w-7xl mx-auto flex flex-row justify-between items-center transition-all duration-700`}>
-          <a 
-            href="#" 
-            className={`flex items-center gap-2 md:gap-3 px-3 py-1.5 md:px-5 md:py-2.5 rounded-full border transition-all glass-morphism overflow-hidden shrink-0 group hover:shadow-2xl active:scale-95 ${isScrolled ? 'border-primary-blue/10' : 'border-white/20'}`}
-          >
-            <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-black flex items-center justify-center overflow-hidden shrink-0 group-hover:scale-110 transition-transform shadow-2xl">
-              <img 
-                src="https://drive.google.com/thumbnail?id=18OxYoRjXAKjdK4w608G6HkYJxF4HAn0O&sz=w1000" 
-                alt="Logo Thiago Figueiró" 
-                className="w-full h-full object-cover"
-                referrerPolicy="no-referrer"
-              />
-            </div>
-            <span className={`font-serif text-sm md:text-lg font-medium tracking-tight transition-colors truncate text-natural-ink ${!isScrolled && 'md:text-natural-ink'}`}>Thiago Figueiró</span>
-          </a>
-  
-          <div className={`hidden md:flex gap-6 lg:gap-8 items-center px-8 py-3 rounded-full border transition-all duration-700 glass-morphism ${isScrolled ? 'border-primary-blue/10 shadow-xl' : 'border-white/20'}`}>
-            {[
-              { name: 'Início', href: '#' },
-              { name: 'Sobre Mim', href: '#about' },
-              { name: 'Depoimentos', href: '#testimonials' },
-              { name: 'Contato', href: '#contact' }
-            ].map((item) => (
-              <a 
-                key={item.name}
-                href={item.href} 
-                className={`text-[10px] uppercase tracking-widest transition-all font-sans font-black relative group/link text-natural-ink/60 hover:text-primary-blue`}
-              >
-                {item.name}
-                <span className={`absolute -bottom-1 left-0 w-0 h-[1.5px] transition-all duration-500 group-hover/link:w-full bg-primary-blue`} />
-              </a>
-            ))}
-            <div className={`w-[1px] h-4 mx-1 transition-colors bg-primary-blue/10`} />
-            <div className="flex gap-4 items-center">
-              <a href="https://instagram.com/psicologo.thiagofigueiro" target="_blank" rel="noopener noreferrer" className="transition-all hover:scale-125 duration-300 hover:-translate-y-0.5" title="Instagram">
-                <img src="https://cdn.simpleicons.org/instagram/E4405F" className={`w-4 h-4`} alt="Instagram" />
-              </a>
-              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="transition-all hover:scale-125 duration-300 hover:-translate-y-0.5" title="WhatsApp">
-                <img src="https://cdn.simpleicons.org/whatsapp/25D366" className={`w-4 h-4`} alt="WhatsApp" />
-              </a>
-            </div>
+      <nav className={`fixed top-0 left-0 w-full z-[100] px-6 md:px-12 py-3 md:py-6 flex flex-row justify-between items-center transition-all duration-500 ${isScrolled ? 'bg-white/95 backdrop-blur-md shadow-md border-b border-primary-blue/5 py-2 md:py-4' : 'bg-transparent py-4'}`}>
+        <a 
+          href="#" 
+          className={`flex items-center gap-2 md:gap-3 px-3 py-1.5 md:px-5 md:py-2.5 rounded-full border transition-all group backdrop-blur-md shrink-0 max-w-[70%] hover:scale-102 active:scale-95 ${isScrolled ? 'bg-white border-primary-blue/10 shadow-sm' : 'bg-white/40 border-white/30'}`}
+        >
+          <div className="w-7 h-7 md:w-10 md:h-10 rounded-full bg-black flex items-center justify-center overflow-hidden shrink-0 group-hover:scale-110 transition-transform shadow-md border border-primary-blue/10">
+            <img 
+              src="https://drive.google.com/thumbnail?id=18OxYoRjXAKjdK4w608G6HkYJxF4HAn0O&sz=w1000" 
+              alt="Logo Thiago Figueiró" 
+              className="w-full h-full object-cover"
+              referrerPolicy="no-referrer"
+            />
           </div>
-  
-          <button
-            onClick={openScheduling}
-            className={`hidden md:flex items-center gap-3 px-8 py-3 rounded-full shadow-2xl transition-all font-sans text-[10px] uppercase tracking-[0.2em] font-black group bg-primary-blue text-white hover:bg-natural-ink hover:-translate-y-1 active:scale-95`}
-          >
-            <Calendar size={14} className="group-hover:scale-110 transition-transform" />
-            Agendar Consulta
-          </button>
-  
-          <button 
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className={`md:hidden shrink-0 w-12 h-12 rounded-full flex items-center justify-center transition-all z-[120] glass-morphism border-white/20 active:scale-90`}
-            aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"}
-          >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <span className={`font-serif text-[10px] md:text-base font-medium tracking-tight transition-colors truncate ${isScrolled ? 'text-natural-ink' : 'text-white'}`}>Thiago Figueiró</span>
+        </a>
+ 
+        <div className={`hidden md:flex gap-6 lg:gap-8 items-center px-8 py-3 rounded-full border transition-all duration-500 backdrop-blur-md ${isScrolled ? 'bg-white/90 border-primary-blue/10 shadow-lg' : 'bg-white/20 border-white/20'}`}>
+          {[
+            { name: 'Início', href: '#' },
+            { name: 'Sobre Mim', href: '#about' },
+            { name: 'Depoimentos', href: '#testimonials' },
+            { name: 'Contato', href: '#contact' }
+          ].map((item) => (
+            <a 
+              key={item.name}
+              href={item.href} 
+              className={`text-xs transition-all font-sans font-bold relative group/link ${isScrolled ? 'text-natural-ink/70 hover:text-primary-blue' : 'text-white hover:text-white/80'}`}
+            >
+              {item.name}
+              <span className={`absolute -bottom-1 left-0 w-0 h-0.5 transition-all duration-300 group-hover/link:w-full ${isScrolled ? 'bg-primary-blue/40' : 'bg-white/40'}`} />
+            </a>
+          ))}
+          <div className={`w-[1px] h-4 mx-1 transition-colors ${isScrolled ? 'bg-primary-blue/20' : 'bg-white/20'}`} />
+          <div className="flex gap-4 items-center">
+            <a href="https://instagram.com/psicologo.thiagofigueiro" target="_blank" rel="noopener noreferrer" className="transition-transform hover:scale-125 duration-300" title="Instagram">
+              <img src="https://cdn.simpleicons.org/instagram/E4405F" className={`w-4 h-4 transition-opacity ${isScrolled ? 'opacity-100' : 'opacity-90'}`} alt="Instagram" />
+            </a>
+            <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="transition-transform hover:scale-125 duration-300" title="WhatsApp">
+              <img src="https://cdn.simpleicons.org/whatsapp/25D366" className={`w-4 h-4 transition-opacity ${isScrolled ? 'opacity-100' : 'opacity-90'}`} alt="WhatsApp" />
+            </a>
+          </div>
         </div>
+
+        <button
+          onClick={openScheduling}
+          className={`hidden md:flex items-center gap-2 px-6 py-2.5 rounded-full shadow-xl transition-all font-sans text-xs uppercase tracking-widest font-bold ${isScrolled ? 'bg-primary-blue text-white shadow-primary-blue/20 hover:bg-natural-ink' : 'bg-primary-blue text-white shadow-primary-blue/20 hover:bg-white hover:text-primary-blue'}`}
+        >
+          <Calendar size={14} />
+          Agendar Consulta
+        </button>
+
+        <button 
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          className={`md:hidden shrink-0 w-10 h-10 rounded-full border flex items-center justify-center transition-all z-[120] backdrop-blur-md ${isMenuOpen ? 'bg-white/10 border-white/20 text-white' : (isScrolled ? 'bg-white border-natural-ink/10 text-natural-ink shadow-sm' : 'bg-white/40 border-white/30 text-white')}`}
+          aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"}
+        >
+          {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
+        </button>
       </nav>
 
       <AnimatePresence>
@@ -180,7 +178,7 @@ export const Header: React.FC<HeaderProps> = ({
                   className="flex gap-10"
                 >
                   <a href="https://instagram.com/psicologo.thiagofigueiro" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-2 group">
-                    <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center transition-all group-hover:bg-[#E4405F] group-hover:border-[#E4405F] group-hover:-translate-y-1">
+                    <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center transition-all group-hover:bg-primary-blue group-hover:border-primary-blue group-hover:-translate-y-1">
                       <img src="https://cdn.simpleicons.org/instagram/white" className="w-5 h-5" alt="Instagram" />
                     </div>
                     <span className="text-[10px] uppercase tracking-widest text-white/30 font-bold group-hover:text-white/60 transition-colors">Instagram</span>
