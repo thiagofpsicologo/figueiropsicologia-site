@@ -58,7 +58,7 @@ export const Scene: React.FC<SceneProps> = ({ scene, index }) => {
               whileInView={index === 0 ? undefined : { opacity: 0.9, y: 0 }}
               viewport={{ once: false }}
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-              className={`block font-sans text-[10px] md:text-xs lg:text-[10px] tracking-[0.3em] lg:tracking-[0.5em] font-black ${scene.image ? 'text-white drop-shadow-md' : 'text-primary-blue'}`}
+              className={`block font-sans text-[10px] md:text-xs lg:text-[11px] tracking-[0.3em] lg:tracking-[0.5em] font-black ${scene.image ? 'text-white drop-shadow-lg' : 'text-primary-blue'}`}
             >
               {scene.accent}
             </motion.span>
@@ -71,7 +71,7 @@ export const Scene: React.FC<SceneProps> = ({ scene, index }) => {
                 whileInView={index === 0 ? undefined : { opacity: 0.8, y: 0 }}
                 viewport={{ once: false }}
                 transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-                className={`block font-sans text-xs sm:text-sm md:text-base lg:text-[15px] tracking-[0.1em] lg:tracking-[0.15em] font-bold italic ${scene.image ? 'text-white/90 drop-shadow-md' : 'text-primary-blue/80'}`}
+                className={`block font-sans text-xs sm:text-sm md:text-base lg:text-[16px] tracking-[0.1em] lg:tracking-[0.15em] font-bold italic ${scene.image ? 'text-white lg:text-white drop-shadow-lg' : 'text-primary-blue/80'}`}
               >
                 {scene.subtitle}
               </motion.span>
