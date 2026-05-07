@@ -48,7 +48,7 @@ export const Footer: React.FC<FooterProps> = ({
               </div>
             </motion.div>
             <p className="text-sm md:text-base text-natural-ink/50 leading-relaxed max-w-xs font-light">
-              Acompanhando processos de autoconhecimento e transformation com ética, sensibilidade e acolhimento.
+              Acompanhando processos de autoconhecimento e transformação com ética, sensibilidade e acolhimento.
             </p>
             <div className="flex gap-4">
               <a href="https://instagram.com/psicologo.thiagofigueiro" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-primary-blue/10 flex items-center justify-center text-primary-blue hover:bg-primary-blue hover:text-white transition-all group" title="Instagram">
@@ -168,6 +168,7 @@ export const Footer: React.FC<FooterProps> = ({
             Thiago Figueiró
           </h2>
         </div>
+
       </div>
     </footer>
   );
