@@ -58,7 +58,7 @@ export const Scene: React.FC<SceneProps> = ({ scene, index }) => {
               whileInView={index === 0 ? undefined : { opacity: 0.9, y: 0 }}
               viewport={{ once: false }}
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-              className={`block font-sans text-xs md:text-xs lg:text-[13px] tracking-[0.3em] lg:tracking-[0.5em] font-black ${scene.image ? 'text-white' : 'text-primary-blue'}`}
+              className={`block font-sans text-[10px] md:text-xs lg:text-xs tracking-[0.3em] lg:tracking-[0.5em] font-black ${scene.image ? 'text-white' : 'text-primary-blue'}`}
             >
               {scene.accent}
             </motion.span>
@@ -71,7 +71,7 @@ export const Scene: React.FC<SceneProps> = ({ scene, index }) => {
                 whileInView={index === 0 ? undefined : { opacity: 0.8, y: 0 }}
                 viewport={{ once: false }}
                 transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-                className={`block font-sans text-xs md:text-sm lg:text-[16px] tracking-[0.15em] lg:tracking-[0.25em] font-bold italic ${scene.image ? 'text-white/90' : 'text-primary-blue/80'}`}
+                className={`block font-sans text-[10px] md:text-sm lg:text-[14px] tracking-[0.15em] lg:tracking-[0.25em] font-bold italic ${scene.image ? 'text-white/90' : 'text-primary-blue/80'}`}
               >
                 {scene.subtitle}
               </motion.span>
@@ -84,7 +84,7 @@ export const Scene: React.FC<SceneProps> = ({ scene, index }) => {
               whileInView={index === 0 ? undefined : { opacity: 1, y: 0 }}
               viewport={{ once: false }}
               transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-              className={`text-[40px] sm:text-5xl md:text-7xl lg:text-[110px] xl:text-[130px] font-serif italic ${scene.id === 'identificacao' ? 'leading-[1.1] md:leading-[1.1]' : (index === 0 ? 'leading-[1.1] lg:leading-[0.8] lg:-ml-2' : 'leading-[1.1]')} ${scene.image ? 'text-white' : 'text-natural-ink'}`}
+              className={`text-4xl sm:text-5xl md:text-7xl lg:text-[90px] xl:text-[110px] font-serif italic ${scene.id === 'identificacao' ? 'leading-[1.1] md:leading-[1.1]' : (index === 0 ? 'leading-[1.1] lg:leading-[0.8] lg:-ml-2' : 'leading-[1.1]')} ${scene.image ? 'text-white' : 'text-natural-ink'}`}
             >
               {scene.title}
             </motion.h2>
