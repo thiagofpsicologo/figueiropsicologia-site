@@ -52,6 +52,18 @@ export const Scene: React.FC<SceneProps> = ({ scene, index }) => {
         className={`relative z-10 w-full max-w-[1440px] px-6 lg:px-12 flex ${index === 0 ? 'items-center lg:items-end justify-center lg:justify-start' : 'items-center justify-center lg:items-center lg:justify-center'}`}
       >
         <div className={`max-w-xl lg:max-w-7xl flex flex-col ${index === 0 ? 'items-center lg:items-start text-center lg:text-left' : (scene.sideImage ? 'text-left items-start' : (scene.id === 'identificacao' ? 'text-center max-w-4xl mx-auto items-center' : 'text-center items-center'))}`}>
+          {index === 0 && (
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, delay: 0.5 }}
+              className="mb-4 lg:mb-6"
+            >
+              <span className="bg-primary-blue/30 backdrop-blur-md text-white text-[10px] md:text-[11px] px-5 py-2 rounded-full border border-white/40 font-black tracking-[0.4em] uppercase drop-shadow-lg shadow-xl">
+                CRP 04/48708
+              </span>
+            </motion.div>
+          )}
           <div className="overflow-hidden mb-1">
             <motion.span 
               initial={index === 0 ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
