@@ -52,7 +52,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ openScheduling
                 { label: 'Modalidade', value: 'Online / Presencial' }
               ].map((item, i) => (
                 <div key={i} className="flex justify-between items-center py-3 border-b border-primary-blue/5">
-                  <span className="text-[9px] uppercase tracking-widest text-natural-ink/40 font-bold">{item.label}</span>
+                  <span className="text-[9px] uppercase tracking-widest text-natural-ink/60 font-bold">{item.label}</span>
                   <span className="text-[10px] uppercase tracking-widest text-primary-blue font-black">{item.value}</span>
                 </div>
               ))}
@@ -114,7 +114,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ openScheduling
                 { label: 'Foco', value: 'Autoconhecimento' }
               ].map((item, i) => (
                 <div key={i} className="flex justify-between items-center py-3 border-b border-white/5">
-                  <span className="text-[9px] uppercase tracking-widest text-white/30 font-bold">{item.label}</span>
+                  <span className="text-[9px] uppercase tracking-widest text-white/60 font-bold">{item.label}</span>
                   <span className="text-[10px] uppercase tracking-widest text-white font-black">{item.value}</span>
                 </div>
               ))}
@@ -163,7 +163,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ openScheduling
                 { label: 'Plano', value: 'Quinzenal' }
               ].map((item, i) => (
                 <div key={i} className="flex justify-between items-center py-3 border-b border-primary-blue/5">
-                  <span className="text-[9px] uppercase tracking-widest text-natural-ink/40 font-bold">{item.label}</span>
+                  <span className="text-[9px] uppercase tracking-widest text-natural-ink/60 font-bold">{item.label}</span>
                   <span className="text-[10px] uppercase tracking-widest text-primary-blue font-black">{item.value}</span>
                 </div>
               ))}
