@@ -39,7 +39,7 @@ export const Scene: React.FC<SceneProps> = ({ scene, index }) => {
             className={`w-full h-full object-cover object-[85%_center] sm:object-[45%_20%] ${scene.id === 'identificacao' ? 'brightness-[0.8] contrast-[0.9]' : (index === 0 ? 'brightness-[1.1]' : '')}`}
             referrerPolicy="no-referrer"
           />
-          <div className={`absolute inset-0 ${index === 0 ? 'bg-black/30 lg:bg-transparent lg:bg-gradient-to-r lg:from-[#1A1A1A]/40 lg:via-transparent lg:to-transparent' : (scene.id === 'identificacao' ? 'bg-black/60 backdrop-blur-[2px]' : 'bg-black/30')}`} />
+          <div className={`absolute inset-0 ${index === 0 ? 'bg-black/15 lg:bg-transparent lg:bg-gradient-to-r lg:from-[#1A1A1A]/25 lg:via-transparent lg:to-transparent' : (scene.id === 'identificacao' ? 'bg-black/60 backdrop-blur-[2px]' : 'bg-black/30')}`} />
         </motion.div>
       )}
 
