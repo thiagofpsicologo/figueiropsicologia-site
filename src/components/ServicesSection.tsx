@@ -21,6 +21,23 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ openScheduling
           <p className="text-lg md:text-xl text-natural-ink/60 font-light leading-relaxed">
             Cada pessoa tem um momento diferente. Escolha o formato que faz mais sentido para você.
           </p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+            className="inline-flex flex-col md:flex-row items-center gap-3 px-6 py-3 rounded-2xl bg-primary-blue/[0.03] border border-primary-blue/10 max-w-2xl mx-auto mt-4"
+          >
+            <div className="flex items-center gap-2 text-primary-blue flex-shrink-0">
+              <div className="w-1.5 h-1.5 rounded-full bg-primary-blue animate-pulse" />
+              <span className="text-[9px] font-black uppercase tracking-widest">Sigilo e Segurança</span>
+            </div>
+            <div className="w-px h-4 bg-primary-blue/20 hidden md:block" />
+            <p className="text-[10px] md:text-[11px] text-natural-ink/75 leading-relaxed font-light text-center md:text-left">
+              As sessões ocorrem em ambiente virtual seguro e privativo. Utilizo tecnologias que garantem a criptografia dos dados, assegurando que todo o conteúdo do atendimento seja estritamente confidencial, conforme as normas do Conselho Federal de Psicologia.
+            </p>
+          </motion.div>
         </motion.div>
       </div>
 
