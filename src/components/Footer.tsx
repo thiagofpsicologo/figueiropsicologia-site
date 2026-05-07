@@ -15,7 +15,7 @@ export const Footer: React.FC<FooterProps> = ({
   setIsTermsOpen 
 }) => {
   return (
-    <footer className="bg-[#F7F5F2] pt-20 pb-12 px-6 md:px-12 border-t border-primary-blue/10 relative overflow-hidden">
+    <footer className="bg-white pt-20 pb-12 px-6 md:px-12 border-t border-primary-blue/10 relative overflow-hidden">
       <div className="absolute top-10 left-1/2 -translate-x-1/2 w-full text-center opacity-[0.02] pointer-events-none select-none overflow-hidden whitespace-nowrap">
         <span className="font-serif italic text-[20vw] leading-none text-natural-ink">Thiago Figueiró</span>
       </div>
@@ -29,7 +29,7 @@ export const Footer: React.FC<FooterProps> = ({
               transition={{ delay: 0.5, duration: 0.8 }}
               className="flex flex-col gap-4"
             >
-              <div className="w-20 h-20 rounded-full bg-white flex items-center justify-center overflow-hidden shadow-2xl border border-primary-blue/5 ring-8 ring-white/50 backdrop-blur-sm">
+              <div className="w-20 h-20 rounded-full bg-black flex items-center justify-center overflow-hidden shadow-2xl border border-primary-blue/5 ring-8 ring-white/50 backdrop-blur-sm">
                 <img 
                   src="https://drive.google.com/thumbnail?id=18OxYoRjXAKjdK4w608G6HkYJxF4HAn0O&sz=w1000" 
                   alt="Logo Thiago Figueiró" 
@@ -40,7 +40,7 @@ export const Footer: React.FC<FooterProps> = ({
               <div>
                 <h3 className="font-serif text-2xl md:text-3xl tracking-tight text-natural-ink">Thiago Figueiró</h3>
                 <div className="flex flex-wrap items-center gap-y-2 gap-x-4 mt-2">
-                  <p className="text-[10px] md:text-xs uppercase tracking-[0.3em] text-primary-blue font-black">Psicólogo Clínico</p>
+                  <p className="text-[10px] md:text-xs uppercase tracking-[0.3em] text-natural-ink font-black">Psicólogo Clínico</p>
                   <div className="px-2.5 py-1 rounded-full border border-primary-blue/20 bg-white/50 backdrop-blur-sm flex items-center shadow-sm">
                      <span className="text-[9px] md:text-[10px] uppercase tracking-[0.2em] text-primary-blue font-bold">CRP 04/48708</span>
                   </div>
