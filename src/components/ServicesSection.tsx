@@ -41,7 +41,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ openScheduling
               </div>
             </div>
             
-            <p className="text-sm md:text-base text-natural-ink/60 leading-relaxed font-light">
+            <p className="text-sm md:text-base text-natural-ink/80 leading-relaxed font-light">
               Ideal para quem busca clareza sobre uma situação ou decisão específica, oferecendo escuta técnica e apoio imediato.
             </p>
 
@@ -52,7 +52,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ openScheduling
                 { label: 'Modalidade', value: 'Online / Presencial' }
               ].map((item, i) => (
                 <div key={i} className="flex justify-between items-center py-3 border-b border-primary-blue/5">
-                  <span className="text-[9px] uppercase tracking-widest text-natural-ink/60 font-bold">{item.label}</span>
+                  <span className="text-[9px] uppercase tracking-widest text-natural-ink/80 font-bold">{item.label}</span>
                   <span className="text-[10px] uppercase tracking-widest text-primary-blue font-black">{item.value}</span>
                 </div>
               ))}
@@ -60,8 +60,8 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ openScheduling
           </div>
           <div className="mt-12 space-y-8">
             <div className="text-center group-hover:scale-110 transition-transform duration-500">
-              <span className="text-[10px] uppercase tracking-widest text-natural-ink/30 font-bold">Investimento</span>
-              <p className="text-4xl font-serif text-natural-ink mt-2">R$ 120 <span className="text-xs italic font-light opacity-40">/sessão</span></p>
+              <span className="text-[10px] uppercase tracking-widest text-natural-ink/50 font-bold">Investimento</span>
+              <p className="text-4xl font-serif text-natural-ink mt-2">R$ 120 <span className="text-xs italic font-light opacity-60">/sessão</span></p>
             </div>
             <button
               onClick={() => openScheduling('Atendimento Pontual')}
@@ -103,7 +103,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ openScheduling
               </div>
             </div>
             
-            <p className="text-sm md:text-base text-white/60 leading-relaxed font-light">
+            <p className="text-sm md:text-base text-white/80 leading-relaxed font-light">
               Continuidade terapêutica para aprofundar questões emocionais e padrões de comportamento, visando transformações reais.
             </p>
 
@@ -114,7 +114,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ openScheduling
                 { label: 'Foco', value: 'Autoconhecimento' }
               ].map((item, i) => (
                 <div key={i} className="flex justify-between items-center py-3 border-b border-white/5">
-                  <span className="text-[9px] uppercase tracking-widest text-white/60 font-bold">{item.label}</span>
+                  <span className="text-[9px] uppercase tracking-widest text-white/80 font-bold">{item.label}</span>
                   <span className="text-[10px] uppercase tracking-widest text-white font-black">{item.value}</span>
                 </div>
               ))}
@@ -123,8 +123,8 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ openScheduling
           
           <div className="mt-12 space-y-8">
             <div className="text-center">
-              <span className="text-[10px] uppercase tracking-widest text-white/30 font-bold font-sans">Compromisso Mensal</span>
-              <p className="text-4xl font-serif text-white mt-2">R$ 400 <span className="text-xs italic font-light opacity-40">/mês</span></p>
+              <span className="text-[10px] uppercase tracking-widest text-white/50 font-bold font-sans">Compromisso Mensal</span>
+              <p className="text-4xl font-serif text-white mt-2">R$ 400 <span className="text-xs italic font-light opacity-60">/mês</span></p>
             </div>
             <button
               onClick={() => openScheduling('Psicoterapia Semanal')}
@@ -152,7 +152,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ openScheduling
               </div>
             </div>
             
-            <p className="text-sm md:text-base text-natural-ink/60 leading-relaxed font-light">
+            <p className="text-sm md:text-base text-natural-ink/80 leading-relaxed font-light">
               Ideal para manutenção de processos ou para quem prefere um ritmo mais espaçado, mantendo o cuidado constante.
             </p>
 
@@ -163,7 +163,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ openScheduling
                 { label: 'Plano', value: 'Quinzenal' }
               ].map((item, i) => (
                 <div key={i} className="flex justify-between items-center py-3 border-b border-primary-blue/5">
-                  <span className="text-[9px] uppercase tracking-widest text-natural-ink/60 font-bold">{item.label}</span>
+                  <span className="text-[9px] uppercase tracking-widest text-natural-ink/80 font-bold">{item.label}</span>
                   <span className="text-[10px] uppercase tracking-widest text-primary-blue font-black">{item.value}</span>
                 </div>
               ))}
@@ -171,8 +171,8 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ openScheduling
           </div>
           <div className="mt-12 space-y-8">
             <div className="text-center group-hover:scale-110 transition-transform duration-500">
-              <span className="text-[10px] uppercase tracking-widest text-natural-ink/30 font-bold">Investimento</span>
-              <p className="text-4xl font-serif text-natural-ink mt-2">R$ 250 <span className="text-xs italic font-light opacity-40">/mês</span></p>
+              <span className="text-[10px] uppercase tracking-widest text-natural-ink/50 font-bold">Investimento</span>
+              <p className="text-4xl font-serif text-natural-ink mt-2">R$ 250 <span className="text-xs italic font-light opacity-60">/mês</span></p>
             </div>
             <button
               onClick={() => openScheduling('Psicoterapia Quinzenal')}
@@ -192,7 +192,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ openScheduling
         className="max-w-xl mx-auto mt-20 text-center px-6"
       >
         <div className="h-[1px] w-12 bg-primary-blue/20 mx-auto mb-6" />
-        <p className="text-sm md:text-base text-natural-ink/40 font-medium italic">
+        <p className="text-sm md:text-base text-natural-ink/60 font-medium italic">
           A frequência pode ser ajustada conforme a necessidade ao longo do processo.
         </p>
       </motion.div>
