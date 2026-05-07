@@ -14,6 +14,7 @@ export const WHATSAPP_NUMBER = "5531994238535";
 export const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`;
 
 export const UNAVAILABLE_SLOTS: Record<string, string[]> = {
+  // Let's make these dynamic or just clear them if they were examples
 };
 
 export const STANDARD_SLOTS = [
@@ -22,18 +23,38 @@ export const STANDARD_SLOTS = [
 
 export const SCENES = [
   {
-    id: 'intro',
+    id: 'dor',
     title: 'Thiago Figueiró',
-    accent: 'PSICÓLOGO CLÍNICO',
-    subtitle: 'COMO POSSO TE AJUDAR?',
-    image: 'https://drive.google.com/thumbnail?id=1BAtrxB-NOjDAlp1Md4o1ZEZBid5OpoqS&sz=w2000'
+    audioText: 'piano leve e emocional',
+    image: 'https://drive.google.com/thumbnail?id=1BAtrxB-NOjDAlp1Md4o1ZEZBid5OpoqS&sz=w2000',
+    accent: 'Psicólogo Clínico',
+    subtitle: 'Como posso te ajudar?'
+  },
+  {
+    id: 'identificacao',
+    title: '"Ansiedade, excesso de pensamentos, dificuldade de se expressar…"',
+    audioText: '',
+    image: 'https://drive.google.com/thumbnail?id=13pEHjy-sDm3jwd5vz1VLvFhWaxly_aRy&sz=w2000',
+    accent: 'Reflexão'
+  },
+  {
+    id: 'transicao',
+    title: '"Você não precisa lidar com isso sozinho."',
+    audioText: '',
+    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1080&h=1920',
+    accent: 'Acolhimento'
+  },
+  {
+    id: 'apresentacao',
+    title: 'Psicólogo Thiago Figueiró',
+    audioText: '',
+    accent: 'Profissionalismo'
   },
   {
     id: 'transformacao',
-    title: '',
-    accent: 'LEVEZA',
-    subtitle: '"Entenda seus pensamentos. Cuide da sua mente. Viva com mais leveza."',
-    image: 'https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=2000'
+    title: '"Entenda seus pensamentos. Cuide da sua mente. Viva com mais leveza."',
+    audioText: '',
+    accent: 'Leveza'
   }
 ];
 
