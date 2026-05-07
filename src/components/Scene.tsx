@@ -49,7 +49,7 @@ export const Scene: React.FC<SceneProps> = ({ scene, index }) => {
 
       <motion.div 
         style={{ opacity: index === 0 ? 1 : opacity, y: index === 0 ? 0 : y }}
-        className={`relative z-10 w-full max-w-[1440px] px-6 lg:px-12 flex items-center lg:items-end justify-center lg:justify-start`}
+        className={`relative z-10 w-full max-w-[1440px] px-6 lg:px-12 flex ${index === 0 ? 'items-center lg:items-end justify-center lg:justify-start' : 'items-center justify-center lg:items-center lg:justify-center'}`}
       >
         <div className={`max-w-xl lg:max-w-7xl flex flex-col ${index === 0 ? 'items-center lg:items-start text-center lg:text-left' : (scene.sideImage ? 'text-left items-start' : (scene.id === 'identificacao' ? 'text-center max-w-4xl mx-auto items-center' : 'text-center items-center'))}`}>
           <div className="overflow-hidden mb-1">
@@ -58,7 +58,7 @@ export const Scene: React.FC<SceneProps> = ({ scene, index }) => {
               whileInView={index === 0 ? undefined : { opacity: 0.9, y: 0 }}
               viewport={{ once: false }}
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-              className={`block font-sans text-[10px] md:text-xs lg:text-[11px] tracking-[0.3em] lg:tracking-[0.5em] font-black ${scene.image ? 'text-white drop-shadow-md' : 'text-primary-blue'}`}
+              className={`block font-sans text-[10px] md:text-xs lg:text-[10px] tracking-[0.3em] lg:tracking-[0.5em] font-black ${scene.image ? 'text-white drop-shadow-md' : 'text-primary-blue'}`}
             >
               {scene.accent}
             </motion.span>
@@ -71,7 +71,7 @@ export const Scene: React.FC<SceneProps> = ({ scene, index }) => {
                 whileInView={index === 0 ? undefined : { opacity: 0.8, y: 0 }}
                 viewport={{ once: false }}
                 transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-                className={`block font-sans text-xs sm:text-sm md:text-base lg:text-lg tracking-[0.1em] lg:tracking-[0.15em] font-bold italic ${scene.image ? 'text-white/90 drop-shadow-md' : 'text-primary-blue/80'}`}
+                className={`block font-sans text-xs sm:text-sm md:text-base lg:text-[15px] tracking-[0.1em] lg:tracking-[0.15em] font-bold italic ${scene.image ? 'text-white/90 drop-shadow-md' : 'text-primary-blue/80'}`}
               >
                 {scene.subtitle}
               </motion.span>
@@ -84,7 +84,7 @@ export const Scene: React.FC<SceneProps> = ({ scene, index }) => {
               whileInView={index === 0 ? undefined : { opacity: 1, y: 0 }}
               viewport={{ once: false }}
               transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-              className={`text-4xl sm:text-5xl md:text-7xl lg:text-[80px] xl:text-[100px] font-serif italic ${scene.id === 'identificacao' ? 'leading-[1.1] md:leading-[1.1]' : (index === 0 ? 'leading-[1.1] lg:leading-[0.8] lg:-ml-2' : 'leading-[1.1]')} ${scene.image ? 'text-white drop-shadow-md' : 'text-natural-ink'}`}
+              className={`text-4xl sm:text-5xl md:text-7xl lg:text-[70px] xl:text-[85px] font-serif italic ${scene.id === 'identificacao' ? 'leading-[1.1] md:leading-[1.1]' : (index === 0 ? 'leading-[1.1] lg:leading-[0.8] lg:-ml-2' : 'leading-[1.1]')} ${scene.image ? 'text-white drop-shadow-md' : 'text-natural-ink'}`}
             >
               {scene.title}
             </motion.h2>
