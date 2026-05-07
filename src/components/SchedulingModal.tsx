@@ -213,13 +213,13 @@ export const SchedulingModal: React.FC<SchedulingModalProps> = ({ isOpen, onClos
               )}
 
               {step === 'confirm' && (
-                <div className="space-y-8 py-4 text-center">
+                <div className="space-y-6 md:space-y-4 py-4 md:py-2 text-center">
                   <motion.div 
                     initial={{ scale: 0.5, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
-                    className={`inline-flex items-center justify-center p-6 rounded-full mb-2 ${errorSlot ? 'bg-red-50 text-red-500 shadow-lg shadow-red-100' : 'bg-primary-blue/10 text-primary-blue shadow-lg shadow-primary-blue/5'}`}
+                    className={`inline-flex items-center justify-center p-6 md:p-4 rounded-full mb-2 ${errorSlot ? 'bg-red-50 text-red-500 shadow-lg shadow-red-100' : 'bg-primary-blue/10 text-primary-blue shadow-lg shadow-primary-blue/5'}`}
                   >
-                    {errorSlot ? <X size={48} strokeWidth={1.5} /> : <Calendar size={48} strokeWidth={1} />}
+                    {errorSlot ? <X size={48} strokeWidth={1.5} className="md:w-10 md:h-10" /> : <Calendar size={48} strokeWidth={1} className="md:w-10 md:h-10" />}
                   </motion.div>
                   
                   <div className="space-y-2">
@@ -266,25 +266,27 @@ export const SchedulingModal: React.FC<SchedulingModalProps> = ({ isOpen, onClos
                           Confirmar agendamento
                         </button>
                         
-                        <button
-                          onClick={addToGoogleCalendar}
-                          className="w-full bg-white border border-primary-blue/20 text-primary-blue py-4 rounded-2xl font-sans text-xs uppercase tracking-[0.2em] font-bold hover:bg-primary-blue/5 transition-all flex items-center justify-center gap-2"
-                          id="google-calendar-btn"
-                        >
-                          <Calendar size={16} />
-                          Adicionar ao Google Agenda
-                        </button>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                          <button
+                            onClick={addToGoogleCalendar}
+                            className="w-full bg-white border border-primary-blue/20 text-primary-blue py-4 md:py-3 rounded-2xl font-sans text-[10px] md:text-[9px] lg:text-[10px] uppercase tracking-[0.1em] md:tracking-normal lg:tracking-[0.1em] font-bold hover:bg-primary-blue/5 transition-all flex items-center justify-center gap-2"
+                            id="google-calendar-btn"
+                          >
+                            <Calendar size={14} />
+                            <span>Google Agenda</span>
+                          </button>
 
-                        <button
-                          onClick={addToAppleCalendar}
-                          className="w-full bg-white border border-primary-blue/20 text-primary-blue py-4 rounded-2xl font-sans text-xs uppercase tracking-[0.2em] font-bold hover:bg-primary-blue/5 transition-all flex items-center justify-center gap-2"
-                          id="apple-calendar-btn"
-                        >
-                          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" className="lucide-apple">
-                            <path d="M17.05 20.28c-.96.95-2.15 1.57-3.57 1.57-1.39 0-2.48-.48-3.52-.48-1.04 0-2.28.51-3.55.51-3.66 0-6.75-5.91-6.75-9.67 0-3.67 2.05-5.74 4.54-5.74 1.34 0 2.45.67 3.32.67.87 0 2.22-.72 3.73-.72 1.41 0 3.1.66 4.14 2-.09.06-2.58 1.48-2.58 4.63 0 3.19 2.58 4.41 2.65 4.44-.06.18-1.42 2.89-3.43 4.8zm-4.73-15.1c0 0 .01-.01.01-.01.99-1.2 1.66-2.88 1.48-4.54-.15-.01-.32-.02-.5-.02-2.13 0-3.76 1.43-4.56 3.18-.75 1.62-.64 3.34-.43 4.56.09.01.19.01.29.01 2.06 0 3.71-1.32 4.11-3.18z" />
-                          </svg>
-                          Adicionar ao Calendário Apple
-                        </button>
+                          <button
+                            onClick={addToAppleCalendar}
+                            className="w-full bg-white border border-primary-blue/20 text-primary-blue py-4 md:py-3 rounded-2xl font-sans text-[10px] md:text-[9px] lg:text-[10px] uppercase tracking-[0.1em] md:tracking-normal lg:tracking-[0.1em] font-bold hover:bg-primary-blue/5 transition-all flex items-center justify-center gap-2"
+                            id="apple-calendar-btn"
+                          >
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                              <path d="M17.05 20.28c-.96.95-2.15 1.57-3.57 1.57-1.39 0-2.48-.48-3.52-.48-1.04 0-2.28.51-3.55.51-3.66 0-6.75-5.91-6.75-9.67 0-3.67 2.05-5.74 4.54-5.74 1.34 0 2.45.67 3.32.67.87 0 2.22-.72 3.73-.72 1.41 0 3.1.66 4.14 2-.09.06-2.58 1.48-2.58 4.63 0 3.19 2.58 4.41 2.65 4.44-.06.18-1.42 2.89-3.43 4.8zm-4.73-15.1c0 0 .01-.01.01-.01.99-1.2 1.66-2.88 1.48-4.54-.15-.01-.32-.02-.5-.02-2.13 0-3.76 1.43-4.56 3.18-.75 1.62-.64 3.34-.43 4.56.09.01.19.01.29.01 2.06 0 3.71-1.32 4.11-3.18z" />
+                            </svg>
+                            <span>Calendário Apple</span>
+                          </button>
+                        </div>
 
                         <button
                           onClick={() => setStep('time')}
