@@ -39,7 +39,7 @@ export const Scene: React.FC<SceneProps> = ({ scene, index }) => {
             className={`w-full h-full object-cover object-[85%_center] sm:object-[45%_20%] ${scene.id === 'identificacao' ? 'brightness-[0.8] contrast-[0.9]' : (index === 0 ? 'brightness-[1.1]' : '')}`}
             referrerPolicy="no-referrer"
           />
-          <div className={`absolute inset-0 ${index === 0 ? 'bg-black/15 lg:bg-transparent lg:bg-gradient-to-r lg:from-[#1A1A1A]/25 lg:via-transparent lg:to-transparent' : (scene.id === 'identificacao' ? 'bg-black/60 backdrop-blur-[2px]' : 'bg-black/30')}`} />
+          <div className={`absolute inset-0 ${index === 0 ? 'bg-black/15 lg:bg-transparent lg:bg-gradient-to-r lg:from-[#1A1A1A]/45 lg:via-transparent lg:to-transparent' : (scene.id === 'identificacao' ? 'bg-black/60 backdrop-blur-[2px]' : 'bg-black/30')}`} />
         </motion.div>
       )}
 
@@ -54,11 +54,11 @@ export const Scene: React.FC<SceneProps> = ({ scene, index }) => {
         <div className={`max-w-xl lg:max-w-7xl flex flex-col ${index === 0 ? 'items-center lg:items-start text-center lg:text-left' : (scene.sideImage ? 'text-left items-start' : (scene.id === 'identificacao' ? 'text-center max-w-4xl mx-auto items-center' : 'text-center items-center'))}`}>
           <div className="overflow-hidden mb-1">
             <motion.span 
-              initial={index === 0 ? { opacity: 0.9, y: 0 } : { opacity: 0, y: 20 }}
-              whileInView={index === 0 ? undefined : { opacity: 0.9, y: 0 }}
+              initial={index === 0 ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              whileInView={index === 0 ? undefined : { opacity: 1, y: 0 }}
               viewport={{ once: false }}
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-              className={`block font-sans text-[10px] md:text-xs lg:text-[11px] tracking-[0.3em] lg:tracking-[0.5em] font-black ${scene.image ? 'text-white drop-shadow-lg' : 'text-primary-blue'}`}
+              className={`block font-sans text-[10px] md:text-xs lg:text-[11px] tracking-[0.3em] lg:tracking-[0.5em] font-black ${scene.image ? 'text-white drop-shadow-lg lg:drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]' : 'text-primary-blue'}`}
             >
               {scene.accent}
             </motion.span>
@@ -67,11 +67,11 @@ export const Scene: React.FC<SceneProps> = ({ scene, index }) => {
           {scene.subtitle && (
             <div className={`overflow-hidden ${index === 0 ? 'mb-2 lg:mb-6' : 'mb-4'}`}>
               <motion.span 
-                initial={index === 0 ? { opacity: 0.8, y: 0 } : { opacity: 0, y: 20 }}
-                whileInView={index === 0 ? undefined : { opacity: 0.8, y: 0 }}
+                initial={index === 0 ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                whileInView={index === 0 ? undefined : { opacity: 1, y: 0 }}
                 viewport={{ once: false }}
                 transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-                className={`block font-sans text-xs sm:text-sm md:text-base lg:text-[16px] tracking-[0.1em] lg:tracking-[0.15em] font-bold italic ${scene.image ? 'text-white lg:text-white drop-shadow-lg' : 'text-primary-blue/80'}`}
+                className={`block font-sans text-xs sm:text-sm md:text-base lg:text-[16px] tracking-[0.1em] lg:tracking-[0.15em] font-bold italic ${scene.image ? 'text-white lg:text-white drop-shadow-lg lg:drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]' : 'text-primary-blue/80'}`}
               >
                 {scene.subtitle}
               </motion.span>
@@ -84,7 +84,7 @@ export const Scene: React.FC<SceneProps> = ({ scene, index }) => {
               whileInView={index === 0 ? undefined : { opacity: 1, y: 0 }}
               viewport={{ once: false }}
               transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-              className={`text-4xl sm:text-5xl md:text-7xl lg:text-[70px] xl:text-[85px] font-serif italic ${scene.id === 'identificacao' ? 'leading-[1.1] md:leading-[1.1]' : (index === 0 ? 'leading-[1.1] lg:leading-[0.8] lg:-ml-2' : 'leading-[1.1]')} ${scene.image ? 'text-white drop-shadow-md' : 'text-natural-ink'}`}
+              className={`text-4xl sm:text-5xl md:text-7xl lg:text-[70px] xl:text-[85px] font-serif italic ${scene.id === 'identificacao' ? 'leading-[1.1] md:leading-[1.1]' : (index === 0 ? 'leading-[1.1] lg:leading-[0.8] lg:-ml-2' : 'leading-[1.1]')} ${scene.image ? 'text-white drop-shadow-md lg:drop-shadow-[0_4px_6px_rgba(0,0,0,0.3)]' : 'text-natural-ink'}`}
             >
               {scene.title}
             </motion.h2>
