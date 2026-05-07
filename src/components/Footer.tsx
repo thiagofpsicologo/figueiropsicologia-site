@@ -167,10 +167,10 @@ export const Footer: React.FC<FooterProps> = ({
           <motion.div 
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            className="flex items-center gap-2 px-4 py-2 rounded-full border border-primary-blue/5 md:border-primary-blue/20 bg-primary-blue/[0.01] md:bg-primary-blue/[0.04] backdrop-blur-sm transition-colors duration-500"
+            className="flex items-center gap-2 px-4 py-2 rounded-full border border-primary-blue/20 bg-primary-blue/[0.04] backdrop-blur-sm transition-colors duration-500"
           >
-            <div className="w-1 h-1 rounded-full bg-primary-blue/30 md:bg-primary-blue/50" />
-            <span className="text-[10px] tracking-wide text-natural-ink/30 md:text-natural-ink/70 md:font-medium italic">
+            <div className="w-1 h-1 rounded-full bg-primary-blue/50" />
+            <span className="text-[10px] tracking-wide text-natural-ink/70 font-medium italic">
               Em caso de crise, ligue 188 (CVV).
             </span>
           </motion.div>
