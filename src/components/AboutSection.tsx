@@ -35,7 +35,10 @@ export const AboutSection: React.FC = () => {
             className="space-y-8"
           >
             <div className="space-y-4">
-              <span className="text-[9px] md:text-[10px] uppercase tracking-[0.3em] text-primary-blue font-bold">Sobre Mim</span>
+              <div className="flex items-center gap-4">
+                <span className="text-[9px] md:text-[10px] uppercase tracking-[0.3em] text-primary-blue font-bold">Sobre Mim</span>
+                <span className="text-[8px] md:text-[9px] px-2.5 py-1 rounded-full bg-primary-blue/5 border border-primary-blue/10 text-primary-blue/60 font-bold tracking-widest leading-none">CRP 04/48708</span>
+              </div>
               <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif leading-tight text-natural-ink italic">
                 Um espaço seguro <span className="text-primary-blue/60 italic">para o seu sentir.</span>
               </h2>
