@@ -14,17 +14,6 @@ export const AboutSection: React.FC = () => {
           transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
           className="relative order-2 lg:order-1"
         >
-          {/* CRP badge */}
-          <motion.div 
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, delay: 0.5 }}
-            className="absolute -top-4 -left-4 md:-top-8 md:-left-8 z-20 bg-white px-6 md:px-8 py-3 md:py-4 rounded-2xl md:rounded-[32px] cinematic-shadow border border-primary-blue/5"
-          >
-            <span className="text-[9px] md:text-[10px] uppercase tracking-[0.4em] text-primary-blue font-black">CRP 04/48708</span>
-          </motion.div>
-
           <div className="relative z-10 aspect-[3/4] rounded-[60px] md:rounded-[100px] overflow-hidden cinematic-shadow border-8 border-white">
             <img 
               src="https://drive.google.com/thumbnail?id=1tVcHVoHn9pV_CfvuJdn98sLlY3de_Ysh&sz=w1000" 
@@ -46,7 +35,11 @@ export const AboutSection: React.FC = () => {
             className="space-y-8"
           >
             <div className="space-y-4">
-              <span className="text-[9px] md:text-[10px] uppercase tracking-[0.3em] text-primary-blue font-bold">Sobre Mim</span>
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+                <span className="text-[9px] md:text-[10px] uppercase tracking-[0.3em] text-primary-blue font-bold">Sobre Mim</span>
+                <span className="hidden sm:block w-1 h-1 rounded-full bg-primary-blue/30" />
+                <span className="text-[9px] md:text-[10px] uppercase tracking-[0.4em] text-white font-black bg-primary-blue px-3 py-1 rounded-full shadow-sm">CRP 04/48708</span>
+              </div>
               <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif leading-tight text-natural-ink italic">
                 Um espaço seguro <span className="text-primary-blue/60 italic">para o seu sentir.</span>
               </h2>
