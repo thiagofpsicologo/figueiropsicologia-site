@@ -27,7 +27,7 @@ export const Scene: React.FC<SceneProps> = ({ scene, index }) => {
   const imageY = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
 
   return (
-    <div ref={ref} className={`relative h-screen h-[100dvh] w-full flex overflow-hidden ${index === 0 ? 'justify-center items-end lg:justify-start lg:items-end pb-32 lg:pb-16 p-6 lg:pl-16' : 'justify-center items-center'} ${!scene.image ? 'bg-[#F7F5F2]' : ''}`}>
+    <div ref={ref} className={`relative h-screen h-[100dvh] w-full flex overflow-hidden ${index === 0 ? 'justify-center items-end lg:justify-start lg:items-end pb-32 lg:pb-32 p-6 lg:pl-32' : 'justify-center items-center'} ${!scene.image ? 'bg-[#F7F5F2]' : ''}`}>
       {scene.image && (
         <motion.div 
           style={{ opacity, scale, y: imageY }}
@@ -51,14 +51,14 @@ export const Scene: React.FC<SceneProps> = ({ scene, index }) => {
         style={{ opacity: index === 0 ? 1 : opacity, y: index === 0 ? 0 : y }}
         className={`relative z-10 w-full max-w-[1440px] px-6 lg:px-12 flex items-center lg:items-end justify-center lg:justify-start`}
       >
-        <div className={`max-w-xl lg:max-w-4xl flex flex-col ${index === 0 ? 'items-center lg:items-start text-center lg:text-left' : (scene.sideImage ? 'text-left items-start' : (scene.id === 'identificacao' ? 'text-center max-w-4xl mx-auto items-center' : 'text-center items-center'))}`}>
+        <div className={`max-w-xl lg:max-w-5xl flex flex-col ${index === 0 ? 'items-center lg:items-start text-center lg:text-left' : (scene.sideImage ? 'text-left items-start' : (scene.id === 'identificacao' ? 'text-center max-w-4xl mx-auto items-center' : 'text-center items-center'))}`}>
           <div className="overflow-hidden mb-1">
             <motion.span 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 0.9, y: 0 }}
               viewport={{ once: false }}
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-              className={`block font-sans text-[10px] md:text-xs lg:text-sm tracking-[0.3em] lg:tracking-[0.4em] font-black ${scene.image ? 'text-white drop-shadow-sm' : 'text-primary-blue'}`}
+              className={`block font-sans text-[10px] md:text-xs lg:text-[15px] tracking-[0.3em] lg:tracking-[0.35em] font-black ${scene.image ? 'text-white drop-shadow-sm' : 'text-primary-blue'}`}
             >
               {scene.accent}
             </motion.span>
@@ -71,7 +71,7 @@ export const Scene: React.FC<SceneProps> = ({ scene, index }) => {
                 whileInView={{ opacity: 0.8, y: 0 }}
                 viewport={{ once: false }}
                 transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-                className={`block font-sans text-[11px] md:text-sm lg:text-base tracking-[0.2em] font-bold italic ${scene.image ? 'text-white/90 drop-shadow-sm' : 'text-primary-blue/80'}`}
+                className={`block font-sans text-[11px] md:text-sm lg:text-lg tracking-[0.15em] lg:tracking-[0.2em] font-bold italic ${scene.image ? 'text-white/90 drop-shadow-sm' : 'text-primary-blue/80'}`}
               >
                 {scene.subtitle}
               </motion.span>
@@ -84,7 +84,7 @@ export const Scene: React.FC<SceneProps> = ({ scene, index }) => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false }}
               transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-              className={`text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-serif italic ${scene.id === 'identificacao' ? 'leading-[1.1] md:leading-[1.1]' : (index === 0 ? 'leading-[1] lg:leading-[0.9] lg:-ml-1' : 'leading-[1.1]')} ${scene.image ? 'text-white' : 'text-natural-ink'}`}
+              className={`text-4xl sm:text-5xl md:text-7xl lg:text-[100px] xl:text-[120px] font-serif italic ${scene.id === 'identificacao' ? 'leading-[1.1] md:leading-[1.1]' : (index === 0 ? 'leading-[1] lg:leading-[0.85] lg:-ml-2' : 'leading-[1.1]')} ${scene.image ? 'text-white' : 'text-natural-ink'}`}
             >
               {scene.title}
             </motion.h2>
