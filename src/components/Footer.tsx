@@ -163,6 +163,19 @@ export const Footer: React.FC<FooterProps> = ({
           </div>
         </div>
 
+        <div className="mt-8 flex flex-col items-center">
+          <motion.div 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            className="flex items-center gap-2 px-4 py-2 rounded-full border border-primary-blue/5 bg-primary-blue/[0.01] backdrop-blur-sm"
+          >
+            <div className="w-1 h-1 rounded-full bg-primary-blue/30" />
+            <span className="text-[10px] tracking-wide text-natural-ink/30 italic">
+              Em caso de crise, ligue 188 (CVV).
+            </span>
+          </motion.div>
+        </div>
+
         <div className="mt-16 flex justify-center opacity-[0.05]">
           <h2 className="font-serif italic text-4xl md:text-6xl text-natural-ink tracking-tighter">
             Thiago Figueiró
