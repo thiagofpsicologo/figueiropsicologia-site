@@ -176,7 +176,7 @@ function App() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
-            className="fixed bottom-6 right-8 md:right-8 lg:right-12 z-[100] flex flex-col gap-4 items-end pointer-events-none"
+            className="fixed bottom-6 right-4 md:right-6 lg:right-8 z-[100] flex flex-col gap-4 items-end pointer-events-none"
           >
             <motion.a 
               href={WHATSAPP_LINK}
