@@ -71,7 +71,7 @@ export const Footer: React.FC<FooterProps> = ({
                 { name: 'Sobre Mim', href: '#about' },
                 { name: 'Atendimentos', href: '#services' },
                 { name: 'Depoimentos', href: '#testimonials' },
-                { name: 'Dúvidas Comuns', href: '#faq' },
+                { name: 'Dúvidas comuns', href: '#faq' },
                 { name: 'Contato', href: '#contact' }
               ].map((item) => (
                 <a 
