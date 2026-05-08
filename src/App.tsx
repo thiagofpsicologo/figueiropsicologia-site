@@ -55,7 +55,7 @@ function App() {
   }, []);
 
   return (
-    <div className="natural-gradient selection:bg-primary-blue selection:text-white min-h-screen transition-colors duration-500 overflow-x-hidden w-full relative">
+    <div className="natural-gradient selection:bg-primary-blue selection:text-white min-h-screen transition-colors duration-500 overflow-x-hidden relative">
       <AnimatePresence>
         {isLoading && <LoadingScreen key="loader" />}
       </AnimatePresence>

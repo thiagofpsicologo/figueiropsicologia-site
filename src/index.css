@@ -20,7 +20,7 @@
 
 @layer base {
   html, body {
-    @apply overflow-x-hidden w-full relative;
+    @apply overflow-x-hidden relative;
     scroll-behavior: smooth;
   }
   
@@ -30,17 +30,6 @@
   
   h1, h2, h3, h4 {
     @apply font-serif tracking-tight;
-  }
-
-  /* Refined scrollbar */
-  ::-webkit-scrollbar {
-    width: 6px;
-  }
-  ::-webkit-scrollbar-track {
-    @apply bg-transparent;
-  }
-  ::-webkit-scrollbar-thumb {
-    @apply bg-primary-blue/20 rounded-full hover:bg-primary-blue/40 transition-colors;
   }
 }
 
