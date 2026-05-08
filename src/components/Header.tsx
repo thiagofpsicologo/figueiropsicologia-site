@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X, Calendar, ChevronRight, Instagram } from 'lucide-react';
 import { WHATSAPP_LINK } from '../constants';
@@ -20,6 +20,18 @@ export const Header: React.FC<HeaderProps> = ({
   setIsPrivacyOpen,
   setIsTermsOpen
 }) => {
+  // Prevent scrolling when mobile menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [isMenuOpen]);
+
   return (
     <>
       <nav className={`fixed top-0 left-0 w-full z-[100] px-6 md:px-12 transition-all duration-700 ${isScrolled ? 'py-3 md:py-4' : 'py-6 md:py-10'}`}>
@@ -132,11 +144,11 @@ export const Header: React.FC<HeaderProps> = ({
                 </div>
               </div>
   
-              <div className="flex-1 flex flex-col items-center justify-center relative z-10">
-                <div className="w-full max-w-[280px] space-y-10">
+              <div className="flex-1 flex flex-col items-center justify-center relative z-10 py-2 min-h-[400px]">
+                <div className="w-full max-w-[280px] space-y-8">
                   <div className="space-y-1">
-                    <span className="text-[10px] uppercase tracking-[0.3em] text-natural-ink/50 font-black ml-1 mb-6 block">Menu</span>
-                    <nav className="flex flex-col gap-6">
+                    <span className="text-[10px] uppercase tracking-[0.3em] text-natural-ink/50 font-black ml-1 mb-4 block">Menu</span>
+                    <nav className="flex flex-col gap-4">
                       {[
                         { name: 'Início', href: '#' },
                         { name: 'Sobre Mim', href: '#about' },
@@ -153,7 +165,7 @@ export const Header: React.FC<HeaderProps> = ({
                           href={link.href} 
                           className="group flex items-center justify-between py-1"
                         >
-                          <span className="text-4xl text-natural-ink font-serif italic transition-all group-hover:pl-4 group-hover:text-primary-blue">
+                          <span className="text-3xl md:text-4xl text-natural-ink font-serif italic transition-all group-hover:pl-4 group-hover:text-primary-blue">
                             {link.name}
                           </span>
                           <div className="opacity-0 group-hover:opacity-100 transition-all text-primary-blue -translate-x-4 group-hover:translate-x-0">
@@ -174,7 +186,7 @@ export const Header: React.FC<HeaderProps> = ({
                         setIsMenuOpen(false);
                         openScheduling();
                       }} 
-                      className="w-full bg-primary-blue text-white px-8 py-5 rounded-full font-sans text-[11px] uppercase tracking-[0.25em] font-black flex items-center justify-center gap-3 shadow-[0_20px_40px_rgba(146,168,195,0.25)] active:scale-95 hover:bg-natural-ink transition-all duration-300 ring-2 ring-primary-blue/20"
+                      className="w-full bg-primary-blue text-white px-8 py-4 md:py-5 rounded-full font-sans text-[11px] uppercase tracking-[0.25em] font-black flex items-center justify-center gap-3 shadow-[0_20px_40px_rgba(146,168,195,0.25)] active:scale-95 hover:bg-natural-ink transition-all duration-300 ring-2 ring-primary-blue/20"
                     >
                       <Calendar size={18} className="animate-pulse" />
                       Agendar Consulta
@@ -183,7 +195,7 @@ export const Header: React.FC<HeaderProps> = ({
                 </div>
               </div>
   
-              <div className="mt-auto pt-10 border-t border-primary-blue/10 relative z-10">
+              <div className="mt-auto pt-8 border-t border-primary-blue/10 relative z-10 shrink-0">
                 <div className="flex flex-col items-center gap-6">
                   <motion.div 
                     initial={{ opacity: 0 }}
