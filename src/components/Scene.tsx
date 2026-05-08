@@ -44,34 +44,40 @@ export const Scene: React.FC<SceneProps> = ({ scene, index }) => {
       )}
 
       {!scene.image && (
-        <div className="absolute inset-0 bg-[#F7F5F2] overflow-hidden z-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary-blue/15 via-transparent to-natural-bg/40" />
+        <motion.div 
+          style={{ opacity: index === 0 ? 1 : opacity }}
+          className="absolute inset-0 bg-[#F7F5F2] overflow-hidden z-0"
+        >
+          <div className="absolute inset-0 bg-gradient-to-br from-primary-blue/20 via-transparent to-primary-blue/10" />
           
           {/* Ethereal Animated Background Elements */}
           <motion.div 
             animate={{ 
-              scale: [1, 1.2, 1],
-              x: [0, 50, 0],
-              y: [0, 30, 0],
-              rotate: [0, 90, 0]
+              scale: [1, 1.3, 1],
+              x: [0, 100, 0],
+              y: [0, 50, 0],
+              rotate: [0, 45, 0]
             }}
-            transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-            className="absolute -top-1/4 -right-1/4 w-[800px] h-[800px] bg-primary-blue/[0.07] rounded-full blur-[120px] pointer-events-none" 
+            transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+            className="absolute -top-1/4 -right-1/4 w-[1000px] h-[1000px] bg-primary-blue/[0.12] rounded-full blur-[140px] pointer-events-none" 
           />
           <motion.div 
             animate={{ 
-              scale: [1.2, 1, 1.2],
-              x: [0, -30, 0],
-              y: [0, -20, 0]
+              scale: [1.3, 1, 1.3],
+              x: [0, -80, 0],
+              y: [0, -40, 0]
             }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            className="absolute -bottom-1/4 -left-1/4 w-[600px] h-[600px] bg-primary-blue/[0.05] rounded-full blur-[100px] pointer-events-none" 
+            transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+            className="absolute -bottom-1/4 -left-1/4 w-[800px] h-[800px] bg-primary-blue/[0.08] rounded-full blur-[120px] pointer-events-none" 
           />
           
+          {/* Soft central glow */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-white/20 blur-[100px] pointer-events-none rounded-full" />
+          
           {/* Subtle Texture Overlay */}
-          <div className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-overlay" 
+          <div className="absolute inset-0 opacity-[0.05] pointer-events-none mix-blend-overlay" 
                style={{ backgroundImage: `url("https://www.transparenttextures.com/patterns/natural-paper.png")` }} />
-        </div>
+        </motion.div>
       )}
 
       <motion.div 
