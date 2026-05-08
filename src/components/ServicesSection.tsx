@@ -203,14 +203,14 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ openScheduling
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
-          className="inline-flex flex-col md:flex-row items-center gap-3 px-6 py-3 rounded-2xl bg-primary-blue/[0.03] border border-primary-blue/10 max-w-2xl mx-auto mt-6"
+          className="inline-flex flex-col md:flex-row items-center gap-4 px-8 py-5 rounded-2xl bg-primary-blue/[0.05] border border-primary-blue/20 max-w-3xl mx-auto mt-8 shadow-sm"
         >
-          <div className="flex items-center gap-2 text-primary-blue flex-shrink-0">
-            <div className="w-1.5 h-1.5 rounded-full bg-primary-blue animate-pulse" />
-            <span className="text-[9px] font-black uppercase tracking-widest">Sigilo e Segurança</span>
+          <div className="flex items-center gap-3 text-primary-blue flex-shrink-0">
+            <div className="w-2 h-2 rounded-full bg-primary-blue animate-pulse shadow-[0_0_8px_rgba(30,64,175,0.4)]" />
+            <span className="text-[11px] md:text-[12px] font-black uppercase tracking-[0.2em]">Sigilo e Segurança</span>
           </div>
-          <div className="w-px h-4 bg-primary-blue/20 hidden md:block" />
-          <p className="text-[10px] md:text-[11px] text-natural-ink/75 leading-relaxed font-light text-center md:text-left">
+          <div className="w-px h-6 bg-primary-blue/20 hidden md:block" />
+          <p className="text-[12px] md:text-[13px] text-natural-ink/90 leading-relaxed font-medium text-center md:text-left">
             As sessões ocorrem em ambiente virtual seguro e privativo. Utilizo tecnologias que garantem a criptografia dos dados, assegurando que todo o conteúdo do atendimento seja estritamente confidencial, conforme as normas do Conselho Federal de Psicologia.
           </p>
         </motion.div>
