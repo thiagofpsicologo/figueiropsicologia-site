@@ -47,7 +47,7 @@ export const AboutSection: React.FC = () => {
             
             <div className="text-left space-y-6 md:space-y-10 py-4">
               <p className="text-lg md:text-xl text-natural-ink/80 font-light leading-relaxed">
-                Psicólogo clínico formado pela <span className="font-medium text-primary-blue">FUMEC</span>. Desde 2017, acompanho pessoas em seus processos de autoconhecimento, ajudando-as a compreender emoções, romper padrões de sofrimento e construir novas narrativas com mais clareza e leveza.
+                Sou <span className="font-medium text-primary-blue">Thiago Figueiró</span>, psicólogo clínico formado pela <span className="font-medium text-primary-blue">FUMEC</span>. Desde 2017, acompanho pessoas em seus processos de autoconhecimento, ajudando-as a compreender emoções, romper padrões de sofrimento e construir novas narrativas com mais clareza e leveza.
               </p>
               
               <div className="border-l-4 border-primary-blue/20 pl-8 py-2">
