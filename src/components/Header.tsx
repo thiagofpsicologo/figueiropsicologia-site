@@ -125,21 +125,21 @@ export const Header: React.FC<HeaderProps> = ({
               <div className="absolute top-0 right-0 w-64 h-64 bg-primary-blue/10 filter blur-[100px] rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
               <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary-blue/5 filter blur-[120px] rounded-full translate-y-1/3 -translate-x-1/3 pointer-events-none" />
               
-              <div className="flex justify-between items-center w-full mb-6 md:mb-12 relative z-10 shrink-0">
+              <div className="flex justify-between items-center w-full mb-8 relative z-10 shrink-0">
                 <button 
                   onClick={() => setIsMenuOpen(false)}
-                  className="w-10 h-10 rounded-xl bg-primary-blue/5 border border-primary-blue/10 flex items-center justify-center text-primary-blue active:scale-95 group"
+                  className="w-12 h-12 rounded-2xl bg-primary-blue/5 border border-primary-blue/10 flex items-center justify-center text-primary-blue active:scale-95 group shadow-sm transition-all"
                   aria-label="Fechar menu"
                 >
-                  <X size={20} className="group-hover:rotate-90 transition-transform duration-300" />
+                  <X size={24} className="group-hover:rotate-90 transition-transform duration-300" />
                 </button>
                 
                 <div className="flex items-center gap-3">
                   <div className="flex flex-col items-end text-right">
-                    <span className="font-serif text-natural-ink text-xs tracking-tight leading-none mb-1">Thiago Figueiró</span>
-                    <span className="text-[6px] uppercase tracking-[0.3em] text-primary-blue font-black">Psicólogo Clínico</span>
+                    <span className="font-serif text-natural-ink text-sm tracking-tight leading-none mb-1">Thiago Figueiró</span>
+                    <span className="text-[7px] uppercase tracking-[0.3em] text-primary-blue font-black">Psicólogo Clínico</span>
                   </div>
-                  <div className="w-8 h-8 rounded-full bg-black flex items-center justify-center overflow-hidden border border-primary-blue/10 ring-2 ring-primary-blue/5">
+                  <div className="w-10 h-10 rounded-full bg-black flex items-center justify-center overflow-hidden border border-primary-blue/10 ring-4 ring-primary-blue/5 shadow-md">
                     <img 
                       src="https://drive.google.com/thumbnail?id=18OxYoRjXAKjdK4w608G6HkYJxF4HAn0O&sz=w1000" 
                       alt="Logo" 
@@ -150,11 +150,11 @@ export const Header: React.FC<HeaderProps> = ({
                 </div>
               </div>
   
-              <div className="flex-1 flex flex-col items-center justify-center relative z-10">
-                <div className="w-full max-w-[280px] space-y-6">
-                  <div className="space-y-1">
-                    <span className="text-[10px] uppercase tracking-[0.3em] text-natural-ink/50 font-black ml-1 mb-4 block">Navegação</span>
-                    <nav className="flex flex-col gap-3">
+              <div className="flex-1 flex flex-col items-center justify-center relative z-10 py-4">
+                <div className="w-full max-w-[300px] space-y-8">
+                  <div className="space-y-4">
+                    <span className="text-[10px] uppercase tracking-[0.3em] text-natural-ink/40 font-black ml-1 block">Navegação</span>
+                    <nav className="flex flex-col gap-4">
                       {[
                         { name: 'Início', href: '#' },
                         { name: 'Sobre Mim', href: '#about' },
@@ -164,17 +164,17 @@ export const Header: React.FC<HeaderProps> = ({
                       ].map((link, idx) => (
                         <motion.a 
                           key={link.name}
-                          initial={{ opacity: 0, x: -10 }}
+                          initial={{ opacity: 0, x: -15 }}
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: 0.1 + idx * 0.05, duration: 0.4 }}
                           onClick={() => setIsMenuOpen(false)} 
                           href={link.href} 
-                          className="group flex items-center justify-between py-1"
+                          className="group flex items-center justify-between py-2.5 px-1 rounded-xl transition-all active:bg-primary-blue/5"
                         >
-                          <span className="text-2xl text-natural-ink font-serif italic transition-all group-active:pl-2 group-active:text-primary-blue">
+                          <span className="text-3xl text-natural-ink font-serif italic transition-all group-active:text-primary-blue">
                             {link.name}
                           </span>
-                          <ChevronRight size={14} className="text-primary-blue/40" />
+                          <ChevronRight size={18} className="text-primary-blue/30" />
                         </motion.a>
                       ))}
                     </nav>
@@ -184,43 +184,44 @@ export const Header: React.FC<HeaderProps> = ({
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4 }}
+                    className="pt-2"
                   >
                     <button 
                       onClick={() => {
                         setIsMenuOpen(false);
                         openScheduling();
                       }} 
-                      className="w-full bg-primary-blue text-white px-6 py-4 rounded-full font-sans text-[10px] uppercase tracking-[0.2em] font-black flex items-center justify-center gap-3 shadow-xl active:scale-95 transition-all duration-300"
+                      className="w-full bg-primary-blue text-white px-8 py-5 rounded-full font-sans text-[11px] uppercase tracking-[0.25em] font-black flex items-center justify-center gap-3 shadow-xl active:scale-95 transition-all duration-300"
                     >
-                      <Calendar size={16} />
+                      <Calendar size={18} />
                       Agendar Consulta
                     </button>
                   </motion.div>
                 </div>
               </div>
   
-              <div className="mt-auto pt-6 border-t border-primary-blue/10 relative z-10 shrink-0">
-                <div className="flex flex-col items-center gap-4">
-                  <div className="flex gap-8">
-                    <a href="https://instagram.com/psicologo.thiagofigueiro" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-1.5 group">
-                      <div className="w-10 h-10 rounded-xl bg-primary-blue/5 border border-primary-blue/10 flex items-center justify-center active:bg-primary-blue/10">
-                        <img src="https://cdn.simpleicons.org/instagram/0F172A" className="w-4 h-4" alt="Instagram" />
+              <div className="mt-auto pt-8 border-t border-primary-blue/10 relative z-10 shrink-0">
+                <div className="flex flex-col items-center gap-6">
+                  <div className="flex gap-10">
+                    <a href="https://instagram.com/psicologo.thiagofigueiro" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-2 group">
+                      <div className="w-12 h-12 rounded-2xl bg-primary-blue/5 border border-primary-blue/10 flex items-center justify-center active:bg-primary-blue/10 transition-colors">
+                        <img src="https://cdn.simpleicons.org/instagram/0F172A" className="w-5 h-5" alt="Instagram" />
                       </div>
-                      <span className="text-[8px] uppercase tracking-widest text-natural-ink/40 font-black">Instagram</span>
+                      <span className="text-[10px] uppercase tracking-widest text-natural-ink/40 font-black">Instagram</span>
                     </a>
-                    <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-1.5 group">
-                      <div className="w-10 h-10 rounded-xl bg-primary-blue/5 border border-primary-blue/10 flex items-center justify-center active:bg-primary-blue/10">
-                        <img src="https://cdn.simpleicons.org/whatsapp/0F172A" className="w-4 h-4" alt="WhatsApp" />
+                    <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-2 group">
+                      <div className="w-12 h-12 rounded-2xl bg-primary-blue/5 border border-primary-blue/10 flex items-center justify-center active:bg-primary-blue/10 transition-colors">
+                        <img src="https://cdn.simpleicons.org/whatsapp/0F172A" className="w-5 h-5" alt="WhatsApp" />
                       </div>
-                      <span className="text-[8px] uppercase tracking-widest text-natural-ink/40 font-black">WhatsApp</span>
+                      <span className="text-[10px] uppercase tracking-widest text-natural-ink/40 font-black">WhatsApp</span>
                     </a>
                   </div>
-                  <div className="text-[8px] text-natural-ink/30 uppercase tracking-[0.15em] font-bold flex flex-col items-center gap-2">
-                    <div className="flex gap-4">
-                      <button onClick={() => { setIsMenuOpen(false); setIsPrivacyOpen(true); }}>Privacidade</button>
-                      <button onClick={() => { setIsMenuOpen(false); setIsTermsOpen(true); }}>Termos</button>
+                  <div className="text-[9px] text-natural-ink/30 uppercase tracking-[0.2em] font-bold flex flex-col items-center gap-3">
+                    <div className="flex gap-6">
+                      <button onClick={() => { setIsMenuOpen(false); setIsPrivacyOpen(true); }} className="hover:text-primary-blue transition-colors">Privacidade</button>
+                      <button onClick={() => { setIsMenuOpen(false); setIsTermsOpen(true); }} className="hover:text-primary-blue transition-colors">Termos</button>
                     </div>
-                    <span className="opacity-60">&copy; {new Date().getFullYear()} Thiago Figueiró &bull; CRP 04/48708</span>
+                    <span className="opacity-60 font-medium">&copy; {new Date().getFullYear()} Thiago Figueiró &bull; CRP 04/48708</span>
                   </div>
                 </div>
               </div>
