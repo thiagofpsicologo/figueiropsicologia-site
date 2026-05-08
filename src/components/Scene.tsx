@@ -44,7 +44,34 @@ export const Scene: React.FC<SceneProps> = ({ scene, index }) => {
       )}
 
       {!scene.image && (
-        <div className="absolute inset-0 bg-gradient-to-b from-primary-blue/20 to-natural-bg z-0" />
+        <div className="absolute inset-0 bg-[#F7F5F2] overflow-hidden z-0">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary-blue/15 via-transparent to-natural-bg/40" />
+          
+          {/* Ethereal Animated Background Elements */}
+          <motion.div 
+            animate={{ 
+              scale: [1, 1.2, 1],
+              x: [0, 50, 0],
+              y: [0, 30, 0],
+              rotate: [0, 90, 0]
+            }}
+            transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+            className="absolute -top-1/4 -right-1/4 w-[800px] h-[800px] bg-primary-blue/[0.07] rounded-full blur-[120px] pointer-events-none" 
+          />
+          <motion.div 
+            animate={{ 
+              scale: [1.2, 1, 1.2],
+              x: [0, -30, 0],
+              y: [0, -20, 0]
+            }}
+            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            className="absolute -bottom-1/4 -left-1/4 w-[600px] h-[600px] bg-primary-blue/[0.05] rounded-full blur-[100px] pointer-events-none" 
+          />
+          
+          {/* Subtle Texture Overlay */}
+          <div className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-overlay" 
+               style={{ backgroundImage: `url("https://www.transparenttextures.com/patterns/natural-paper.png")` }} />
+        </div>
       )}
 
       <motion.div 
@@ -83,7 +110,7 @@ export const Scene: React.FC<SceneProps> = ({ scene, index }) => {
                 whileInView={index === 0 ? undefined : { opacity: 1, y: 0 }}
                 viewport={{ once: false }}
                 transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-                className={`block font-sans tracking-[0.1em] lg:tracking-[0.15em] font-medium ${!scene.title ? 'text-2xl sm:text-3xl md:text-5xl lg:text-6xl text-center max-w-4xl mx-auto leading-tight italic py-8' : 'text-xs sm:text-sm md:text-base lg:text-[16px] font-bold italic'} ${scene.image ? 'text-white/80 lg:text-white drop-shadow-lg lg:drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]' : 'text-natural-ink/80'}`}
+                className={`block tracking-[0.02em] ${!scene.title ? 'font-serif text-3xl sm:text-4xl md:text-6xl lg:text-[75px] text-center max-w-5xl mx-auto leading-[1.1] italic py-12' : 'font-sans text-xs sm:text-sm md:text-base lg:text-[16px] font-bold italic tracking-[0.1em] lg:tracking-[0.15em]'} ${scene.image ? 'text-white/80 lg:text-white drop-shadow-lg lg:drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]' : 'text-natural-ink/90'}`}
               >
                 {scene.subtitle}
               </motion.span>
