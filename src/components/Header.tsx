@@ -44,6 +44,7 @@ export const Header: React.FC<HeaderProps> = ({
               { name: 'Início', href: '#' },
               { name: 'Sobre Mim', href: '#about' },
               { name: 'Depoimentos', href: '#testimonials' },
+              { name: 'FAQ', href: '#faq' },
               { name: 'Contato', href: '#contact' }
             ].map((item) => (
               <a 
@@ -130,6 +131,7 @@ export const Header: React.FC<HeaderProps> = ({
                       { name: 'Início', href: '#' },
                       { name: 'Sobre Mim', href: '#about' },
                       { name: 'Depoimentos', href: '#testimonials' },
+                      { name: 'FAQ', href: '#faq' },
                       { name: 'Contato', href: '#contact' }
                     ].map((link, idx) => (
                       <motion.a 

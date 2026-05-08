@@ -10,6 +10,7 @@ import { PolicyModal } from './components/PolicyModal';
 import { AboutSection } from './components/AboutSection';
 import { ServicesSection } from './components/ServicesSection';
 import { CTASection } from './components/CTASection';
+import { FAQSection } from './components/FAQSection';
 import { LoadingScreen } from './components/LoadingScreen';
 import { SCENES, WHATSAPP_LINK } from './constants';
 
@@ -162,6 +163,8 @@ function App() {
         <ServicesSection openScheduling={openScheduling} />
 
         <CTASection openScheduling={() => openScheduling()} />
+
+        <FAQSection />
       </main>
 
       <Footer 
