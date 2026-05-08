@@ -30,16 +30,20 @@ export const Scene: React.FC<SceneProps> = ({ scene, index }) => {
     <div ref={ref} className={`relative h-screen h-[100dvh] w-full flex overflow-hidden ${index === 0 ? 'justify-center items-end lg:justify-start lg:items-end pb-36 lg:pb-24 p-6 lg:pl-16' : 'justify-center items-center'} ${!scene.image ? 'bg-[#F7F5F2]' : ''}`}>
       {scene.image && (
         <motion.div 
-          style={{ opacity, scale, y: imageY }}
+          style={{ 
+            opacity: index === 0 ? 1 : opacity, 
+            scale, 
+            y: imageY 
+          }}
           className="absolute inset-0 z-0 h-[120%] top-[-10%]"
         >
           <img 
             src={scene.image} 
-            alt={scene.title}
-            className={`w-full h-full object-cover ${scene.id === 'transformacao' ? 'object-center' : 'object-[85%_center] sm:object-[45%_20%]'} ${scene.id === 'identificacao' ? 'brightness-[0.8] contrast-[0.9]' : (index === 0 ? 'brightness-[1.1]' : '')}`}
+            alt={scene.title || "Reflexão"}
+            className={`w-full h-full object-cover ${scene.id === 'transformacao' ? 'object-[75%_center] md:object-center' : 'object-[85%_center] sm:object-[45%_20%]'} ${scene.id === 'transformacao' ? 'brightness-[0.7] contrast-[1.05]' : (scene.id === 'identificacao' ? 'brightness-[0.75] contrast-[0.95]' : 'brightness-[1.1]')}`}
             referrerPolicy="no-referrer"
           />
-          <div className={`absolute inset-0 ${index === 0 ? 'bg-black/15 lg:bg-transparent lg:bg-gradient-to-r lg:from-[#1A1A1A]/45 lg:via-transparent lg:to-transparent' : (scene.id === 'identificacao' ? 'bg-black/60 backdrop-blur-[2px]' : (scene.id === 'transformacao' ? 'bg-black/40' : 'bg-black/30'))}`} />
+          <div className={`absolute inset-0 ${index === 0 ? 'bg-black/20 lg:bg-transparent lg:bg-gradient-to-r lg:from-[#1A1A1A]/40 lg:via-transparent lg:to-transparent' : (scene.id === 'identificacao' ? 'bg-black/50 backdrop-blur-[1px]' : (scene.id === 'transformacao' ? 'bg-black/45 backdrop-blur-[1px]' : 'bg-black/25'))}`} />
         </motion.div>
       )}
 
@@ -103,7 +107,7 @@ export const Scene: React.FC<SceneProps> = ({ scene, index }) => {
               whileInView={index === 0 ? undefined : { opacity: 1, y: 0 }}
               viewport={{ once: false }}
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-              className={`block font-sans text-[10px] md:text-xs lg:text-[11px] tracking-[0.3em] lg:tracking-[0.5em] font-black ${scene.image ? 'text-white drop-shadow-lg lg:drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]' : 'text-primary-blue'}`}
+              className={`block font-sans text-[10px] md:text-xs lg:text-[11px] tracking-[0.3em] lg:tracking-[0.5em] font-black ${scene.image ? 'text-white drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)]' : 'text-primary-blue'}`}
             >
               {scene.accent}
             </motion.span>
@@ -116,7 +120,7 @@ export const Scene: React.FC<SceneProps> = ({ scene, index }) => {
                 whileInView={index === 0 ? undefined : { opacity: 1, y: 0 }}
                 viewport={{ once: false }}
                 transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-                className={`block tracking-[0.02em] ${!scene.title ? 'font-serif text-3xl sm:text-4xl md:text-6xl lg:text-[75px] text-center max-w-5xl mx-auto leading-[1.1] italic py-12' : 'font-sans text-xs sm:text-sm md:text-base lg:text-[16px] font-bold italic tracking-[0.1em] lg:tracking-[0.15em]'} ${scene.image ? 'text-white/80 lg:text-white drop-shadow-lg lg:drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]' : 'text-natural-ink/90'}`}
+                className={`block tracking-[0.02em] ${!scene.title ? 'font-serif text-3xl sm:text-4xl md:text-6xl lg:text-[75px] text-center max-w-5xl mx-auto leading-[1.1] italic py-12 px-4 shadow-black' : 'font-sans text-xs sm:text-sm md:text-base lg:text-[16px] font-bold italic tracking-[0.1em] lg:tracking-[0.15em]'} ${scene.image ? 'text-white drop-shadow-[0_4px_10px_rgba(0,0,0,0.8)] lg:drop-shadow-[0_6px_15px_rgba(0,0,0,0.9)]' : 'text-natural-ink/90'}`}
               >
                 {scene.subtitle}
               </motion.span>
@@ -129,7 +133,7 @@ export const Scene: React.FC<SceneProps> = ({ scene, index }) => {
               whileInView={index === 0 ? undefined : { opacity: 1, y: 0 }}
               viewport={{ once: false }}
               transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-              className={`text-4xl sm:text-5xl md:text-7xl lg:text-[70px] xl:text-[85px] font-serif italic ${scene.id === 'identificacao' ? 'leading-[1.1] md:leading-[1.1]' : (index === 0 ? 'leading-[1.1] lg:leading-[0.8] lg:-ml-2' : 'leading-[1.1]')} ${scene.image ? 'text-white drop-shadow-md lg:drop-shadow-[0_4px_6px_rgba(0,0,0,0.3)]' : 'text-natural-ink'}`}
+              className={`text-4xl sm:text-5xl md:text-7xl lg:text-[70px] xl:text-[85px] font-serif italic ${scene.id === 'identificacao' ? 'leading-[1.1] md:leading-[1.1]' : (index === 0 ? 'leading-[1.1] lg:leading-[0.8] lg:-ml-2' : 'leading-[1.1]')} ${scene.image ? 'text-white drop-shadow-[0_4px_10px_rgba(0,0,0,0.8)] lg:drop-shadow-[0_6px_15px_rgba(0,0,0,0.9)]' : 'text-natural-ink'}`}
             >
               {scene.title}
             </motion.h2>
