@@ -87,133 +87,144 @@ export const Header: React.FC<HeaderProps> = ({
 
       <AnimatePresence>
         {isMenuOpen && (
-          <motion.div 
-            initial={{ opacity: 0, x: '100%' }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: '100%' }}
-            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="fixed inset-0 bg-white/80 backdrop-blur-2xl z-[130] md:hidden flex flex-col p-6 overflow-y-auto overflow-x-hidden border-l border-white/20"
-          >
-            <div className="absolute top-0 right-0 w-64 h-64 bg-primary-blue/10 filter blur-[100px] rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary-blue/5 filter blur-[120px] rounded-full translate-y-1/3 -translate-x-1/3 pointer-events-none" />
+          <>
+            {/* Background Overlay */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsMenuOpen(false)}
+              className="fixed inset-0 bg-natural-ink/20 backdrop-blur-sm z-[125] md:hidden"
+            />
             
-            <div className="flex justify-between items-center w-full mb-12 relative z-10 shrink-0">
-              <button 
-                onClick={() => setIsMenuOpen(false)}
-                className="w-12 h-12 rounded-2xl bg-primary-blue/5 border border-primary-blue/10 flex items-center justify-center text-primary-blue hover:bg-primary-blue/10 transition-all shadow-sm active:scale-95 group"
-                aria-label="Fechar menu"
-              >
-                <X size={24} className="group-hover:rotate-90 transition-transform duration-300" />
-              </button>
+            <motion.div 
+              initial={{ opacity: 0, x: '100%' }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: '100%' }}
+              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+              className="fixed inset-0 bg-white/95 backdrop-blur-3xl z-[130] md:hidden flex flex-col p-6 overflow-y-auto overflow-x-hidden border-l border-white/20"
+            >
+              <div className="absolute top-0 right-0 w-64 h-64 bg-primary-blue/10 filter blur-[100px] rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+              <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary-blue/5 filter blur-[120px] rounded-full translate-y-1/3 -translate-x-1/3 pointer-events-none" />
               
-              <div className="flex items-center gap-3">
-                <div className="flex flex-col items-end text-right">
-                  <span className="font-serif text-natural-ink text-sm tracking-tight leading-none mb-1">Thiago Figueiró</span>
-                  <span className="text-[7px] uppercase tracking-[0.3em] text-primary-blue font-black">Psicólogo Clínico</span>
-                </div>
-                <div className="w-10 h-10 rounded-full bg-black flex items-center justify-center overflow-hidden border border-primary-blue/10 ring-4 ring-primary-blue/5 shadow-xl">
-                  <img 
-                    src="https://drive.google.com/thumbnail?id=18OxYoRjXAKjdK4w608G6HkYJxF4HAn0O&sz=w1000" 
-                    alt="Logo" 
-                    className="w-full h-full object-cover"
-                    referrerPolicy="no-referrer"
-                  />
-                </div>
-              </div>
-            </div>
-
-            <div className="flex-1 flex flex-col items-center justify-center relative z-10">
-              <div className="w-full max-w-[280px] space-y-10">
-                <div className="space-y-1">
-                  <span className="text-[10px] uppercase tracking-[0.3em] text-natural-ink/30 font-black ml-1 mb-6 block">Menu</span>
-                  <nav className="flex flex-col gap-6">
-                    {[
-                      { name: 'Início', href: '#' },
-                      { name: 'Sobre Mim', href: '#about' },
-                      { name: 'Depoimentos', href: '#testimonials' },
-                      { name: 'Dúvidas comuns', href: '#faq' },
-                      { name: 'Contato', href: '#contact' }
-                    ].map((link, idx) => (
-                      <motion.a 
-                        key={link.name}
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.15 + idx * 0.08, duration: 0.5 }}
-                        onClick={() => setIsMenuOpen(false)} 
-                        href={link.href} 
-                        className="group flex items-center justify-between py-1"
-                      >
-                        <span className="text-4xl text-natural-ink font-serif italic transition-all group-hover:pl-4 group-hover:text-primary-blue">
-                          {link.name}
-                        </span>
-                        <div className="opacity-0 group-hover:opacity-100 transition-all text-primary-blue -translate-x-4 group-hover:translate-x-0">
-                          <ChevronRight size={14} />
-                        </div>
-                      </motion.a>
-                    ))}
-                  </nav>
-                </div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 }}
+              <div className="flex justify-between items-center w-full mb-12 relative z-10 shrink-0">
+                <button 
+                  onClick={() => setIsMenuOpen(false)}
+                  className="w-12 h-12 rounded-2xl bg-primary-blue/5 border border-primary-blue/10 flex items-center justify-center text-primary-blue hover:bg-primary-blue/10 transition-all shadow-sm active:scale-95 group"
+                  aria-label="Fechar menu"
                 >
-                  <button 
-                    onClick={() => {
-                      setIsMenuOpen(false);
-                      openScheduling();
-                    }} 
-                    className="w-full bg-primary-blue text-white px-8 py-5 rounded-full font-sans text-[11px] uppercase tracking-[0.25em] font-black flex items-center justify-center gap-3 shadow-[0_20px_40px_rgba(146,168,195,0.25)] active:scale-95 hover:bg-natural-ink transition-all duration-300 ring-2 ring-primary-blue/20"
-                  >
-                    <Calendar size={18} className="animate-pulse" />
-                    Agendar Consulta
-                  </button>
-                </motion.div>
-              </div>
-            </div>
-
-            <div className="mt-auto pt-10 border-t border-primary-blue/10 relative z-10">
-              <div className="flex flex-col items-center gap-6">
-                <motion.div 
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.6 }}
-                  className="flex gap-10"
-                >
-                  <a href="https://instagram.com/psicologo.thiagofigueiro" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-2 group">
-                    <div className="w-12 h-12 rounded-2xl bg-primary-blue/5 border border-primary-blue/10 flex items-center justify-center transition-all hover:-translate-y-1 shadow-sm">
-                      <img src="https://cdn.simpleicons.org/instagram/0F172A" className="w-5 h-5" alt="Instagram" />
-                    </div>
-                    <span className="text-[10px] uppercase tracking-widest text-natural-ink/40 font-black transition-colors group-hover:text-primary-blue">Instagram</span>
-                  </a>
-                  <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-2 group">
-                    <div className="w-12 h-12 rounded-2xl bg-primary-blue/5 border border-primary-blue/10 flex items-center justify-center transition-all hover:-translate-y-1 shadow-sm">
-                      <img src="https://cdn.simpleicons.org/whatsapp/0F172A" className="w-5 h-5" alt="WhatsApp" />
-                    </div>
-                    <span className="text-[10px] uppercase tracking-widest text-natural-ink/40 font-black transition-colors group-hover:text-primary-blue">WhatsApp</span>
-                  </a>
-                </motion.div>
-                <div className="text-[9px] text-natural-ink/30 uppercase tracking-[0.2em] font-bold flex flex-col items-center gap-4">
-                  <div className="flex gap-4">
-                    <button 
-                      onClick={() => { setIsMenuOpen(false); setIsPrivacyOpen(true); }} 
-                      className="hover:text-primary-blue bg-primary-blue/5 border border-primary-blue/10 px-4 py-2 rounded-full transition-all"
-                    >
-                      Privacidade
-                    </button>
-                    <button 
-                      onClick={() => { setIsMenuOpen(false); setIsTermsOpen(true); }} 
-                      className="hover:text-primary-blue bg-primary-blue/5 border border-primary-blue/10 px-4 py-2 rounded-full transition-all"
-                    >
-                      Termos
-                    </button>
+                  <X size={24} className="group-hover:rotate-90 transition-transform duration-300" />
+                </button>
+                
+                <div className="flex items-center gap-3">
+                  <div className="flex flex-col items-end text-right">
+                    <span className="font-serif text-natural-ink text-sm tracking-tight leading-none mb-1">Thiago Figueiró</span>
+                    <span className="text-[7px] uppercase tracking-[0.3em] text-primary-blue font-black">Psicólogo Clínico</span>
                   </div>
-                  <span className="opacity-60 text-natural-ink/40">&copy; {new Date().getFullYear()} Thiago Figueiró &bull; CRP 04/48708</span>
+                  <div className="w-10 h-10 rounded-full bg-black flex items-center justify-center overflow-hidden border border-primary-blue/10 ring-4 ring-primary-blue/5 shadow-xl">
+                    <img 
+                      src="https://drive.google.com/thumbnail?id=18OxYoRjXAKjdK4w608G6HkYJxF4HAn0O&sz=w1000" 
+                      alt="Logo" 
+                      className="w-full h-full object-cover"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-          </motion.div>
+  
+              <div className="flex-1 flex flex-col items-center justify-center relative z-10">
+                <div className="w-full max-w-[280px] space-y-10">
+                  <div className="space-y-1">
+                    <span className="text-[10px] uppercase tracking-[0.3em] text-natural-ink/50 font-black ml-1 mb-6 block">Menu</span>
+                    <nav className="flex flex-col gap-6">
+                      {[
+                        { name: 'Início', href: '#' },
+                        { name: 'Sobre Mim', href: '#about' },
+                        { name: 'Depoimentos', href: '#testimonials' },
+                        { name: 'Dúvidas comuns', href: '#faq' },
+                        { name: 'Contato', href: '#contact' }
+                      ].map((link, idx) => (
+                        <motion.a 
+                          key={link.name}
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.15 + idx * 0.08, duration: 0.5 }}
+                          onClick={() => setIsMenuOpen(false)} 
+                          href={link.href} 
+                          className="group flex items-center justify-between py-1"
+                        >
+                          <span className="text-4xl text-natural-ink font-serif italic transition-all group-hover:pl-4 group-hover:text-primary-blue">
+                            {link.name}
+                          </span>
+                          <div className="opacity-0 group-hover:opacity-100 transition-all text-primary-blue -translate-x-4 group-hover:translate-x-0">
+                            <ChevronRight size={14} />
+                          </div>
+                        </motion.a>
+                      ))}
+                    </nav>
+                  </div>
+  
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.5 }}
+                  >
+                    <button 
+                      onClick={() => {
+                        setIsMenuOpen(false);
+                        openScheduling();
+                      }} 
+                      className="w-full bg-primary-blue text-white px-8 py-5 rounded-full font-sans text-[11px] uppercase tracking-[0.25em] font-black flex items-center justify-center gap-3 shadow-[0_20px_40px_rgba(146,168,195,0.25)] active:scale-95 hover:bg-natural-ink transition-all duration-300 ring-2 ring-primary-blue/20"
+                    >
+                      <Calendar size={18} className="animate-pulse" />
+                      Agendar Consulta
+                    </button>
+                  </motion.div>
+                </div>
+              </div>
+  
+              <div className="mt-auto pt-10 border-t border-primary-blue/10 relative z-10">
+                <div className="flex flex-col items-center gap-6">
+                  <motion.div 
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.6 }}
+                    className="flex gap-10"
+                  >
+                    <a href="https://instagram.com/psicologo.thiagofigueiro" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-2 group">
+                      <div className="w-12 h-12 rounded-2xl bg-primary-blue/5 border border-primary-blue/10 flex items-center justify-center transition-all hover:-translate-y-1 shadow-sm">
+                        <img src="https://cdn.simpleicons.org/instagram/0F172A" className="w-5 h-5" alt="Instagram" />
+                      </div>
+                      <span className="text-[10px] uppercase tracking-widest text-natural-ink/40 font-black transition-colors group-hover:text-primary-blue">Instagram</span>
+                    </a>
+                    <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="flex flex-col items-center gap-2 group">
+                      <div className="w-12 h-12 rounded-2xl bg-primary-blue/5 border border-primary-blue/10 flex items-center justify-center transition-all hover:-translate-y-1 shadow-sm">
+                        <img src="https://cdn.simpleicons.org/whatsapp/0F172A" className="w-5 h-5" alt="WhatsApp" />
+                      </div>
+                      <span className="text-[10px] uppercase tracking-widest text-natural-ink/40 font-black transition-colors group-hover:text-primary-blue">WhatsApp</span>
+                    </a>
+                  </motion.div>
+                  <div className="text-[9px] text-natural-ink/30 uppercase tracking-[0.2em] font-bold flex flex-col items-center gap-4">
+                    <div className="flex gap-4">
+                      <button 
+                        onClick={() => { setIsMenuOpen(false); setIsPrivacyOpen(true); }} 
+                        className="hover:text-primary-blue bg-primary-blue/5 border border-primary-blue/10 px-4 py-2 rounded-full transition-all"
+                      >
+                        Privacidade
+                      </button>
+                      <button 
+                        onClick={() => { setIsMenuOpen(false); setIsTermsOpen(true); }} 
+                        className="hover:text-primary-blue bg-primary-blue/5 border border-primary-blue/10 px-4 py-2 rounded-full transition-all"
+                      >
+                        Termos
+                      </button>
+                    </div>
+                    <span className="opacity-60 text-natural-ink/40">&copy; {new Date().getFullYear()} Thiago Figueiró &bull; CRP 04/48708</span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </>
