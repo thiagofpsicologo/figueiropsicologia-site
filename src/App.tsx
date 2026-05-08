@@ -164,7 +164,7 @@ function App() {
 
         <CTASection openScheduling={() => openScheduling()} />
 
-        <FAQSection />
+        <FAQSection openScheduling={() => openScheduling()} />
       </main>
 
       <Footer 

@@ -47,7 +47,11 @@ const FAQItem: React.FC<FAQItemProps> = ({ question, answer, isOpen, onClick }) 
   );
 };
 
-export const FAQSection = () => {
+interface FAQSectionProps {
+  openScheduling?: () => void;
+}
+
+export const FAQSection = ({ openScheduling }: FAQSectionProps) => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const faqs = [
@@ -97,17 +101,39 @@ export const FAQSection = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="bg-white/40 backdrop-blur-sm rounded-[2rem] border border-primary-blue/5 p-8 md:p-12 shadow-sm"
+        className="bg-white/40 backdrop-blur-sm rounded-[2rem] border border-primary-blue/5 p-8 md:p-12 shadow-sm relative overflow-hidden"
       >
-        {faqs.map((faq, index) => (
-          <FAQItem
-            key={index}
-            question={faq.question}
-            answer={faq.answer}
-            isOpen={openIndex === index}
-            onClick={() => setOpenIndex(openIndex === index ? null : index)}
-          />
-        ))}
+        <div className="space-y-2">
+          {faqs.map((faq, index) => (
+            <FAQItem
+              key={index}
+              question={faq.question}
+              answer={faq.answer}
+              isOpen={openIndex === index}
+              onClick={() => setOpenIndex(openIndex === index ? null : index)}
+            />
+          ))}
+        </div>
+
+        {openScheduling && (
+          <motion.div 
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mt-12 pt-8 border-t border-primary-blue/5 flex flex-col items-center gap-6"
+          >
+            <p className="text-sm text-natural-ink/40 font-light italic">
+              Não encontrou o que procurava? Fique à vontade para entrar em contato.
+            </p>
+            <button
+              onClick={openScheduling}
+              className="group relative w-full max-w-xs md:w-auto px-6 py-3 md:px-8 md:py-3.5 bg-primary-blue text-white rounded-full text-sm md:text-base font-medium tracking-wide transition-all duration-500 hover:shadow-xl hover:shadow-primary-blue/20 active:scale-95 overflow-hidden"
+            >
+              <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
+              <span className="relative">Agendar minha primeira sessão</span>
+            </button>
+          </motion.div>
+        )}
       </motion.div>
     </section>
   );
