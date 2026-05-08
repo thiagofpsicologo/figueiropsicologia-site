@@ -12,8 +12,18 @@ export const LoadingScreen: React.FC = () => {
       <div className="relative">
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 1, ease: "easeOut" }}
+          animate={{ 
+            scale: [1, 1.05, 1],
+            opacity: 1 
+          }}
+          transition={{ 
+            scale: {
+              duration: 3,
+              repeat: Infinity,
+              ease: "easeInOut"
+            },
+            opacity: { duration: 1, ease: "easeOut" }
+          }}
           className="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-primary-blue shadow-2xl relative z-10"
         >
           <img 
