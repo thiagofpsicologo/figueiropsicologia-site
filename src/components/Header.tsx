@@ -23,12 +23,23 @@ export const Header: React.FC<HeaderProps> = ({
   // Prevent scrolling when mobile menu is open
   useEffect(() => {
     if (isMenuOpen) {
-      document.body.style.overflow = 'hidden';
+      const scrollY = window.scrollY;
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = '100%';
     } else {
-      document.body.style.overflow = 'auto';
+      const scrollY = document.body.style.top;
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      if (scrollY) {
+        window.scrollTo(0, parseInt(scrollY || '0') * -1);
+      }
     }
     return () => {
-      document.body.style.overflow = 'auto';
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
     };
   }, [isMenuOpen]);
 
@@ -114,7 +125,7 @@ export const Header: React.FC<HeaderProps> = ({
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="fixed inset-0 bg-white/95 backdrop-blur-3xl z-[130] md:hidden flex flex-col p-6 overflow-y-auto overflow-x-hidden border-l border-white/20"
+              className="fixed inset-0 h-[100dvh] bg-white/95 backdrop-blur-3xl z-[130] md:hidden flex flex-col p-6 overflow-y-auto overflow-x-hidden border-l border-white/20 overscroll-none"
             >
               <div className="absolute top-0 right-0 w-64 h-64 bg-primary-blue/10 filter blur-[100px] rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
               <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary-blue/5 filter blur-[120px] rounded-full translate-y-1/3 -translate-x-1/3 pointer-events-none" />
