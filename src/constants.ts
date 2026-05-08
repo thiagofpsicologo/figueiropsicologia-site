@@ -33,7 +33,6 @@ export const SCENES = [
     title: '',
     accent: 'LEVEZA',
     subtitle: '"Entenda seus pensamentos. Cuide da sua mente. Viva com mais leveza."',
-    image: 'https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=2000'
   }
 ];
 

@@ -83,7 +83,7 @@ export const Scene: React.FC<SceneProps> = ({ scene, index }) => {
                 whileInView={index === 0 ? undefined : { opacity: 1, y: 0 }}
                 viewport={{ once: false }}
                 transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-                className={`block font-sans text-xs sm:text-sm md:text-base lg:text-[16px] tracking-[0.1em] lg:tracking-[0.15em] font-bold italic ${scene.image ? 'text-white/80 lg:text-white drop-shadow-lg lg:drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]' : 'text-primary-blue/80'}`}
+                className={`block font-sans tracking-[0.1em] lg:tracking-[0.15em] font-medium ${!scene.title ? 'text-2xl sm:text-3xl md:text-5xl lg:text-6xl text-center max-w-4xl mx-auto leading-tight italic py-8' : 'text-xs sm:text-sm md:text-base lg:text-[16px] font-bold italic'} ${scene.image ? 'text-white/80 lg:text-white drop-shadow-lg lg:drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]' : 'text-natural-ink/80'}`}
               >
                 {scene.subtitle}
               </motion.span>
