@@ -217,9 +217,19 @@ export const Header: React.FC<HeaderProps> = ({
                     </a>
                   </div>
                   <div className="text-[9px] text-natural-ink/30 uppercase tracking-[0.2em] font-bold flex flex-col items-center gap-3">
-                    <div className="flex gap-6">
-                      <button onClick={() => { setIsMenuOpen(false); setIsPrivacyOpen(true); }} className="hover:text-primary-blue transition-colors">Privacidade</button>
-                      <button onClick={() => { setIsMenuOpen(false); setIsTermsOpen(true); }} className="hover:text-primary-blue transition-colors">Termos</button>
+                    <div className="flex gap-3">
+                      <button 
+                        onClick={() => { setIsMenuOpen(false); setIsPrivacyOpen(true); }} 
+                        className="px-4 py-2 rounded-full border border-primary-blue/10 bg-primary-blue/5 hover:bg-primary-blue/10 hover:border-primary-blue/20 transition-all active:scale-95 text-natural-ink/50 hover:text-primary-blue"
+                      >
+                        Privacidade
+                      </button>
+                      <button 
+                        onClick={() => { setIsMenuOpen(false); setIsTermsOpen(true); }} 
+                        className="px-4 py-2 rounded-full border border-primary-blue/10 bg-primary-blue/5 hover:bg-primary-blue/10 hover:border-primary-blue/20 transition-all active:scale-95 text-natural-ink/50 hover:text-primary-blue"
+                      >
+                        Termos
+                      </button>
                     </div>
                     <span className="opacity-60 font-medium">&copy; {new Date().getFullYear()} Thiago Figueiró &bull; CRP 04/48708</span>
                   </div>
