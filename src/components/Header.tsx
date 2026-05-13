@@ -68,7 +68,7 @@ export const Header: React.FC<HeaderProps> = ({
               <a 
                 key={item.name}
                 href={item.href} 
-                className={`text-[10px] tracking-widest transition-all font-sans font-black relative group/link text-natural-ink/60 hover:text-primary-blue`}
+                className={`text-[13px] tracking-wider transition-all font-sans font-extrabold relative group/link text-natural-ink/90 hover:text-primary-blue`}
               >
                 {item.name}
                 <span className={`absolute -bottom-1 left-0 w-0 h-[1.5px] transition-all duration-500 group-hover/link:w-full bg-primary-blue`} />
@@ -87,7 +87,7 @@ export const Header: React.FC<HeaderProps> = ({
   
           <button
             onClick={openScheduling}
-            className={`hidden md:flex items-center gap-3 px-8 py-3 rounded-full shadow-2xl transition-all font-sans text-[10px] tracking-[0.2em] font-black group bg-primary-blue text-white hover:bg-natural-ink hover:-translate-y-1 active:scale-95`}
+            className={`hidden md:flex items-center gap-3 px-8 py-3 rounded-full shadow-2xl transition-all font-sans text-[12px] tracking-[0.1em] font-extrabold group bg-primary-blue text-white hover:bg-natural-ink hover:-translate-y-1 active:scale-95`}
           >
             <Calendar size={14} className="group-hover:scale-110 transition-transform" />
             Agendar Consulta
