@@ -141,44 +141,53 @@ export const Footer: React.FC<FooterProps> = ({
           </div>
         </div>
 
-        <div className="pt-12 border-t border-primary-blue/10 flex flex-col md:flex-row justify-between items-center gap-8 md:gap-4">
-          <p className="text-[9px] md:text-[10px] uppercase tracking-[0.2em] text-natural-ink/30 font-bold text-center md:text-left leading-relaxed">
-            © {new Date().getFullYear()} Thiago Figueiró &bull; CRP 04/48708 &bull; Todos os direitos reservados.
-          </p>
-          
-          <div className="flex items-center gap-4">
-             <button 
-               onClick={() => setIsPrivacyOpen(true)}
-               className="text-[9px] uppercase tracking-[0.2em] text-natural-ink/40 font-black hover:text-primary-blue hover:bg-primary-blue/5 px-4 py-2 rounded-full border border-primary-blue/10 transition-all cursor-pointer backdrop-blur-sm"
-               id="privacy-policy-link"
-             >
-               Políticas de Privacidade
-             </button>
-             <button 
-               onClick={() => setIsTermsOpen(true)}
-               className="text-[9px] uppercase tracking-[0.2em] text-natural-ink/40 font-black hover:text-primary-blue hover:bg-primary-blue/5 px-4 py-2 rounded-full border border-primary-blue/10 transition-all cursor-pointer backdrop-blur-sm"
-               id="terms-of-use-link"
-             >
-               Termos de Uso
-             </button>
+        <div className="pt-12 border-t border-primary-blue/10">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-8 md:gap-4">
+            <p className="text-[9px] md:text-[10px] uppercase tracking-[0.2em] text-natural-ink/30 font-bold text-center md:text-left leading-relaxed">
+              © {new Date().getFullYear()} Thiago Figueiró &bull; CRP 04/48708 &bull; Todos os direitos reservados.
+            </p>
+            
+            <div className="hidden md:flex items-center gap-2 px-4 py-2 rounded-full border border-primary-blue/20 bg-primary-blue/[0.04] backdrop-blur-sm transition-colors duration-500">
+              <div className="w-1 h-1 rounded-full bg-primary-blue/50" />
+              <span className="text-[10px] tracking-wide text-natural-ink/70 font-medium italic">
+                Em caso de crise, ligue 188 (CVV).
+              </span>
+            </div>
+
+            <div className="flex items-center gap-4">
+               <button 
+                 onClick={() => setIsPrivacyOpen(true)}
+                 className="text-[9px] uppercase tracking-[0.2em] text-natural-ink/40 font-black hover:text-primary-blue hover:bg-primary-blue/5 px-4 py-2 rounded-full border border-primary-blue/10 transition-all cursor-pointer backdrop-blur-sm"
+                 id="privacy-policy-link"
+               >
+                 Políticas de Privacidade
+               </button>
+               <button 
+                 onClick={() => setIsTermsOpen(true)}
+                 className="text-[9px] uppercase tracking-[0.2em] text-natural-ink/40 font-black hover:text-primary-blue hover:bg-primary-blue/5 px-4 py-2 rounded-full border border-primary-blue/10 transition-all cursor-pointer backdrop-blur-sm"
+                 id="terms-of-use-link"
+               >
+                 Termos de Uso
+               </button>
+            </div>
+          </div>
+
+          <div className="md:hidden mt-8 flex flex-col items-center">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              className="flex items-center gap-2 px-4 py-2 rounded-full border border-primary-blue/20 bg-primary-blue/[0.04] backdrop-blur-sm transition-colors duration-500"
+            >
+              <div className="w-1 h-1 rounded-full bg-primary-blue/50" />
+              <span className="text-[10px] tracking-wide text-natural-ink/70 font-medium italic">
+                Em caso de crise, ligue 188 (CVV).
+              </span>
+            </motion.div>
           </div>
         </div>
 
-        <div className="mt-8 flex flex-col items-center">
-          <motion.div 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            className="flex items-center gap-2 px-4 py-2 rounded-full border border-primary-blue/20 bg-primary-blue/[0.04] backdrop-blur-sm transition-colors duration-500"
-          >
-            <div className="w-1 h-1 rounded-full bg-primary-blue/50" />
-            <span className="text-[10px] tracking-wide text-natural-ink/70 font-medium italic">
-              Em caso de crise, ligue 188 (CVV).
-            </span>
-          </motion.div>
-        </div>
-
-        <div className="mt-16 flex justify-center opacity-[0.05]">
-          <h2 className="font-serif italic text-4xl md:text-6xl text-natural-ink tracking-tighter">
+        <div className="mt-20 flex justify-center opacity-[0.04] pointer-events-none select-none overflow-hidden">
+          <h2 className="font-serif italic text-4xl md:text-[12vw] text-natural-ink tracking-tighter text-center leading-none whitespace-nowrap">
             Thiago Figueiró
           </h2>
         </div>

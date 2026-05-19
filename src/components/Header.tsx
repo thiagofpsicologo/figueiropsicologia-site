@@ -98,7 +98,14 @@ export const Header: React.FC<HeaderProps> = ({
             className={`md:hidden shrink-0 w-12 h-12 rounded-full flex items-center justify-center transition-all z-[120] glass-morphism active:scale-90`}
             aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"}
           >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            <motion.div
+              initial={false}
+              animate={{ rotate: isMenuOpen ? 90 : 0 }}
+              transition={{ duration: 0.3, ease: [0.33, 1, 0.68, 1] }}
+              className="flex items-center justify-center"
+            >
+              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </motion.div>
           </button>
         </div>
       </nav>
@@ -111,15 +118,16 @@ export const Header: React.FC<HeaderProps> = ({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
+              transition={{ duration: 0.25, ease: "linear" }}
               onClick={() => setIsMenuOpen(false)}
               className="fixed inset-0 bg-natural-ink/20 backdrop-blur-sm z-[125] md:hidden"
             />
             
             <motion.div 
-              initial={{ opacity: 0, x: '100%' }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: '100%' }}
-              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ duration: 0.35, ease: [0.32, 0.72, 0, 1] }}
               className="fixed inset-0 h-[100dvh] bg-white z-[130] md:hidden flex flex-col p-6 overflow-hidden overscroll-none"
             >
               <div className="absolute top-0 right-0 w-64 h-64 bg-primary-blue/10 filter blur-[100px] rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
@@ -164,9 +172,9 @@ export const Header: React.FC<HeaderProps> = ({
                       ].map((link, idx) => (
                         <motion.a 
                           key={link.name}
-                          initial={{ opacity: 0, x: -15 }}
+                          initial={{ opacity: 0, x: -10 }}
                           animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: 0.1 + idx * 0.05, duration: 0.4 }}
+                          transition={{ delay: 0.05 + idx * 0.04, duration: 0.3, ease: "easeOut" }}
                           onClick={() => setIsMenuOpen(false)} 
                           href={link.href} 
                           className="group flex items-center justify-between py-2.5 px-1 rounded-xl transition-all active:bg-primary-blue/5"
@@ -179,11 +187,11 @@ export const Header: React.FC<HeaderProps> = ({
                       ))}
                     </nav>
                   </div>
-  
-                  <motion.div
+   
+                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.4 }}
+                    transition={{ delay: 0.25, duration: 0.3 }}
                     className="pt-2"
                   >
                     <button 

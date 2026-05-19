@@ -56,22 +56,20 @@ export const CTASection: React.FC<CTASectionProps> = ({ openScheduling }) => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-8">
-            <motion.a 
+            <a 
               href={WHATSAPP_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-primary-blue text-white px-10 md:px-16 py-5 md:py-6 rounded-full font-sans text-[11px] md:text-xs uppercase tracking-[0.3em] font-black flex items-center justify-center gap-4 shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all cursor-pointer w-full sm:w-auto ring-1 ring-white/10"
+              className="bg-primary-blue text-white px-10 md:px-16 py-5 md:py-6 rounded-full font-sans text-[11px] md:text-xs uppercase tracking-[0.3em] font-black flex items-center justify-center gap-4 shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all cursor-pointer w-full sm:w-auto ring-1 ring-white/10 hover:scale-[1.05] active:scale-[0.95]"
               id="cta-whatsapp-btn"
             >
               <MessageCircle size={18} />
               Agendar via WhatsApp
-            </motion.a>
+            </a>
             
             <button 
               onClick={openScheduling}
-              className="group bg-white/5 backdrop-blur-xl border border-white/20 text-white px-10 md:px-16 py-5 md:py-6 rounded-full font-sans text-[11px] md:text-xs uppercase tracking-[0.3em] font-black hover:bg-white/10 transition-all flex items-center justify-center gap-4 cursor-pointer w-full sm:w-auto"
+              className="group bg-white/5 backdrop-blur-xl border border-white/20 text-white px-10 md:px-16 py-5 md:py-6 rounded-full font-sans text-[11px] md:text-xs uppercase tracking-[0.3em] font-black hover:bg-white/10 transition-all flex items-center justify-center gap-4 cursor-pointer w-full sm:w-auto active:scale-[0.95]"
               id="cta-availability-btn"
             >
               <Calendar size={18} className="text-[#93C5FD] group-hover:scale-110 transition-transform" />
