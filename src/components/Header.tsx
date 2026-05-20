@@ -40,13 +40,13 @@ export const Header: React.FC<HeaderProps> = ({
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 w-full z-[100] px-6 md:px-12 transition-all duration-700 ${isScrolled ? 'py-3 md:py-4' : 'py-6 md:py-10'}`}>
-        <div className={`max-w-7xl mx-auto flex flex-row justify-between items-center transition-all duration-700`}>
+      <nav className={`fixed top-0 left-0 w-full z-[100] px-6 md:px-12 transition-all duration-1000 ${isScrolled ? 'py-3 md:py-4' : 'py-8 md:py-12'}`}>
+        <div className={`max-w-7xl mx-auto flex flex-row justify-between items-center transition-all duration-1000`}>
           <a 
             href="#" 
             className={`flex items-center gap-2 md:gap-3 px-3 py-1.5 md:px-5 md:py-2.5 rounded-full border transition-all glass-morphism overflow-hidden shrink-0 group hover:shadow-2xl active:scale-95 ${isScrolled ? 'border-primary-blue/10' : 'border-white/20'}`}
           >
-            <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-black flex items-center justify-center overflow-hidden shrink-0 group-hover:scale-110 transition-transform shadow-2xl">
+            <div className="w-8 h-8 md:w-12 md:h-12 rounded-full bg-black flex items-center justify-center overflow-hidden shrink-0 group-hover:scale-110 transition-transform shadow-2xl">
               <img 
                 src="https://drive.google.com/thumbnail?id=18OxYoRjXAKjdK4w608G6HkYJxF4HAn0O&sz=w1000" 
                 alt="Logo Thiago Figueiró" 
@@ -54,10 +54,10 @@ export const Header: React.FC<HeaderProps> = ({
                 referrerPolicy="no-referrer"
               />
             </div>
-            <span className={`font-serif text-sm md:text-lg font-medium tracking-tight transition-colors truncate text-natural-ink ${!isScrolled && 'md:text-natural-ink'}`}>Thiago Figueiró</span>
+            <span className={`font-serif text-sm md:text-xl font-medium tracking-tight transition-colors truncate text-natural-ink ${!isScrolled && 'md:text-natural-ink'}`}>Thiago Figueiró</span>
           </a>
   
-          <div className={`hidden md:flex gap-6 lg:gap-8 items-center px-8 py-3 rounded-full border transition-all duration-700 glass-morphism ${isScrolled ? 'border-primary-blue/10 shadow-xl' : 'border-white/20'}`}>
+          <div className={`hidden md:flex gap-8 lg:gap-14 items-center px-10 py-3.5 rounded-full border transition-all duration-1000 glass-morphism ${isScrolled ? 'border-primary-blue/10 shadow-2xl' : 'border-white/20'}`}>
             {[
               { name: 'Início', href: '#' },
               { name: 'Sobre Mim', href: '#about' },
@@ -68,7 +68,7 @@ export const Header: React.FC<HeaderProps> = ({
               <a 
                 key={item.name}
                 href={item.href} 
-                className={`text-[13px] tracking-wider transition-all font-sans font-extrabold relative group/link text-natural-ink/90 hover:text-primary-blue`}
+                className={`text-[11px] tracking-[0.18em] uppercase transition-all font-sans font-extrabold relative group/link text-natural-ink/80 hover:text-primary-blue`}
               >
                 {item.name}
                 <span className={`absolute -bottom-1 left-0 w-0 h-[1.5px] transition-all duration-500 group-hover/link:w-full bg-primary-blue`} />
@@ -87,7 +87,7 @@ export const Header: React.FC<HeaderProps> = ({
   
           <button
             onClick={openScheduling}
-            className={`hidden md:flex items-center gap-3 px-8 py-3 rounded-full shadow-2xl transition-all font-sans text-[12px] tracking-[0.1em] font-extrabold group bg-primary-blue text-white hover:bg-natural-ink hover:-translate-y-1 active:scale-95`}
+            className={`hidden md:flex items-center gap-3 px-8 py-3.5 rounded-full shadow-2xl transition-all font-sans text-[11px] tracking-[0.15em] font-extrabold group bg-primary-blue text-white hover:bg-natural-ink hover:-translate-y-1 active:scale-95`}
           >
             <Calendar size={14} className="group-hover:scale-110 transition-transform" />
             Agendar Consulta

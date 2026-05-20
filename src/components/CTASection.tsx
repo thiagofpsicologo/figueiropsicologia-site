@@ -42,12 +42,12 @@ export const CTASection: React.FC<CTASectionProps> = ({ openScheduling }) => {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
-              className="inline-block text-[10px] md:text-xs uppercase tracking-[0.5em] text-[#93C5FD] font-black"
+              className="inline-block text-[11px] md:text-xs uppercase tracking-[0.6em] text-primary-blue font-black"
             >
-              Dê o primeiro passo
+              Comece agora
             </motion.span>
-            <h2 className="text-6xl md:text-9xl font-serif italic text-white leading-[0.9] tracking-tighter">
-              Sua jornada <br /> <span className="text-primary-blue">começa aqui.</span>
+            <h2 className="text-7xl md:text-[12vw] font-serif italic text-white leading-[0.8] tracking-tighter">
+              Sua jornada <br /> <span className="premium-gradient-text">começa hoje.</span>
             </h2>
           </div>
 

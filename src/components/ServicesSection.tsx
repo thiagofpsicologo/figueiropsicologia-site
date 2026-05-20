@@ -78,35 +78,35 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ openScheduling
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          whileHover={{ y: -15 }}
+          whileHover={{ y: -15, boxShadow: "0 50px 100px -20px rgba(146, 168, 195, 0.25)" }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="bg-natural-ink text-white p-8 md:p-14 rounded-[50px] flex flex-col justify-between cinematic-shadow relative overflow-hidden h-full z-10 border border-white/5"
+          className="bg-natural-ink text-white p-8 md:p-14 rounded-[50px] flex flex-col justify-between cinematic-shadow relative overflow-hidden h-full z-10 border border-white/5 ring-1 ring-white/10"
         >
           {/* Decorative grain/glow */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-primary-blue/10 rounded-full blur-[100px] -z-10" />
+          <div className="absolute top-0 right-0 w-80 h-80 bg-primary-blue/20 rounded-full blur-[120px] -z-10" />
           
-          <div className="space-y-8 text-left">
-            <div className="space-y-5">
+          <div className="space-y-10 text-left">
+            <div className="space-y-6">
               <div className="inline-block">
                 <motion.span 
-                  animate={{ scale: [1, 1.05, 1] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                  className="bg-primary-blue text-white px-5 py-2 rounded-full text-[9px] uppercase tracking-[0.3em] font-black shadow-2xl shadow-primary-blue/20"
+                  animate={{ scale: [1, 1.05, 1], opacity: [0.8, 1, 0.8] }}
+                  transition={{ duration: 3, repeat: Infinity }}
+                  className="bg-white/10 backdrop-blur-md text-white border border-white/20 px-6 py-2 rounded-full text-[10px] uppercase tracking-[0.4em] font-black"
                 >
-                  Mais escolhido
+                  Frequência Recomendada
                 </motion.span>
               </div>
-              <div className="space-y-3">
-                <h3 className="text-3xl md:text-4xl font-serif italic leading-tight">Psicoterapia semanal</h3>
-                <div className="flex items-center gap-3">
-                  <div className="h-[1px] w-8 bg-white/30" />
-                  <p className="text-[10px] uppercase tracking-[0.2em] text-primary-blue font-black italic">Acompanhamento Contínuo</p>
+              <div className="space-y-4">
+                <h3 className="text-4xl md:text-5xl font-serif italic leading-[1.1]">Psicoterapia semanal</h3>
+                <div className="flex items-center gap-4">
+                  <div className="h-[1px] w-12 bg-primary-blue/40" />
+                  <p className="text-[11px] uppercase tracking-[0.3em] text-primary-blue/80 font-black italic">Acompanhamento Intenso</p>
                 </div>
               </div>
             </div>
             
-            <p className="text-sm md:text-base text-white/80 leading-relaxed font-light">
-              Continuidade terapêutica para aprofundar questões emocionais e padrões de comportamento, visando transformações reais.
+            <p className="text-base md:text-lg text-white/70 leading-relaxed font-light font-serif italic">
+              Continuidade terapêutica para aprofundar questões emocionais e padrões de comportamento, visando transformações profundas na sua relação consigo mesmo.
             </p>
 
             <div className="space-y-1 pt-4">

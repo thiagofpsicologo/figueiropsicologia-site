@@ -149,12 +149,12 @@ function App() {
 
         <AboutSection />
         
-        <section id="testimonials" className="py-20 md:py-32 px-6 md:px-8 max-w-7xl mx-auto overflow-hidden relative">
-          <div className="absolute top-0 left-0 w-full h-full bg-primary-blue/[0.02] -z-1" />
+        <section id="testimonials" className="py-24 md:py-48 px-6 md:px-8 max-w-7xl mx-auto overflow-hidden relative">
+          <div className="absolute top-0 left-0 w-full h-full bg-primary-blue/[0.015] -z-1" />
           
-          <div className="text-center mb-12 md:mb-16 space-y-4">
-            <span className="text-[9px] md:text-[10px] uppercase tracking-[0.4em] text-primary-blue font-black">Depoimentos</span>
-            <h2 className="text-3xl sm:text-4xl md:text-6xl font-serif italic text-natural-ink">O que dizem os pacientes</h2>
+          <div className="text-center mb-16 md:mb-24 space-y-6">
+            <span className="text-[10px] md:text-[11px] uppercase tracking-[0.5em] text-primary-blue font-black">Escuta Qualificada</span>
+            <h2 className="text-4xl sm:text-5xl md:text-8xl font-serif italic text-natural-ink leading-tight">O que dizem os pacientes</h2>
           </div>
           
           <TestimonialCarousel />
