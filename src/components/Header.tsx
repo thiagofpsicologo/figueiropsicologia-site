@@ -111,6 +111,7 @@ export const Header: React.FC<HeaderProps> = ({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
+              transition={{ duration: 0.2, ease: "easeInOut" }}
               onClick={() => setIsMenuOpen(false)}
               className="fixed inset-0 bg-natural-ink/20 backdrop-blur-sm z-[125] md:hidden"
             />
@@ -119,7 +120,7 @@ export const Header: React.FC<HeaderProps> = ({
               initial={{ opacity: 0, x: '100%' }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: '100%' }}
-              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+              transition={{ type: 'tween', ease: [0.16, 1, 0.3, 1], duration: 0.3 }}
               className="fixed inset-0 h-[100dvh] bg-white z-[130] md:hidden flex flex-col p-6 overflow-hidden overscroll-none"
             >
               <div className="absolute top-0 right-0 w-64 h-64 bg-primary-blue/10 filter blur-[100px] rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
@@ -164,9 +165,9 @@ export const Header: React.FC<HeaderProps> = ({
                       ].map((link, idx) => (
                         <motion.a 
                           key={link.name}
-                          initial={{ opacity: 0, x: -15 }}
+                          initial={{ opacity: 0, x: -10 }}
                           animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: 0.1 + idx * 0.05, duration: 0.4 }}
+                          transition={{ delay: 0.05 + idx * 0.03, duration: 0.25, ease: "easeOut" }}
                           onClick={() => setIsMenuOpen(false)} 
                           href={link.href} 
                           className="group flex items-center justify-between py-2.5 px-1 rounded-xl transition-all active:bg-primary-blue/5"
@@ -181,9 +182,9 @@ export const Header: React.FC<HeaderProps> = ({
                   </div>
   
                   <motion.div
-                    initial={{ opacity: 0, y: 10 }}
+                    initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.4 }}
+                    transition={{ delay: 0.2, duration: 0.25, ease: "easeOut" }}
                     className="pt-2"
                   >
                     <button 

@@ -26,7 +26,7 @@ export const Footer: React.FC<FooterProps> = ({
             <motion.div 
               initial={{ opacity: 0, x: -10 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.5, duration: 0.8 }}
+              transition={{ delay: 0.15, duration: 0.45, ease: "easeOut" }}
               className="flex flex-col gap-4"
             >
               <div className="w-20 h-20 rounded-full bg-black flex items-center justify-center overflow-hidden shadow-2xl border border-primary-blue/5 ring-8 ring-white/50 backdrop-blur-sm">
@@ -176,6 +176,7 @@ export const Footer: React.FC<FooterProps> = ({
             <motion.div 
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
               className="flex items-center gap-2 px-4 py-2 rounded-full border border-primary-blue/20 bg-primary-blue/[0.04] backdrop-blur-sm transition-colors duration-500"
             >
               <div className="w-1 h-1 rounded-full bg-primary-blue/50" />
