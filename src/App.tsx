@@ -40,10 +40,46 @@ function App() {
   }, [isMenuOpen]);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
+    const criticalImages = [
+      'https://drive.google.com/thumbnail?id=18OxYoRjXAKjdK4w608G6HkYJxF4HAn0O&sz=w300',
+      'https://drive.google.com/thumbnail?id=1BAtrxB-NOjDAlp1Md4o1ZEZBid5OpoqS&sz=w1600',
+      'https://drive.google.com/thumbnail?id=13pEHjy-sDm3jwd5vz1VLvFhWaxly_aRy&sz=w1600',
+      'https://drive.google.com/thumbnail?id=1tVcHVoHn9pV_CfvuJdn98sLlY3de_Ysh&sz=w1000',
+      'https://cdn.simpleicons.org/whatsapp/white'
+    ];
+
+    let loadedCount = 0;
+    const totalToLoad = criticalImages.length;
+    let fallbackTimer: any = null;
+    let finishTimer: any = null;
+
+    // Safety fallback: dismiss loader after maximum 1200ms regardless of loading progress
+    fallbackTimer = setTimeout(() => {
       setIsLoading(false);
-    }, 800);
-    return () => clearTimeout(timer);
+    }, 1200);
+
+    const onAssetLoaded = () => {
+      loadedCount++;
+      if (loadedCount >= totalToLoad) {
+        if (fallbackTimer) clearTimeout(fallbackTimer);
+        // Beautiful, micro-delayed exit once all assets are verified and cached
+        finishTimer = setTimeout(() => {
+          setIsLoading(false);
+        }, 150);
+      }
+    };
+
+    criticalImages.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+      img.onload = onAssetLoaded;
+      img.onerror = onAssetLoaded; // handle failures gracefully to avoid blocking
+    });
+
+    return () => {
+      if (fallbackTimer) clearTimeout(fallbackTimer);
+      if (finishTimer) clearTimeout(finishTimer);
+    };
   }, []);
 
   useEffect(() => {

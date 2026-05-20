@@ -26,14 +26,14 @@ export const SCENES = [
     title: 'Thiago Figueiró',
     accent: 'PSICÓLOGO CLÍNICO',
     subtitle: 'COMO POSSO TE AJUDAR?',
-    image: 'https://drive.google.com/thumbnail?id=1BAtrxB-NOjDAlp1Md4o1ZEZBid5OpoqS&sz=w2000'
+    image: 'https://drive.google.com/thumbnail?id=1BAtrxB-NOjDAlp1Md4o1ZEZBid5OpoqS&sz=w1600'
   },
   {
     id: 'transformacao',
     title: '',
     accent: 'LEVEZA',
     subtitle: '"Entenda seus pensamentos. Cuide da sua mente. Viva com mais leveza."',
-    image: 'https://drive.google.com/thumbnail?id=13pEHjy-sDm3jwd5vz1VLvFhWaxly_aRy&sz=w2000'
+    image: 'https://drive.google.com/thumbnail?id=13pEHjy-sDm3jwd5vz1VLvFhWaxly_aRy&sz=w1600'
   }
 ];
 

@@ -48,7 +48,7 @@ export const Header: React.FC<HeaderProps> = ({
           >
             <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-black flex items-center justify-center overflow-hidden shrink-0 group-hover:scale-110 transition-transform shadow-2xl">
               <img 
-                src="https://drive.google.com/thumbnail?id=18OxYoRjXAKjdK4w608G6HkYJxF4HAn0O&sz=w1000" 
+                src="https://drive.google.com/thumbnail?id=18OxYoRjXAKjdK4w608G6HkYJxF4HAn0O&sz=w120" 
                 alt="Logo Thiago Figueiró" 
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
@@ -142,7 +142,7 @@ export const Header: React.FC<HeaderProps> = ({
                   </div>
                   <div className="w-10 h-10 rounded-full bg-black flex items-center justify-center overflow-hidden border border-primary-blue/10 ring-4 ring-primary-blue/5 shadow-md">
                     <img 
-                      src="https://drive.google.com/thumbnail?id=18OxYoRjXAKjdK4w608G6HkYJxF4HAn0O&sz=w1000" 
+                      src="https://drive.google.com/thumbnail?id=18OxYoRjXAKjdK4w608G6HkYJxF4HAn0O&sz=w120" 
                       alt="Logo" 
                       className="w-full h-full object-cover"
                       referrerPolicy="no-referrer"
