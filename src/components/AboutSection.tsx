@@ -40,13 +40,13 @@ export const AboutSection: React.FC = () => {
                 <span className="hidden sm:block w-1 h-1 rounded-full bg-primary-blue/30" />
                 <span className="text-[9px] md:text-[10px] uppercase tracking-[0.4em] text-white font-black bg-primary-blue px-3 py-1 rounded-full shadow-sm">CRP 04/48708</span>
               </div>
-              <h2 className="text-4xl sm:text-5xl md:text-7xl font-serif leading-tight text-natural-ink italic">
-                Um espaço seguro <span className="premium-gradient-text italic">para o seu sentir.</span>
+              <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif leading-tight text-natural-ink italic">
+                Um espaço seguro <span className="text-primary-blue/60 italic">para o seu sentir.</span>
               </h2>
             </div>
             
             <div className="text-left space-y-6 md:space-y-10 py-4">
-              <p className="text-xl md:text-2xl text-natural-ink/80 font-light leading-relaxed">
+              <p className="text-lg md:text-xl text-natural-ink/80 font-light leading-relaxed">
                 Sou <span className="font-medium text-primary-blue">Thiago Figueiró</span>, psicólogo clínico formado pela <span className="font-medium text-primary-blue">FUMEC</span>. Desde 2017, acompanho pessoas em seus processos de autoconhecimento, ajudando-as a compreender emoções, romper padrões de sofrimento e construir novas narrativas com mais clareza e leveza.
               </p>
               

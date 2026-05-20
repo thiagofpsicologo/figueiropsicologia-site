@@ -40,13 +40,13 @@ export const Header: React.FC<HeaderProps> = ({
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 w-full z-[100] px-6 md:px-12 transition-all duration-1000 ${isScrolled ? 'py-3 md:py-4' : 'py-8 md:py-12'}`}>
-        <div className={`max-w-7xl mx-auto flex flex-row justify-between items-center transition-all duration-1000`}>
+      <nav className={`fixed top-0 left-0 w-full z-[100] px-6 md:px-12 transition-all duration-700 ${isScrolled ? 'py-3 md:py-4' : 'py-6 md:py-10'}`}>
+        <div className={`max-w-7xl mx-auto flex flex-row justify-between items-center transition-all duration-700`}>
           <a 
             href="#" 
             className={`flex items-center gap-2 md:gap-3 px-3 py-1.5 md:px-5 md:py-2.5 rounded-full border transition-all glass-morphism overflow-hidden shrink-0 group hover:shadow-2xl active:scale-95 ${isScrolled ? 'border-primary-blue/10' : 'border-white/20'}`}
           >
-            <div className="w-8 h-8 md:w-12 md:h-12 rounded-full bg-black flex items-center justify-center overflow-hidden shrink-0 group-hover:scale-110 transition-transform shadow-2xl">
+            <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-black flex items-center justify-center overflow-hidden shrink-0 group-hover:scale-110 transition-transform shadow-2xl">
               <img 
                 src="https://drive.google.com/thumbnail?id=18OxYoRjXAKjdK4w608G6HkYJxF4HAn0O&sz=w1000" 
                 alt="Logo Thiago Figueiró" 
@@ -54,10 +54,10 @@ export const Header: React.FC<HeaderProps> = ({
                 referrerPolicy="no-referrer"
               />
             </div>
-            <span className={`font-serif text-sm md:text-xl font-medium tracking-tight transition-colors truncate text-natural-ink ${!isScrolled && 'md:text-natural-ink'}`}>Thiago Figueiró</span>
+            <span className={`font-serif text-sm md:text-lg font-medium tracking-tight transition-colors truncate text-natural-ink ${!isScrolled && 'md:text-natural-ink'}`}>Thiago Figueiró</span>
           </a>
   
-          <div className={`hidden md:flex gap-8 lg:gap-14 items-center px-10 py-3.5 rounded-full border transition-all duration-1000 glass-morphism ${isScrolled ? 'border-primary-blue/10 shadow-2xl' : 'border-white/20'}`}>
+          <div className={`hidden md:flex gap-6 lg:gap-8 items-center px-8 py-3 rounded-full border transition-all duration-700 glass-morphism ${isScrolled ? 'border-primary-blue/10 shadow-xl' : 'border-white/20'}`}>
             {[
               { name: 'Início', href: '#' },
               { name: 'Sobre Mim', href: '#about' },
@@ -68,7 +68,7 @@ export const Header: React.FC<HeaderProps> = ({
               <a 
                 key={item.name}
                 href={item.href} 
-                className={`text-[11px] tracking-[0.18em] uppercase transition-all font-sans font-extrabold relative group/link text-natural-ink/80 hover:text-primary-blue`}
+                className={`text-[13px] tracking-wider transition-all font-sans font-extrabold relative group/link text-natural-ink/90 hover:text-primary-blue`}
               >
                 {item.name}
                 <span className={`absolute -bottom-1 left-0 w-0 h-[1.5px] transition-all duration-500 group-hover/link:w-full bg-primary-blue`} />
@@ -87,7 +87,7 @@ export const Header: React.FC<HeaderProps> = ({
   
           <button
             onClick={openScheduling}
-            className={`hidden md:flex items-center gap-3 px-8 py-3.5 rounded-full shadow-2xl transition-all font-sans text-[11px] tracking-[0.15em] font-extrabold group bg-primary-blue text-white hover:bg-natural-ink hover:-translate-y-1 active:scale-95`}
+            className={`hidden md:flex items-center gap-3 px-8 py-3 rounded-full shadow-2xl transition-all font-sans text-[12px] tracking-[0.1em] font-extrabold group bg-primary-blue text-white hover:bg-natural-ink hover:-translate-y-1 active:scale-95`}
           >
             <Calendar size={14} className="group-hover:scale-110 transition-transform" />
             Agendar Consulta
@@ -98,14 +98,7 @@ export const Header: React.FC<HeaderProps> = ({
             className={`md:hidden shrink-0 w-12 h-12 rounded-full flex items-center justify-center transition-all z-[120] glass-morphism active:scale-90`}
             aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"}
           >
-            <motion.div
-              initial={false}
-              animate={{ rotate: isMenuOpen ? 90 : 0 }}
-              transition={{ duration: 0.3, ease: [0.33, 1, 0.68, 1] }}
-              className="flex items-center justify-center"
-            >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </motion.div>
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </nav>
@@ -118,16 +111,15 @@ export const Header: React.FC<HeaderProps> = ({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.25, ease: "linear" }}
               onClick={() => setIsMenuOpen(false)}
               className="fixed inset-0 bg-natural-ink/20 backdrop-blur-sm z-[125] md:hidden"
             />
             
             <motion.div 
-              initial={{ x: '100%' }}
-              animate={{ x: 0 }}
-              exit={{ x: '100%' }}
-              transition={{ duration: 0.35, ease: [0.32, 0.72, 0, 1] }}
+              initial={{ opacity: 0, x: '100%' }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: '100%' }}
+              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
               className="fixed inset-0 h-[100dvh] bg-white z-[130] md:hidden flex flex-col p-6 overflow-hidden overscroll-none"
             >
               <div className="absolute top-0 right-0 w-64 h-64 bg-primary-blue/10 filter blur-[100px] rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
@@ -172,9 +164,9 @@ export const Header: React.FC<HeaderProps> = ({
                       ].map((link, idx) => (
                         <motion.a 
                           key={link.name}
-                          initial={{ opacity: 0, x: -10 }}
+                          initial={{ opacity: 0, x: -15 }}
                           animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: 0.05 + idx * 0.04, duration: 0.3, ease: "easeOut" }}
+                          transition={{ delay: 0.1 + idx * 0.05, duration: 0.4 }}
                           onClick={() => setIsMenuOpen(false)} 
                           href={link.href} 
                           className="group flex items-center justify-between py-2.5 px-1 rounded-xl transition-all active:bg-primary-blue/5"
@@ -187,11 +179,11 @@ export const Header: React.FC<HeaderProps> = ({
                       ))}
                     </nav>
                   </div>
-   
-                   <motion.div
+  
+                  <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.25, duration: 0.3 }}
+                    transition={{ delay: 0.4 }}
                     className="pt-2"
                   >
                     <button 
