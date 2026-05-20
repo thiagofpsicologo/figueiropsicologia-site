@@ -35,13 +35,14 @@ export const CTASection: React.FC<CTASectionProps> = ({ openScheduling }) => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
           className="space-y-12 md:space-y-16"
         >
           <div className="space-y-6 text-center flex flex-col items-center">
             <motion.span 
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              transition={{ delay: 0.2 }}
+              transition={{ delay: 0.3, duration: 1.2, ease: "easeOut" }}
               className="inline-block text-[10px] md:text-xs uppercase tracking-[0.5em] text-[#93C5FD] font-black"
             >
               Dê o primeiro passo
@@ -60,7 +61,7 @@ export const CTASection: React.FC<CTASectionProps> = ({ openScheduling }) => {
               href={WHATSAPP_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-primary-blue text-white px-10 md:px-16 py-5 md:py-6 rounded-full font-sans text-[11px] md:text-xs uppercase tracking-[0.3em] font-black flex items-center justify-center gap-4 shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all cursor-pointer w-full sm:w-auto ring-1 ring-white/10 hover:scale-[1.05] active:scale-[0.95]"
+              className="bg-primary-blue text-white px-10 md:px-16 py-5 md:py-6 rounded-full font-sans text-[11px] md:text-xs uppercase tracking-[0.3em] font-black flex items-center justify-center gap-4 shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all duration-500 ease-out cursor-pointer w-full sm:w-auto ring-1 ring-white/10 hover:scale-[1.03] active:scale-[0.97]"
               id="cta-whatsapp-btn"
             >
               <MessageCircle size={18} />
@@ -69,7 +70,7 @@ export const CTASection: React.FC<CTASectionProps> = ({ openScheduling }) => {
             
             <button 
               onClick={openScheduling}
-              className="group bg-white/5 backdrop-blur-xl border border-white/20 text-white px-10 md:px-16 py-5 md:py-6 rounded-full font-sans text-[11px] md:text-xs uppercase tracking-[0.3em] font-black hover:bg-white/10 transition-all flex items-center justify-center gap-4 cursor-pointer w-full sm:w-auto active:scale-[0.95]"
+              className="group bg-white/5 backdrop-blur-xl border border-white/20 text-white px-10 md:px-16 py-5 md:py-6 rounded-full font-sans text-[11px] md:text-xs uppercase tracking-[0.3em] font-black hover:bg-white/10 hover:scale-[1.03] transition-all duration-500 ease-out flex items-center justify-center gap-4 cursor-pointer w-full sm:w-auto active:scale-[0.97]"
               id="cta-availability-btn"
             >
               <Calendar size={18} className="text-[#93C5FD] group-hover:scale-110 transition-transform" />

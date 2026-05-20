@@ -83,7 +83,7 @@ export const FAQSection = ({ openScheduling }: FAQSectionProps) => {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
         className="text-center mb-16 space-y-4"
       >
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-blue/5 text-primary-blue border border-primary-blue/10 mb-2">
@@ -100,7 +100,7 @@ export const FAQSection = ({ openScheduling }: FAQSectionProps) => {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.8, delay: 0.2 }}
+        transition={{ duration: 1.2, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
         className="glass-morphism bg-white/60 border border-white/20 rounded-[2rem] p-8 md:p-12 shadow-lg cinematic-shadow relative overflow-hidden"
       >
         <div className="space-y-2">
@@ -120,6 +120,7 @@ export const FAQSection = ({ openScheduling }: FAQSectionProps) => {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             className="mt-12 pt-8 border-t border-primary-blue/10 flex flex-col items-center gap-6"
           >
             <p className="text-sm text-natural-ink/50 font-light italic text-center">

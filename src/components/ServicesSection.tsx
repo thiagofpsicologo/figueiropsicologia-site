@@ -14,6 +14,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ openScheduling
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
           className="space-y-4"
         >
           <span className="text-[9px] md:text-[10px] uppercase tracking-[0.3em] text-primary-blue font-bold">Planos e Formatos</span>
@@ -191,7 +192,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ openScheduling
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.8, delay: 0.5 }}
+        transition={{ duration: 1.2, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
         className="max-w-xl mx-auto mt-20 text-center px-6"
       >
         <div className="h-[1px] w-12 bg-primary-blue/20 mx-auto mb-6" />
@@ -203,7 +204,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ openScheduling
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
+          transition={{ duration: 1.2, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
           className="inline-flex flex-col md:flex-row items-center gap-4 px-8 py-5 rounded-2xl bg-primary-blue/[0.05] border border-primary-blue/20 max-w-3xl mx-auto mt-8 shadow-sm"
         >
           <div className="flex items-center gap-3 text-primary-blue flex-shrink-0">

@@ -70,7 +70,7 @@ export const AboutSection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           whileHover={{ y: -6, scale: 1.01 }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
           className="glass-morphism bg-white/60 border border-primary-blue/15 p-10 md:p-12 rounded-[32px] cinematic-shadow text-left space-y-6 group cursor-default"
         >
           <div className="w-14 h-14 rounded-2xl bg-primary-blue/10 flex items-center justify-center text-primary-blue group-hover:scale-110 group-hover:bg-primary-blue/15 transition-all duration-500">
@@ -78,7 +78,7 @@ export const AboutSection: React.FC = () => {
           </div>
           <div className="space-y-3">
             <h4 className="text-2xl font-serif italic text-natural-ink group-hover:text-primary-blue transition-colors duration-300">Empatia</h4>
-            <p className="text-sm md:text-base text-natural-ink/60 leading-relaxed font-light">Escuta profunda, ativa e um ambiente inteiramente seguro e livre de quaisquer julgamentos.</p>
+            <p className="text-sm md:text-base text-natural-ink/60 leading-relaxed font-light">Escuta profunda, ativa e um ambiente inteiramente safe e livre de quaisquer julgamentos.</p>
           </div>
         </motion.div>
 
@@ -87,7 +87,7 @@ export const AboutSection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           whileHover={{ y: -6, scale: 1.01 }}
-          transition={{ duration: 0.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           className="glass-morphism bg-white/60 border border-primary-blue/15 p-10 md:p-12 rounded-[32px] cinematic-shadow text-left space-y-6 group cursor-default"
         >
           <div className="w-14 h-14 rounded-2xl bg-primary-blue/10 flex items-center justify-center text-primary-blue group-hover:scale-110 group-hover:bg-primary-blue/15 transition-all duration-500">
@@ -130,7 +130,7 @@ export const AboutSection: React.FC = () => {
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: idx * 0.1 }}
+                transition={{ duration: 0.9, delay: idx * 0.15, ease: [0.16, 1, 0.3, 1] }}
                 className="flex gap-8 items-start group"
               >
                 <div className="w-14 h-14 md:w-16 md:h-16 shrink-0 rounded-full bg-primary-blue/5 border border-primary-blue/10 flex items-center justify-center text-primary-blue transition-colors group-hover:bg-primary-blue group-hover:text-white">
