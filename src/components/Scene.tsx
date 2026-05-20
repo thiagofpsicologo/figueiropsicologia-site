@@ -22,9 +22,9 @@ export const Scene: React.FC<SceneProps> = ({ scene, index }) => {
   });
 
   const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.4, 0.6, 1], [1.1, 1, 1, 1.05]);
-  const y = useTransform(scrollYProgress, [0, 0.35, 0.65, 1], [60, 0, 0, -60]);
-  const imageY = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
+  const scale = useTransform(scrollYProgress, [0, 0.4, 0.6, 1], [1.05, 1, 1, 1.02]);
+  const y = useTransform(scrollYProgress, [0, 0.35, 0.65, 1], [30, 0, 0, -30]);
+  const imageY = useTransform(scrollYProgress, [0, 1], ["-6%", "6%"]);
 
   return (
     <div ref={ref} className={`relative h-screen h-[100dvh] w-full flex overflow-hidden ${index === 0 ? 'justify-center items-end lg:justify-start lg:items-end pb-36 lg:pb-24 p-6 lg:pl-16' : 'justify-center items-center'} ${!scene.image ? 'bg-[#F7F5F2]' : ''}`}>
@@ -35,7 +35,7 @@ export const Scene: React.FC<SceneProps> = ({ scene, index }) => {
             scale, 
             y: imageY 
           }}
-          className="absolute inset-0 z-0 h-[120%] top-[-10%]"
+          className="absolute inset-0 z-0 h-[112%] top-[-6%]"
         >
           <img 
             src={scene.image} 
@@ -57,22 +57,22 @@ export const Scene: React.FC<SceneProps> = ({ scene, index }) => {
           {/* Ethereal Animated Background Elements */}
           <motion.div 
             animate={{ 
-              scale: [1, 1.3, 1],
-              x: [0, 100, 0],
-              y: [0, 50, 0],
-              rotate: [0, 45, 0]
+              scale: [1, 1.12, 1],
+              x: [0, 45, 0],
+              y: [0, 20, 0],
+              rotate: [0, 15, 0]
             }}
-            transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-            className="absolute -top-1/4 -right-1/4 w-[1000px] h-[1000px] bg-primary-blue/[0.12] rounded-full blur-[140px] pointer-events-none" 
+            transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
+            className="absolute -top-1/4 -right-1/4 w-[1000px] h-[1000px] bg-primary-blue/[0.05] rounded-full blur-[140px] pointer-events-none" 
           />
           <motion.div 
             animate={{ 
-              scale: [1.3, 1, 1.3],
-              x: [0, -80, 0],
-              y: [0, -40, 0]
+              scale: [1.12, 1, 1.12],
+              x: [0, -35, 0],
+              y: [0, -18, 0]
             }}
-            transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-            className="absolute -bottom-1/4 -left-1/4 w-[800px] h-[800px] bg-primary-blue/[0.08] rounded-full blur-[120px] pointer-events-none" 
+            transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+            className="absolute -bottom-1/4 -left-1/4 w-[800px] h-[800px] bg-primary-blue/[0.03] rounded-full blur-[120px] pointer-events-none" 
           />
           
           {/* Soft central glow */}
