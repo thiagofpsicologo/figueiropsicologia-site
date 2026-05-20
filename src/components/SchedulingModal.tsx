@@ -155,12 +155,12 @@ export const SchedulingModal: React.FC<SchedulingModalProps> = ({ isOpen, onClos
                         <button
                           key={date}
                           onClick={() => handleDateSelect(date)}
-                          className="flex flex-col items-center justify-center p-4 rounded-2xl border border-primary-blue/10 hover:border-primary-blue hover:bg-primary-blue/5 transition-all group active:scale-95"
+                          className="flex flex-col items-center justify-center p-4 rounded-2xl border border-primary-blue/10 bg-primary-blue/[0.02] hover:border-primary-blue hover:bg-primary-blue/5 hover:shadow-md transition-all duration-300 group active:scale-95 cursor-pointer"
                           id={`date-${date}`}
                         >
-                          <span className="text-[10px] uppercase tracking-widest text-primary-blue/60 font-bold mb-1">{dayName}</span>
-                          <span className="text-xl font-serif text-natural-ink group-hover:text-primary-blue transition-colors">{dayNum}</span>
-                          <span className="text-[10px] uppercase tracking-widest text-natural-ink/40 font-medium">{month}</span>
+                          <span className="text-[9px] uppercase tracking-[0.2em] text-primary-blue/70 font-semibold mb-1 group-hover:text-primary-blue group-hover:-translate-y-0.5 transition-all duration-350">{dayName}</span>
+                          <span className="text-xl font-serif text-natural-ink group-hover:text-primary-blue transition-colors duration-300">{dayNum}</span>
+                          <span className="text-[9px] uppercase tracking-[0.15em] text-natural-ink/40 font-medium">{month}</span>
                         </button>
                       );
                     })}

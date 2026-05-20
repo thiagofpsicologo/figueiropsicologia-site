@@ -101,7 +101,7 @@ export const FAQSection = ({ openScheduling }: FAQSectionProps) => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="bg-white/40 backdrop-blur-sm rounded-[2rem] border border-primary-blue/5 p-8 md:p-12 shadow-sm relative overflow-hidden"
+        className="glass-morphism bg-white/60 border border-white/20 rounded-[2rem] p-8 md:p-12 shadow-lg cinematic-shadow relative overflow-hidden"
       >
         <div className="space-y-2">
           {faqs.map((faq, index) => (
@@ -120,17 +120,17 @@ export const FAQSection = ({ openScheduling }: FAQSectionProps) => {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mt-12 pt-8 border-t border-primary-blue/5 flex flex-col items-center gap-6"
+            className="mt-12 pt-8 border-t border-primary-blue/10 flex flex-col items-center gap-6"
           >
-            <p className="text-sm text-natural-ink/40 font-light italic">
+            <p className="text-sm text-natural-ink/50 font-light italic text-center">
               Não encontrou o que procurava? Fique à vontade para entrar em contato.
             </p>
             <button
               onClick={openScheduling}
-              className="group relative w-full max-w-xs md:w-auto px-6 py-3 md:px-8 md:py-3.5 bg-primary-blue text-white rounded-full text-sm md:text-base font-medium tracking-wide transition-all duration-500 hover:shadow-xl hover:shadow-primary-blue/20 active:scale-95 overflow-hidden"
+              className="group relative w-full max-w-sm md:w-auto px-10 py-4 md:py-4.5 bg-primary-blue text-white rounded-full font-sans text-xs uppercase tracking-[0.2em] font-bold shadow-lg shadow-primary-blue/10 hover:shadow-xl hover:shadow-primary-blue/20 hover:-translate-y-0.5 active:scale-95 transition-all duration-300 overflow-hidden cursor-pointer"
             >
-              <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
-              <span className="relative">Agendar minha primeira sessão</span>
+              <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
+              <span className="relative z-10">Agendar minha primeira sessão</span>
             </button>
           </motion.div>
         )}

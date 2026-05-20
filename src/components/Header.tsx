@@ -68,18 +68,18 @@ export const Header: React.FC<HeaderProps> = ({
               <a 
                 key={item.name}
                 href={item.href} 
-                className={`text-[13px] tracking-wider transition-all font-sans font-extrabold relative group/link text-natural-ink/90 hover:text-primary-blue`}
+                className={`text-[13px] tracking-[0.02em] transition-all font-sans font-medium relative group/link text-natural-ink/85 hover:text-primary-blue`}
               >
                 {item.name}
-                <span className={`absolute -bottom-1 left-0 w-0 h-[1.5px] transition-all duration-500 group-hover/link:w-full bg-primary-blue`} />
+                <span className={`absolute -bottom-1 left-1/2 -translate-x-1/2 w-0 h-[1.5px] transition-all duration-500 group-hover/link:w-2/3 bg-primary-blue`} />
               </a>
             ))}
             <div className={`w-[1px] h-4 mx-1 transition-colors bg-primary-blue/10`} />
             <div className="flex gap-4 items-center">
-              <a href="https://instagram.com/psicologo.thiagofigueiro" target="_blank" rel="noopener noreferrer" className="transition-all hover:scale-125 duration-300 hover:-translate-y-0.5" title="Instagram">
+              <a href="https://instagram.com/psicologo.thiagofigueiro" target="_blank" rel="noopener noreferrer" className="transition-all hover:scale-125 duration-300 hover:-translate-y-0.5 filter hover:brightness-95" title="Instagram">
                 <img src="https://cdn.simpleicons.org/instagram/E4405F" className={`w-4 h-4`} alt="Instagram" />
               </a>
-              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="transition-all hover:scale-125 duration-300 hover:-translate-y-0.5" title="WhatsApp">
+              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="transition-all hover:scale-125 duration-300 hover:-translate-y-0.5 filter hover:brightness-95" title="WhatsApp">
                 <img src="https://cdn.simpleicons.org/whatsapp/25D366" className={`w-4 h-4`} alt="WhatsApp" />
               </a>
             </div>
@@ -87,9 +87,9 @@ export const Header: React.FC<HeaderProps> = ({
   
           <button
             onClick={openScheduling}
-            className={`hidden md:flex items-center gap-3 px-8 py-3 rounded-full shadow-2xl transition-all font-sans text-[12px] tracking-[0.1em] font-extrabold group bg-primary-blue text-white hover:bg-natural-ink hover:-translate-y-1 active:scale-95`}
+            className={`hidden md:flex items-center gap-3 px-8 py-3.5 rounded-full shadow-lg shadow-primary-blue/10 transition-all duration-500 font-sans text-[11px] tracking-[0.18em] font-bold uppercase group bg-primary-blue text-white hover:bg-natural-ink hover:shadow-xl hover:shadow-natural-ink/10 hover:-translate-y-0.5 active:scale-95`}
           >
-            <Calendar size={14} className="group-hover:scale-110 transition-transform" />
+            <Calendar size={13} className="group-hover:scale-110 transition-transform duration-300 text-[#F0F7FF]" />
             Agendar Consulta
           </button>
   

@@ -26,24 +26,25 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ openScheduling
         </motion.div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 items-stretch">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          whileHover={{ y: -10 }}
-          transition={{ duration: 0.8, delay: 0.1 }}
-          className="bg-white border border-primary-blue/10 p-8 md:p-12 rounded-[40px] flex flex-col justify-between cinematic-shadow group h-full transition-all"
-        >          <div className="space-y-8 text-left">
+          whileHover={{ y: -8 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="glass-morphism bg-white/70 border border-white/30 p-8 md:p-12 rounded-[32px] flex flex-col justify-between cinematic-shadow group h-full transition-all duration-300"
+        >
+          <div className="space-y-8 text-left">
             <div className="space-y-3">
-              <h3 className="text-2xl md:text-3xl font-serif text-natural-ink italic leading-tight">Atendimento pontual</h3>
+              <h3 className="text-2.5xl md:text-3xl font-serif text-natural-ink italic leading-tight group-hover:text-primary-blue transition-colors duration-300">Atendimento pontual</h3>
               <div className="flex items-center gap-3">
                 <div className="h-[1px] w-8 bg-primary-blue/30" />
-                <p className="text-[10px] uppercase tracking-[0.2em] text-primary-blue font-black">Foco em clareza imediata</p>
+                <p className="text-[10px] uppercase tracking-[0.25em] text-primary-blue font-bold">Foco em clareza imediata</p>
               </div>
             </div>
             
-            <p className="text-sm md:text-base text-natural-ink/80 leading-relaxed font-light">
+            <p className="text-sm md:text-base text-natural-ink/70 leading-relaxed font-light">
               Ideal para quem busca clareza sobre uma situação ou decisão específica, oferecendo escuta técnica e apoio imediato.
             </p>
 
@@ -54,20 +55,20 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ openScheduling
                 { label: 'Modalidade', value: 'Online / Presencial' }
               ].map((item, i) => (
                 <div key={i} className="flex justify-between items-center py-3 border-b border-primary-blue/5">
-                  <span className="text-[9px] uppercase tracking-widest text-natural-ink/80 font-bold">{item.label}</span>
-                  <span className="text-[10px] uppercase tracking-widest text-primary-blue font-black">{item.value}</span>
+                  <span className="text-[9px] uppercase tracking-widest text-natural-ink/65 font-semibold">{item.label}</span>
+                  <span className="text-[10px] uppercase tracking-widest text-primary-blue font-bold">{item.value}</span>
                 </div>
               ))}
             </div>
           </div>
           <div className="mt-12 space-y-8">
-            <div className="text-center group-hover:scale-110 transition-transform duration-500">
-              <span className="text-[10px] uppercase tracking-widest text-natural-ink/50 font-bold">Investimento</span>
+            <div className="text-center">
+              <span className="text-[10px] uppercase tracking-widest text-natural-ink/40 font-bold font-sans">Investimento</span>
               <p className="text-4xl font-serif text-natural-ink mt-2">R$ 120 <span className="text-xs italic font-light opacity-60">/sessão</span></p>
             </div>
             <button
               onClick={() => openScheduling('Atendimento Pontual')}
-              className="w-full py-5 rounded-2xl border border-primary-blue/20 text-primary-blue font-sans text-[10px] uppercase tracking-[0.3em] font-black hover:bg-primary-blue hover:text-white hover:border-primary-blue transition-all transform active:scale-95 cinematic-shadow"
+              className="w-full py-4.5 rounded-xl border border-primary-blue/20 text-primary-blue font-sans text-[10px] uppercase tracking-[0.3em] font-bold hover:bg-primary-blue hover:text-white hover:border-primary-blue hover:shadow-lg hover:shadow-primary-blue/15 transition-all duration-300 transform active:scale-95 cursor-pointer"
             >
               Iniciar Conversa
             </button>
@@ -78,20 +79,20 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ openScheduling
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          whileHover={{ y: -15 }}
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="bg-natural-ink text-white p-8 md:p-14 rounded-[50px] flex flex-col justify-between cinematic-shadow relative overflow-hidden h-full z-10 border border-white/5"
+          whileHover={{ y: -12 }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="bg-natural-ink text-white p-8 md:p-12 lg:py-14 rounded-[32px] flex flex-col justify-between cinematic-shadow relative overflow-hidden h-full z-10 border border-white/10 shadow-2xl shadow-primary-blue/5"
         >
-          {/* Decorative grain/glow */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-primary-blue/10 rounded-full blur-[100px] -z-10" />
+          {/* Decorative subtle ambient blue glow inside */}
+          <div className="absolute top-0 right-0 w-64 h-64 bg-primary-blue/15 rounded-full blur-[90px] -z-10" />
           
           <div className="space-y-8 text-left">
             <div className="space-y-5">
               <div className="inline-block">
                 <motion.span 
-                  animate={{ scale: [1, 1.05, 1] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                  className="bg-primary-blue text-white px-5 py-2 rounded-full text-[9px] uppercase tracking-[0.3em] font-black shadow-2xl shadow-primary-blue/20"
+                  animate={{ scale: [1, 1.03, 1] }}
+                  transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                  className="bg-primary-blue text-white px-5 py-2.5 rounded-full text-[9px] uppercase tracking-[0.35em] font-bold shadow-lg shadow-primary-blue/20"
                 >
                   Mais escolhido
                 </motion.span>
@@ -99,8 +100,8 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ openScheduling
               <div className="space-y-3">
                 <h3 className="text-3xl md:text-4xl font-serif italic leading-tight">Psicoterapia semanal</h3>
                 <div className="flex items-center gap-3">
-                  <div className="h-[1px] w-8 bg-white/30" />
-                  <p className="text-[10px] uppercase tracking-[0.2em] text-primary-blue font-black italic">Acompanhamento Contínuo</p>
+                  <div className="h-[1px] w-8 bg-white/25" />
+                  <p className="text-[10px] uppercase tracking-[0.25em] text-primary-blue font-bold italic">Acompanhamento Contínuo</p>
                 </div>
               </div>
             </div>
@@ -116,8 +117,8 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ openScheduling
                 { label: 'Foco', value: 'Autoconhecimento' }
               ].map((item, i) => (
                 <div key={i} className="flex justify-between items-center py-3 border-b border-white/5">
-                  <span className="text-[9px] uppercase tracking-widest text-white/80 font-bold">{item.label}</span>
-                  <span className="text-[10px] uppercase tracking-widest text-white font-black">{item.value}</span>
+                  <span className="text-[9px] uppercase tracking-widest text-white/70 font-semibold">{item.label}</span>
+                  <span className="text-[10px] uppercase tracking-widest text-white font-bold">{item.value}</span>
                 </div>
               ))}
             </div>
@@ -125,12 +126,12 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ openScheduling
           
           <div className="mt-12 space-y-8">
             <div className="text-center">
-              <span className="text-[10px] uppercase tracking-widest text-white/50 font-bold font-sans">Compromisso Mensal</span>
+              <span className="text-[10px] uppercase tracking-widest text-white/40 font-semibold font-sans">Compromisso Mensal</span>
               <p className="text-4xl font-serif text-white mt-2">R$ 400 <span className="text-xs italic font-light opacity-60">/mês</span></p>
             </div>
             <button
               onClick={() => openScheduling('Psicoterapia Semanal')}
-              className="w-full py-5 rounded-2xl bg-white text-natural-ink font-sans text-[10px] uppercase tracking-[0.3em] font-black shadow-2xl hover:scale-[1.02] active:scale-[0.98] transition-all"
+              className="w-full py-4.5 rounded-xl bg-white text-natural-ink font-sans text-[10px] uppercase tracking-[0.3em] font-bold shadow-xl hover:bg-[#F0F7FF] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 cursor-pointer"
             >
               Começar Jornada
             </button>
@@ -141,20 +142,20 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ openScheduling
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          whileHover={{ y: -10 }}
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-          className="bg-white border border-primary-blue/10 p-8 md:p-12 rounded-[40px] flex flex-col justify-between cinematic-shadow group h-full transition-all"
+          whileHover={{ y: -8 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+          className="glass-morphism bg-white/70 border border-white/30 p-8 md:p-12 rounded-[32px] flex flex-col justify-between cinematic-shadow group h-full transition-all duration-300"
         >
           <div className="space-y-8 text-left">
             <div className="space-y-3">
-              <h3 className="text-2xl md:text-3xl font-serif text-natural-ink italic leading-tight">Psicoterapia quinzenal</h3>
+              <h3 className="text-2.5xl md:text-3xl font-serif text-natural-ink italic leading-tight group-hover:text-primary-blue transition-colors duration-300">Psicoterapia quinzenal</h3>
               <div className="flex items-center gap-3">
                 <div className="h-[1px] w-8 bg-primary-blue/30" />
-                <p className="text-[10px] uppercase tracking-[0.2em] text-primary-blue font-black">Ritmo Equilibrado</p>
+                <p className="text-[10px] uppercase tracking-[0.25em] text-primary-blue font-bold">Ritmo Equilibrado</p>
               </div>
             </div>
             
-            <p className="text-sm md:text-base text-natural-ink/80 leading-relaxed font-light">
+            <p className="text-sm md:text-base text-natural-ink/70 leading-relaxed font-light">
               Ideal para manutenção de processos ou para quem prefere um ritmo mais espaçado, mantendo o cuidado constante.
             </p>
 
@@ -165,20 +166,20 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ openScheduling
                 { label: 'Plano', value: 'Quinzenal' }
               ].map((item, i) => (
                 <div key={i} className="flex justify-between items-center py-3 border-b border-primary-blue/5">
-                  <span className="text-[9px] uppercase tracking-widest text-natural-ink/80 font-bold">{item.label}</span>
-                  <span className="text-[10px] uppercase tracking-widest text-primary-blue font-black">{item.value}</span>
+                  <span className="text-[9px] uppercase tracking-widest text-natural-ink/65 font-semibold">{item.label}</span>
+                  <span className="text-[10px] uppercase tracking-widest text-primary-blue font-bold">{item.value}</span>
                 </div>
               ))}
             </div>
           </div>
           <div className="mt-12 space-y-8">
-            <div className="text-center group-hover:scale-110 transition-transform duration-500">
-              <span className="text-[10px] uppercase tracking-widest text-natural-ink/50 font-bold">Investimento</span>
+            <div className="text-center">
+              <span className="text-[10px] uppercase tracking-widest text-natural-ink/40 font-bold font-sans">Investimento</span>
               <p className="text-4xl font-serif text-natural-ink mt-2">R$ 250 <span className="text-xs italic font-light opacity-60">/mês</span></p>
             </div>
             <button
               onClick={() => openScheduling('Psicoterapia Quinzenal')}
-              className="w-full py-5 rounded-2xl border border-primary-blue/20 text-primary-blue font-sans text-[10px] uppercase tracking-[0.3em] font-black hover:bg-primary-blue hover:text-white hover:border-primary-blue transition-all transform active:scale-95 cinematic-shadow"
+              className="w-full py-4.5 rounded-xl border border-primary-blue/20 text-primary-blue font-sans text-[10px] uppercase tracking-[0.3em] font-bold hover:bg-primary-blue hover:text-white hover:border-primary-blue hover:shadow-lg hover:shadow-primary-blue/15 transition-all duration-300 transform active:scale-95 cursor-pointer"
             >
               Ver Disponibilidade
             </button>

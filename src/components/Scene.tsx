@@ -93,10 +93,10 @@ export const Scene: React.FC<SceneProps> = ({ scene, index }) => {
             <motion.div 
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1, delay: 0.5 }}
-              className="mb-4 lg:mb-6"
+              transition={{ duration: 1.2, delay: 0.5, ease: "easeOut" }}
+              className="mb-6 lg:mb-8"
             >
-              <span className="bg-primary-blue/30 backdrop-blur-md text-white text-[10px] md:text-[11px] px-5 py-2 rounded-full border border-white/40 font-black tracking-[0.4em] uppercase drop-shadow-lg shadow-xl">
+              <span className="bg-primary-blue/20 backdrop-blur-md text-white text-[10px] md:text-[11px] px-6 py-2.5 rounded-full border border-white/20 font-semibold tracking-[0.35em] uppercase shadow-lg shadow-black/10">
                 CRP 04/48708
               </span>
             </motion.div>
@@ -107,20 +107,20 @@ export const Scene: React.FC<SceneProps> = ({ scene, index }) => {
               whileInView={index === 0 ? undefined : { opacity: 1, y: 0 }}
               viewport={{ once: false }}
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-              className={`block font-sans text-[10px] md:text-xs lg:text-[11px] tracking-[0.3em] lg:tracking-[0.5em] font-black ${scene.image ? 'text-white drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)]' : 'text-primary-blue'}`}
+              className={`block font-sans text-[11px] md:text-xs lg:text-[11px] tracking-[0.4em] lg:tracking-[0.5em] font-bold ${scene.image ? 'text-white/90 drop-shadow-[0_2px_4px_rgba(0,0,0,0.4)]' : 'text-primary-blue'}`}
             >
               {scene.accent}
             </motion.span>
           </div>
           
           {scene.subtitle && (
-            <div className={`overflow-hidden ${index === 0 ? 'mb-2 lg:mb-6' : 'mb-4'}`}>
+            <div className={`overflow-hidden ${index === 0 ? 'mb-4 lg:mb-8' : 'mb-4'}`}>
               <motion.span 
                 initial={index === 0 ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 whileInView={index === 0 ? undefined : { opacity: 1, y: 0 }}
                 viewport={{ once: false }}
                 transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-                className={`block tracking-[0.02em] ${!scene.title ? 'font-serif text-3xl sm:text-4xl md:text-6xl lg:text-[75px] text-center max-w-5xl mx-auto leading-[1.1] italic py-12 px-4 shadow-black' : 'font-sans text-xs sm:text-sm md:text-base lg:text-[16px] font-bold italic tracking-[0.1em] lg:tracking-[0.15em]'} ${scene.image ? 'text-white drop-shadow-[0_4px_10px_rgba(0,0,0,0.8)] lg:drop-shadow-[0_6px_15px_rgba(0,0,0,0.9)]' : 'text-natural-ink/90'}`}
+                className={`block tracking-[0.02em] ${!scene.title ? 'font-serif text-3xl sm:text-4xl md:text-5xl lg:text-[68px] text-center max-w-5xl mx-auto leading-[1.2] italic py-16 px-6' : 'font-sans text-xs sm:text-sm md:text-base lg:text-[15px] font-medium italic tracking-[0.08em] lg:tracking-[0.12em]'} ${scene.image ? 'text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)]' : 'text-natural-ink/80'}`}
               >
                 {scene.subtitle}
               </motion.span>
@@ -133,7 +133,7 @@ export const Scene: React.FC<SceneProps> = ({ scene, index }) => {
               whileInView={index === 0 ? undefined : { opacity: 1, y: 0 }}
               viewport={{ once: false }}
               transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-              className={`text-4xl sm:text-5xl md:text-7xl lg:text-[70px] xl:text-[85px] font-serif italic ${scene.id === 'identificacao' ? 'leading-[1.1] md:leading-[1.1]' : (index === 0 ? 'leading-[1.1] lg:leading-[0.8] lg:-ml-2' : 'leading-[1.1]')} ${scene.image ? 'text-white drop-shadow-[0_4px_10px_rgba(0,0,0,0.8)] lg:drop-shadow-[0_6px_15px_rgba(0,0,0,0.9)]' : 'text-natural-ink'}`}
+              className={`text-4xl sm:text-5xl md:text-7xl lg:text-[70px] xl:text-[85px] font-serif italic ${scene.id === 'identificacao' ? 'leading-[1.2]' : (index === 0 ? 'leading-[1.1] lg:leading-[0.8] lg:-ml-2 font-light' : 'leading-[1.2]')} ${scene.image ? 'text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)]' : 'text-natural-ink'}`}
             >
               {scene.title}
             </motion.h2>
@@ -141,9 +141,9 @@ export const Scene: React.FC<SceneProps> = ({ scene, index }) => {
             {index === 0 && (
               <motion.div 
                 initial={{ width: 0 }}
-                whileInView={{ width: '40%' }}
+                whileInView={{ width: '30%' }}
                 transition={{ duration: 1.5, delay: 1, ease: "circOut" }}
-                className="h-px bg-white/30 mt-8 hidden md:block"
+                className="h-[1.5px] bg-white/30 mt-10 hidden md:block"
               />
             )}
           </div>
