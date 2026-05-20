@@ -7,8 +7,34 @@ export const LoadingScreen: React.FC = () => {
       initial={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.45, ease: "easeInOut" }}
-      className="fixed inset-0 z-[200] bg-natural-bg flex flex-col items-center justify-center p-6"
+      className="fixed inset-0 z-[200] bg-natural-bg flex flex-col items-center justify-center p-6 overflow-hidden select-none"
     >
+      {/* Background animated elegant orbs */}
+      <motion.div 
+        animate={{
+          x: [0, 15, -10, 0],
+          y: [0, -15, 15, 0],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+        className="absolute -top-12 -left-12 w-72 h-72 bg-primary-blue/[0.03] rounded-full blur-3xl pointer-events-none"
+      />
+      <motion.div 
+        animate={{
+          x: [0, -15, 10, 0],
+          y: [0, 15, -15, 0],
+        }}
+        transition={{
+          duration: 10,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+        className="absolute -bottom-16 -right-16 w-80 h-80 bg-primary-blue/[0.04] rounded-full blur-3xl pointer-events-none"
+      />
+
       <div className="relative">
         <motion.div
           initial={{ scale: 0.9, opacity: 0 }}
@@ -53,18 +79,22 @@ export const LoadingScreen: React.FC = () => {
         </div>
       </motion.div>
 
-      <div className="absolute bottom-12 w-32 h-[1px] bg-primary-blue/10 overflow-hidden">
-        <motion.div
-          animate={{
-            x: ["-100%", "100%"]
-          }}
-          transition={{
-            duration: 1,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-          className="w-full h-full bg-primary-blue/40"
-        />
+      {/* Modern thin progress indicator nested inside a pill container */}
+      <div className="absolute bottom-16 flex flex-col items-center gap-3">
+        <span className="text-[9px] uppercase tracking-[0.3em] text-natural-ink/30 font-medium">Carregando</span>
+        <div className="w-36 h-[2px] bg-primary-blue/10 overflow-hidden rounded-full relative">
+          <motion.div
+            animate={{
+              left: ["-100%", "100%"]
+            }}
+            transition={{
+              duration: 1.2,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+            className="absolute top-0 bottom-0 w-1/2 bg-gradient-to-r from-transparent via-primary-blue/60 to-transparent"
+          />
+        </div>
       </div>
     </motion.div>
   );
