@@ -28,10 +28,10 @@ export const AboutSection: React.FC = () => {
         {/* Right Side: Content */}
         <div className="space-y-12 md:space-y-16 order-1 lg:order-2">
           <motion.div 
-            initial={{ opacity: 0, x: 20 }}
+            initial={{ opacity: 0, x: 15 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
             className="space-y-8"
           >
             <div className="space-y-4">
@@ -78,7 +78,7 @@ export const AboutSection: React.FC = () => {
           </div>
           <div className="space-y-3">
             <h4 className="text-2xl font-serif italic text-natural-ink group-hover:text-primary-blue transition-colors duration-300">Empatia</h4>
-            <p className="text-sm md:text-base text-natural-ink/60 leading-relaxed font-light">Escuta profunda, ativa e um ambiente inteiramente safe e livre de quaisquer julgamentos.</p>
+            <p className="text-sm md:text-base text-natural-ink/60 leading-relaxed font-light">Escuta profunda, ativa e um ambiente inteiramente seguro e livre de quaisquer julgamentos.</p>
           </div>
         </motion.div>
 

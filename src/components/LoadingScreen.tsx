@@ -6,14 +6,14 @@ export const LoadingScreen: React.FC = () => {
     <motion.div
       initial={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 1, ease: "easeInOut" }}
+      transition={{ duration: 0.45, ease: "easeInOut" }}
       className="fixed inset-0 z-[200] bg-natural-bg flex flex-col items-center justify-center p-6"
     >
       <div className="relative">
         <motion.div
-          initial={{ scale: 0.8, opacity: 0 }}
+          initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 1, ease: "easeOut" }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-primary-blue shadow-2xl relative z-10"
         >
           <img 
@@ -27,11 +27,11 @@ export const LoadingScreen: React.FC = () => {
         
         <motion.div
           animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.2, 0.4, 0.2]
+            scale: [1, 1.15, 1],
+            opacity: [0.2, 0.35, 0.2]
           }}
           transition={{
-            duration: 3,
+            duration: 2,
             repeat: Infinity,
             ease: "easeInOut"
           }}
@@ -40,15 +40,15 @@ export const LoadingScreen: React.FC = () => {
       </div>
 
       <motion.div
-        initial={{ y: 20, opacity: 0 }}
+        initial={{ y: 15, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.5, duration: 0.8 }}
+        transition={{ delay: 0.15, duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
         className="mt-8 text-center space-y-2"
       >
         <h2 className="font-serif text-2xl md:text-3xl italic text-natural-ink">Thiago Figueiró</h2>
         <div className="flex items-center justify-center gap-4">
           <div className="h-[1px] w-8 bg-primary-blue/30" />
-          <span className="text-[9px] md:text-[10px] uppercase tracking-[0.4em] text-natural-ink font-black">Psicólogo Clínico</span>
+          <span className="text-[9px] md:text-[10px] uppercase tracking-[0.4em] text-natural-ink font-bold">Psicólogo Clínico</span>
           <div className="h-[1px] w-8 bg-primary-blue/30" />
         </div>
       </motion.div>
@@ -59,9 +59,9 @@ export const LoadingScreen: React.FC = () => {
             x: ["-100%", "100%"]
           }}
           transition={{
-            duration: 1.5,
+            duration: 1,
             repeat: Infinity,
-            ease: "linear"
+            ease: "easeInOut"
           }}
           className="w-full h-full bg-primary-blue/40"
         />
