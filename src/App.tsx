@@ -48,24 +48,31 @@ function App() {
       'https://cdn.simpleicons.org/whatsapp/white'
     ];
 
+    const startTime = Date.now();
+    const minLoadingDuration = 1800; // Enforce a professional 1.8-second minimum display time
+
     let loadedCount = 0;
     const totalToLoad = criticalImages.length;
     let fallbackTimer: any = null;
     let finishTimer: any = null;
 
-    // Safety fallback: dismiss loader after maximum 1200ms regardless of loading progress
+    // Safety fallback: dismiss loader after maximum 3500ms regardless of loading progress
     fallbackTimer = setTimeout(() => {
       setIsLoading(false);
-    }, 1200);
+    }, 3500);
 
     const onAssetLoaded = () => {
       loadedCount++;
       if (loadedCount >= totalToLoad) {
         if (fallbackTimer) clearTimeout(fallbackTimer);
-        // Beautiful, micro-delayed exit once all assets are verified and cached
+        
+        // Calculate remaining time to hit the minimum display duration
+        const elapsedTime = Date.now() - startTime;
+        const remainingTime = Math.max(0, minLoadingDuration - elapsedTime);
+
         finishTimer = setTimeout(() => {
           setIsLoading(false);
-        }, 150);
+        }, remainingTime);
       }
     };
 
