@@ -27,7 +27,7 @@ export const Scene: React.FC<SceneProps> = ({ scene, index }) => {
   const imageY = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
 
   return (
-    <div ref={ref} className={`relative h-screen h-[100dvh] w-full flex overflow-hidden ${index === 0 ? 'justify-center items-end lg:justify-start lg:items-end pb-36 lg:pb-24 p-6 lg:pl-16' : 'justify-center items-center'} ${!scene.image ? 'bg-[#F7F5F2]' : ''}`}>
+    <div ref={ref} className={`relative min-h-[100dvh] lg:h-screen lg:h-[100dvh] w-full flex overflow-hidden py-24 sm:py-32 lg:py-0 ${index === 0 ? 'justify-center items-end lg:justify-start lg:items-end pb-36 lg:pb-24 p-6 lg:pl-16' : 'justify-center items-center'} ${!scene.image ? 'bg-[#F7F5F2]' : ''}`}>
       {scene.image && (
         <motion.div 
           style={{ 
@@ -86,9 +86,9 @@ export const Scene: React.FC<SceneProps> = ({ scene, index }) => {
 
       <motion.div 
         style={{ opacity: index === 0 ? 1 : opacity, y: index === 0 ? 0 : y }}
-        className={`relative z-10 w-full max-w-[1440px] px-6 lg:px-12 flex ${index === 0 ? 'items-center lg:items-end justify-center lg:justify-start' : 'items-center justify-center lg:items-center lg:justify-center'}`}
+        className={`relative z-10 w-full max-w-[1440px] px-6 lg:px-12 flex flex-col lg:flex-row gap-12 lg:gap-16 items-center justify-center`}
       >
-        <div className={`max-w-xl lg:max-w-7xl flex flex-col ${index === 0 ? 'items-center lg:items-start text-center lg:text-left' : (scene.sideImage ? 'text-left items-start' : (scene.id === 'identificacao' ? 'text-center max-w-4xl mx-auto items-center' : 'text-center items-center'))}`}>
+        <div className={`w-full max-w-xl lg:max-w-2xl xl:max-w-3xl flex flex-col ${index === 0 ? 'items-center lg:items-start text-center lg:text-left' : (scene.sideImage ? 'text-center lg:text-left items-center lg:items-start' : (scene.id === 'identificacao' ? 'text-center max-w-4xl mx-auto items-center' : 'text-center items-center'))}`}>
           {index === 0 && (
             <motion.div 
               initial={{ opacity: 0, scale: 0.8 }}

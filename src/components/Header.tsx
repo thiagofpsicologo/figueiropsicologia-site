@@ -42,13 +42,13 @@ export const Header: React.FC<HeaderProps> = ({
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 w-full z-[100] px-6 md:px-12 transition-all duration-700 ${isScrolled ? 'py-3 md:py-4' : 'py-6 md:py-10'}`}>
+      <nav className={`fixed top-0 left-0 w-full z-[100] px-6 lg:px-12 transition-all duration-700 ${isScrolled ? 'py-3 lg:py-4' : 'py-6 lg:py-10'}`}>
         <div className={`max-w-7xl mx-auto flex flex-row justify-between items-center transition-all duration-700`}>
           <a 
             href="#" 
-            className={`flex items-center gap-2 md:gap-3 px-3 py-1.5 md:px-5 md:py-2.5 rounded-full border transition-all glass-morphism overflow-hidden shrink-0 group hover:shadow-2xl active:scale-95 ${isScrolled ? 'border-primary-blue/10' : 'border-white/20'}`}
+            className={`flex items-center gap-2 lg:gap-3 px-3 py-1.5 lg:px-5 lg:py-2.5 rounded-full border transition-all glass-morphism overflow-hidden shrink-0 group hover:shadow-2xl active:scale-95 ${isScrolled ? 'border-primary-blue/10' : 'border-white/20'}`}
           >
-            <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-black flex items-center justify-center overflow-hidden shrink-0 group-hover:scale-110 transition-transform shadow-2xl">
+            <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-full bg-black flex items-center justify-center overflow-hidden shrink-0 group-hover:scale-110 transition-transform shadow-2xl">
               <img 
                 src="https://drive.google.com/thumbnail?id=18OxYoRjXAKjdK4w608G6HkYJxF4HAn0O&sz=w120" 
                 alt="Logo Thiago Figueiró" 
@@ -56,10 +56,10 @@ export const Header: React.FC<HeaderProps> = ({
                 referrerPolicy="no-referrer"
               />
             </div>
-            <span className={`font-serif text-sm md:text-lg font-medium tracking-tight transition-colors truncate text-natural-ink ${!isScrolled && 'md:text-natural-ink'}`}>Thiago Figueiró</span>
+            <span className={`font-serif text-sm lg:text-lg font-medium tracking-tight transition-colors truncate text-natural-ink ${!isScrolled && 'lg:text-natural-ink'}`}>Thiago Figueiró</span>
           </a>
   
-          <div className={`hidden md:flex gap-6 lg:gap-8 items-center px-8 py-3 rounded-full border transition-all duration-700 glass-morphism ${isScrolled ? 'border-primary-blue/10 shadow-xl' : 'border-white/20'}`}>
+          <div className={`hidden lg:flex gap-6 lg:gap-8 items-center px-8 py-3 rounded-full border transition-all duration-700 glass-morphism ${isScrolled ? 'border-primary-blue/10 shadow-xl' : 'border-white/20'}`}>
             {[
               { name: 'Início', href: '#' },
               { name: 'Sobre Mim', href: '#about' },
@@ -103,7 +103,7 @@ export const Header: React.FC<HeaderProps> = ({
 
           <button
             onClick={openScheduling}
-            className={`hidden md:flex items-center gap-3 px-8 py-3.5 rounded-full shadow-lg shadow-primary-blue/10 transition-all duration-500 font-sans text-[11px] tracking-[0.18em] font-bold uppercase group bg-primary-blue text-white hover:bg-natural-ink hover:shadow-xl hover:shadow-natural-ink/10 hover:-translate-y-0.5 active:scale-95`}
+            className={`hidden lg:flex items-center gap-3 px-8 py-3.5 rounded-full shadow-lg shadow-primary-blue/10 transition-all duration-500 font-sans text-[11px] tracking-[0.18em] font-bold uppercase group bg-primary-blue text-white hover:bg-natural-ink hover:shadow-xl hover:shadow-natural-ink/10 hover:-translate-y-0.5 active:scale-95`}
           >
             <Calendar size={13} className="group-hover:scale-110 transition-transform duration-300 text-[#F0F7FF]" />
             Agendar Consulta
@@ -114,7 +114,7 @@ export const Header: React.FC<HeaderProps> = ({
 
           <button 
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className={`md:hidden shrink-0 w-12 h-12 rounded-full flex items-center justify-center transition-all z-[120] glass-morphism active:scale-90`}
+            className={`lg:hidden shrink-0 w-12 h-12 rounded-full flex items-center justify-center transition-all z-[120] glass-morphism active:scale-90`}
             aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"}
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -125,14 +125,13 @@ export const Header: React.FC<HeaderProps> = ({
       <AnimatePresence>
         {isMenuOpen && (
           <>
-            {/* Background Overlay */}
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2, ease: "easeInOut" }}
               onClick={() => setIsMenuOpen(false)}
-              className="fixed inset-0 bg-natural-ink/20 backdrop-blur-sm z-[125] md:hidden"
+              className="fixed inset-0 bg-natural-ink/20 backdrop-blur-sm z-[125] lg:hidden"
             />
             
             <motion.div 
@@ -140,7 +139,7 @@ export const Header: React.FC<HeaderProps> = ({
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: '100%' }}
               transition={{ type: 'tween', ease: [0.16, 1, 0.3, 1], duration: 0.3 }}
-              className="fixed inset-0 h-[100dvh] bg-white z-[130] md:hidden flex flex-col p-6 overflow-hidden overscroll-none"
+              className="fixed inset-y-0 right-0 h-[100dvh] w-full sm:max-w-md bg-white z-[130] lg:hidden flex flex-col p-6 md:p-8 overflow-hidden overscroll-none shadow-2xl border-l border-primary-blue/5"
             >
               <div className="absolute top-0 right-0 w-64 h-64 bg-primary-blue/10 filter blur-[100px] rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
               <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary-blue/5 filter blur-[120px] rounded-full translate-y-1/3 -translate-x-1/3 pointer-events-none" />
