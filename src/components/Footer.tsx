@@ -116,6 +116,7 @@ export const Footer: React.FC<FooterProps> = ({
                   <a href="mailto:thiagomeirelesfigueiro@hotmail.com.br" className="text-sm font-medium text-natural-ink/80 hover:text-primary-blue transition-colors">thiagomeirelesfigueiro@hotmail.com.br</a>
                 </div>
               </div>
+
             </div>
           </div>
 

@@ -12,6 +12,8 @@ import { ServicesSection } from './components/ServicesSection';
 import { CTASection } from './components/CTASection';
 import { FAQSection } from './components/FAQSection';
 import { LoadingScreen } from './components/LoadingScreen';
+import { SearchModal } from './components/SearchModal';
+
 import { SCENES, WHATSAPP_LINK } from './constants';
 
 function App() {
@@ -21,7 +23,29 @@ function App() {
   const [isSchedulingOpen, setIsSchedulingOpen] = useState(false);
   const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
   const [isTermsOpen, setIsTermsOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+
   const [selectedPlanModal, setSelectedPlanModal] = useState<string | undefined>(undefined);
+
+  // Global search shortcut keys listeners
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Cmd/Ctrl + K opens search
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        setIsSearchOpen(true);
+      }
+      // '/' opens search if not currently focused in any input
+      if (e.key === '/' && document.activeElement?.tagName !== 'INPUT' && document.activeElement?.tagName !== 'TEXTAREA') {
+        e.preventDefault();
+        setIsSearchOpen(true);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
+
 
   const openScheduling = (plan?: string) => {
     setSelectedPlanModal(plan);
@@ -181,6 +205,7 @@ function App() {
         openScheduling={() => openScheduling()}
         setIsPrivacyOpen={setIsPrivacyOpen}
         setIsTermsOpen={setIsTermsOpen}
+        openSearch={() => setIsSearchOpen(true)}
       />
 
       <main className="relative">
@@ -261,6 +286,12 @@ function App() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      <SearchModal 
+        isOpen={isSearchOpen} 
+        onClose={() => setIsSearchOpen(false)} 
+        openScheduling={openScheduling} 
+      />
     </div>
   );
 }

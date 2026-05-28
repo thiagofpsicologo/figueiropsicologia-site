@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Menu, X, Calendar, ChevronRight, Instagram } from 'lucide-react';
+import { Menu, X, Calendar, ChevronRight, Instagram, Search } from 'lucide-react';
 import { WHATSAPP_LINK } from '../constants';
 
 interface HeaderProps {
@@ -10,6 +10,7 @@ interface HeaderProps {
   openScheduling: () => void;
   setIsPrivacyOpen: (open: boolean) => void;
   setIsTermsOpen: (open: boolean) => void;
+  openSearch: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({ 
@@ -18,7 +19,8 @@ export const Header: React.FC<HeaderProps> = ({
   setIsMenuOpen, 
   openScheduling,
   setIsPrivacyOpen,
-  setIsTermsOpen
+  setIsTermsOpen,
+  openSearch
 }) => {
   // Prevent scrolling when mobile menu is open
   useEffect(() => {
@@ -74,6 +76,17 @@ export const Header: React.FC<HeaderProps> = ({
                 <span className={`absolute -bottom-1 left-1/2 -translate-x-1/2 w-0 h-[1.5px] transition-all duration-500 group-hover/link:w-2/3 bg-primary-blue`} />
               </a>
             ))}
+
+            {/* Elegant Search button inside desktop menu pill right after Contato */}
+            <button
+              onClick={openSearch}
+              className="flex items-center gap-1.5 text-[13px] tracking-[0.02em] transition-all font-sans font-medium text-natural-ink/85 hover:text-primary-blue cursor-pointer group/search"
+              title="Pesquisar no site (⌘K)"
+            >
+              <Search size={13} className="text-primary-blue group-hover/search:scale-110 transition-transform duration-300 shrink-0" />
+              <span>Buscar</span>
+            </button>
+
             <div className={`w-[1px] h-4 mx-1 transition-colors bg-primary-blue/10`} />
             <div className="flex gap-4 items-center">
               <a href="https://instagram.com/psicologo.thiagofigueiro" target="_blank" rel="noopener noreferrer" className="transition-all hover:scale-125 duration-300 hover:-translate-y-0.5 filter hover:brightness-95" title="Instagram">
@@ -84,7 +97,10 @@ export const Header: React.FC<HeaderProps> = ({
               </a>
             </div>
           </div>
+
   
+
+
           <button
             onClick={openScheduling}
             className={`hidden md:flex items-center gap-3 px-8 py-3.5 rounded-full shadow-lg shadow-primary-blue/10 transition-all duration-500 font-sans text-[11px] tracking-[0.18em] font-bold uppercase group bg-primary-blue text-white hover:bg-natural-ink hover:shadow-xl hover:shadow-natural-ink/10 hover:-translate-y-0.5 active:scale-95`}
@@ -92,7 +108,10 @@ export const Header: React.FC<HeaderProps> = ({
             <Calendar size={13} className="group-hover:scale-110 transition-transform duration-300 text-[#F0F7FF]" />
             Agendar Consulta
           </button>
+
   
+
+
           <button 
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className={`md:hidden shrink-0 w-12 h-12 rounded-full flex items-center justify-center transition-all z-[120] glass-morphism active:scale-90`}
@@ -178,6 +197,26 @@ export const Header: React.FC<HeaderProps> = ({
                           <ChevronRight size={18} className="text-primary-blue/30" />
                         </motion.a>
                       ))}
+
+                      {/* Search trigger item in mobile menu */}
+                      <motion.button
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.05 + 5 * 0.03, duration: 0.25, ease: "easeOut" }}
+                        onClick={() => {
+                          setIsMenuOpen(false);
+                          setTimeout(() => openSearch(), 200);
+                        }}
+                        className="w-full text-left group flex items-center justify-between py-2.5 px-1 rounded-xl transition-all active:bg-primary-blue/5 cursor-pointer"
+                      >
+                        <span className="text-3xl text-natural-ink font-serif italic transition-all group-active:text-primary-blue flex items-center gap-3">
+                          <Search size={24} className="text-primary-blue shrink-0 inline" />
+                          Buscar no site
+                        </span>
+                        <ChevronRight size={18} className="text-primary-blue/30" />
+                      </motion.button>
+
+
                     </nav>
                   </div>
   
