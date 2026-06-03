@@ -42,13 +42,13 @@ export const Header: React.FC<HeaderProps> = ({
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 w-full z-[100] px-6 lg:px-12 transition-all duration-700 ${isScrolled ? 'py-3 lg:py-4' : 'py-6 lg:py-10'}`}>
+      <nav className={`fixed top-0 left-0 w-full z-[100] px-6 lg:px-12 transition-all duration-700 ${isScrolled ? 'py-3 lg:py-3.5' : 'py-6 lg:py-8'}`}>
         <div className={`max-w-7xl mx-auto flex flex-row justify-between items-center transition-all duration-700`}>
           <a 
             href="#" 
-            className={`flex items-center gap-2 lg:gap-3 px-3 py-1.5 lg:px-5 lg:py-2.5 rounded-full border transition-all glass-morphism overflow-hidden shrink-0 group hover:shadow-2xl active:scale-95 ${isScrolled ? 'border-primary-blue/10' : 'border-white/20'}`}
+            className={`flex items-center gap-2 lg:gap-2.5 px-3 py-1.5 lg:px-4 lg:py-2 rounded-full border transition-all glass-morphism overflow-hidden shrink-0 group hover:shadow-2xl active:scale-95 ${isScrolled ? 'border-primary-blue/10' : 'border-white/20'}`}
           >
-            <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-full bg-black flex items-center justify-center overflow-hidden shrink-0 group-hover:scale-110 transition-transform shadow-2xl">
+            <div className="w-8 h-8 lg:w-9 lg:h-9 rounded-full bg-black flex items-center justify-center overflow-hidden shrink-0 group-hover:scale-110 transition-transform shadow-2xl">
               <img 
                 src="https://drive.google.com/thumbnail?id=18OxYoRjXAKjdK4w608G6HkYJxF4HAn0O&sz=w120" 
                 alt="Logo Thiago Figueiró" 
@@ -56,7 +56,7 @@ export const Header: React.FC<HeaderProps> = ({
                 referrerPolicy="no-referrer"
               />
             </div>
-            <span className={`font-serif text-sm lg:text-lg font-medium tracking-tight transition-colors truncate text-natural-ink ${!isScrolled && 'lg:text-natural-ink'}`}>Thiago Figueiró</span>
+            <span className={`font-serif text-sm lg:text-base font-medium tracking-tight transition-colors truncate text-natural-ink ${!isScrolled && 'lg:text-natural-ink'}`}>Thiago Figueiró</span>
           </a>
   
           <div className={`hidden lg:flex gap-4 lg:gap-5 xl:gap-6 items-center px-5 py-2 lg:px-6 rounded-full border transition-all duration-700 glass-morphism ${isScrolled ? 'border-primary-blue/10 shadow-xl' : 'border-white/20'}`}>
@@ -103,7 +103,7 @@ export const Header: React.FC<HeaderProps> = ({
 
           <button
             onClick={openScheduling}
-            className={`hidden lg:flex items-center gap-3 px-8 py-3.5 rounded-full shadow-lg shadow-primary-blue/10 transition-all duration-500 font-sans text-[11px] tracking-[0.18em] font-bold uppercase group bg-primary-blue text-white hover:bg-natural-ink hover:shadow-xl hover:shadow-natural-ink/10 hover:-translate-y-0.5 active:scale-95`}
+            className={`hidden lg:flex items-center gap-2.5 px-6 py-3 rounded-full shadow-lg shadow-primary-blue/10 transition-all duration-500 font-sans text-[11px] tracking-[0.18em] font-bold uppercase group bg-primary-blue text-white hover:bg-natural-ink hover:shadow-xl hover:shadow-natural-ink/10 hover:-translate-y-0.5 active:scale-95`}
           >
             <Calendar size={13} className="group-hover:scale-110 transition-transform duration-300 text-[#F0F7FF]" />
             Agendar Consulta
