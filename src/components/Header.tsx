@@ -59,7 +59,7 @@ export const Header: React.FC<HeaderProps> = ({
             <span className={`font-serif text-sm lg:text-lg font-medium tracking-tight transition-colors truncate text-natural-ink ${!isScrolled && 'lg:text-natural-ink'}`}>Thiago Figueiró</span>
           </a>
   
-          <div className={`hidden lg:flex gap-6 lg:gap-8 items-center px-8 py-3 rounded-full border transition-all duration-700 glass-morphism ${isScrolled ? 'border-primary-blue/10 shadow-xl' : 'border-white/20'}`}>
+          <div className={`hidden lg:flex gap-4 lg:gap-5 xl:gap-6 items-center px-5 py-2 lg:px-6 rounded-full border transition-all duration-700 glass-morphism ${isScrolled ? 'border-primary-blue/10 shadow-xl' : 'border-white/20'}`}>
             {[
               { name: 'Início', href: '#' },
               { name: 'Sobre Mim', href: '#about' },
