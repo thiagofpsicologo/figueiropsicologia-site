@@ -46,7 +46,7 @@ export const CTASection: React.FC<CTASectionProps> = ({ openScheduling }) => {
               className="inline-flex items-center gap-2 text-[10px] md:text-xs uppercase tracking-[0.25em] text-white/90 bg-white/10 backdrop-blur-md px-5 py-2 rounded-full border border-white/20 font-bold"
             >
               <MapPin size={13} className="text-[#93C5FD]" />
-              Atendimento em Belo Horizonte (BH) &amp; Online
+              Atendimento Presencial em Belo Horizonte e Ribeirão das Neves &amp; Online
             </motion.span>
             <h2 className="text-6xl md:text-9xl font-serif italic text-white leading-[0.9] tracking-tighter">
               Sua jornada <br /> <span className="text-primary-blue">começa aqui.</span>

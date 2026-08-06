@@ -39,7 +39,7 @@ export const AboutSection: React.FC = () => {
                 <span className="text-[9px] md:text-[10px] uppercase tracking-[0.3em] text-primary-blue font-bold">Sobre Mim</span>
                 <span className="hidden sm:block w-1 h-1 rounded-full bg-primary-blue/30" />
                 <span className="text-[9px] md:text-[10px] uppercase tracking-[0.3em] text-white font-black bg-primary-blue px-3 py-1 rounded-full shadow-sm flex items-center gap-1">
-                  <MapPin size={11} /> Belo Horizonte - BH
+                  <MapPin size={11} /> Belo Horizonte e Ribeirão das Neves
                 </span>
                 <span className="text-[9px] md:text-[10px] uppercase tracking-[0.3em] text-primary-blue font-black bg-primary-blue/10 px-3 py-1 rounded-full border border-primary-blue/20">
                   CRP 04/48708
@@ -52,7 +52,7 @@ export const AboutSection: React.FC = () => {
             
             <div className="text-left space-y-6 md:space-y-10 py-4">
               <p className="text-lg md:text-xl text-natural-ink/80 font-light leading-relaxed">
-                Sou <span className="font-medium text-primary-blue">Thiago Figueiró</span>, psicólogo clínico formado pela <span className="font-medium text-primary-blue">FUMEC</span>. Atendo presencialmente em <span className="font-medium text-primary-blue">Belo Horizonte (BH)</span> e online para todo o Brasil. Desde 2017, acompanho pessoas em seus processos de autoconhecimento, ajudando-as a compreender emoções, romper padrões de sofrimento e construir novas narrativas com mais clareza e leveza.
+                Sou <span className="font-medium text-primary-blue">Thiago Figueiró</span>, psicólogo clínico formado pela <span className="font-medium text-primary-blue">FUMEC</span>. Atendo presencialmente em <span className="font-medium text-primary-blue">Belo Horizonte e Ribeirão das Neves</span> e online para todo o Brasil. Desde 2017, acompanho pessoas em seus processos de autoconhecimento, ajudando-as a compreender emoções, romper padrões de sofrimento e construir novas narrativas com mais clareza e leveza.
               </p>
               
               <div className="border-l-4 border-primary-blue/20 pl-8 py-2">

@@ -104,7 +104,7 @@ export const Footer: React.FC<FooterProps> = ({
                 </div>
                 <div>
                   <span className="block text-[10px] uppercase tracking-widest text-primary-blue font-bold mb-0.5">Atendimento Presencial</span>
-                  <span className="text-sm font-bold text-natural-ink block">Belo Horizonte, MG (BH)</span>
+                  <span className="text-sm font-bold text-natural-ink block">Belo Horizonte e Ribeirão das Neves</span>
                   <span className="text-xs text-natural-ink/60 font-light block mt-0.5">Atendimento presencial e online</span>
                 </div>
               </div>

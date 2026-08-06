@@ -25,7 +25,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ openScheduling
 
           <div className="inline-flex items-center gap-2 bg-primary-blue/10 border border-primary-blue/20 text-primary-blue px-5 py-2.5 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-wider shadow-sm mt-2">
             <MapPin size={14} className="shrink-0 text-primary-blue" />
-            <span>Presencial em Belo Horizonte (BH) &amp; Terapia Online</span>
+            <span>Atendimento Presencial em Belo Horizonte e Ribeirão das Neves &amp; Online</span>
           </div>
 
 
