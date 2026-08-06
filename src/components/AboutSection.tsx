@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Heart, Shield, GraduationCap, Award, Briefcase } from 'lucide-react';
+import { Heart, Shield, GraduationCap, Award, Briefcase, MapPin } from 'lucide-react';
 
 export const AboutSection: React.FC = () => {
   return (
@@ -35,10 +35,15 @@ export const AboutSection: React.FC = () => {
             className="space-y-8"
           >
             <div className="space-y-4">
-              <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+              <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
                 <span className="text-[9px] md:text-[10px] uppercase tracking-[0.3em] text-primary-blue font-bold">Sobre Mim</span>
                 <span className="hidden sm:block w-1 h-1 rounded-full bg-primary-blue/30" />
-                <span className="text-[9px] md:text-[10px] uppercase tracking-[0.4em] text-white font-black bg-primary-blue px-3 py-1 rounded-full shadow-sm">CRP 04/48708</span>
+                <span className="text-[9px] md:text-[10px] uppercase tracking-[0.3em] text-white font-black bg-primary-blue px-3 py-1 rounded-full shadow-sm flex items-center gap-1">
+                  <MapPin size={11} /> Belo Horizonte - BH
+                </span>
+                <span className="text-[9px] md:text-[10px] uppercase tracking-[0.3em] text-primary-blue font-black bg-primary-blue/10 px-3 py-1 rounded-full border border-primary-blue/20">
+                  CRP 04/48708
+                </span>
               </div>
               <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif leading-tight text-natural-ink italic">
                 Um espaço seguro <span className="text-primary-blue/60 italic">para o seu sentir.</span>
@@ -47,7 +52,7 @@ export const AboutSection: React.FC = () => {
             
             <div className="text-left space-y-6 md:space-y-10 py-4">
               <p className="text-lg md:text-xl text-natural-ink/80 font-light leading-relaxed">
-                Sou <span className="font-medium text-primary-blue">Thiago Figueiró</span>, psicólogo clínico formado pela <span className="font-medium text-primary-blue">FUMEC</span>. Desde 2017, acompanho pessoas em seus processos de autoconhecimento, ajudando-as a compreender emoções, romper padrões de sofrimento e construir novas narrativas com mais clareza e leveza.
+                Sou <span className="font-medium text-primary-blue">Thiago Figueiró</span>, psicólogo clínico formado pela <span className="font-medium text-primary-blue">FUMEC</span>. Atendo presencialmente em <span className="font-medium text-primary-blue">Belo Horizonte (BH)</span> e online para todo o Brasil. Desde 2017, acompanho pessoas em seus processos de autoconhecimento, ajudando-as a compreender emoções, romper padrões de sofrimento e construir novas narrativas com mais clareza e leveza.
               </p>
               
               <div className="border-l-4 border-primary-blue/20 pl-8 py-2">

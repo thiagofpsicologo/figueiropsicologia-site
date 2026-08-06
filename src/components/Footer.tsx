@@ -98,13 +98,14 @@ export const Footer: React.FC<FooterProps> = ({
                   <a href="tel:+5531994238535" className="text-sm font-medium text-natural-ink/80 hover:text-primary-blue transition-colors">(31) 99423-8535</a>
                 </div>
               </div>
-              <div className="flex items-start gap-4">
-                <div className="mt-1 w-8 h-8 rounded-xl bg-primary-blue/5 flex items-center justify-center text-primary-blue shrink-0">
-                  <MapPin size={14} />
+              <div className="flex items-start gap-4 p-3 rounded-2xl bg-primary-blue/5 border border-primary-blue/10">
+                <div className="mt-1 w-8 h-8 rounded-xl bg-primary-blue/10 flex items-center justify-center text-primary-blue shrink-0">
+                  <MapPin size={16} />
                 </div>
                 <div>
-                  <span className="block text-[10px] uppercase tracking-widest text-natural-ink/40 font-bold mb-1">Localização</span>
-                  <span className="text-sm font-medium text-natural-ink/80">Belo Horizonte, MG</span>
+                  <span className="block text-[10px] uppercase tracking-widest text-primary-blue font-bold mb-0.5">Atendimento Presencial</span>
+                  <span className="text-sm font-bold text-natural-ink block">Belo Horizonte, MG (BH)</span>
+                  <span className="text-xs text-natural-ink/60 font-light block mt-0.5">Atendimento presencial e online</span>
                 </div>
               </div>
               <div className="flex items-start gap-4">

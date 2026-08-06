@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Calendar, MessageCircle } from 'lucide-react';
+import { Calendar, MessageCircle, MapPin } from 'lucide-react';
 import { WHATSAPP_LINK } from '../constants';
 
 interface CTASectionProps {
@@ -43,9 +43,10 @@ export const CTASection: React.FC<CTASectionProps> = ({ openScheduling }) => {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ delay: 0.3, duration: 1.2, ease: "easeOut" }}
-              className="inline-block text-[10px] md:text-xs uppercase tracking-[0.5em] text-[#93C5FD] font-black"
+              className="inline-flex items-center gap-2 text-[10px] md:text-xs uppercase tracking-[0.25em] text-white/90 bg-white/10 backdrop-blur-md px-5 py-2 rounded-full border border-white/20 font-bold"
             >
-              Dê o primeiro passo
+              <MapPin size={13} className="text-[#93C5FD]" />
+              Atendimento em Belo Horizonte (BH) &amp; Online
             </motion.span>
             <h2 className="text-6xl md:text-9xl font-serif italic text-white leading-[0.9] tracking-tighter">
               Sua jornada <br /> <span className="text-primary-blue">começa aqui.</span>

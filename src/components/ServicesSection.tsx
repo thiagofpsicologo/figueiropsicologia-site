@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Sparkles } from 'lucide-react';
+import { Sparkles, MapPin } from 'lucide-react';
 
 interface ServicesSectionProps {
   openScheduling: (plan?: string) => void;
@@ -22,6 +22,11 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ openScheduling
           <p className="text-lg md:text-xl text-natural-ink/60 font-light leading-relaxed">
             Cada pessoa tem um momento diferente. Escolha o formato que faz mais sentido para você.
           </p>
+
+          <div className="inline-flex items-center gap-2 bg-primary-blue/10 border border-primary-blue/20 text-primary-blue px-5 py-2.5 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-wider shadow-sm mt-2">
+            <MapPin size={14} className="shrink-0 text-primary-blue" />
+            <span>Presencial em Belo Horizonte (BH) &amp; Terapia Online</span>
+          </div>
 
 
         </motion.div>
